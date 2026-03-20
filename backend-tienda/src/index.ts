@@ -1,7 +1,13 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { clienteRoutes } from "./routes";
+import {
+  clienteRoutes,
+  colorRoutes,
+  marcaRoutes,
+  provedorRoutes,
+  talleRoutes,
+} from "./routes";
 import { initData } from "./init";
 
 dotenv.config();
@@ -18,6 +24,10 @@ app.get("/", (req, res) => {
 });
 
 app.use("/clientes", clienteRoutes);
+app.use("/talles", talleRoutes);
+app.use("/colores", colorRoutes);
+app.use("/marcas", marcaRoutes);
+app.use("/provedores", provedorRoutes);
 
 app.listen(PORT, async () => {
   console.log(`Servidor en http://localhost:${PORT}`);

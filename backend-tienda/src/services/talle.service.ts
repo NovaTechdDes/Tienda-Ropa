@@ -1,31 +1,28 @@
 import { prisma } from "../db";
 
-export const clienteService = {
+export const talleService = {
   getAll: () => {
-    return prisma.cliente.findMany({
-      where: { activo: true },
-    });
+    return prisma.talle.findMany();
   },
   getById: (id: number) => {
-    return prisma.cliente.findUnique({
+    return prisma.talle.findUnique({
       where: { id },
     });
   },
   create: (data: any) => {
-    return prisma.cliente.create({
+    return prisma.talle.create({
       data,
     });
   },
   update: (id: number, data: any) => {
-    return prisma.cliente.update({
+    return prisma.talle.update({
       where: { id },
       data,
     });
   },
   delete: (id: number) => {
-    return prisma.cliente.update({
+    return prisma.talle.delete({
       where: { id },
-      data: { activo: false },
     });
   },
 };
