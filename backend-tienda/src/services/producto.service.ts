@@ -4,6 +4,9 @@ export const productoService = {
   getAll: () => {
     return prisma.producto.findMany({
       where: { activo: true },
+      include: {
+        variantes: true,
+      },
     });
   },
   getById: (id: number) => {

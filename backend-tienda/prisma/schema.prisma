@@ -61,6 +61,8 @@ model Producto {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
   activo       Boolean  @default(true)
+
+  variantes variante_producto[]
 }
 
 model variante_producto {
@@ -74,6 +76,8 @@ model variante_producto {
   activo      Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  producto Producto @relation(fields: [producto_id], references: [id])
 }
 
 model Venta {

@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* The Atelier Palette */
+    --atelier-ink: #0a0a0b;
+    --atelier-surface-1: #141416;
+    --atelier-surface-2: #1c1c1e;
+    
+    --atelier-parchment: #f5f5f0;
+    --atelier-parchment-muted: #a1a1aa;
+    --atelier-parchment-low: #3f3f46;
+    
+    --atelier-gold: #d4af37;
+    --atelier-gold-bright: #e5c158;
+    
+    --atelier-border: rgba(255, 255, 255, 0.08);
+    --atelier-border-soft: rgba(255, 255, 255, 0.04);
+    
+    --atelier-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --atelier-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  }
+
+  body {
+    background-color: var(--atelier-ink);
+    color: var(--atelier-parchment);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .nav-item-active {
+    background-color: var(--atelier-surface-1);
+    color: var(--atelier-parchment);
+  }
+}

@@ -3,26 +3,76 @@ import { productoService } from "../services";
 
 export const productoController = {
   getAll: async (_req: Request, res: Response) => {
-    const productos = await productoService.getAll();
-    res.status(200).json(productos);
+    try {
+      const productos = await productoService.getAll();
+      res.status(200).json({
+        ok: true,
+        productos,
+      });
+    } catch (error) {
+      res.status(500).json({
+        ok: false,
+        message: "Error al obtener los productos",
+      });
+    }
   },
   getById: async (req: Request, res: Response) => {
     const { id } = req.params;
-    const producto = await productoService.getById(Number(id));
-    res.status(200).json(producto);
+    try {
+      const producto = await productoService.getById(Number(id));
+      res.status(200).json({
+        ok: true,
+        producto,
+      });
+    } catch (error) {
+      res.status(500).json({
+        ok: false,
+        message: "Error al obtener el producto",
+      });
+    }
   },
   create: async (req: Request, res: Response) => {
-    const producto = await productoService.create(req.body);
-    res.status(201).json(producto);
+    try {
+      await productoService.create(req.body);
+      res.status(201).json({
+        ok: true,
+        message: "Producto creado correctamente",
+      });
+    } catch (error) {
+      res.status(500).json({
+        ok: false,
+        message: "Error al crear el producto",
+      });
+    }
   },
   update: async (req: Request, res: Response) => {
     const { id } = req.params;
-    const producto = await productoService.update(Number(id), req.body);
-    res.status(200).json(producto);
+    try {
+      await productoService.update(Number(id), req.body);
+      res.status(200).json({
+        ok: true,
+        message: "Producto actualizado correctamente",
+      });
+    } catch (error) {
+      res.status(500).json({
+        ok: false,
+        message: "Error al actualizar el producto",
+      });
+    }
   },
   delete: async (req: Request, res: Response) => {
     const { id } = req.params;
-    const producto = await productoService.delete(Number(id));
-    res.status(200).json(producto);
+    try {
+      await productoService.delete(Number(id));
+      res.status(200).json({
+        ok: true,
+        message: "Producto eliminado correctamente",
+      });
+    } catch (error) {
+      res.status(500).json({
+        ok: false,
+        message: "Error al eliminar el producto",
+      });
+    }
   },
 };
