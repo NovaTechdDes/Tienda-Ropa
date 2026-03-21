@@ -167,7 +167,8 @@ exports.Prisma.ProductoScalarFieldEnum = {
   img_url: 'img_url',
   observacion: 'observacion',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  activo: 'activo'
 };
 
 exports.Prisma.Variante_productoScalarFieldEnum = {

@@ -3,3 +3,8 @@ export { default as talleRoutes } from "./talle.routes";
 export { default as colorRoutes } from "./color.routes";
 export { default as marcaRoutes } from "./marca.routes";
 export { default as provedorRoutes } from "./provedor.routes";
+export { default as ventaRoutes } from "./venta.route";
+export { default as detalle_ventaRoutes } from "./detalle_venta.route";
+export { default as mov_productoRoutes } from "./mov_producto.route";
+export { default as variante_productoRoutes } from "./variante_producto.route";
+export { default as productoRoutes } from "./producto.route";

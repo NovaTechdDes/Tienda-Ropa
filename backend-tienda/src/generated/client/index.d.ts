@@ -7886,6 +7886,7 @@ export namespace Prisma {
     observacion: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    activo: boolean | null
   }
 
   export type ProductoMaxAggregateOutputType = {
@@ -7898,6 +7899,7 @@ export namespace Prisma {
     observacion: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    activo: boolean | null
   }
 
   export type ProductoCountAggregateOutputType = {
@@ -7910,6 +7912,7 @@ export namespace Prisma {
     observacion: number
     createdAt: number
     updatedAt: number
+    activo: number
     _all: number
   }
 
@@ -7938,6 +7941,7 @@ export namespace Prisma {
     observacion?: true
     createdAt?: true
     updatedAt?: true
+    activo?: true
   }
 
   export type ProductoMaxAggregateInputType = {
@@ -7950,6 +7954,7 @@ export namespace Prisma {
     observacion?: true
     createdAt?: true
     updatedAt?: true
+    activo?: true
   }
 
   export type ProductoCountAggregateInputType = {
@@ -7962,6 +7967,7 @@ export namespace Prisma {
     observacion?: true
     createdAt?: true
     updatedAt?: true
+    activo?: true
     _all?: true
   }
 
@@ -8061,6 +8067,7 @@ export namespace Prisma {
     observacion: string | null
     createdAt: Date
     updatedAt: Date
+    activo: boolean
     _count: ProductoCountAggregateOutputType | null
     _avg: ProductoAvgAggregateOutputType | null
     _sum: ProductoSumAggregateOutputType | null
@@ -8092,6 +8099,7 @@ export namespace Prisma {
     observacion?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    activo?: boolean
   }, ExtArgs["result"]["producto"]>
 
   export type ProductoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8104,6 +8112,7 @@ export namespace Prisma {
     observacion?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    activo?: boolean
   }, ExtArgs["result"]["producto"]>
 
   export type ProductoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8116,6 +8125,7 @@ export namespace Prisma {
     observacion?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    activo?: boolean
   }, ExtArgs["result"]["producto"]>
 
   export type ProductoSelectScalar = {
@@ -8128,9 +8138,10 @@ export namespace Prisma {
     observacion?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    activo?: boolean
   }
 
-  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descripcion" | "provedor_id" | "marca_id" | "categoria_id" | "img_url" | "observacion" | "createdAt" | "updatedAt", ExtArgs["result"]["producto"]>
+  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descripcion" | "provedor_id" | "marca_id" | "categoria_id" | "img_url" | "observacion" | "createdAt" | "updatedAt" | "activo", ExtArgs["result"]["producto"]>
 
   export type $ProductoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Producto"
@@ -8145,6 +8156,7 @@ export namespace Prisma {
       observacion: string | null
       createdAt: Date
       updatedAt: Date
+      activo: boolean
     }, ExtArgs["result"]["producto"]>
     composites: {}
   }
@@ -8577,6 +8589,7 @@ export namespace Prisma {
     readonly observacion: FieldRef<"Producto", 'String'>
     readonly createdAt: FieldRef<"Producto", 'DateTime'>
     readonly updatedAt: FieldRef<"Producto", 'DateTime'>
+    readonly activo: FieldRef<"Producto", 'Boolean'>
   }
     
 
@@ -13410,7 +13423,8 @@ export namespace Prisma {
     img_url: 'img_url',
     observacion: 'observacion',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    activo: 'activo'
   };
 
   export type ProductoScalarFieldEnum = (typeof ProductoScalarFieldEnum)[keyof typeof ProductoScalarFieldEnum]
@@ -13857,6 +13871,7 @@ export namespace Prisma {
     observacion?: StringNullableFilter<"Producto"> | string | null
     createdAt?: DateTimeFilter<"Producto"> | Date | string
     updatedAt?: DateTimeFilter<"Producto"> | Date | string
+    activo?: BoolFilter<"Producto"> | boolean
   }
 
   export type ProductoOrderByWithRelationInput = {
@@ -13869,6 +13884,7 @@ export namespace Prisma {
     observacion?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    activo?: SortOrder
   }
 
   export type ProductoWhereUniqueInput = Prisma.AtLeast<{
@@ -13884,6 +13900,7 @@ export namespace Prisma {
     observacion?: StringNullableFilter<"Producto"> | string | null
     createdAt?: DateTimeFilter<"Producto"> | Date | string
     updatedAt?: DateTimeFilter<"Producto"> | Date | string
+    activo?: BoolFilter<"Producto"> | boolean
   }, "id">
 
   export type ProductoOrderByWithAggregationInput = {
@@ -13896,6 +13913,7 @@ export namespace Prisma {
     observacion?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    activo?: SortOrder
     _count?: ProductoCountOrderByAggregateInput
     _avg?: ProductoAvgOrderByAggregateInput
     _max?: ProductoMaxOrderByAggregateInput
@@ -13916,6 +13934,7 @@ export namespace Prisma {
     observacion?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Producto"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Producto"> | Date | string
+    activo?: BoolWithAggregatesFilter<"Producto"> | boolean
   }
 
   export type variante_productoWhereInput = {
@@ -14466,6 +14485,7 @@ export namespace Prisma {
     observacion?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    activo?: boolean
   }
 
   export type ProductoUncheckedCreateInput = {
@@ -14478,6 +14498,7 @@ export namespace Prisma {
     observacion?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    activo?: boolean
   }
 
   export type ProductoUpdateInput = {
@@ -14489,6 +14510,7 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductoUncheckedUpdateInput = {
@@ -14501,6 +14523,7 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductoCreateManyInput = {
@@ -14513,6 +14536,7 @@ export namespace Prisma {
     observacion?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    activo?: boolean
   }
 
   export type ProductoUpdateManyMutationInput = {
@@ -14524,6 +14548,7 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductoUncheckedUpdateManyInput = {
@@ -14536,6 +14561,7 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    activo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type variante_productoCreateInput = {
@@ -15174,6 +15200,7 @@ export namespace Prisma {
     observacion?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    activo?: SortOrder
   }
 
   export type ProductoAvgOrderByAggregateInput = {
@@ -15193,6 +15220,7 @@ export namespace Prisma {
     observacion?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    activo?: SortOrder
   }
 
   export type ProductoMinOrderByAggregateInput = {
@@ -15205,6 +15233,7 @@ export namespace Prisma {
     observacion?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    activo?: SortOrder
   }
 
   export type ProductoSumOrderByAggregateInput = {

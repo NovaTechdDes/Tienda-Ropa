@@ -60,6 +60,7 @@ model Producto {
   observacion  String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  activo       Boolean  @default(true)
 }
 
 model variante_producto {

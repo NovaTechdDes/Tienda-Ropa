@@ -4,9 +4,14 @@ import dotenv from "dotenv";
 import {
   clienteRoutes,
   colorRoutes,
+  detalle_ventaRoutes,
   marcaRoutes,
+  mov_productoRoutes,
+  productoRoutes,
   provedorRoutes,
   talleRoutes,
+  variante_productoRoutes,
+  ventaRoutes,
 } from "./routes";
 import { initData } from "./init";
 
@@ -28,6 +33,11 @@ app.use("/talles", talleRoutes);
 app.use("/colores", colorRoutes);
 app.use("/marcas", marcaRoutes);
 app.use("/provedores", provedorRoutes);
+app.use("/productos", productoRoutes);
+app.use("/variantes_producto", variante_productoRoutes);
+app.use("/mov_producto", mov_productoRoutes);
+app.use("/ventas", ventaRoutes);
+app.use("/detalle_venta", detalle_ventaRoutes);
 
 app.listen(PORT, async () => {
   console.log(`Servidor en http://localhost:${PORT}`);
