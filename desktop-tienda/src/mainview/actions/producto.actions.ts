@@ -49,7 +49,11 @@ export const putProducto = async (
   producto: Producto,
 ): Promise<Boolean> => {
   try {
-    const { data } = await db().put(`/productos/${id}`, producto);
+    const { categoria_id, ...res } = producto;
+    const { data } = await db().put(`/productos/${id}`, {
+      ...res,
+      categoria_id: Number(categoria_id),
+    });
 
     if (data.ok) {
       return true;

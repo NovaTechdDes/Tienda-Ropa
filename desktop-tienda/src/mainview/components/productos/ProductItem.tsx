@@ -2,12 +2,14 @@ import { Pencil, Trash2, Layers, Box } from "lucide-react";
 import { Producto } from "../../interface/Producto";
 import Swal from "sweetalert2";
 import { useMutateProducto } from "../../hooks";
+import { useProductoStore } from "../../store";
 
 interface Props {
   producto: Producto;
 }
 
 export const ProductItem = ({ producto }: Props) => {
+  const { setProductoSeleccionado, openModal } = useProductoStore();
   const { eliminarProducto } = useMutateProducto();
 
   const totalStock =
@@ -27,6 +29,11 @@ export const ProductItem = ({ producto }: Props) => {
     if (isConfirmed) {
       eliminarProducto.mutateAsync(producto.id);
     }
+  };
+
+  const handleUpdate = async () => {
+    setProductoSeleccionado(producto);
+    openModal();
   };
 
   return (
@@ -85,7 +92,10 @@ export const ProductItem = ({ producto }: Props) => {
 
         {/* Action Buttons */}
         <div className="flex gap-2">
-          <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-[rgba(255,255,255,0.03)] hover:bg-[rgba(255,255,255,0.06)] text-[#f5f5f0] rounded-xl transition-all duration-300 border border-[rgba(255,255,255,0.04)] hover:border-[rgba(255,255,255,0.1)] group/btn">
+          <button
+            onClick={handleUpdate}
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-[rgba(255,255,255,0.03)] hover:bg-[rgba(255,255,255,0.06)] text-[#f5f5f0] rounded-xl transition-all duration-300 border border-[rgba(255,255,255,0.04)] hover:border-[rgba(255,255,255,0.1)] group/btn"
+          >
             <Pencil
               size={14}
               className="transition-transform group-hover/btn:-translate-y-0.5"

@@ -55,12 +55,17 @@ export const productoController = {
   update: async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
-      await productoService.update(Number(id), req.body);
+      const { variantes, ...rest } = req.body;
+      await productoService.update(Number(id), rest);
+
+      await variante_productoService.update(Number(id), variantes);
+
       res.status(200).json({
         ok: true,
         message: "Producto actualizado correctamente",
       });
     } catch (error) {
+      console.error(error);
       res.status(500).json({
         ok: false,
         message: "Error al actualizar el producto",

@@ -21,14 +21,16 @@ const initialState: Producto = {
 export const ProductoModalFormulario = () => {
   const { closeModal, productoSeleccionado } = useProductoStore();
   const { data: configuracion } = useConfiguracion();
-  const { crearProducto } = useMutateProducto();
+  const { crearProducto, modificarProducto } = useMutateProducto();
 
   const [color, setColor] = useState<number>();
   const [talle, setTalle] = useState<number>();
   const [stock, setStock] = useState("");
   const [precio, setPrecio] = useState("");
 
-  const [variantes, setVariantes] = useState<any[]>([]);
+  const [variantes, setVariantes] = useState<any[]>(
+    productoSeleccionado?.variantes ?? [],
+  );
 
   const {
     formState,
@@ -37,7 +39,7 @@ export const ProductoModalFormulario = () => {
     descripcion,
     observacion,
     sku,
-  } = useForm(initialState);
+  } = useForm(productoSeleccionado ?? initialState);
 
   const addVariante = () => {
     if (!color || !talle || !stock || !precio) return;
@@ -61,6 +63,24 @@ export const ProductoModalFormulario = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (productoSeleccionado) {
+      const res = await modificarProducto.mutateAsync({
+        ...formState,
+        variantes,
+      });
+
+      if (res) {
+        closeModal();
+        onResetForm();
+        setVariantes([]);
+        mensaje("Producto modificado exitosamente", "success");
+      } else {
+        mensaje("Error al modificar el producto", "error");
+      }
+      return;
+    }
+
     const res = await crearProducto.mutateAsync({
       ...formState,
       variantes,
@@ -154,6 +174,7 @@ export const ProductoModalFormulario = () => {
                   value={formState.categoria_id}
                   className="w-full bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all appearance-none cursor-pointer"
                 >
+                  <option value="0">Seleccione una categoría</option>
                   {configuracion?.categorias?.map((categoria: Categoria) => (
                     <option key={categoria.id} value={categoria.id}>
                       {categoria.nombre}
@@ -318,7 +339,9 @@ export const ProductoModalFormulario = () => {
               type="submit"
               className="px-8 py-2.5 bg-[#d4af37] hover:bg-[#e5c158] text-[#0a0a0b] rounded-xl text-xs font-bold uppercase tracking-widest shadow-[0_8px_20px_-4px_rgba(212,175,55,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
             >
-              Guardar Cambios
+              {productoSeleccionado
+                ? "Actualizar Producto"
+                : "Guardar Producto"}
             </button>
           </div>
         </form>
