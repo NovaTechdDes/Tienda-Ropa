@@ -1,32 +1,75 @@
-
-import { Colores } from '../components/colores/Colores';
-import { Talles } from '../components/talles/Talles'
-import { useConfiguracion } from '../hooks/configuracion/useConfiguracion'
+import { useState } from "react";
+import { ListConfiguracion } from "../components/configuracion/ListConfiguracion";
+import { useConfiguracion } from "../hooks/configuracion/useConfiguracion";
+import { useMutateTalles } from "../hooks/talles/useMutateTalles";
+import { useMutateColor } from "../hooks/colores/useMutateColor";
+import { useMutateMarcas } from "../hooks/marcas/useMutateMarcas";
+import { useMutateProvedor } from "../hooks/provedor/useMutateProvedot";
 
 export const Configuracion = () => {
-    const { data: configuracion } = useConfiguracion();
+  const { data: configuracion, isLoading } = useConfiguracion();
+
+  const { actualizarTalle, crearTalle, eliminarTalle } = useMutateTalles();
+  const { actualizarColor, agregarColor, eliminarColor } = useMutateColor();
+  const { actualizarMarca, agregarMarca, eliminarMarca } = useMutateMarcas();
+  const { actualizarProvedor, crearProvedor, eliminarProvedor } =
+    useMutateProvedor();
+
+  const [talle, setTalle] = useState("");
+  const [color, setColor] = useState("");
+  const [marca, setMarca] = useState("");
+  const [provedor, setProvedor] = useState("");
+
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <div>
+      {/* Talles */}
 
-        {/* Talles */}
+      <ListConfiguracion
+        type="Talle"
+        data={configuracion?.talles}
+        actualizarType={actualizarTalle}
+        eliminarType={eliminarTalle}
+        valor={talle}
+        setValor={setTalle}
+        crearType={crearTalle}
+      />
 
-        <Talles talles={configuracion?.talles}/>
+      {/* Color */}
+      <ListConfiguracion
+        type="Color"
+        data={configuracion?.colores}
+        actualizarType={actualizarColor}
+        eliminarType={eliminarColor}
+        valor={color}
+        setValor={setColor}
+        crearType={agregarColor}
+      />
 
+      {/* Categoria */}
 
-        {/* Color */}
-        <Colores colores={configuracion?.colores}/>
+      {/* Marca */}
+      <ListConfiguracion
+        type="Marca"
+        data={configuracion?.marcas}
+        actualizarType={actualizarMarca}
+        eliminarType={eliminarMarca}
+        valor={marca}
+        setValor={setMarca}
+        crearType={agregarMarca}
+      />
 
-
-
-        {/* Categoria */}
-
-
-        {/* Marca */}
-
-
-
-        {/* Provedor */}
-
+      {/* Provedor */}
+      <ListConfiguracion
+        type="Provedor"
+        data={configuracion?.provedor}
+        actualizarType={actualizarProvedor}
+        eliminarType={eliminarProvedor}
+        valor={provedor}
+        setValor={setProvedor}
+        crearType={crearProvedor}
+      />
     </div>
-  )
-}
+  );
+};
