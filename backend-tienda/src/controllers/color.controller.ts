@@ -17,12 +17,20 @@ export const colorController = {
   },
   update: async (req: Request, res: Response) => {
     const { id } = req.params;
-    const color = await colorService.update(Number(id), req.body);
-    res.status(200).json(color);
+    try {
+      await colorService.update(Number(id), req.body);
+      res.status(200).json({ ok: true, mensaje: "Color actualizado correctamente" });
+    } catch (error) {
+      res.status(500).json({ ok: false, mensaje: "Error al actualizar el color", error });
+    }
   },
   delete: async (req: Request, res: Response) => {
     const { id } = req.params;
-    const color = await colorService.delete(Number(id));
-    res.status(200).json(color);
+    try {
+      await colorService.delete(Number(id));
+      res.status(200).json({ ok: true, mensaje: "Color eliminado correctamente" });
+    } catch (error) {
+      res.status(500).json({ ok: false, mensaje: "Error al eliminar el color", error });
+    }
   },
 };

@@ -1,4 +1,5 @@
 
+import { Colores } from '../components/colores/Colores';
 import { Talles } from '../components/talles/Talles'
 import { useConfiguracion } from '../hooks/configuracion/useConfiguracion'
 
@@ -13,6 +14,7 @@ export const Configuracion = () => {
 
 
         {/* Color */}
+        <Colores colores={configuracion?.colores}/>
 
 
 
