@@ -13,7 +13,6 @@ export const variante_productoService = {
   },
   create: async (id: any, variantes: any) => {
     for await (const variante of variantes) {
-      console.log(variante);
       await prisma.variante_producto.create({
         data: {
           ...variante,

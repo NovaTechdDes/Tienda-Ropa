@@ -5,17 +5,21 @@ import { useMutateTalles } from "../hooks/talles/useMutateTalles";
 import { useMutateColor } from "../hooks/colores/useMutateColor";
 import { useMutateMarcas } from "../hooks/marcas/useMutateMarcas";
 import { useMutateProvedor } from "../hooks/provedor/useMutateProvedot";
+import { useMutateCategoria } from "../hooks/categorias/useMutateCategoria";
 
 export const Configuracion = () => {
   const { data: configuracion, isLoading } = useConfiguracion();
 
   const { actualizarTalle, crearTalle, eliminarTalle } = useMutateTalles();
   const { actualizarColor, agregarColor, eliminarColor } = useMutateColor();
+  const { actualizarCategoria, agregarCategoria, eliminarCategoria } =
+    useMutateCategoria();
   const { actualizarMarca, agregarMarca, eliminarMarca } = useMutateMarcas();
   const { actualizarProvedor, crearProvedor, eliminarProvedor } =
     useMutateProvedor();
 
   const [talle, setTalle] = useState("");
+  const [categoria, setCategoria] = useState("");
   const [color, setColor] = useState("");
   const [marca, setMarca] = useState("");
   const [provedor, setProvedor] = useState("");
@@ -48,6 +52,15 @@ export const Configuracion = () => {
       />
 
       {/* Categoria */}
+      <ListConfiguracion
+        type="Categoria"
+        data={configuracion?.categorias}
+        actualizarType={actualizarCategoria}
+        eliminarType={eliminarCategoria}
+        valor={categoria}
+        setValor={setCategoria}
+        crearType={agregarCategoria}
+      />
 
       {/* Marca */}
       <ListConfiguracion

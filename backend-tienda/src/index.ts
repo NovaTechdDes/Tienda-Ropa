@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import {
+  categoriaRoutes,
   clienteRoutes,
   colorRoutes,
   configuracionDataRoutes,
@@ -30,18 +31,18 @@ app.get("/", (req, res) => {
 });
 
 app.use("/clientes", clienteRoutes);
-app.use("/talles", talleRoutes);
+app.use("/categorias", categoriaRoutes);
 app.use("/colores", colorRoutes);
+app.use("/detalle_venta", detalle_ventaRoutes);
 app.use("/marcas", marcaRoutes);
 app.use("/provedores", provedorRoutes);
 app.use("/productos", productoRoutes);
 app.use("/variantes_producto", variante_productoRoutes);
 app.use("/mov_producto", mov_productoRoutes);
 app.use("/ventas", ventaRoutes);
-app.use("/detalle_venta", detalle_ventaRoutes);
+app.use("/talles", talleRoutes);
 
-
-app.use('/configuracion-data', configuracionDataRoutes)
+app.use("/configuracion-data", configuracionDataRoutes);
 
 app.listen(PORT, async () => {
   console.log(`Servidor en http://localhost:${PORT}`);

@@ -14,7 +14,7 @@ export const startPostColor = async (color: Color): Promise<boolean> => {
 };
 
 export const startPutColor = async (
-  id: string,
+  id: number,
   color: Color,
 ): Promise<boolean> => {
   try {

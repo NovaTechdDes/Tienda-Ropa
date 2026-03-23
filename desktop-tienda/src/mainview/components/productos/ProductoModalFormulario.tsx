@@ -3,7 +3,7 @@ import { useProductoStore } from "../../store";
 import { useForm } from "../../hooks/useForm";
 import { Producto } from "../../interface/Producto";
 import { useConfiguracion } from "../../hooks/configuracion/useConfiguracion";
-import { Color, Talle } from "../../interface";
+import { Categoria, Color, Talle } from "../../interface";
 import { useState } from "react";
 import { VarianteItemFormulario } from "./VarianteItemFormulario";
 import { useMutateProducto } from "../../hooks";
@@ -154,9 +154,11 @@ export const ProductoModalFormulario = () => {
                   value={formState.categoria_id}
                   className="w-full bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all appearance-none cursor-pointer"
                 >
-                  <option>Bikini</option>
-                  <option>Ropa de Playa</option>
-                  <option>Accesorios</option>
+                  {configuracion?.categorias?.map((categoria: Categoria) => (
+                    <option key={categoria.id} value={categoria.id}>
+                      {categoria.nombre}
+                    </option>
+                  ))}
                 </select>
                 <ChevronDown
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-[#bababb]"
