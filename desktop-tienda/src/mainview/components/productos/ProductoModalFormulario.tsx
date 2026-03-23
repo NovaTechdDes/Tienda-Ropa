@@ -1,4 +1,12 @@
-import { X, Plus, Tag, Layers, ChevronDown, Barcode } from "lucide-react";
+import {
+  X,
+  Plus,
+  Tag,
+  Layers,
+  ChevronDown,
+  Barcode,
+  Image,
+} from "lucide-react";
 import { useProductoStore } from "../../store";
 import { useForm } from "../../hooks/useForm";
 import { Producto } from "../../interface/Producto";
@@ -22,6 +30,8 @@ export const ProductoModalFormulario = () => {
   const { closeModal, productoSeleccionado } = useProductoStore();
   const { data: configuracion } = useConfiguracion();
   const { crearProducto, modificarProducto } = useMutateProducto();
+
+  const [imagen, setImagen] = useState<File | null>(null);
 
   const [color, setColor] = useState<number>();
   const [talle, setTalle] = useState<number>();
@@ -64,11 +74,16 @@ export const ProductoModalFormulario = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append("descripcion", descripcion);
+    formData.append("observacion", observacion ? observacion : "");
+    formData.append("sku", sku ? sku : "");
+    formData.append("imagen", imagen ? imagen : "");
+    formData.append("variantes", JSON.stringify(variantes));
+
     if (productoSeleccionado) {
-      const res = await modificarProducto.mutateAsync({
-        ...formState,
-        variantes,
-      });
+      formData.append("id", productoSeleccionado.id);
+      const res = await modificarProducto.mutateAsync(formData);
 
       if (res) {
         closeModal();
@@ -81,10 +96,7 @@ export const ProductoModalFormulario = () => {
       return;
     }
 
-    const res = await crearProducto.mutateAsync({
-      ...formState,
-      variantes,
-    });
+    const res = await crearProducto.mutateAsync(formData);
 
     if (res) {
       closeModal();
@@ -150,7 +162,7 @@ export const ProductoModalFormulario = () => {
                 <input
                   type="text"
                   placeholder="Ej: Bikini Clásico Negro"
-                  className="w-full bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all"
+                  className="w-full placeholder:text-gray-500 bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all"
                   defaultValue={productoSeleccionado?.descripcion}
                   onChange={onInputChange}
                   name="descripcion"
@@ -200,30 +212,52 @@ export const ProductoModalFormulario = () => {
               name="observacion"
               value={observacion}
               placeholder="Detalles sobre el material, calce o cuidados..."
-              className="w-full bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl p-4 text-sm text-[#f5f5f0] outline-none transition-all resize-none"
+              className="w-full placeholder:text-gray-500 bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl p-4 text-sm text-[#f5f5f0] outline-none transition-all resize-none"
               defaultValue={productoSeleccionado?.observacion}
             />
           </div>
 
-          {/* Image URL */}
-          <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-[#bababb] font-bold ml-1">
-              Codigo de Barra / SKU
-            </label>
-            <div className="relative group">
-              <Barcode
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-[#bababb] group-focus-within:text-[#d4af37] transition-colors"
-                size={16}
-              />
-              <input
-                type="text"
-                placeholder="7798512574"
-                className="w-full bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all"
-                defaultValue={productoSeleccionado?.sku}
-                onChange={onInputChange}
-                name="sku"
-                value={sku}
-              />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Image URL */}
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-widest text-[#bababb] font-bold ml-1">
+                Imagen
+              </label>
+              <div className="relative group">
+                <Image
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#bababb] group-focus-within:text-[#d4af37] transition-colors"
+                  size={16}
+                />
+                <input
+                  type="file"
+                  className="w-full placeholder:text-gray-500 bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all"
+                  // defaultValue={productoSeleccionado?.img_url}
+                  onChange={(e) => setImagen(e.target.files![0])}
+                  name="imagen"
+                />
+              </div>
+            </div>
+
+            {/* SKU */}
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-widest text-[#bababb] font-bold ml-1">
+                Codigo de Barra / SKU
+              </label>
+              <div className="relative group">
+                <Barcode
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#bababb] group-focus-within:text-[#d4af37] transition-colors"
+                  size={16}
+                />
+                <input
+                  type="text"
+                  placeholder="7798512574"
+                  className="w-full bg-[#0a0a0b] border placeholder:text-gray-500 border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all"
+                  defaultValue={productoSeleccionado?.sku}
+                  onChange={onInputChange}
+                  name="sku"
+                  value={sku}
+                />
+              </div>
             </div>
           </div>
 
@@ -325,7 +359,6 @@ export const ProductoModalFormulario = () => {
               </table>
             </div>
           </div>
-
           {/* Botones  */}
           <div className="px-8 py-6 bg-[#1c1c1e]/50 border-t border-[rgba(255,255,255,0.04)] flex justify-end gap-3">
             <button

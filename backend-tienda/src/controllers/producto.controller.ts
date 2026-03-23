@@ -35,9 +35,15 @@ export const productoController = {
   create: async (req: Request, res: Response) => {
     try {
       const { variantes, ...rest } = req.body;
-      const data = await productoService.create(rest);
 
-      await variante_productoService.create(data.id, variantes);
+      //Imagen
+      const img_url = req.file
+        ? `/uploads/productos/${req.file.filename}`
+        : null;
+
+      const data = await productoService.create({ ...rest, img_url });
+
+      await variante_productoService.create(data.id, JSON.parse(variantes));
 
       res.status(201).json({
         ok: true,
@@ -56,9 +62,21 @@ export const productoController = {
     const { id } = req.params;
     try {
       const { variantes, ...rest } = req.body;
-      await productoService.update(Number(id), rest);
 
-      await variante_productoService.update(Number(id), variantes);
+      //Imagen
+      const img_url = req.file
+        ? `/uploads/productos/${req.file.filename}`
+        : null;
+
+      console.log(rest);
+
+      await productoService.update(Number(id), {
+        ...rest,
+        img_url,
+        id: Number(id),
+      });
+
+      await variante_productoService.update(Number(id), JSON.parse(variantes));
 
       res.status(200).json({
         ok: true,

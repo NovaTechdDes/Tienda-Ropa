@@ -8,6 +8,8 @@ interface Props {
   producto: Producto;
 }
 
+const imgURL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 export const ProductItem = ({ producto }: Props) => {
   const { setProductoSeleccionado, openModal } = useProductoStore();
   const { eliminarProducto } = useMutateProducto();
@@ -44,7 +46,7 @@ export const ProductItem = ({ producto }: Props) => {
       {/* Image Container */}
       <div className="relative h-56 w-full overflow-hidden bg-[#0a0a0b]">
         <img
-          src={"../../assets/Logo.png"}
+          src={`${imgURL}${producto.img_url}`}
           alt={producto.descripcion}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
         />

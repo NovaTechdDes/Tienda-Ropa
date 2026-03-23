@@ -29,10 +29,9 @@ export const deleteProducto = async (id: string): Promise<Boolean> => {
   return false;
 };
 
-export const postProducto = async (producto: Producto): Promise<Boolean> => {
+export const postProducto = async (producto: FormData): Promise<Boolean> => {
   try {
-    const { id, ...res } = producto;
-    const { data } = await db().post(`/productos`, res);
+    const { data } = await db().post(`/productos`, producto);
 
     if (data.ok) {
       return true;
@@ -44,16 +43,12 @@ export const postProducto = async (producto: Producto): Promise<Boolean> => {
   return false;
 };
 
-export const putProducto = async (
-  id: string,
-  producto: Producto,
-): Promise<Boolean> => {
+export const putProducto = async (producto: FormData): Promise<Boolean> => {
   try {
-    const { categoria_id, ...res } = producto;
-    const { data } = await db().put(`/productos/${id}`, {
-      ...res,
-      categoria_id: Number(categoria_id),
-    });
+    const { data } = await db().put(
+      `/productos/${producto.get("id")}`,
+      producto,
+    );
 
     if (data.ok) {
       return true;
