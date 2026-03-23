@@ -23,26 +23,26 @@ export const VarianteItemFormulario = ({
     colores.find((c) => c.id === elem.color_id)?.nombre || elem.color_id;
 
   return (
-    <tr key={index} className="items-center">
-      <td className="px-5 py-4 text-xs text-[#f5f5f0]">{nombreTalle}</td>
-      <td className="px-5 py-4 text-xs text-[#f5f5f0] capitalize">
+    <tr key={index} className="group hover:bg-white/[0.02] transition-colors duration-300">
+      <td className="px-5 py-4 text-xs text-[#f5f5f0] font-medium">{nombreTalle}</td>
+      <td className="px-5 py-4 text-xs text-[#f5f5f0] capitalize font-medium">
         {nombreColor}
       </td>
-      <td className="px-5 py-4 text-xs text-[#f5f5f0]">
+      <td className="px-5 py-4 text-xs text-[#f5f5f0] font-bold">
         {elem.stock.toFixed(0)}
       </td>
-      <td className="px-5 py-4 text-xs text-[#f5f5f0] font-medium">
+      <td className="px-5 py-4 text-xs text-[#d4af37] font-bold">
         ${elem.precio.toFixed(2)}
       </td>
       <td className="px-5 py-4 text-right">
         <button
           onClick={onDelete}
           type="button"
-          className="p-2 hover:bg-red-500/10 rounded-lg transition-colors group"
+          className="p-2.5 bg-red-500/5 hover:bg-red-500/10 rounded-xl transition-all duration-300 group/del"
         >
           <Trash
             size={16}
-            className="text-red-500/60 group-hover:text-red-500"
+            className="text-red-500/40 group-hover/del:text-red-500 transition-colors"
           />
         </button>
       </td>

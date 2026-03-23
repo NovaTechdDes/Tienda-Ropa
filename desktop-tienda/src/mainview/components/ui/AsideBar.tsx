@@ -24,10 +24,10 @@ export const AsideBar = () => {
         </div>
         <div>
           <h1 className="text-sm font-bold tracking-widest uppercase text-[#f5f5f0]">
-            NovaTech
+            Pink Chajari
           </h1>
           <p className="text-[10px] uppercase tracking-[0.2em] text-[#a1a1aa] font-medium leading-none mt-1">
-            Atelier
+            Gestion
           </p>
         </div>
       </div>
