@@ -8,3 +8,6 @@ export * from "./variante_producto.controller";
 export * from "./venta.controller";
 export * from "./detalle_venta.controller";
 export * from "./mov_producto.controller";
+
+
+export * from "./configuracion.controller";

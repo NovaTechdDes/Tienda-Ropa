@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import {
   clienteRoutes,
   colorRoutes,
+  configuracionDataRoutes,
   detalle_ventaRoutes,
   marcaRoutes,
   mov_productoRoutes,
@@ -38,6 +39,9 @@ app.use("/variantes_producto", variante_productoRoutes);
 app.use("/mov_producto", mov_productoRoutes);
 app.use("/ventas", ventaRoutes);
 app.use("/detalle_venta", detalle_ventaRoutes);
+
+
+app.use('/configuracion-data', configuracionDataRoutes)
 
 app.listen(PORT, async () => {
   console.log(`Servidor en http://localhost:${PORT}`);

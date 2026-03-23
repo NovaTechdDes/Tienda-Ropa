@@ -8,3 +8,6 @@ export * from "./variante_producto.service";
 export * from "./venta.service";
 export * from "./detalle_venta.service";
 export * from "./mov_producto.service";
+
+
+export * from "./configuracion.service";

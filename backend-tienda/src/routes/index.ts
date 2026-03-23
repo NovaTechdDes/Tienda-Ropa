@@ -8,3 +8,4 @@ export { default as detalle_ventaRoutes } from "./detalle_venta.route";
 export { default as mov_productoRoutes } from "./mov_producto.route";
 export { default as variante_productoRoutes } from "./variante_producto.route";
 export { default as productoRoutes } from "./producto.route";
+export { default as configuracionDataRoutes } from "./configuracionDataRoutes.routes";
