@@ -1,4 +1,4 @@
 export interface Talle {
-    id?: string;
-    nombre: string;
+  id?: number;
+  nombre: string;
 }

@@ -56,6 +56,7 @@ model Producto {
   provedor_id  Int?
   marca_id     Int?
   categoria_id Int?
+  sku          String?
   img_url      String?
   observacion  String?
   createdAt    DateTime @default(now())

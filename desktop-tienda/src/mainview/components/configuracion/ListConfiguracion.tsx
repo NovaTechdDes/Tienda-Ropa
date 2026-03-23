@@ -51,7 +51,7 @@ export const ListConfiguracion = ({
               htmlFor="talle"
               className="text-sm font-medium text-[var(--atelier-parchment-muted)] px-1 uppercase tracking-wider"
             >
-              Nombre del Talle
+              Nombre del {type}
             </label>
             <input
               type="text"

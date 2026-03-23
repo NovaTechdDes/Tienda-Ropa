@@ -1,31 +1,35 @@
-import {
-  X,
-  Plus,
-  Trash2,
-  Image as ImageIcon,
-  Tag,
-  Layers,
-  ChevronDown,
-  Barcode,
-} from "lucide-react";
+import { X, Plus, Tag, Layers, ChevronDown, Barcode } from "lucide-react";
 import { useProductoStore } from "../../store";
 import { useForm } from "../../hooks/useForm";
 import { Producto } from "../../interface/Producto";
+import { useConfiguracion } from "../../hooks/configuracion/useConfiguracion";
+import { Color, Talle } from "../../interface";
+import { useState } from "react";
+import { VarianteItemFormulario } from "./VarianteItemFormulario";
+import { useMutateProducto } from "../../hooks";
+import { mensaje } from "../../utils/mensaje";
 
 const initialState: Producto = {
   descripcion: "",
   id: "",
   img_url: "",
   observacion: "",
-  categoria_id: "",
-  marca_id: "",
-  provedor_id: "",
   sku: "",
   variantes: [],
 };
 
 export const ProductoModalFormulario = () => {
   const { closeModal, productoSeleccionado } = useProductoStore();
+  const { data: configuracion } = useConfiguracion();
+  const { crearProducto } = useMutateProducto();
+
+  const [color, setColor] = useState<number>();
+  const [talle, setTalle] = useState<number>();
+  const [stock, setStock] = useState("");
+  const [precio, setPrecio] = useState("");
+
+  const [variantes, setVariantes] = useState<any[]>([]);
+
   const {
     formState,
     onInputChange,
@@ -35,9 +39,51 @@ export const ProductoModalFormulario = () => {
     sku,
   } = useForm(initialState);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const addVariante = () => {
+    if (!color || !talle || !stock || !precio) return;
+
+    setVariantes([
+      ...variantes,
+      {
+        color_id: color,
+        talle_id: talle,
+        precio: Number(precio),
+        stock: Number(stock),
+      },
+    ]);
+
+    // Limpiar campos
+    setColor(0);
+    setTalle(0);
+    setStock("");
+    setPrecio("");
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formState);
+    const res = await crearProducto.mutateAsync({
+      ...formState,
+      variantes,
+    });
+
+    if (res) {
+      closeModal();
+      onResetForm();
+      setVariantes([]);
+      mensaje("Producto creado exitosamente", "success");
+    } else {
+      mensaje("Error al crear el producto", "error");
+    }
+  };
+
+  const deleteVariante = (index: number) => {
+    setVariantes(variantes.filter((_, i) => i !== index));
+  };
+
+  const handleCloseModal = () => {
+    closeModal();
+    onResetForm();
+    setVariantes([]);
   };
 
   return (
@@ -45,7 +91,7 @@ export const ProductoModalFormulario = () => {
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-[#0a0a0b]/80 backdrop-blur-md transition-opacity"
-        onClick={closeModal}
+        onClick={handleCloseModal}
       />
 
       {/* Modal Surface */}
@@ -168,27 +214,55 @@ export const ProductoModalFormulario = () => {
 
             {/* Agregar Una Variante */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3 p-3 bg-[#0a0a0b]/50 border border-[rgba(255,255,255,0.04)] rounded-2xl">
-              <input
-                type="text"
-                placeholder="Talle"
+              <select
+                value={talle}
+                name="talle_id"
+                onChange={(e) => setTalle(Number(e.target.value))}
                 className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
-              />
-              <input
-                type="text"
-                placeholder="Color"
+              >
+                <option value="">Talle</option>
+                {configuracion?.talles.map((talle: Talle) => (
+                  <option key={talle.id} value={talle.id}>
+                    {talle.nombre}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={color}
+                name="color_id"
+                onChange={(e) => setColor(Number(e.target.value))}
                 className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
-              />
+              >
+                <option value="">Color</option>
+                {configuracion?.colores.map((color: Color) => (
+                  <option
+                    className="capitalize"
+                    key={color.id}
+                    value={color.id}
+                  >
+                    {color.nombre}
+                  </option>
+                ))}
+              </select>
               <input
                 type="number"
+                value={stock}
+                onChange={(e) => setStock(e.target.value)}
                 placeholder="Stock"
                 className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
               />
               <input
                 type="number"
+                value={precio}
+                onChange={(e) => setPrecio(e.target.value)}
                 placeholder="Precio"
                 className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
               />
-              <button className="bg-[#d4af37] hover:bg-[#e5c158] text-[#0a0a0b] rounded-lg flex items-center justify-center transition-all h-full min-h-[36px]">
+              <button
+                type="button"
+                onClick={addVariante}
+                className="bg-[#d4af37] hover:bg-[#e5c158] text-[#0a0a0b] rounded-lg flex items-center justify-center transition-all h-full min-h-[36px]"
+              >
                 <Plus size={18} />
               </button>
             </div>
@@ -213,7 +287,18 @@ export const ProductoModalFormulario = () => {
                     <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)] text-right"></th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[rgba(255,255,255,0.02)]"></tbody>
+                <tbody className="divide-y divide-[rgba(255,255,255,0.02)]">
+                  {variantes?.map((elem, index) => (
+                    <VarianteItemFormulario
+                      key={index}
+                      elem={elem}
+                      index={index}
+                      talles={configuracion?.talles || []}
+                      colores={configuracion?.colores || []}
+                      onDelete={() => deleteVariante(index)}
+                    />
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>
@@ -221,7 +306,8 @@ export const ProductoModalFormulario = () => {
           {/* Botones  */}
           <div className="px-8 py-6 bg-[#1c1c1e]/50 border-t border-[rgba(255,255,255,0.04)] flex justify-end gap-3">
             <button
-              onClick={closeModal}
+              type="button"
+              onClick={handleCloseModal}
               className="px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest text-[#a1a1aa] hover:text-[#f5f5f0] hover:bg-[rgba(255,255,255,0.03)] transition-all"
             >
               Cancelar

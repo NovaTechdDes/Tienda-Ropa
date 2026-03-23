@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { productoService } from "../services";
+import { productoService, variante_productoService } from "../services";
 
 export const productoController = {
   getAll: async (_req: Request, res: Response) => {
@@ -31,20 +31,27 @@ export const productoController = {
       });
     }
   },
+
   create: async (req: Request, res: Response) => {
     try {
-      await productoService.create(req.body);
+      const { variantes, ...rest } = req.body;
+      const data = await productoService.create(rest);
+
+      await variante_productoService.create(data.id, variantes);
+
       res.status(201).json({
         ok: true,
         message: "Producto creado correctamente",
       });
     } catch (error) {
+      console.error(error);
       res.status(500).json({
         ok: false,
         message: "Error al crear el producto",
       });
     }
   },
+
   update: async (req: Request, res: Response) => {
     const { id } = req.params;
     try {

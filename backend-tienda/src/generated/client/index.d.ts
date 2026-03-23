@@ -7912,6 +7912,7 @@ export namespace Prisma {
     provedor_id: number | null
     marca_id: number | null
     categoria_id: number | null
+    sku: string | null
     img_url: string | null
     observacion: string | null
     createdAt: Date | null
@@ -7925,6 +7926,7 @@ export namespace Prisma {
     provedor_id: number | null
     marca_id: number | null
     categoria_id: number | null
+    sku: string | null
     img_url: string | null
     observacion: string | null
     createdAt: Date | null
@@ -7938,6 +7940,7 @@ export namespace Prisma {
     provedor_id: number
     marca_id: number
     categoria_id: number
+    sku: number
     img_url: number
     observacion: number
     createdAt: number
@@ -7967,6 +7970,7 @@ export namespace Prisma {
     provedor_id?: true
     marca_id?: true
     categoria_id?: true
+    sku?: true
     img_url?: true
     observacion?: true
     createdAt?: true
@@ -7980,6 +7984,7 @@ export namespace Prisma {
     provedor_id?: true
     marca_id?: true
     categoria_id?: true
+    sku?: true
     img_url?: true
     observacion?: true
     createdAt?: true
@@ -7993,6 +7998,7 @@ export namespace Prisma {
     provedor_id?: true
     marca_id?: true
     categoria_id?: true
+    sku?: true
     img_url?: true
     observacion?: true
     createdAt?: true
@@ -8093,6 +8099,7 @@ export namespace Prisma {
     provedor_id: number | null
     marca_id: number | null
     categoria_id: number | null
+    sku: string | null
     img_url: string | null
     observacion: string | null
     createdAt: Date
@@ -8125,6 +8132,7 @@ export namespace Prisma {
     provedor_id?: boolean
     marca_id?: boolean
     categoria_id?: boolean
+    sku?: boolean
     img_url?: boolean
     observacion?: boolean
     createdAt?: boolean
@@ -8140,6 +8148,7 @@ export namespace Prisma {
     provedor_id?: boolean
     marca_id?: boolean
     categoria_id?: boolean
+    sku?: boolean
     img_url?: boolean
     observacion?: boolean
     createdAt?: boolean
@@ -8153,6 +8162,7 @@ export namespace Prisma {
     provedor_id?: boolean
     marca_id?: boolean
     categoria_id?: boolean
+    sku?: boolean
     img_url?: boolean
     observacion?: boolean
     createdAt?: boolean
@@ -8166,6 +8176,7 @@ export namespace Prisma {
     provedor_id?: boolean
     marca_id?: boolean
     categoria_id?: boolean
+    sku?: boolean
     img_url?: boolean
     observacion?: boolean
     createdAt?: boolean
@@ -8173,7 +8184,7 @@ export namespace Prisma {
     activo?: boolean
   }
 
-  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descripcion" | "provedor_id" | "marca_id" | "categoria_id" | "img_url" | "observacion" | "createdAt" | "updatedAt" | "activo", ExtArgs["result"]["producto"]>
+  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descripcion" | "provedor_id" | "marca_id" | "categoria_id" | "sku" | "img_url" | "observacion" | "createdAt" | "updatedAt" | "activo", ExtArgs["result"]["producto"]>
   export type ProductoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     variantes?: boolean | Producto$variantesArgs<ExtArgs>
     _count?: boolean | ProductoCountOutputTypeDefaultArgs<ExtArgs>
@@ -8192,6 +8203,7 @@ export namespace Prisma {
       provedor_id: number | null
       marca_id: number | null
       categoria_id: number | null
+      sku: string | null
       img_url: string | null
       observacion: string | null
       createdAt: Date
@@ -8626,6 +8638,7 @@ export namespace Prisma {
     readonly provedor_id: FieldRef<"Producto", 'Int'>
     readonly marca_id: FieldRef<"Producto", 'Int'>
     readonly categoria_id: FieldRef<"Producto", 'Int'>
+    readonly sku: FieldRef<"Producto", 'String'>
     readonly img_url: FieldRef<"Producto", 'String'>
     readonly observacion: FieldRef<"Producto", 'String'>
     readonly createdAt: FieldRef<"Producto", 'DateTime'>
@@ -13588,6 +13601,7 @@ export namespace Prisma {
     provedor_id: 'provedor_id',
     marca_id: 'marca_id',
     categoria_id: 'categoria_id',
+    sku: 'sku',
     img_url: 'img_url',
     observacion: 'observacion',
     createdAt: 'createdAt',
@@ -14035,6 +14049,7 @@ export namespace Prisma {
     provedor_id?: IntNullableFilter<"Producto"> | number | null
     marca_id?: IntNullableFilter<"Producto"> | number | null
     categoria_id?: IntNullableFilter<"Producto"> | number | null
+    sku?: StringNullableFilter<"Producto"> | string | null
     img_url?: StringNullableFilter<"Producto"> | string | null
     observacion?: StringNullableFilter<"Producto"> | string | null
     createdAt?: DateTimeFilter<"Producto"> | Date | string
@@ -14049,6 +14064,7 @@ export namespace Prisma {
     provedor_id?: SortOrderInput | SortOrder
     marca_id?: SortOrderInput | SortOrder
     categoria_id?: SortOrderInput | SortOrder
+    sku?: SortOrderInput | SortOrder
     img_url?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -14066,6 +14082,7 @@ export namespace Prisma {
     provedor_id?: IntNullableFilter<"Producto"> | number | null
     marca_id?: IntNullableFilter<"Producto"> | number | null
     categoria_id?: IntNullableFilter<"Producto"> | number | null
+    sku?: StringNullableFilter<"Producto"> | string | null
     img_url?: StringNullableFilter<"Producto"> | string | null
     observacion?: StringNullableFilter<"Producto"> | string | null
     createdAt?: DateTimeFilter<"Producto"> | Date | string
@@ -14080,6 +14097,7 @@ export namespace Prisma {
     provedor_id?: SortOrderInput | SortOrder
     marca_id?: SortOrderInput | SortOrder
     categoria_id?: SortOrderInput | SortOrder
+    sku?: SortOrderInput | SortOrder
     img_url?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -14101,6 +14119,7 @@ export namespace Prisma {
     provedor_id?: IntNullableWithAggregatesFilter<"Producto"> | number | null
     marca_id?: IntNullableWithAggregatesFilter<"Producto"> | number | null
     categoria_id?: IntNullableWithAggregatesFilter<"Producto"> | number | null
+    sku?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     img_url?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     observacion?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Producto"> | Date | string
@@ -14655,6 +14674,7 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
+    sku?: string | null
     img_url?: string | null
     observacion?: string | null
     createdAt?: Date | string
@@ -14669,6 +14689,7 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
+    sku?: string | null
     img_url?: string | null
     observacion?: string | null
     createdAt?: Date | string
@@ -14682,6 +14703,7 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14696,6 +14718,7 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14710,6 +14733,7 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
+    sku?: string | null
     img_url?: string | null
     observacion?: string | null
     createdAt?: Date | string
@@ -14722,6 +14746,7 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14735,6 +14760,7 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15383,6 +15409,7 @@ export namespace Prisma {
     provedor_id?: SortOrder
     marca_id?: SortOrder
     categoria_id?: SortOrder
+    sku?: SortOrder
     img_url?: SortOrder
     observacion?: SortOrder
     createdAt?: SortOrder
@@ -15403,6 +15430,7 @@ export namespace Prisma {
     provedor_id?: SortOrder
     marca_id?: SortOrder
     categoria_id?: SortOrder
+    sku?: SortOrder
     img_url?: SortOrder
     observacion?: SortOrder
     createdAt?: SortOrder
@@ -15416,6 +15444,7 @@ export namespace Prisma {
     provedor_id?: SortOrder
     marca_id?: SortOrder
     categoria_id?: SortOrder
+    sku?: SortOrder
     img_url?: SortOrder
     observacion?: SortOrder
     createdAt?: SortOrder
@@ -16035,6 +16064,7 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
+    sku?: string | null
     img_url?: string | null
     observacion?: string | null
     createdAt?: Date | string
@@ -16048,6 +16078,7 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
+    sku?: string | null
     img_url?: string | null
     observacion?: string | null
     createdAt?: Date | string
@@ -16076,6 +16107,7 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16089,6 +16121,7 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

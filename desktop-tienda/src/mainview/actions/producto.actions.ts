@@ -31,7 +31,8 @@ export const deleteProducto = async (id: string): Promise<Boolean> => {
 
 export const postProducto = async (producto: Producto): Promise<Boolean> => {
   try {
-    const { data } = await db().post(`/productos`, producto);
+    const { id, ...res } = producto;
+    const { data } = await db().post(`/productos`, res);
 
     if (data.ok) {
       return true;

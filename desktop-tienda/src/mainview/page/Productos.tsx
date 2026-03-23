@@ -3,14 +3,14 @@ import { useProductoStore } from "../store";
 import { Header, ProductoModalFormulario, ProductosList } from "../components";
 
 export const Productos = () => {
-  const { modal } = useProductoStore();
+  const { modal, openModal } = useProductoStore();
 
   return (
     <div className="h-screen w-full bg-white p-10">
       <Header
         titulo="Productos"
         descripcion="Gestiona tus productos de bikinis y ropa"
-        accion={() => {}}
+        accion={openModal}
         textoBoton="Nuevo Producto"
       />
 
@@ -29,7 +29,7 @@ export const Productos = () => {
       <ProductosList />
 
       {/* Modal */}
-      {!modal && <ProductoModalFormulario />}
+      {modal && <ProductoModalFormulario />}
     </div>
   );
 };

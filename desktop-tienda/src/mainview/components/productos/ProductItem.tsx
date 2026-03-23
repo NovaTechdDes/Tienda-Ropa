@@ -42,18 +42,6 @@ export const ProductItem = ({ producto }: Props) => {
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#141416] via-transparent to-transparent opacity-60" />
-
-        {/* Stock Badge Overlay */}
-        <div className="absolute top-4 right-4 flex gap-2">
-          <div
-            className={`px-2 py-1 rounded-md backdrop-blur-md border border-[rgba(255,255,255,0.1)] flex items-center gap-1.5 ${totalStock > 0 ? "bg-[rgba(212,175,55,0.1)] text-[#d4af37]" : "bg-red-500/10 text-red-400"}`}
-          >
-            <Box size={12} />
-            <span className="text-[10px] font-bold uppercase tracking-wider">
-              {totalStock} Stock
-            </span>
-          </div>
-        </div>
       </div>
 
       {/* Contenido Principal */}
@@ -89,7 +77,7 @@ export const ProductItem = ({ producto }: Props) => {
                 Total Items
               </span>
               <span className="text-xs text-[#f5f5f0] font-bold leading-none">
-                {totalStock}
+                {totalStock.toFixed(2)}
               </span>
             </div>
           </div>
