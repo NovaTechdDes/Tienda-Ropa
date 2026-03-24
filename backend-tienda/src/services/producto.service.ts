@@ -15,6 +15,7 @@ export const productoService = {
     });
   },
   create: (data: any) => {
+    console.log(data)
     return prisma.producto.create({
       data,
     });

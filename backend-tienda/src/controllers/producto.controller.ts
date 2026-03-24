@@ -34,14 +34,14 @@ export const productoController = {
 
   create: async (req: Request, res: Response) => {
     try {
-      const { variantes, ...rest } = req.body;
+      const { variantes, imagen, ...rest } = req.body;
 
       //Imagen
       const img_url = req.file
         ? `/uploads/productos/${req.file.filename}`
         : null;
 
-      const data = await productoService.create({ ...rest, img_url });
+      const data = await productoService.create({ ...rest, img_url});
 
       await variante_productoService.create(data.id, JSON.parse(variantes));
 

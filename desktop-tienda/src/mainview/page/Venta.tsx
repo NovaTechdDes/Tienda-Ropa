@@ -1,3 +1,4 @@
+import { ProductoSeleccionado } from '../components';
 import { Header } from '../components/ui/Header';
 import { VentaCliente } from '../components/venta/VentaCliente';
 import { VentaMetodoPago } from '../components/venta/VentaMetodoPago';
@@ -19,6 +20,8 @@ const Venta = () => {
           {/* Columna Izquierda: Productos (Proximamente) */}
           <div className="xl:col-span-2 space-y-8">
             <VentaProductos />
+
+            <ProductoSeleccionado/>
           </div>
 
           {/* Columna Derecha: Cliente y Pago */}

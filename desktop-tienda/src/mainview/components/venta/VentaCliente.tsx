@@ -2,10 +2,13 @@ import { Loader2, User } from 'lucide-react';
 import { useClientes } from '../../hooks';
 import { useCarritoStore } from '../../store';
 import { Cliente } from '../../interface/Cliente';
+import { useEffect, useState } from 'react';
 
 export const VentaCliente = () => {
   const { cliente, setCliente, clearCliente } = useCarritoStore();
   const { data: clientes, isLoading } = useClientes();
+
+  const [clienteAux, setClienteAux] = useState<Partial<Cliente> | null>(cliente ?? null);
 
   const handleClienteChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const cliente = clientes?.find((cliente: Cliente) => cliente.id === Number(e.target.value));
@@ -15,6 +18,10 @@ export const VentaCliente = () => {
       clearCliente();
     }
   };
+
+  useEffect(() => {
+    setClienteAux(cliente ?? null);
+  }, [cliente])
 
   if (isLoading) {
     return (
@@ -68,9 +75,9 @@ export const VentaCliente = () => {
             <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Teléfono</label>
             <input
               type="text"
-              readOnly
               className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
-              value={cliente?.telefono || ''}
+              value={clienteAux?.telefono || ''}
+              onChange={(e) => setClienteAux({ ...clienteAux, telefono: e.target.value || '' })}
               placeholder="N/A"
             />
           </div>
@@ -78,9 +85,9 @@ export const VentaCliente = () => {
             <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Dirección</label>
             <input
               type="text"
-              readOnly
               className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
-              value={cliente?.direccion || ''}
+              value={clienteAux?.direccion || ''}
+              onChange={(e) => setClienteAux({ ...clienteAux, direccion: e.target.value || '' })}
               placeholder="N/A"
             />
           </div>
@@ -88,9 +95,10 @@ export const VentaCliente = () => {
             <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">DNI / CUIT</label>
             <input
               type="text"
-              readOnly
+              
               className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
-              value={cliente?.dni || ''}
+              value={clienteAux?.dni || ''}
+              onChange={(e) => setClienteAux({ ...clienteAux, dni: e.target.value || '' })}
               placeholder="N/A"
             />
           </div>
