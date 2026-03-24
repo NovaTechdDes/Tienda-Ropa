@@ -13,7 +13,7 @@ interface ProductoStore {
 export const useProductoStore = create<ProductoStore>((set) => ({
   modal: false,
   openModal: () => set({ modal: true }),
-  closeModal: () => set({ modal: false }),
+  closeModal: () => set({ modal: false, productoSeleccionado: null }),
 
   productoSeleccionado: null,
   setProductoSeleccionado: (producto: Producto) =>
