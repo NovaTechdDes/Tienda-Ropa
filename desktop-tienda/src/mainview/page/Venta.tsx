@@ -13,9 +13,9 @@ const Venta = () => {
         {/* Header */}
         <Header titulo="Ventas" descripcion="Generación de pedidos y gestión de facturación" textoBoton="Nueva Venta" />
 
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mt-8">
-          {/* Columna Izquierda: Productos (Proximamente) */}
-          <div className="xl:col-span-2 space-y-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-6">
+          {/* Columna Izquierda: Productos */}
+          <div className="xl:col-span-2 space-y-4">
             <VentaProductos />
 
             <ProductoSeleccionado />
@@ -24,7 +24,7 @@ const Venta = () => {
           </div>
 
           {/* Columna Derecha: Cliente y Pago */}
-          <div className="space-y-8">
+          <div className="space-y-4">
             <VentaCliente />
             <VentaMetodoPago />
             <VentaTotal />

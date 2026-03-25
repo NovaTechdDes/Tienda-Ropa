@@ -27,64 +27,64 @@ export const ListConfiguracion = ({
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-8 h-full bg-[var(--atelier-ink)]">
+    <div className="bg-[#141416] border border-white/5 rounded-3xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.4)] space-y-4">
       {/* Header Section */}
-      <div className="flex items-center gap-3 border-b border-[var(--atelier-border)] pb-6">
-        <div className="p-2.5 bg-[var(--atelier-surface-1)] rounded-xl border border-[var(--atelier-border-soft)] shadow-sm">
-          <LayoutGrid className="w-6 h-6 text-[var(--atelier-gold)]" />
+      <div className="flex items-center gap-3 border-b border-white/5 pb-4">
+        <div className="p-1.5 bg-[#d4af37]/10 rounded-lg border border-[#d4af37]/20">
+          <LayoutGrid className="w-4 h-4 text-[#d4af37]" />
         </div>
         <div>
-          <h1 className="text-3xl font-bold text-[var(--atelier-parchment)] tracking-tight">
+          <h3 className="text-sm font-bold text-[#f5f5f0] tracking-widest uppercase">
             Gestión de {type}
-          </h1>
-          <p className="text-[var(--atelier-parchment-muted)] text-sm mt-0.5">
-            Crea y administra los {type} disponibles para tu tienda
+          </h3>
+          <p className="text-[#a1a1aa] text-[9px] font-medium uppercase tracking-tighter">
+            Administrar {type} disponibles
           </p>
         </div>
       </div>
 
       {/* Form Section */}
-      <div className="bg-[var(--atelier-surface-1)] border border-[var(--atelier-border)] rounded-2xl p-6 shadow-xl transition-all hover:shadow-2xl hover:border-[var(--atelier-border-soft)]">
-        <div className="flex flex-col md:flex-row items-end gap-4">
-          <div className="flex-1 w-full space-y-2">
+      <div className="bg-[#0a0a0b]/50 border border-white/5 rounded-2xl p-4">
+        <div className="flex flex-col sm:flex-row items-end gap-3">
+          <div className="flex-1 w-full space-y-1.5">
             <label
-              htmlFor="talle"
-              className="text-sm font-medium text-[var(--atelier-parchment-muted)] px-1 uppercase tracking-wider"
+              htmlFor={`nombre-${type}`}
+              className="text-[9px] font-bold text-[#3f3f46] px-1 uppercase tracking-widest"
             >
-              Nombre del {type}
+              Nuevo {type}
             </label>
             <input
               type="text"
-              placeholder="Ej: Small, Large, 42, 44..."
-              name="talle"
-              id="talle"
+              placeholder={`Ej: ${type === 'Talle' ? 'S, M, L' : 'Rojo, Azul'}`}
+              name={`nombre-${type}`}
+              id={`nombre-${type}`}
               value={valor}
               onChange={(e) => setValor(e.target.value)}
-              className="w-full bg-[var(--atelier-surface-2)] text-[var(--atelier-parchment)] border border-[var(--atelier-border)] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[var(--atelier-gold)] focus:border-transparent transition-all placeholder:text-[var(--atelier-parchment-low)]"
+              className="w-full bg-[#0a0a0b] text-[#f5f5f0] border border-white/5 rounded-xl p-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#d4af37]/50 transition-all placeholder:text-[#3f3f46]"
             />
           </div>
           <button
             onClick={handleSubmit}
-            className="h-[50px] px-8 bg-[var(--atelier-gold)] hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] font-bold rounded-xl flex items-center gap-2 active:scale-95 transition-all shadow-lg hover:shadow-[var(--atelier-gold)]/20 shadow-black"
+            className="h-[36px] px-4 bg-[#d4af37] hover:bg-[#b89630] text-[#0a0a0b] font-bold text-[10px] uppercase tracking-widest rounded-lg flex items-center gap-2 transition-all active:scale-95 shadow-[0_4px_15px_rgba(212,175,55,0.1)]"
           >
-            <Plus className="w-5 h-5" />
-            <span>Agregar {type}</span>
+            <Plus className="w-3.5 h-3.5" />
+            <span>Agregar</span>
           </button>
         </div>
       </div>
 
       {/* List Section */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between px-2">
-          <h2 className="text-lg font-semibold text-[var(--atelier-parchment)] flex items-center gap-2">
+        <div className="flex items-center justify-between px-1">
+          <h2 className="text-[10px] font-bold text-[#3f3f46] uppercase tracking-[0.2em] flex items-center gap-2">
             {type} Existentes
-            <span className="bg-[var(--atelier-surface-2)] text-[var(--atelier-parchment-muted)] text-xs py-1 px-2 rounded-full border border-[var(--atelier-border)]">
+            <span className="bg-[#d4af37]/10 text-[#d4af37] text-[9px] py-0.5 px-2 rounded-full border border-[#d4af37]/20">
               {data?.length || 0}
             </span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3">
           {data?.map((elem) => (
             <ItemConfiguracion
               key={elem.id}

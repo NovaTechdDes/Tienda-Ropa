@@ -19,14 +19,14 @@ export const ProductoSeleccionado = () => {
   if (!productoSeleccionado) return null;
 
   return (
-    <div className="bg-[#141416] border border-[rgba(255,255,255,0.06)] rounded-2xl p-4">
+    <div className="bg-[#141416] border border-[rgba(255,255,255,0.06)] rounded-2xl p-3">
       <div className="mb-2">
-        <h3 className="text-lg font-bold">{productoSeleccionado?.descripcion}</h3>
+        <h3 className="text-sm font-bold text-[#f5f5f0]">{productoSeleccionado?.descripcion}</h3>
       </div>
 
-      <div className="flex justify-between gap-5">
+      <div className="flex justify-between gap-4">
         <div className="flex flex-col">
-          <label htmlFor="">Variante</label>
+          <label htmlFor="" className="text-[10px] uppercase font-bold text-[#3f3f46] tracking-widest ml-1">Variante</label>
           <select
             name="variante"
             id="variante"
@@ -43,15 +43,15 @@ export const ProductoSeleccionado = () => {
           </select>
         </div>
 
-        <div>
-          <label htmlFor="stock">Stock</label>
+        <div className="flex flex-col">
+          <label htmlFor="stock" className="text-[10px] uppercase font-bold text-[#3f3f46] tracking-widest ml-1">Stock</label>
           <p id="stock" className="bg-[#0a0a0b] border mt-2 border-[rgba(255,255,255,0.06)] rounded-2xl p-2">
             {productoSeleccionado?.variantes?.find((v) => v.id == varianteSeleccionado)?.stock.toFixed(2) ?? '0.00'}
           </p>
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="cantidad">Cantidad</label>
+          <label htmlFor="cantidad" className="text-[10px] uppercase font-bold text-[#3f3f46] tracking-widest ml-1">Cantidad</label>
           <input
             type="number"
             value={cantidad}
@@ -62,8 +62,8 @@ export const ProductoSeleccionado = () => {
             className="bg-[#0a0a0b] mt-2 w-28 border border-[rgba(255,255,255,0.06)] rounded-2xl p-2"
           />
         </div>
-        <button onClick={handleAddVariantes} className="bg-[#d4af37] flex items-center gap-2 mt-auto hover:bg-[#d4af37]/80 text-[#0a0a0b] rounded-2xl p-2">
-          <Plus />
+        <button onClick={handleAddVariantes} className="bg-[#d4af37] flex items-center gap-2 mt-auto hover:bg-[#b89630] text-[#0a0a0b] rounded-xl p-2 font-bold uppercase text-[10px] tracking-widest">
+          <Plus size={14} />
           Agregar
         </button>
       </div>

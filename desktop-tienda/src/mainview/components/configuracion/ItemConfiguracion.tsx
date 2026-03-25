@@ -66,36 +66,32 @@ export const ItemConfiguracion = ({
   return (
     <div
       key={elem.id}
-      className="group relative bg-[var(--atelier-surface-1)] border border-[var(--atelier-border)] rounded-2xl p-4 flex flex-col gap-4 shadow-md hover:shadow-2xl hover:border-[var(--atelier-border-soft)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+      className="group relative bg-[#0a0a0b] border border-white/5 rounded-2xl p-3 flex flex-col gap-3 shadow-md hover:shadow-xl hover:border-[#d4af37]/20 transition-all duration-300"
     >
-      {/* Subtle Gradient Overlay on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--atelier-gold)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
       <div className="flex items-center justify-between relative z-10">
-        <div>
-          <span className="text-[var(--atelier-parchment-muted)] text-[10px] uppercase tracking-widest font-bold">
-            Talle
-          </span>
-          <p className="text-[var(--atelier-parchment)] text-xl font-bold mt-0.5 leading-none transition-colors group-hover:text-[var(--atelier-gold)] uppercase">
+        <div className="flex flex-col">
+          <p className="text-[#f5f5f0] text-sm font-bold leading-tight group-hover:text-[#d4af37] transition-colors uppercase truncate">
             {elem.nombre}
           </p>
         </div>
       </div>
 
-      <div className="flex gap-2 relative z-10">
+      <div className="flex gap-2 relative z-10 mt-1">
         <button
           onClick={handleUpdate}
-          className="flex-1 bg-[var(--atelier-surface-2)] hover:bg-[var(--atelier-parchment)] hover:text-[var(--atelier-ink)] text-[var(--atelier-parchment)] border border-[var(--atelier-border)] rounded-xl py-2.5 flex items-center justify-center gap-2 transition-all duration-200 group/btn active:scale-95"
+          className="flex-1 bg-white/5 hover:bg-[#d4af37] hover:text-[#0a0a0b] text-[#a1a1aa] border border-white/5 rounded-lg py-1.5 flex items-center justify-center gap-2 transition-all duration-200 active:scale-95"
         >
-          <Edit3 className="w-4 h-4" />
-          <span className="text-xs font-semibold">Editar</span>
+          <Edit3 className="w-3.5 h-3.5" />
+          <span className="text-[10px] font-bold uppercase tracking-wider">Editar</span>
         </button>
         <button
           onClick={handleDelete}
-          className="aspect-square bg-[var(--atelier-surface-2)] hover:bg-red-500/10 hover:text-red-500 text-[var(--atelier-parchment-muted)] border border-[var(--atelier-border)] rounded-xl px-3 flex items-center justify-center transition-all duration-200 active:scale-95"
-          title="Eliminar Talle"
+          className="aspect-square bg-white/5 hover:bg-red-500/10 hover:text-red-500 text-[#3f3f46] border border-white/5 rounded-lg px-2 flex items-center justify-center transition-all duration-200 active:scale-95"
+          title="Eliminar"
         >
-          <Trash className="w-4 h-4" />
+          <Trash className="w-3.5 h-3.5" />
         </button>
       </div>
     </div>

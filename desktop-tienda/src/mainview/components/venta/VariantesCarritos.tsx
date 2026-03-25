@@ -7,10 +7,10 @@ export const VariantesCarritos = () => {
 
   return (
     <div className="bg-[#141416] border border-[rgba(255,255,255,0.06)] rounded-2xl overflow-hidden">
-      <div className="p-6 border-b border-[rgba(255,255,255,0.06)] flex items-center justify-between">
-        <h3 className="flex items-center gap-3 text-lg font-bold text-[#f5f5f0]">
-          <div className="p-2 bg-[#d4af37]/10 rounded-xl">
-            <ShoppingBag className="text-[#d4af37]" size={22} />
+      <div className="p-3 border-b border-[rgba(255,255,255,0.06)] flex items-center justify-between">
+        <h3 className="flex items-center gap-2 text-sm font-bold text-[#f5f5f0]">
+          <div className="p-1.5 bg-[#d4af37]/10 rounded-lg">
+            <ShoppingBag className="text-[#d4af37]" size={16} />
           </div>
           Carrito de Ventas
         </h3>
@@ -24,12 +24,12 @@ export const VariantesCarritos = () => {
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-[#0a0a0b]/50">
-              <th className="px-6 py-4 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wider">Producto</th>
-              <th className="px-6 py-4 text-center text-xs font-semibold text-zinc-500 uppercase tracking-wider">Variante</th>
-              <th className="px-6 py-4 text-center text-xs font-semibold text-zinc-500 uppercase tracking-wider">Cant.</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-zinc-500 uppercase tracking-wider">Precio</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-zinc-500 uppercase tracking-wider">Subtotal</th>
-              <th className="px-6 py-4 text-center text-xs font-semibold text-zinc-500 uppercase tracking-wider w-20">Acciones</th>
+              <th className="px-4 py-2 text-left text-[10px] font-semibold text-zinc-500 uppercase tracking-widest">Producto</th>
+              <th className="px-4 py-2 text-center text-[10px] font-semibold text-zinc-500 uppercase tracking-widest">Variante</th>
+              <th className="px-4 py-2 text-center text-[10px] font-semibold text-zinc-500 uppercase tracking-widest">Cant.</th>
+              <th className="px-4 py-2 text-right text-[10px] font-semibold text-zinc-500 uppercase tracking-widest">Precio</th>
+              <th className="px-4 py-2 text-right text-[10px] font-semibold text-zinc-500 uppercase tracking-widest">Subtotal</th>
+              <th className="px-4 py-2 text-center text-[10px] font-semibold text-zinc-500 uppercase tracking-widest w-16">Acciones</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[rgba(255,255,255,0.04)]">
