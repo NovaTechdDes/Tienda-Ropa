@@ -8,13 +8,13 @@ interface Props {
 const imgURL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export const ProductItemVenta = ({ producto }: Props) => {
-  const { setProductoSeleccionado } = useCarritoStore();
+  const { setProductoSeleccionado, productoSeleccionado } = useCarritoStore();
 
   return (
     <div
       key={producto.id}
       onClick={() => setProductoSeleccionado(producto)}
-      className="group relative bg-[#141416] border border-[rgba(255,255,255,0.06)] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#d4af37]/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)]"
+      className={`group h-56 relative bg-[#141416] border border-[rgba(255,255,255,0.06)] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#d4af37]/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)] ${producto.id === productoSeleccionado?.id ? 'border-[#d4af37] border-3' : ''}`}
     >
       {/* Image Container */}
       <div className="relative h-56 w-full overflow-hidden bg-[#0a0a0b]">

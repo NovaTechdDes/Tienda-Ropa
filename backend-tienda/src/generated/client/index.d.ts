@@ -11659,8 +11659,8 @@ export namespace Prisma {
     subtotal: number | null
     observacion: string | null
     numero_venta: string | null
-    metodo_pago: string | null
     tipo_venta: string | null
+    metodo_pago: string | null
     updatedAt: Date | null
   }
 
@@ -11677,8 +11677,8 @@ export namespace Prisma {
     subtotal: number | null
     observacion: string | null
     numero_venta: string | null
-    metodo_pago: string | null
     tipo_venta: string | null
+    metodo_pago: string | null
     updatedAt: Date | null
   }
 
@@ -11695,8 +11695,8 @@ export namespace Prisma {
     subtotal: number
     observacion: number
     numero_venta: number
-    metodo_pago: number
     tipo_venta: number
+    metodo_pago: number
     updatedAt: number
     _all: number
   }
@@ -11731,8 +11731,8 @@ export namespace Prisma {
     subtotal?: true
     observacion?: true
     numero_venta?: true
-    metodo_pago?: true
     tipo_venta?: true
+    metodo_pago?: true
     updatedAt?: true
   }
 
@@ -11749,8 +11749,8 @@ export namespace Prisma {
     subtotal?: true
     observacion?: true
     numero_venta?: true
-    metodo_pago?: true
     tipo_venta?: true
+    metodo_pago?: true
     updatedAt?: true
   }
 
@@ -11767,8 +11767,8 @@ export namespace Prisma {
     subtotal?: true
     observacion?: true
     numero_venta?: true
-    metodo_pago?: true
     tipo_venta?: true
+    metodo_pago?: true
     updatedAt?: true
     _all?: true
   }
@@ -11872,8 +11872,8 @@ export namespace Prisma {
     subtotal: number | null
     observacion: string | null
     numero_venta: string
-    metodo_pago: string
     tipo_venta: string
+    metodo_pago: string
     updatedAt: Date | null
     _count: VentaCountAggregateOutputType | null
     _avg: VentaAvgAggregateOutputType | null
@@ -11909,8 +11909,8 @@ export namespace Prisma {
     subtotal?: boolean
     observacion?: boolean
     numero_venta?: boolean
-    metodo_pago?: boolean
     tipo_venta?: boolean
+    metodo_pago?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["venta"]>
 
@@ -11927,8 +11927,8 @@ export namespace Prisma {
     subtotal?: boolean
     observacion?: boolean
     numero_venta?: boolean
-    metodo_pago?: boolean
     tipo_venta?: boolean
+    metodo_pago?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["venta"]>
 
@@ -11945,8 +11945,8 @@ export namespace Prisma {
     subtotal?: boolean
     observacion?: boolean
     numero_venta?: boolean
-    metodo_pago?: boolean
     tipo_venta?: boolean
+    metodo_pago?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["venta"]>
 
@@ -11963,12 +11963,12 @@ export namespace Prisma {
     subtotal?: boolean
     observacion?: boolean
     numero_venta?: boolean
-    metodo_pago?: boolean
     tipo_venta?: boolean
+    metodo_pago?: boolean
     updatedAt?: boolean
   }
 
-  export type VentaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cliente_id" | "fecha" | "nombre_cliente" | "telefono_cliente" | "direccion_cliente" | "dni_cliente" | "total" | "descuento" | "subtotal" | "observacion" | "numero_venta" | "metodo_pago" | "tipo_venta" | "updatedAt", ExtArgs["result"]["venta"]>
+  export type VentaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cliente_id" | "fecha" | "nombre_cliente" | "telefono_cliente" | "direccion_cliente" | "dni_cliente" | "total" | "descuento" | "subtotal" | "observacion" | "numero_venta" | "tipo_venta" | "metodo_pago" | "updatedAt", ExtArgs["result"]["venta"]>
 
   export type $VentaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Venta"
@@ -11986,8 +11986,8 @@ export namespace Prisma {
       subtotal: number | null
       observacion: string | null
       numero_venta: string
-      metodo_pago: string
       tipo_venta: string
+      metodo_pago: string
       updatedAt: Date | null
     }, ExtArgs["result"]["venta"]>
     composites: {}
@@ -12424,8 +12424,8 @@ export namespace Prisma {
     readonly subtotal: FieldRef<"Venta", 'Float'>
     readonly observacion: FieldRef<"Venta", 'String'>
     readonly numero_venta: FieldRef<"Venta", 'String'>
-    readonly metodo_pago: FieldRef<"Venta", 'String'>
     readonly tipo_venta: FieldRef<"Venta", 'String'>
+    readonly metodo_pago: FieldRef<"Venta", 'String'>
     readonly updatedAt: FieldRef<"Venta", 'DateTime'>
   }
     
@@ -15082,8 +15082,8 @@ export namespace Prisma {
     subtotal: 'subtotal',
     observacion: 'observacion',
     numero_venta: 'numero_venta',
-    metodo_pago: 'metodo_pago',
     tipo_venta: 'tipo_venta',
+    metodo_pago: 'metodo_pago',
     updatedAt: 'updatedAt'
   };
 
@@ -15737,8 +15737,8 @@ export namespace Prisma {
     subtotal?: FloatNullableFilter<"Venta"> | number | null
     observacion?: StringNullableFilter<"Venta"> | string | null
     numero_venta?: StringFilter<"Venta"> | string
-    metodo_pago?: StringFilter<"Venta"> | string
     tipo_venta?: StringFilter<"Venta"> | string
+    metodo_pago?: StringFilter<"Venta"> | string
     updatedAt?: DateTimeNullableFilter<"Venta"> | Date | string | null
   }
 
@@ -15755,14 +15755,14 @@ export namespace Prisma {
     subtotal?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     numero_venta?: SortOrder
-    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
+    metodo_pago?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
   }
 
   export type VentaWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    numero_venta?: string
+    tipo_venta_numero_venta?: VentaTipo_ventaNumero_ventaCompoundUniqueInput
     AND?: VentaWhereInput | VentaWhereInput[]
     OR?: VentaWhereInput[]
     NOT?: VentaWhereInput | VentaWhereInput[]
@@ -15776,10 +15776,11 @@ export namespace Prisma {
     descuento?: FloatNullableFilter<"Venta"> | number | null
     subtotal?: FloatNullableFilter<"Venta"> | number | null
     observacion?: StringNullableFilter<"Venta"> | string | null
-    metodo_pago?: StringFilter<"Venta"> | string
+    numero_venta?: StringFilter<"Venta"> | string
     tipo_venta?: StringFilter<"Venta"> | string
+    metodo_pago?: StringFilter<"Venta"> | string
     updatedAt?: DateTimeNullableFilter<"Venta"> | Date | string | null
-  }, "id" | "numero_venta">
+  }, "id" | "tipo_venta_numero_venta">
 
   export type VentaOrderByWithAggregationInput = {
     id?: SortOrder
@@ -15794,8 +15795,8 @@ export namespace Prisma {
     subtotal?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     numero_venta?: SortOrder
-    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
+    metodo_pago?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     _count?: VentaCountOrderByAggregateInput
     _avg?: VentaAvgOrderByAggregateInput
@@ -15820,8 +15821,8 @@ export namespace Prisma {
     subtotal?: FloatNullableWithAggregatesFilter<"Venta"> | number | null
     observacion?: StringNullableWithAggregatesFilter<"Venta"> | string | null
     numero_venta?: StringWithAggregatesFilter<"Venta"> | string
-    metodo_pago?: StringWithAggregatesFilter<"Venta"> | string
     tipo_venta?: StringWithAggregatesFilter<"Venta"> | string
+    metodo_pago?: StringWithAggregatesFilter<"Venta"> | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Venta"> | Date | string | null
   }
 
@@ -16463,8 +16464,8 @@ export namespace Prisma {
     subtotal?: number | null
     observacion?: string | null
     numero_venta: string
-    metodo_pago: string
     tipo_venta: string
+    metodo_pago: string
     updatedAt?: Date | string | null
   }
 
@@ -16481,8 +16482,8 @@ export namespace Prisma {
     subtotal?: number | null
     observacion?: string | null
     numero_venta: string
-    metodo_pago: string
     tipo_venta: string
+    metodo_pago: string
     updatedAt?: Date | string | null
   }
 
@@ -16498,8 +16499,8 @@ export namespace Prisma {
     subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     numero_venta?: StringFieldUpdateOperationsInput | string
-    metodo_pago?: StringFieldUpdateOperationsInput | string
     tipo_venta?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -16516,8 +16517,8 @@ export namespace Prisma {
     subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     numero_venta?: StringFieldUpdateOperationsInput | string
-    metodo_pago?: StringFieldUpdateOperationsInput | string
     tipo_venta?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -16534,8 +16535,8 @@ export namespace Prisma {
     subtotal?: number | null
     observacion?: string | null
     numero_venta: string
-    metodo_pago: string
     tipo_venta: string
+    metodo_pago: string
     updatedAt?: Date | string | null
   }
 
@@ -16551,8 +16552,8 @@ export namespace Prisma {
     subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     numero_venta?: StringFieldUpdateOperationsInput | string
-    metodo_pago?: StringFieldUpdateOperationsInput | string
     tipo_venta?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -16569,8 +16570,8 @@ export namespace Prisma {
     subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     numero_venta?: StringFieldUpdateOperationsInput | string
-    metodo_pago?: StringFieldUpdateOperationsInput | string
     tipo_venta?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -17261,6 +17262,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type VentaTipo_ventaNumero_ventaCompoundUniqueInput = {
+    tipo_venta: string
+    numero_venta: string
+  }
+
   export type VentaCountOrderByAggregateInput = {
     id?: SortOrder
     cliente_id?: SortOrder
@@ -17274,8 +17280,8 @@ export namespace Prisma {
     subtotal?: SortOrder
     observacion?: SortOrder
     numero_venta?: SortOrder
-    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
+    metodo_pago?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -17300,8 +17306,8 @@ export namespace Prisma {
     subtotal?: SortOrder
     observacion?: SortOrder
     numero_venta?: SortOrder
-    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
+    metodo_pago?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -17318,8 +17324,8 @@ export namespace Prisma {
     subtotal?: SortOrder
     observacion?: SortOrder
     numero_venta?: SortOrder
-    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
+    metodo_pago?: SortOrder
     updatedAt?: SortOrder
   }
 

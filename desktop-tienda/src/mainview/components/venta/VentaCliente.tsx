@@ -1,4 +1,4 @@
-import { Loader2, User } from 'lucide-react';
+import { ArrowBigDown, ArrowBigUp, Loader2, User } from 'lucide-react';
 import { useClientes } from '../../hooks';
 import { useCarritoStore } from '../../store';
 import { Cliente } from '../../interface/Cliente';
@@ -9,6 +9,7 @@ export const VentaCliente = () => {
   const { data: clientes, isLoading } = useClientes();
 
   const [clienteAux, setClienteAux] = useState<Partial<Cliente> | null>(cliente ?? null);
+  const [mostrarDatos, setMostrarDatos] = useState(false);
 
   const handleClienteChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const cliente = clientes?.find((cliente: Cliente) => cliente.id === Number(e.target.value));
@@ -18,6 +19,14 @@ export const VentaCliente = () => {
       clearCliente();
     }
   };
+
+  useEffect(() => {
+    const cliente = clientes?.find((cliente: Cliente) => cliente.id === 1);
+    console.log(cliente);
+    if (cliente) {
+      setCliente(cliente);
+    }
+  }, [clientes]);
 
   useEffect(() => {
     setClienteAux(cliente ?? null);
@@ -33,13 +42,18 @@ export const VentaCliente = () => {
 
   return (
     <div className="bg-[#141416] border border-white/5 rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.4)]">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-[#d4af37]/10 flex items-center justify-center">
-          <User className="text-[#d4af37]" size={20} />
+      <div className="flex items-center justify-between gap-3 mb-6">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-[#d4af37]/10 flex items-center justify-center">
+            <User className="text-[#d4af37]" size={20} />
+          </div>
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-widest text-[#f5f5f0]">Cliente</h3>
+            <p className="text-[10px] text-[#a1a1aa] font-medium uppercase tracking-tighter">Selección y Datos</p>
+          </div>
         </div>
-        <div>
-          <h3 className="text-sm font-bold uppercase tracking-widest text-[#f5f5f0]">Cliente</h3>
-          <p className="text-[10px] text-[#a1a1aa] font-medium uppercase tracking-tighter">Selección y Datos</p>
+        <div className="cursor-pointer" onClick={() => setMostrarDatos(!mostrarDatos)}>
+          {mostrarDatos ? <ArrowBigUp className="text-[#d4af37]" size={20} /> : <ArrowBigDown className="text-[#d4af37]" size={20} />}
         </div>
       </div>
 
@@ -51,6 +65,7 @@ export const VentaCliente = () => {
             <select
               name="cliente"
               id="cliente"
+              value={cliente?.id || ''}
               className="w-full bg-[#0a0a0b] border border-white/5 focus:border-[#d4af37]/30 rounded-xl py-3 px-4 text-sm text-[#f5f5f0] outline-none transition-all appearance-none cursor-pointer"
               onChange={handleClienteChange}
             >
@@ -70,51 +85,53 @@ export const VentaCliente = () => {
         </div>
 
         {/* Detalle del Cliente */}
-        <div className="grid grid-cols-1 gap-4 pt-4 border-t border-white/5">
-          <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Nombre</label>
-            <input
-              type="text"
-              className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
-              value={clienteAux?.nombre || ''}
-              onChange={(e) => setClienteAux({ ...clienteAux, nombre: e.target.value || '' })}
-              placeholder="N/A"
-            />
-          </div>
+        {mostrarDatos && (
+          <div className="grid grid-cols-1 gap-4 pt-4 border-t border-white/5">
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Nombre</label>
+              <input
+                type="text"
+                className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
+                value={clienteAux?.nombre || ''}
+                onChange={(e) => setClienteAux({ ...clienteAux, nombre: e.target.value || '' })}
+                placeholder="N/A"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Teléfono</label>
-            <input
-              type="text"
-              className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
-              value={clienteAux?.telefono || ''}
-              onChange={(e) => setClienteAux({ ...clienteAux, telefono: e.target.value || '' })}
-              placeholder="N/A"
-            />
-          </div>
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Teléfono</label>
+              <input
+                type="text"
+                className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
+                value={clienteAux?.telefono || ''}
+                onChange={(e) => setClienteAux({ ...clienteAux, telefono: e.target.value || '' })}
+                placeholder="N/A"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Dirección</label>
-            <input
-              type="text"
-              className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
-              value={clienteAux?.direccion || ''}
-              onChange={(e) => setClienteAux({ ...clienteAux, direccion: e.target.value || '' })}
-              placeholder="N/A"
-            />
-          </div>
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Dirección</label>
+              <input
+                type="text"
+                className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
+                value={clienteAux?.direccion || ''}
+                onChange={(e) => setClienteAux({ ...clienteAux, direccion: e.target.value || '' })}
+                placeholder="N/A"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">DNI / CUIT</label>
-            <input
-              type="text"
-              className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
-              value={clienteAux?.dni || ''}
-              onChange={(e) => setClienteAux({ ...clienteAux, dni: e.target.value || '' })}
-              placeholder="N/A"
-            />
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">DNI / CUIT</label>
+              <input
+                type="text"
+                className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
+                value={clienteAux?.dni || ''}
+                onChange={(e) => setClienteAux({ ...clienteAux, dni: e.target.value || '' })}
+                placeholder="N/A"
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

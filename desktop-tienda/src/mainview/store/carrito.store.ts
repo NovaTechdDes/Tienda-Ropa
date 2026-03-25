@@ -2,6 +2,8 @@ import { create } from 'zustand';
 import { Cliente } from '../interface/Cliente';
 import { Producto } from '../interface/Producto';
 interface CarritoStore {
+  clearAll: () => void;
+
   cliente: Cliente | null;
   setCliente: (cliente: Cliente) => void;
   clearCliente: () => void;
@@ -30,6 +32,8 @@ interface CarritoStore {
 }
 
 export const useCarritoStore = create<CarritoStore>((set) => ({
+  clearAll: () => set({ cliente: null, metodoPago: 'EFECTIVO', productoSeleccionado: null, variantesCarrito: [], descuento: 0, total: 0 }),
+
   cliente: null,
   setCliente: (cliente: Cliente) => set({ cliente }),
   clearCliente: () => set({ cliente: null }),

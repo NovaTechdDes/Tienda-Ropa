@@ -13,4 +13,10 @@ export interface Venta {
 
   tipo_venta: string;
   metodo_pago: string;
+
+  detalles: {
+    variante_id: number;
+    cantidad: number;
+    precio: number;
+  }[];
 }

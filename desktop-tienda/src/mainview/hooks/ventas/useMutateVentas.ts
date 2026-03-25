@@ -9,6 +9,7 @@ export const useMutateVentas = () => {
     mutationFn: (venta: Venta) => startPostVenta(venta),
     onSuccess: () => {
       query.invalidateQueries({ queryKey: ['ventas'] });
+      query.invalidateQueries({ queryKey: ['productos'] });
     },
   });
 

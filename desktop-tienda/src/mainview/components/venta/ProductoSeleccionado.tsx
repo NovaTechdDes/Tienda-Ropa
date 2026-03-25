@@ -32,7 +32,7 @@ export const ProductoSeleccionado = () => {
             id="variante"
             value={varianteSeleccionado}
             onChange={(e) => setVarianteSeleccionado(e.target.value)}
-            className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.06)] rounded-2xl p-4"
+            className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.06)] rounded-2xl p-2 mt-2"
           >
             <option value="">Seleccione una variante</option>
             {productoSeleccionado?.variantes?.map((variante) => (
@@ -42,6 +42,14 @@ export const ProductoSeleccionado = () => {
             ))}
           </select>
         </div>
+
+        <div>
+          <label htmlFor="stock">Stock</label>
+          <p id="stock" className="bg-[#0a0a0b] border mt-2 border-[rgba(255,255,255,0.06)] rounded-2xl p-2">
+            {productoSeleccionado?.variantes?.find((v) => v.id == varianteSeleccionado)?.stock.toFixed(2) ?? '0.00'}
+          </p>
+        </div>
+
         <div className="flex flex-col">
           <label htmlFor="cantidad">Cantidad</label>
           <input
@@ -51,11 +59,10 @@ export const ProductoSeleccionado = () => {
             name="cantidad"
             id="cantidad"
             min={1}
-            defaultValue={1}
-            className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.06)] rounded-2xl p-4"
+            className="bg-[#0a0a0b] mt-2 w-28 border border-[rgba(255,255,255,0.06)] rounded-2xl p-2"
           />
         </div>
-        <button onClick={handleAddVariantes} className="bg-[#d4af37] flex items-center gap-2 mt-auto hover:bg-[#d4af37]/80 text-[#0a0a0b] rounded-2xl p-4">
+        <button onClick={handleAddVariantes} className="bg-[#d4af37] flex items-center gap-2 mt-auto hover:bg-[#d4af37]/80 text-[#0a0a0b] rounded-2xl p-2">
           <Plus />
           Agregar
         </button>

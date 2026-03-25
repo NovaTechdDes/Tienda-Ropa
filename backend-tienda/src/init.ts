@@ -25,19 +25,19 @@ export async function initData() {
 
 export async function initNumeros() {
   const numero = await prisma.numero.findFirst({
-    where: { tipo: "EFECTIVO" },
+    where: { tipo: "CONTADO" },
   });
 
   if (!numero) {
     await prisma.numero.create({
       data: {
-        tipo: "EFECTIVO",
+        tipo: "CONTADO",
         numero: 1,
       },
     });
 
-    console.log("✔ Numero EFECTIVO creado");
+    console.log("✔ Numero CONTADO creado");
   } else {
-    console.log("✔ Numero EFECTIVO ya existe");
+    console.log("✔ Numero CONTADO ya existe");
   }
 }

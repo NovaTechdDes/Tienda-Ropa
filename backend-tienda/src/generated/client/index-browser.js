@@ -206,8 +206,8 @@ exports.Prisma.VentaScalarFieldEnum = {
   subtotal: 'subtotal',
   observacion: 'observacion',
   numero_venta: 'numero_venta',
-  metodo_pago: 'metodo_pago',
   tipo_venta: 'tipo_venta',
+  metodo_pago: 'metodo_pago',
   updatedAt: 'updatedAt'
 };
 

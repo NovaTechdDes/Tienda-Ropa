@@ -5,7 +5,7 @@ import { Venta } from '../../interface/Venta';
 import { mensaje } from '../../utils/mensaje';
 
 export const VentaTotal = () => {
-  const { descuento, setDescuento, total, cliente, metodoPago } = useCarritoStore();
+  const { descuento, setDescuento, total, cliente, metodoPago, variantesCarrito, clearAll } = useCarritoStore();
   const { agregarVenta } = useMutateVentas();
 
   const handleAddVenta = async () => {
@@ -24,11 +24,18 @@ export const VentaTotal = () => {
 
       tipo_venta: 'CONTADO',
       metodo_pago: metodoPago,
+
+      detalles: variantesCarrito.map((variante) => ({
+        variante_id: Number(variante.id_variante),
+        cantidad: variante.cantidad,
+        precio: variante.precio,
+      })),
     };
 
     const res = await agregarVenta.mutateAsync(venta);
     if (res) {
       mensaje('Venta agregada correctamente', 'success');
+      clearAll();
     } else {
       mensaje('Error al agregar venta', 'error');
     }

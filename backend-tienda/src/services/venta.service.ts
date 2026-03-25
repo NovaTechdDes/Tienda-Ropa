@@ -10,9 +10,11 @@ export const ventaService = {
     });
   },
   create: async (data: any) => {
+    const { detalles, ...rest } = data;
+
     return await prisma.$transaction(async (tx) => {
       const numeroActualizado = await tx.numero.update({
-        where: { tipo: data.metodo_pago },
+        where: { tipo: rest.tipo_venta },
         data: {
           numero: {
             increment: 1,
@@ -22,10 +24,30 @@ export const ventaService = {
 
       const venta = await tx.venta.create({
         data: {
-          ...data,
+          ...rest,
           numero_venta: numeroActualizado.numero.toString().padStart(8, "0"),
         },
       });
+
+      for await (const elem of detalles) {
+        await tx.detalle_venta.create({
+          data: {
+            venta_id: venta.id,
+            variante_id: elem.variante_id,
+            cantidad: elem.cantidad,
+            precio: elem.precio,
+          },
+        });
+
+        await tx.variante_producto.update({
+          where: { id: elem.variante_id },
+          data: {
+            stock: {
+              decrement: elem.cantidad,
+            },
+          },
+        });
+      }
 
       return venta;
     });

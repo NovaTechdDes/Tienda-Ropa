@@ -64,7 +64,7 @@ model Producto {
   img_url      String?
   observacion  String?
   createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  updatedAt    DateTime @default(now())
   activo       Boolean  @default(true)
 
   variantes variante_producto[]
@@ -80,7 +80,7 @@ model variante_producto {
   sku         String?
   activo      Boolean  @default(true)
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  updatedAt   DateTime @default(now())
 
   producto Producto @relation(fields: [producto_id], references: [id])
   talle    Talle    @relation(fields: [talle_id], references: [id])
@@ -107,10 +107,12 @@ model Venta {
   descuento         Float?
   subtotal          Float?
   observacion       String?
-  numero_venta      String    @unique
-  metodo_pago       String
+  numero_venta      String
   tipo_venta        String
+  metodo_pago       String
   updatedAt         DateTime? @updatedAt
+
+  @@unique([tipo_venta, numero_venta])
 }
 
 model detalle_venta {

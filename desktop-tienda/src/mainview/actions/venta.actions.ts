@@ -4,7 +4,7 @@ import { db } from '../utils/db';
 export const startPostVenta = async (venta: Venta): Promise<boolean> => {
   try {
     const { data } = await db().post('/ventas', venta);
-    console.log(data);
+
     if (data.ok) {
       return true;
     }
