@@ -4,11 +4,19 @@ export const variante_productoService = {
   getAll: () => {
     return prisma.variante_producto.findMany({
       where: { activo: true },
+      include: {
+        talle: true,
+        color: true,
+      },
     });
   },
   getById: (id: number) => {
     return prisma.variante_producto.findUnique({
       where: { id },
+      include: {
+        talle: true,
+        color: true,
+      },
     });
   },
   create: async (id: any, variantes: any) => {

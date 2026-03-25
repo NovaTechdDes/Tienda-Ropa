@@ -38,6 +38,8 @@ model Provedor {
 model Talle {
   id     Int    @id @default(autoincrement())
   nombre String @unique
+
+  variantes variante_producto[]
 }
 
 model Categoria {
@@ -48,6 +50,8 @@ model Categoria {
 model Color {
   id     Int    @id @default(autoincrement())
   nombre String @unique
+
+  variantes variante_producto[]
 }
 
 model Producto {
@@ -79,6 +83,8 @@ model variante_producto {
   updatedAt   DateTime @updatedAt
 
   producto Producto @relation(fields: [producto_id], references: [id])
+  talle    Talle    @relation(fields: [talle_id], references: [id])
+  color    Color    @relation(fields: [color_id], references: [id])
 }
 
 model Venta {

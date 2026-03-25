@@ -1,5 +1,5 @@
-import { Pencil, Trash2, Layers, Box } from 'lucide-react';
 import { Producto } from '../../interface/Producto';
+import { useCarritoStore } from '../../store';
 
 interface Props {
   producto: Producto;
@@ -8,10 +8,12 @@ interface Props {
 const imgURL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export const ProductItemVenta = ({ producto }: Props) => {
+  const { setProductoSeleccionado } = useCarritoStore();
 
   return (
     <div
       key={producto.id}
+      onClick={() => setProductoSeleccionado(producto)}
       className="group relative bg-[#141416] border border-[rgba(255,255,255,0.06)] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#d4af37]/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)]"
     >
       {/* Image Container */}
@@ -31,7 +33,6 @@ export const ProductItemVenta = ({ producto }: Props) => {
         </div>
 
         <p className="text-xs text-[#a1a1aa] font-medium leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">{producto.observacion || 'Sin descripción adicional'}</p>
-        
       </div>
     </div>
   );

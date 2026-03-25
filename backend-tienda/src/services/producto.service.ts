@@ -5,17 +5,30 @@ export const productoService = {
     return prisma.producto.findMany({
       where: { activo: true },
       include: {
-        variantes: true,
+        variantes: {
+          include: {
+            talle: true,
+            color: true,
+          },
+        },
       },
     });
   },
   getById: (id: number) => {
     return prisma.producto.findUnique({
       where: { id },
+      include: {
+        variantes: {
+          include: {
+            talle: true,
+            color: true,
+          },
+        },
+      },
     });
   },
   create: (data: any) => {
-    console.log(data)
+    console.log(data);
     return prisma.producto.create({
       data,
     });

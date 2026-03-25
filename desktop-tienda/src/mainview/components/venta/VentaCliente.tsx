@@ -21,7 +21,7 @@ export const VentaCliente = () => {
 
   useEffect(() => {
     setClienteAux(cliente ?? null);
-  }, [cliente])
+  }, [cliente]);
 
   if (isLoading) {
     return (
@@ -72,6 +72,17 @@ export const VentaCliente = () => {
         {/* Detalle del Cliente */}
         <div className="grid grid-cols-1 gap-4 pt-4 border-t border-white/5">
           <div className="space-y-2">
+            <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Nombre</label>
+            <input
+              type="text"
+              className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
+              value={clienteAux?.nombre || ''}
+              onChange={(e) => setClienteAux({ ...clienteAux, nombre: e.target.value || '' })}
+              placeholder="N/A"
+            />
+          </div>
+
+          <div className="space-y-2">
             <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Teléfono</label>
             <input
               type="text"
@@ -81,6 +92,7 @@ export const VentaCliente = () => {
               placeholder="N/A"
             />
           </div>
+
           <div className="space-y-2">
             <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">Dirección</label>
             <input
@@ -91,11 +103,11 @@ export const VentaCliente = () => {
               placeholder="N/A"
             />
           </div>
+
           <div className="space-y-2">
             <label className="text-[10px] uppercase tracking-widest text-[#3f3f46] font-bold ml-1">DNI / CUIT</label>
             <input
               type="text"
-              
               className="w-full bg-[#0a0a0b]/50 border border-white/5 rounded-xl py-3 px-4 text-sm text-[#a1a1aa] outline-none"
               value={clienteAux?.dni || ''}
               onChange={(e) => setClienteAux({ ...clienteAux, dni: e.target.value || '' })}

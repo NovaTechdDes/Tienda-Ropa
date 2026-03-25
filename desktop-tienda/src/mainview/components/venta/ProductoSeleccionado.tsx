@@ -1,18 +1,65 @@
-import React from 'react'
 import { useCarritoStore } from '../../store';
+import { Plus } from 'lucide-react';
+import { useState } from 'react';
 
 export const ProductoSeleccionado = () => {
+  const { productoSeleccionado, addItemCarrito } = useCarritoStore();
+  const [varianteSeleccionado, setVarianteSeleccionado] = useState('');
+  const [cantidad, setCantidad] = useState(1);
 
-    const { productoSeleccionado, clearProductoSeleccionado } = useCarritoStore();
+  const handleAddVariantes = () => {
+    if (!productoSeleccionado) return;
+    if (!varianteSeleccionado) return;
+
+    addItemCarrito(varianteSeleccionado, cantidad);
+    setCantidad(1);
+    setVarianteSeleccionado('');
+  };
+
+  if (!productoSeleccionado) return null;
 
   return (
-    <div>
-        
-        <div>
-            <h3>{productoSeleccionado?.descripcion}</h3>
-        </div>
+    <div className="bg-[#141416] border border-[rgba(255,255,255,0.06)] rounded-2xl p-4">
+      <div className="mb-2">
+        <h3 className="text-lg font-bold">{productoSeleccionado?.descripcion}</h3>
+      </div>
 
-        <div></div>
+      <div className="flex justify-between gap-5">
+        <div className="flex flex-col">
+          <label htmlFor="">Variante</label>
+          <select
+            name="variante"
+            id="variante"
+            value={varianteSeleccionado}
+            onChange={(e) => setVarianteSeleccionado(e.target.value)}
+            className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.06)] rounded-2xl p-4"
+          >
+            <option value="">Seleccione una variante</option>
+            {productoSeleccionado?.variantes?.map((variante) => (
+              <option className="uppercase" key={variante.id} value={variante.id}>
+                {variante.talle?.nombre}/{variante.color?.nombre}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="cantidad">Cantidad</label>
+          <input
+            type="number"
+            value={cantidad}
+            onChange={(e) => setCantidad(Number(e.target.value))}
+            name="cantidad"
+            id="cantidad"
+            min={1}
+            defaultValue={1}
+            className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.06)] rounded-2xl p-4"
+          />
+        </div>
+        <button onClick={handleAddVariantes} className="bg-[#d4af37] flex items-center gap-2 mt-auto hover:bg-[#d4af37]/80 text-[#0a0a0b] rounded-2xl p-4">
+          <Plus />
+          Agregar
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
