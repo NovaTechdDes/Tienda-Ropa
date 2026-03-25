@@ -54,6 +54,11 @@ export type Producto = $Result.DefaultSelection<Prisma.$ProductoPayload>
  */
 export type variante_producto = $Result.DefaultSelection<Prisma.$variante_productoPayload>
 /**
+ * Model Numero
+ * 
+ */
+export type Numero = $Result.DefaultSelection<Prisma.$NumeroPayload>
+/**
  * Model Venta
  * 
  */
@@ -269,6 +274,16 @@ export class PrismaClient<
     * ```
     */
   get variante_producto(): Prisma.variante_productoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.numero`: Exposes CRUD operations for the **Numero** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Numeros
+    * const numeros = await prisma.numero.findMany()
+    * ```
+    */
+  get numero(): Prisma.NumeroDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.venta`: Exposes CRUD operations for the **Venta** model.
@@ -741,6 +756,7 @@ export namespace Prisma {
     Color: 'Color',
     Producto: 'Producto',
     variante_producto: 'variante_producto',
+    Numero: 'Numero',
     Venta: 'Venta',
     detalle_venta: 'detalle_venta',
     stock_movimiento: 'stock_movimiento'
@@ -759,7 +775,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "cliente" | "marca" | "provedor" | "talle" | "categoria" | "color" | "producto" | "variante_producto" | "venta" | "detalle_venta" | "stock_movimiento"
+      modelProps: "cliente" | "marca" | "provedor" | "talle" | "categoria" | "color" | "producto" | "variante_producto" | "numero" | "venta" | "detalle_venta" | "stock_movimiento"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1355,6 +1371,80 @@ export namespace Prisma {
           }
         }
       }
+      Numero: {
+        payload: Prisma.$NumeroPayload<ExtArgs>
+        fields: Prisma.NumeroFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NumeroFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NumeroFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload>
+          }
+          findFirst: {
+            args: Prisma.NumeroFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NumeroFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload>
+          }
+          findMany: {
+            args: Prisma.NumeroFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload>[]
+          }
+          create: {
+            args: Prisma.NumeroCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload>
+          }
+          createMany: {
+            args: Prisma.NumeroCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NumeroCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload>[]
+          }
+          delete: {
+            args: Prisma.NumeroDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload>
+          }
+          update: {
+            args: Prisma.NumeroUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload>
+          }
+          deleteMany: {
+            args: Prisma.NumeroDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NumeroUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NumeroUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload>[]
+          }
+          upsert: {
+            args: Prisma.NumeroUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumeroPayload>
+          }
+          aggregate: {
+            args: Prisma.NumeroAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNumero>
+          }
+          groupBy: {
+            args: Prisma.NumeroGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NumeroGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NumeroCountArgs<ExtArgs>
+            result: $Utils.Optional<NumeroCountAggregateOutputType> | number
+          }
+        }
+      }
       Venta: {
         payload: Prisma.$VentaPayload<ExtArgs>
         fields: Prisma.VentaFieldRefs
@@ -1693,6 +1783,7 @@ export namespace Prisma {
     color?: ColorOmit
     producto?: ProductoOmit
     variante_producto?: variante_productoOmit
+    numero?: NumeroOmit
     venta?: VentaOmit
     detalle_venta?: detalle_ventaOmit
     stock_movimiento?: stock_movimientoOmit
@@ -10490,6 +10581,1044 @@ export namespace Prisma {
 
 
   /**
+   * Model Numero
+   */
+
+  export type AggregateNumero = {
+    _count: NumeroCountAggregateOutputType | null
+    _avg: NumeroAvgAggregateOutputType | null
+    _sum: NumeroSumAggregateOutputType | null
+    _min: NumeroMinAggregateOutputType | null
+    _max: NumeroMaxAggregateOutputType | null
+  }
+
+  export type NumeroAvgAggregateOutputType = {
+    id: number | null
+    numero: number | null
+  }
+
+  export type NumeroSumAggregateOutputType = {
+    id: number | null
+    numero: number | null
+  }
+
+  export type NumeroMinAggregateOutputType = {
+    id: number | null
+    tipo: string | null
+    numero: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NumeroMaxAggregateOutputType = {
+    id: number | null
+    tipo: string | null
+    numero: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NumeroCountAggregateOutputType = {
+    id: number
+    tipo: number
+    numero: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NumeroAvgAggregateInputType = {
+    id?: true
+    numero?: true
+  }
+
+  export type NumeroSumAggregateInputType = {
+    id?: true
+    numero?: true
+  }
+
+  export type NumeroMinAggregateInputType = {
+    id?: true
+    tipo?: true
+    numero?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NumeroMaxAggregateInputType = {
+    id?: true
+    tipo?: true
+    numero?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NumeroCountAggregateInputType = {
+    id?: true
+    tipo?: true
+    numero?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NumeroAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Numero to aggregate.
+     */
+    where?: NumeroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Numeros to fetch.
+     */
+    orderBy?: NumeroOrderByWithRelationInput | NumeroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NumeroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Numeros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Numeros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Numeros
+    **/
+    _count?: true | NumeroCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NumeroAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NumeroSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NumeroMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NumeroMaxAggregateInputType
+  }
+
+  export type GetNumeroAggregateType<T extends NumeroAggregateArgs> = {
+        [P in keyof T & keyof AggregateNumero]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNumero[P]>
+      : GetScalarType<T[P], AggregateNumero[P]>
+  }
+
+
+
+
+  export type NumeroGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NumeroWhereInput
+    orderBy?: NumeroOrderByWithAggregationInput | NumeroOrderByWithAggregationInput[]
+    by: NumeroScalarFieldEnum[] | NumeroScalarFieldEnum
+    having?: NumeroScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NumeroCountAggregateInputType | true
+    _avg?: NumeroAvgAggregateInputType
+    _sum?: NumeroSumAggregateInputType
+    _min?: NumeroMinAggregateInputType
+    _max?: NumeroMaxAggregateInputType
+  }
+
+  export type NumeroGroupByOutputType = {
+    id: number
+    tipo: string
+    numero: number
+    createdAt: Date
+    updatedAt: Date
+    _count: NumeroCountAggregateOutputType | null
+    _avg: NumeroAvgAggregateOutputType | null
+    _sum: NumeroSumAggregateOutputType | null
+    _min: NumeroMinAggregateOutputType | null
+    _max: NumeroMaxAggregateOutputType | null
+  }
+
+  type GetNumeroGroupByPayload<T extends NumeroGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NumeroGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NumeroGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NumeroGroupByOutputType[P]>
+            : GetScalarType<T[P], NumeroGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NumeroSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tipo?: boolean
+    numero?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["numero"]>
+
+  export type NumeroSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tipo?: boolean
+    numero?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["numero"]>
+
+  export type NumeroSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tipo?: boolean
+    numero?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["numero"]>
+
+  export type NumeroSelectScalar = {
+    id?: boolean
+    tipo?: boolean
+    numero?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type NumeroOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tipo" | "numero" | "createdAt" | "updatedAt", ExtArgs["result"]["numero"]>
+
+  export type $NumeroPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Numero"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      tipo: string
+      numero: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["numero"]>
+    composites: {}
+  }
+
+  type NumeroGetPayload<S extends boolean | null | undefined | NumeroDefaultArgs> = $Result.GetResult<Prisma.$NumeroPayload, S>
+
+  type NumeroCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NumeroFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NumeroCountAggregateInputType | true
+    }
+
+  export interface NumeroDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Numero'], meta: { name: 'Numero' } }
+    /**
+     * Find zero or one Numero that matches the filter.
+     * @param {NumeroFindUniqueArgs} args - Arguments to find a Numero
+     * @example
+     * // Get one Numero
+     * const numero = await prisma.numero.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NumeroFindUniqueArgs>(args: SelectSubset<T, NumeroFindUniqueArgs<ExtArgs>>): Prisma__NumeroClient<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Numero that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NumeroFindUniqueOrThrowArgs} args - Arguments to find a Numero
+     * @example
+     * // Get one Numero
+     * const numero = await prisma.numero.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NumeroFindUniqueOrThrowArgs>(args: SelectSubset<T, NumeroFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NumeroClient<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Numero that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumeroFindFirstArgs} args - Arguments to find a Numero
+     * @example
+     * // Get one Numero
+     * const numero = await prisma.numero.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NumeroFindFirstArgs>(args?: SelectSubset<T, NumeroFindFirstArgs<ExtArgs>>): Prisma__NumeroClient<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Numero that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumeroFindFirstOrThrowArgs} args - Arguments to find a Numero
+     * @example
+     * // Get one Numero
+     * const numero = await prisma.numero.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NumeroFindFirstOrThrowArgs>(args?: SelectSubset<T, NumeroFindFirstOrThrowArgs<ExtArgs>>): Prisma__NumeroClient<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Numeros that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumeroFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Numeros
+     * const numeros = await prisma.numero.findMany()
+     * 
+     * // Get first 10 Numeros
+     * const numeros = await prisma.numero.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const numeroWithIdOnly = await prisma.numero.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NumeroFindManyArgs>(args?: SelectSubset<T, NumeroFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Numero.
+     * @param {NumeroCreateArgs} args - Arguments to create a Numero.
+     * @example
+     * // Create one Numero
+     * const Numero = await prisma.numero.create({
+     *   data: {
+     *     // ... data to create a Numero
+     *   }
+     * })
+     * 
+     */
+    create<T extends NumeroCreateArgs>(args: SelectSubset<T, NumeroCreateArgs<ExtArgs>>): Prisma__NumeroClient<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Numeros.
+     * @param {NumeroCreateManyArgs} args - Arguments to create many Numeros.
+     * @example
+     * // Create many Numeros
+     * const numero = await prisma.numero.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NumeroCreateManyArgs>(args?: SelectSubset<T, NumeroCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Numeros and returns the data saved in the database.
+     * @param {NumeroCreateManyAndReturnArgs} args - Arguments to create many Numeros.
+     * @example
+     * // Create many Numeros
+     * const numero = await prisma.numero.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Numeros and only return the `id`
+     * const numeroWithIdOnly = await prisma.numero.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NumeroCreateManyAndReturnArgs>(args?: SelectSubset<T, NumeroCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Numero.
+     * @param {NumeroDeleteArgs} args - Arguments to delete one Numero.
+     * @example
+     * // Delete one Numero
+     * const Numero = await prisma.numero.delete({
+     *   where: {
+     *     // ... filter to delete one Numero
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NumeroDeleteArgs>(args: SelectSubset<T, NumeroDeleteArgs<ExtArgs>>): Prisma__NumeroClient<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Numero.
+     * @param {NumeroUpdateArgs} args - Arguments to update one Numero.
+     * @example
+     * // Update one Numero
+     * const numero = await prisma.numero.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NumeroUpdateArgs>(args: SelectSubset<T, NumeroUpdateArgs<ExtArgs>>): Prisma__NumeroClient<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Numeros.
+     * @param {NumeroDeleteManyArgs} args - Arguments to filter Numeros to delete.
+     * @example
+     * // Delete a few Numeros
+     * const { count } = await prisma.numero.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NumeroDeleteManyArgs>(args?: SelectSubset<T, NumeroDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Numeros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumeroUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Numeros
+     * const numero = await prisma.numero.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NumeroUpdateManyArgs>(args: SelectSubset<T, NumeroUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Numeros and returns the data updated in the database.
+     * @param {NumeroUpdateManyAndReturnArgs} args - Arguments to update many Numeros.
+     * @example
+     * // Update many Numeros
+     * const numero = await prisma.numero.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Numeros and only return the `id`
+     * const numeroWithIdOnly = await prisma.numero.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NumeroUpdateManyAndReturnArgs>(args: SelectSubset<T, NumeroUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Numero.
+     * @param {NumeroUpsertArgs} args - Arguments to update or create a Numero.
+     * @example
+     * // Update or create a Numero
+     * const numero = await prisma.numero.upsert({
+     *   create: {
+     *     // ... data to create a Numero
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Numero we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NumeroUpsertArgs>(args: SelectSubset<T, NumeroUpsertArgs<ExtArgs>>): Prisma__NumeroClient<$Result.GetResult<Prisma.$NumeroPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Numeros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumeroCountArgs} args - Arguments to filter Numeros to count.
+     * @example
+     * // Count the number of Numeros
+     * const count = await prisma.numero.count({
+     *   where: {
+     *     // ... the filter for the Numeros we want to count
+     *   }
+     * })
+    **/
+    count<T extends NumeroCountArgs>(
+      args?: Subset<T, NumeroCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NumeroCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Numero.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumeroAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NumeroAggregateArgs>(args: Subset<T, NumeroAggregateArgs>): Prisma.PrismaPromise<GetNumeroAggregateType<T>>
+
+    /**
+     * Group by Numero.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumeroGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NumeroGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NumeroGroupByArgs['orderBy'] }
+        : { orderBy?: NumeroGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NumeroGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNumeroGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Numero model
+   */
+  readonly fields: NumeroFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Numero.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NumeroClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Numero model
+   */
+  interface NumeroFieldRefs {
+    readonly id: FieldRef<"Numero", 'Int'>
+    readonly tipo: FieldRef<"Numero", 'String'>
+    readonly numero: FieldRef<"Numero", 'Int'>
+    readonly createdAt: FieldRef<"Numero", 'DateTime'>
+    readonly updatedAt: FieldRef<"Numero", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Numero findUnique
+   */
+  export type NumeroFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * Filter, which Numero to fetch.
+     */
+    where: NumeroWhereUniqueInput
+  }
+
+  /**
+   * Numero findUniqueOrThrow
+   */
+  export type NumeroFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * Filter, which Numero to fetch.
+     */
+    where: NumeroWhereUniqueInput
+  }
+
+  /**
+   * Numero findFirst
+   */
+  export type NumeroFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * Filter, which Numero to fetch.
+     */
+    where?: NumeroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Numeros to fetch.
+     */
+    orderBy?: NumeroOrderByWithRelationInput | NumeroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Numeros.
+     */
+    cursor?: NumeroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Numeros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Numeros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Numeros.
+     */
+    distinct?: NumeroScalarFieldEnum | NumeroScalarFieldEnum[]
+  }
+
+  /**
+   * Numero findFirstOrThrow
+   */
+  export type NumeroFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * Filter, which Numero to fetch.
+     */
+    where?: NumeroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Numeros to fetch.
+     */
+    orderBy?: NumeroOrderByWithRelationInput | NumeroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Numeros.
+     */
+    cursor?: NumeroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Numeros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Numeros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Numeros.
+     */
+    distinct?: NumeroScalarFieldEnum | NumeroScalarFieldEnum[]
+  }
+
+  /**
+   * Numero findMany
+   */
+  export type NumeroFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * Filter, which Numeros to fetch.
+     */
+    where?: NumeroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Numeros to fetch.
+     */
+    orderBy?: NumeroOrderByWithRelationInput | NumeroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Numeros.
+     */
+    cursor?: NumeroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Numeros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Numeros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Numeros.
+     */
+    distinct?: NumeroScalarFieldEnum | NumeroScalarFieldEnum[]
+  }
+
+  /**
+   * Numero create
+   */
+  export type NumeroCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Numero.
+     */
+    data: XOR<NumeroCreateInput, NumeroUncheckedCreateInput>
+  }
+
+  /**
+   * Numero createMany
+   */
+  export type NumeroCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Numeros.
+     */
+    data: NumeroCreateManyInput | NumeroCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Numero createManyAndReturn
+   */
+  export type NumeroCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * The data used to create many Numeros.
+     */
+    data: NumeroCreateManyInput | NumeroCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Numero update
+   */
+  export type NumeroUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Numero.
+     */
+    data: XOR<NumeroUpdateInput, NumeroUncheckedUpdateInput>
+    /**
+     * Choose, which Numero to update.
+     */
+    where: NumeroWhereUniqueInput
+  }
+
+  /**
+   * Numero updateMany
+   */
+  export type NumeroUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Numeros.
+     */
+    data: XOR<NumeroUpdateManyMutationInput, NumeroUncheckedUpdateManyInput>
+    /**
+     * Filter which Numeros to update
+     */
+    where?: NumeroWhereInput
+    /**
+     * Limit how many Numeros to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Numero updateManyAndReturn
+   */
+  export type NumeroUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * The data used to update Numeros.
+     */
+    data: XOR<NumeroUpdateManyMutationInput, NumeroUncheckedUpdateManyInput>
+    /**
+     * Filter which Numeros to update
+     */
+    where?: NumeroWhereInput
+    /**
+     * Limit how many Numeros to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Numero upsert
+   */
+  export type NumeroUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Numero to update in case it exists.
+     */
+    where: NumeroWhereUniqueInput
+    /**
+     * In case the Numero found by the `where` argument doesn't exist, create a new Numero with this data.
+     */
+    create: XOR<NumeroCreateInput, NumeroUncheckedCreateInput>
+    /**
+     * In case the Numero was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NumeroUpdateInput, NumeroUncheckedUpdateInput>
+  }
+
+  /**
+   * Numero delete
+   */
+  export type NumeroDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+    /**
+     * Filter which Numero to delete.
+     */
+    where: NumeroWhereUniqueInput
+  }
+
+  /**
+   * Numero deleteMany
+   */
+  export type NumeroDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Numeros to delete
+     */
+    where?: NumeroWhereInput
+    /**
+     * Limit how many Numeros to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Numero without action
+   */
+  export type NumeroDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numero
+     */
+    select?: NumeroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numero
+     */
+    omit?: NumeroOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model Venta
    */
 
@@ -10505,24 +11634,33 @@ export namespace Prisma {
     id: number | null
     cliente_id: number | null
     total: number | null
+    descuento: number | null
+    subtotal: number | null
   }
 
   export type VentaSumAggregateOutputType = {
     id: number | null
     cliente_id: number | null
     total: number | null
+    descuento: number | null
+    subtotal: number | null
   }
 
   export type VentaMinAggregateOutputType = {
     id: number | null
     cliente_id: number | null
     fecha: Date | null
+    nombre_cliente: string | null
+    telefono_cliente: string | null
+    direccion_cliente: string | null
+    dni_cliente: string | null
     total: number | null
+    descuento: number | null
+    subtotal: number | null
     observacion: string | null
     numero_venta: string | null
-    tipo_pago: string | null
+    metodo_pago: string | null
     tipo_venta: string | null
-    createdAt: Date | null
     updatedAt: Date | null
   }
 
@@ -10530,12 +11668,17 @@ export namespace Prisma {
     id: number | null
     cliente_id: number | null
     fecha: Date | null
+    nombre_cliente: string | null
+    telefono_cliente: string | null
+    direccion_cliente: string | null
+    dni_cliente: string | null
     total: number | null
+    descuento: number | null
+    subtotal: number | null
     observacion: string | null
     numero_venta: string | null
-    tipo_pago: string | null
+    metodo_pago: string | null
     tipo_venta: string | null
-    createdAt: Date | null
     updatedAt: Date | null
   }
 
@@ -10543,12 +11686,17 @@ export namespace Prisma {
     id: number
     cliente_id: number
     fecha: number
+    nombre_cliente: number
+    telefono_cliente: number
+    direccion_cliente: number
+    dni_cliente: number
     total: number
+    descuento: number
+    subtotal: number
     observacion: number
     numero_venta: number
-    tipo_pago: number
+    metodo_pago: number
     tipo_venta: number
-    createdAt: number
     updatedAt: number
     _all: number
   }
@@ -10558,24 +11706,33 @@ export namespace Prisma {
     id?: true
     cliente_id?: true
     total?: true
+    descuento?: true
+    subtotal?: true
   }
 
   export type VentaSumAggregateInputType = {
     id?: true
     cliente_id?: true
     total?: true
+    descuento?: true
+    subtotal?: true
   }
 
   export type VentaMinAggregateInputType = {
     id?: true
     cliente_id?: true
     fecha?: true
+    nombre_cliente?: true
+    telefono_cliente?: true
+    direccion_cliente?: true
+    dni_cliente?: true
     total?: true
+    descuento?: true
+    subtotal?: true
     observacion?: true
     numero_venta?: true
-    tipo_pago?: true
+    metodo_pago?: true
     tipo_venta?: true
-    createdAt?: true
     updatedAt?: true
   }
 
@@ -10583,12 +11740,17 @@ export namespace Prisma {
     id?: true
     cliente_id?: true
     fecha?: true
+    nombre_cliente?: true
+    telefono_cliente?: true
+    direccion_cliente?: true
+    dni_cliente?: true
     total?: true
+    descuento?: true
+    subtotal?: true
     observacion?: true
     numero_venta?: true
-    tipo_pago?: true
+    metodo_pago?: true
     tipo_venta?: true
-    createdAt?: true
     updatedAt?: true
   }
 
@@ -10596,12 +11758,17 @@ export namespace Prisma {
     id?: true
     cliente_id?: true
     fecha?: true
+    nombre_cliente?: true
+    telefono_cliente?: true
+    direccion_cliente?: true
+    dni_cliente?: true
     total?: true
+    descuento?: true
+    subtotal?: true
     observacion?: true
     numero_venta?: true
-    tipo_pago?: true
+    metodo_pago?: true
     tipo_venta?: true
-    createdAt?: true
     updatedAt?: true
     _all?: true
   }
@@ -10696,13 +11863,18 @@ export namespace Prisma {
     id: number
     cliente_id: number
     fecha: Date
+    nombre_cliente: string | null
+    telefono_cliente: string | null
+    direccion_cliente: string | null
+    dni_cliente: string | null
     total: number
+    descuento: number | null
+    subtotal: number | null
     observacion: string | null
     numero_venta: string
-    tipo_pago: string
+    metodo_pago: string
     tipo_venta: string
-    createdAt: Date
-    updatedAt: Date
+    updatedAt: Date | null
     _count: VentaCountAggregateOutputType | null
     _avg: VentaAvgAggregateOutputType | null
     _sum: VentaSumAggregateOutputType | null
@@ -10728,12 +11900,17 @@ export namespace Prisma {
     id?: boolean
     cliente_id?: boolean
     fecha?: boolean
+    nombre_cliente?: boolean
+    telefono_cliente?: boolean
+    direccion_cliente?: boolean
+    dni_cliente?: boolean
     total?: boolean
+    descuento?: boolean
+    subtotal?: boolean
     observacion?: boolean
     numero_venta?: boolean
-    tipo_pago?: boolean
+    metodo_pago?: boolean
     tipo_venta?: boolean
-    createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["venta"]>
 
@@ -10741,12 +11918,17 @@ export namespace Prisma {
     id?: boolean
     cliente_id?: boolean
     fecha?: boolean
+    nombre_cliente?: boolean
+    telefono_cliente?: boolean
+    direccion_cliente?: boolean
+    dni_cliente?: boolean
     total?: boolean
+    descuento?: boolean
+    subtotal?: boolean
     observacion?: boolean
     numero_venta?: boolean
-    tipo_pago?: boolean
+    metodo_pago?: boolean
     tipo_venta?: boolean
-    createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["venta"]>
 
@@ -10754,12 +11936,17 @@ export namespace Prisma {
     id?: boolean
     cliente_id?: boolean
     fecha?: boolean
+    nombre_cliente?: boolean
+    telefono_cliente?: boolean
+    direccion_cliente?: boolean
+    dni_cliente?: boolean
     total?: boolean
+    descuento?: boolean
+    subtotal?: boolean
     observacion?: boolean
     numero_venta?: boolean
-    tipo_pago?: boolean
+    metodo_pago?: boolean
     tipo_venta?: boolean
-    createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["venta"]>
 
@@ -10767,16 +11954,21 @@ export namespace Prisma {
     id?: boolean
     cliente_id?: boolean
     fecha?: boolean
+    nombre_cliente?: boolean
+    telefono_cliente?: boolean
+    direccion_cliente?: boolean
+    dni_cliente?: boolean
     total?: boolean
+    descuento?: boolean
+    subtotal?: boolean
     observacion?: boolean
     numero_venta?: boolean
-    tipo_pago?: boolean
+    metodo_pago?: boolean
     tipo_venta?: boolean
-    createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type VentaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cliente_id" | "fecha" | "total" | "observacion" | "numero_venta" | "tipo_pago" | "tipo_venta" | "createdAt" | "updatedAt", ExtArgs["result"]["venta"]>
+  export type VentaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cliente_id" | "fecha" | "nombre_cliente" | "telefono_cliente" | "direccion_cliente" | "dni_cliente" | "total" | "descuento" | "subtotal" | "observacion" | "numero_venta" | "metodo_pago" | "tipo_venta" | "updatedAt", ExtArgs["result"]["venta"]>
 
   export type $VentaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Venta"
@@ -10785,13 +11977,18 @@ export namespace Prisma {
       id: number
       cliente_id: number
       fecha: Date
+      nombre_cliente: string | null
+      telefono_cliente: string | null
+      direccion_cliente: string | null
+      dni_cliente: string | null
       total: number
+      descuento: number | null
+      subtotal: number | null
       observacion: string | null
       numero_venta: string
-      tipo_pago: string
+      metodo_pago: string
       tipo_venta: string
-      createdAt: Date
-      updatedAt: Date
+      updatedAt: Date | null
     }, ExtArgs["result"]["venta"]>
     composites: {}
   }
@@ -11218,12 +12415,17 @@ export namespace Prisma {
     readonly id: FieldRef<"Venta", 'Int'>
     readonly cliente_id: FieldRef<"Venta", 'Int'>
     readonly fecha: FieldRef<"Venta", 'DateTime'>
+    readonly nombre_cliente: FieldRef<"Venta", 'String'>
+    readonly telefono_cliente: FieldRef<"Venta", 'String'>
+    readonly direccion_cliente: FieldRef<"Venta", 'String'>
+    readonly dni_cliente: FieldRef<"Venta", 'String'>
     readonly total: FieldRef<"Venta", 'Float'>
+    readonly descuento: FieldRef<"Venta", 'Float'>
+    readonly subtotal: FieldRef<"Venta", 'Float'>
     readonly observacion: FieldRef<"Venta", 'String'>
     readonly numero_venta: FieldRef<"Venta", 'String'>
-    readonly tipo_pago: FieldRef<"Venta", 'String'>
+    readonly metodo_pago: FieldRef<"Venta", 'String'>
     readonly tipo_venta: FieldRef<"Venta", 'String'>
-    readonly createdAt: FieldRef<"Venta", 'DateTime'>
     readonly updatedAt: FieldRef<"Venta", 'DateTime'>
   }
     
@@ -13856,16 +15058,32 @@ export namespace Prisma {
   export type Variante_productoScalarFieldEnum = (typeof Variante_productoScalarFieldEnum)[keyof typeof Variante_productoScalarFieldEnum]
 
 
+  export const NumeroScalarFieldEnum: {
+    id: 'id',
+    tipo: 'tipo',
+    numero: 'numero',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type NumeroScalarFieldEnum = (typeof NumeroScalarFieldEnum)[keyof typeof NumeroScalarFieldEnum]
+
+
   export const VentaScalarFieldEnum: {
     id: 'id',
     cliente_id: 'cliente_id',
     fecha: 'fecha',
+    nombre_cliente: 'nombre_cliente',
+    telefono_cliente: 'telefono_cliente',
+    direccion_cliente: 'direccion_cliente',
+    dni_cliente: 'dni_cliente',
     total: 'total',
+    descuento: 'descuento',
+    subtotal: 'subtotal',
     observacion: 'observacion',
     numero_venta: 'numero_venta',
-    tipo_pago: 'tipo_pago',
+    metodo_pago: 'metodo_pago',
     tipo_venta: 'tipo_venta',
-    createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
@@ -14449,6 +15667,60 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"variante_producto"> | Date | string
   }
 
+  export type NumeroWhereInput = {
+    AND?: NumeroWhereInput | NumeroWhereInput[]
+    OR?: NumeroWhereInput[]
+    NOT?: NumeroWhereInput | NumeroWhereInput[]
+    id?: IntFilter<"Numero"> | number
+    tipo?: StringFilter<"Numero"> | string
+    numero?: IntFilter<"Numero"> | number
+    createdAt?: DateTimeFilter<"Numero"> | Date | string
+    updatedAt?: DateTimeFilter<"Numero"> | Date | string
+  }
+
+  export type NumeroOrderByWithRelationInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    numero?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NumeroWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    tipo?: string
+    AND?: NumeroWhereInput | NumeroWhereInput[]
+    OR?: NumeroWhereInput[]
+    NOT?: NumeroWhereInput | NumeroWhereInput[]
+    numero?: IntFilter<"Numero"> | number
+    createdAt?: DateTimeFilter<"Numero"> | Date | string
+    updatedAt?: DateTimeFilter<"Numero"> | Date | string
+  }, "id" | "tipo">
+
+  export type NumeroOrderByWithAggregationInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    numero?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NumeroCountOrderByAggregateInput
+    _avg?: NumeroAvgOrderByAggregateInput
+    _max?: NumeroMaxOrderByAggregateInput
+    _min?: NumeroMinOrderByAggregateInput
+    _sum?: NumeroSumOrderByAggregateInput
+  }
+
+  export type NumeroScalarWhereWithAggregatesInput = {
+    AND?: NumeroScalarWhereWithAggregatesInput | NumeroScalarWhereWithAggregatesInput[]
+    OR?: NumeroScalarWhereWithAggregatesInput[]
+    NOT?: NumeroScalarWhereWithAggregatesInput | NumeroScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Numero"> | number
+    tipo?: StringWithAggregatesFilter<"Numero"> | string
+    numero?: IntWithAggregatesFilter<"Numero"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Numero"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Numero"> | Date | string
+  }
+
   export type VentaWhereInput = {
     AND?: VentaWhereInput | VentaWhereInput[]
     OR?: VentaWhereInput[]
@@ -14456,26 +15728,36 @@ export namespace Prisma {
     id?: IntFilter<"Venta"> | number
     cliente_id?: IntFilter<"Venta"> | number
     fecha?: DateTimeFilter<"Venta"> | Date | string
+    nombre_cliente?: StringNullableFilter<"Venta"> | string | null
+    telefono_cliente?: StringNullableFilter<"Venta"> | string | null
+    direccion_cliente?: StringNullableFilter<"Venta"> | string | null
+    dni_cliente?: StringNullableFilter<"Venta"> | string | null
     total?: FloatFilter<"Venta"> | number
+    descuento?: FloatNullableFilter<"Venta"> | number | null
+    subtotal?: FloatNullableFilter<"Venta"> | number | null
     observacion?: StringNullableFilter<"Venta"> | string | null
     numero_venta?: StringFilter<"Venta"> | string
-    tipo_pago?: StringFilter<"Venta"> | string
+    metodo_pago?: StringFilter<"Venta"> | string
     tipo_venta?: StringFilter<"Venta"> | string
-    createdAt?: DateTimeFilter<"Venta"> | Date | string
-    updatedAt?: DateTimeFilter<"Venta"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Venta"> | Date | string | null
   }
 
   export type VentaOrderByWithRelationInput = {
     id?: SortOrder
     cliente_id?: SortOrder
     fecha?: SortOrder
+    nombre_cliente?: SortOrderInput | SortOrder
+    telefono_cliente?: SortOrderInput | SortOrder
+    direccion_cliente?: SortOrderInput | SortOrder
+    dni_cliente?: SortOrderInput | SortOrder
     total?: SortOrder
+    descuento?: SortOrderInput | SortOrder
+    subtotal?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     numero_venta?: SortOrder
-    tipo_pago?: SortOrder
+    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
   }
 
   export type VentaWhereUniqueInput = Prisma.AtLeast<{
@@ -14486,25 +15768,35 @@ export namespace Prisma {
     NOT?: VentaWhereInput | VentaWhereInput[]
     cliente_id?: IntFilter<"Venta"> | number
     fecha?: DateTimeFilter<"Venta"> | Date | string
+    nombre_cliente?: StringNullableFilter<"Venta"> | string | null
+    telefono_cliente?: StringNullableFilter<"Venta"> | string | null
+    direccion_cliente?: StringNullableFilter<"Venta"> | string | null
+    dni_cliente?: StringNullableFilter<"Venta"> | string | null
     total?: FloatFilter<"Venta"> | number
+    descuento?: FloatNullableFilter<"Venta"> | number | null
+    subtotal?: FloatNullableFilter<"Venta"> | number | null
     observacion?: StringNullableFilter<"Venta"> | string | null
-    tipo_pago?: StringFilter<"Venta"> | string
+    metodo_pago?: StringFilter<"Venta"> | string
     tipo_venta?: StringFilter<"Venta"> | string
-    createdAt?: DateTimeFilter<"Venta"> | Date | string
-    updatedAt?: DateTimeFilter<"Venta"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Venta"> | Date | string | null
   }, "id" | "numero_venta">
 
   export type VentaOrderByWithAggregationInput = {
     id?: SortOrder
     cliente_id?: SortOrder
     fecha?: SortOrder
+    nombre_cliente?: SortOrderInput | SortOrder
+    telefono_cliente?: SortOrderInput | SortOrder
+    direccion_cliente?: SortOrderInput | SortOrder
+    dni_cliente?: SortOrderInput | SortOrder
     total?: SortOrder
+    descuento?: SortOrderInput | SortOrder
+    subtotal?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     numero_venta?: SortOrder
-    tipo_pago?: SortOrder
+    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: VentaCountOrderByAggregateInput
     _avg?: VentaAvgOrderByAggregateInput
     _max?: VentaMaxOrderByAggregateInput
@@ -14519,13 +15811,18 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Venta"> | number
     cliente_id?: IntWithAggregatesFilter<"Venta"> | number
     fecha?: DateTimeWithAggregatesFilter<"Venta"> | Date | string
+    nombre_cliente?: StringNullableWithAggregatesFilter<"Venta"> | string | null
+    telefono_cliente?: StringNullableWithAggregatesFilter<"Venta"> | string | null
+    direccion_cliente?: StringNullableWithAggregatesFilter<"Venta"> | string | null
+    dni_cliente?: StringNullableWithAggregatesFilter<"Venta"> | string | null
     total?: FloatWithAggregatesFilter<"Venta"> | number
+    descuento?: FloatNullableWithAggregatesFilter<"Venta"> | number | null
+    subtotal?: FloatNullableWithAggregatesFilter<"Venta"> | number | null
     observacion?: StringNullableWithAggregatesFilter<"Venta"> | string | null
     numero_venta?: StringWithAggregatesFilter<"Venta"> | string
-    tipo_pago?: StringWithAggregatesFilter<"Venta"> | string
+    metodo_pago?: StringWithAggregatesFilter<"Venta"> | string
     tipo_venta?: StringWithAggregatesFilter<"Venta"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Venta"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Venta"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Venta"> | Date | string | null
   }
 
   export type detalle_ventaWhereInput = {
@@ -15101,92 +16398,180 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type NumeroCreateInput = {
+    tipo: string
+    numero: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NumeroUncheckedCreateInput = {
+    id?: number
+    tipo: string
+    numero: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NumeroUpdateInput = {
+    tipo?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NumeroUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NumeroCreateManyInput = {
+    id?: number
+    tipo: string
+    numero: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NumeroUpdateManyMutationInput = {
+    tipo?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NumeroUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type VentaCreateInput = {
     cliente_id: number
     fecha?: Date | string
+    nombre_cliente?: string | null
+    telefono_cliente?: string | null
+    direccion_cliente?: string | null
+    dni_cliente?: string | null
     total: number
+    descuento?: number | null
+    subtotal?: number | null
     observacion?: string | null
     numero_venta: string
-    tipo_pago: string
+    metodo_pago: string
     tipo_venta: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type VentaUncheckedCreateInput = {
     id?: number
     cliente_id: number
     fecha?: Date | string
+    nombre_cliente?: string | null
+    telefono_cliente?: string | null
+    direccion_cliente?: string | null
+    dni_cliente?: string | null
     total: number
+    descuento?: number | null
+    subtotal?: number | null
     observacion?: string | null
     numero_venta: string
-    tipo_pago: string
+    metodo_pago: string
     tipo_venta: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type VentaUpdateInput = {
     cliente_id?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni_cliente?: NullableStringFieldUpdateOperationsInput | string | null
     total?: FloatFieldUpdateOperationsInput | number
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+    subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     numero_venta?: StringFieldUpdateOperationsInput | string
-    tipo_pago?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
     tipo_venta?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type VentaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     cliente_id?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni_cliente?: NullableStringFieldUpdateOperationsInput | string | null
     total?: FloatFieldUpdateOperationsInput | number
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+    subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     numero_venta?: StringFieldUpdateOperationsInput | string
-    tipo_pago?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
     tipo_venta?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type VentaCreateManyInput = {
     id?: number
     cliente_id: number
     fecha?: Date | string
+    nombre_cliente?: string | null
+    telefono_cliente?: string | null
+    direccion_cliente?: string | null
+    dni_cliente?: string | null
     total: number
+    descuento?: number | null
+    subtotal?: number | null
     observacion?: string | null
     numero_venta: string
-    tipo_pago: string
+    metodo_pago: string
     tipo_venta: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type VentaUpdateManyMutationInput = {
     cliente_id?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni_cliente?: NullableStringFieldUpdateOperationsInput | string | null
     total?: FloatFieldUpdateOperationsInput | number
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+    subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     numero_venta?: StringFieldUpdateOperationsInput | string
-    tipo_pago?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
     tipo_venta?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type VentaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     cliente_id?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni_cliente?: NullableStringFieldUpdateOperationsInput | string | null
     total?: FloatFieldUpdateOperationsInput | number
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+    subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     numero_venta?: StringFieldUpdateOperationsInput | string
-    tipo_pago?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
     tipo_venta?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type detalle_ventaCreateInput = {
@@ -15820,16 +17205,77 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type NumeroCountOrderByAggregateInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    numero?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NumeroAvgOrderByAggregateInput = {
+    id?: SortOrder
+    numero?: SortOrder
+  }
+
+  export type NumeroMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    numero?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NumeroMinOrderByAggregateInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    numero?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NumeroSumOrderByAggregateInput = {
+    id?: SortOrder
+    numero?: SortOrder
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type VentaCountOrderByAggregateInput = {
     id?: SortOrder
     cliente_id?: SortOrder
     fecha?: SortOrder
+    nombre_cliente?: SortOrder
+    telefono_cliente?: SortOrder
+    direccion_cliente?: SortOrder
+    dni_cliente?: SortOrder
     total?: SortOrder
+    descuento?: SortOrder
+    subtotal?: SortOrder
     observacion?: SortOrder
     numero_venta?: SortOrder
-    tipo_pago?: SortOrder
+    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
-    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -15837,18 +17283,25 @@ export namespace Prisma {
     id?: SortOrder
     cliente_id?: SortOrder
     total?: SortOrder
+    descuento?: SortOrder
+    subtotal?: SortOrder
   }
 
   export type VentaMaxOrderByAggregateInput = {
     id?: SortOrder
     cliente_id?: SortOrder
     fecha?: SortOrder
+    nombre_cliente?: SortOrder
+    telefono_cliente?: SortOrder
+    direccion_cliente?: SortOrder
+    dni_cliente?: SortOrder
     total?: SortOrder
+    descuento?: SortOrder
+    subtotal?: SortOrder
     observacion?: SortOrder
     numero_venta?: SortOrder
-    tipo_pago?: SortOrder
+    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
-    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -15856,12 +17309,17 @@ export namespace Prisma {
     id?: SortOrder
     cliente_id?: SortOrder
     fecha?: SortOrder
+    nombre_cliente?: SortOrder
+    telefono_cliente?: SortOrder
+    direccion_cliente?: SortOrder
+    dni_cliente?: SortOrder
     total?: SortOrder
+    descuento?: SortOrder
+    subtotal?: SortOrder
     observacion?: SortOrder
     numero_venta?: SortOrder
-    tipo_pago?: SortOrder
+    metodo_pago?: SortOrder
     tipo_venta?: SortOrder
-    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -15869,6 +17327,38 @@ export namespace Prisma {
     id?: SortOrder
     cliente_id?: SortOrder
     total?: SortOrder
+    descuento?: SortOrder
+    subtotal?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type detalle_ventaCountOrderByAggregateInput = {
@@ -16170,6 +17660,18 @@ export namespace Prisma {
     update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutVariantesInput, ColorUpdateWithoutVariantesInput>, ColorUncheckedUpdateWithoutVariantesInput>
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -16360,6 +17862,47 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type variante_productoCreateWithoutTalleInput = {

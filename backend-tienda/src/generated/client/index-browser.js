@@ -185,16 +185,29 @@ exports.Prisma.Variante_productoScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.NumeroScalarFieldEnum = {
+  id: 'id',
+  tipo: 'tipo',
+  numero: 'numero',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.VentaScalarFieldEnum = {
   id: 'id',
   cliente_id: 'cliente_id',
   fecha: 'fecha',
+  nombre_cliente: 'nombre_cliente',
+  telefono_cliente: 'telefono_cliente',
+  direccion_cliente: 'direccion_cliente',
+  dni_cliente: 'dni_cliente',
   total: 'total',
+  descuento: 'descuento',
+  subtotal: 'subtotal',
   observacion: 'observacion',
   numero_venta: 'numero_venta',
-  tipo_pago: 'tipo_pago',
+  metodo_pago: 'metodo_pago',
   tipo_venta: 'tipo_venta',
-  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
@@ -244,6 +257,7 @@ exports.Prisma.ModelName = {
   Color: 'Color',
   Producto: 'Producto',
   variante_producto: 'variante_producto',
+  Numero: 'Numero',
   Venta: 'Venta',
   detalle_venta: 'detalle_venta',
   stock_movimiento: 'stock_movimiento'

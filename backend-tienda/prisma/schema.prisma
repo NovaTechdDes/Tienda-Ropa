@@ -87,17 +87,30 @@ model variante_producto {
   color    Color    @relation(fields: [color_id], references: [id])
 }
 
+model Numero {
+  id        Int      @id @default(autoincrement())
+  tipo      String   @unique
+  numero    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Venta {
-  id           Int      @id @default(autoincrement())
-  cliente_id   Int
-  fecha        DateTime @default(now())
-  total        Float
-  observacion  String?
-  numero_venta String   @unique
-  tipo_pago    String
-  tipo_venta   String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id                Int       @id @default(autoincrement())
+  cliente_id        Int
+  fecha             DateTime  @default(now())
+  nombre_cliente    String?
+  telefono_cliente  String?
+  direccion_cliente String?
+  dni_cliente       String?
+  total             Float
+  descuento         Float?
+  subtotal          Float?
+  observacion       String?
+  numero_venta      String    @unique
+  metodo_pago       String
+  tipo_venta        String
+  updatedAt         DateTime? @updatedAt
 }
 
 model detalle_venta {

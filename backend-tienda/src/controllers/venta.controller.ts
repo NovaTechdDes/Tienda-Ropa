@@ -12,7 +12,7 @@ export const ventaController = {
     res.status(200).json(venta);
   },
   create: async (req: Request, res: Response) => {
-    const venta = await ventaService.create(req.body);
-    res.status(201).json(venta);
+    await ventaService.create(req.body);
+    res.status(201).json({ ok: true, message: "Venta creada exitosamente" });
   },
 };

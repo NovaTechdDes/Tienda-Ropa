@@ -11,7 +11,7 @@ const Venta = () => {
     <div className="min-h-screen w-full bg-[#0a0a0b] p-6 md:p-10 text-[#f5f5f0]">
       <div className="max-w-[1600px] mx-auto">
         {/* Header */}
-        <Header titulo="Ventas" descripcion="Generación de pedidos y gestión de facturación" accion={() => {}} textoBoton="Nueva Venta" />
+        <Header titulo="Ventas" descripcion="Generación de pedidos y gestión de facturación" textoBoton="Nueva Venta" />
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mt-8">
           {/* Columna Izquierda: Productos (Proximamente) */}

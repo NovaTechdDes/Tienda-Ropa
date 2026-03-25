@@ -15,7 +15,7 @@ import {
   variante_productoRoutes,
   ventaRoutes,
 } from "./routes";
-import { initData } from "./init";
+import { initData, initNumeros } from "./init";
 
 dotenv.config();
 
@@ -50,4 +50,5 @@ app.listen(PORT, async () => {
   console.log(`Servidor en http://localhost:${PORT}`);
 
   await initData();
+  await initNumeros();
 });

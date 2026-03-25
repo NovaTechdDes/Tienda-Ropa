@@ -9,9 +9,25 @@ export const ventaService = {
       where: { id },
     });
   },
-  create: (data: any) => {
-    return prisma.venta.create({
-      data,
+  create: async (data: any) => {
+    return await prisma.$transaction(async (tx) => {
+      const numeroActualizado = await tx.numero.update({
+        where: { tipo: data.metodo_pago },
+        data: {
+          numero: {
+            increment: 1,
+          },
+        },
+      });
+
+      const venta = await tx.venta.create({
+        data: {
+          ...data,
+          numero_venta: numeroActualizado.numero.toString().padStart(8, "0"),
+        },
+      });
+
+      return venta;
     });
   },
   update: (id: number, data: any) => {

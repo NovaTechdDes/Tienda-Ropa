@@ -22,3 +22,22 @@ export async function initData() {
     console.log("✔ Cliente CONSUMIDOR FINAL ya existe");
   }
 }
+
+export async function initNumeros() {
+  const numero = await prisma.numero.findFirst({
+    where: { tipo: "EFECTIVO" },
+  });
+
+  if (!numero) {
+    await prisma.numero.create({
+      data: {
+        tipo: "EFECTIVO",
+        numero: 1,
+      },
+    });
+
+    console.log("✔ Numero EFECTIVO creado");
+  } else {
+    console.log("✔ Numero EFECTIVO ya existe");
+  }
+}
