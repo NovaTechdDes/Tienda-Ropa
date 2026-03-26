@@ -29,22 +29,46 @@ export const variante_productoService = {
       });
     }
   },
-  update: async (id: number, data: any) => {
-    for await (const variante of data) {
-      const existe = variante.id
-        ? await prisma.variante_producto.findUnique({
-            where: { id: variante.id },
-          })
-        : null;
+  update: async (id: number, variantes: any) => {
+    //Traemos las variantes
+    const actuales = await prisma.variante_producto.findMany({
+      where: { producto_id: id },
+    });
 
-      if (existe) {
+    const actualesIds = actuales.map((v) => v.id);
+    const nuevasIds = variantes.filter((v: any) => v.id).map((v: any) => v.id);
+
+    //Eliminamos las varianetes que no vienen
+    const eliminarIds = actualesIds.filter((id) => !nuevasIds.includes(id));
+
+    if (eliminarIds.length > 0) {
+      await prisma.variante_producto.deleteMany({
+        where: {
+          id: { in: eliminarIds },
+        },
+      });
+    }
+
+    //Actualizamos las variantes que vienen
+    for await (const variante of variantes) {
+      if (variante.id) {
         await prisma.variante_producto.update({
           where: { id: variante.id },
-          data: { ...variante },
+          data: {
+            talle_id: variante.talle_id,
+            color_id: variante.color_id,
+            precio: variante.precio,
+            stock: variante.stock,
+            sku: variante.sku,
+            activo: variante.activo,
+          },
         });
       } else {
         await prisma.variante_producto.create({
-          data: { ...variante, producto_id: id },
+          data: {
+            ...variante,
+            producto_id: id,
+          },
         });
       }
     }

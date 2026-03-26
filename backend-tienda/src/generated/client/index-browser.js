@@ -166,6 +166,7 @@ exports.Prisma.ProductoScalarFieldEnum = {
   categoria_id: 'categoria_id',
   sku: 'sku',
   img_url: 'img_url',
+  precio_global: 'precio_global',
   observacion: 'observacion',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',

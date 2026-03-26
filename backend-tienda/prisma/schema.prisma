@@ -55,17 +55,18 @@ model Color {
 }
 
 model Producto {
-  id           Int      @id @default(autoincrement())
-  descripcion  String
-  provedor_id  Int?
-  marca_id     Int?
-  categoria_id Int?
-  sku          String?
-  img_url      String?
-  observacion  String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @default(now())
-  activo       Boolean  @default(true)
+  id            Int      @id @default(autoincrement())
+  descripcion   String
+  provedor_id   Int?
+  marca_id      Int?
+  categoria_id  Int?
+  sku           String?
+  img_url       String?
+  precio_global Float?
+  observacion   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now())
+  activo        Boolean  @default(true)
 
   variantes variante_producto[]
 }
@@ -75,7 +76,7 @@ model variante_producto {
   producto_id Int
   talle_id    Int
   color_id    Int
-  precio      Float
+  precio      Float?
   stock       Int
   sku         String?
   activo      Boolean  @default(true)

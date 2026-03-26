@@ -1,8 +1,10 @@
-import { useProductos } from "../../hooks/productos/useProductos";
-import { ProductItem } from "./ProductItem";
+import { useProductos } from '../../hooks/productos/useProductos';
+import { ProductItem } from './ProductItem';
+import { useProductoStore } from '../../store';
 
 export const ProductosList = () => {
-  const { data: productos, isLoading } = useProductos();
+  const { buscador } = useProductoStore();
+  const { data: productos, isLoading } = useProductos(buscador);
 
   if (isLoading) {
     return <div>Cargando...</div>;

@@ -11,7 +11,7 @@ export const ProductoSeleccionado = () => {
     if (!productoSeleccionado) return;
     if (!varianteSeleccionado) return;
 
-    addItemCarrito(varianteSeleccionado, cantidad);
+    addItemCarrito(varianteSeleccionado, cantidad, productoSeleccionado?.precio_global ?? 0);
     setCantidad(1);
     setVarianteSeleccionado('');
   };
@@ -26,7 +26,9 @@ export const ProductoSeleccionado = () => {
 
       <div className="flex justify-between gap-4">
         <div className="flex flex-col">
-          <label htmlFor="" className="text-[10px] uppercase font-bold text-[#3f3f46] tracking-widest ml-1">Variante</label>
+          <label htmlFor="" className="text-[10px] uppercase font-bold text-[#3f3f46] tracking-widest ml-1">
+            Variante
+          </label>
           <select
             name="variante"
             id="variante"
@@ -44,14 +46,18 @@ export const ProductoSeleccionado = () => {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="stock" className="text-[10px] uppercase font-bold text-[#3f3f46] tracking-widest ml-1">Stock</label>
+          <label htmlFor="stock" className="text-[10px] uppercase font-bold text-[#3f3f46] tracking-widest ml-1">
+            Stock
+          </label>
           <p id="stock" className="bg-[#0a0a0b] border mt-2 border-[rgba(255,255,255,0.06)] rounded-2xl p-2">
             {productoSeleccionado?.variantes?.find((v) => v.id == varianteSeleccionado)?.stock.toFixed(2) ?? '0.00'}
           </p>
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="cantidad" className="text-[10px] uppercase font-bold text-[#3f3f46] tracking-widest ml-1">Cantidad</label>
+          <label htmlFor="cantidad" className="text-[10px] uppercase font-bold text-[#3f3f46] tracking-widest ml-1">
+            Cantidad
+          </label>
           <input
             type="number"
             value={cantidad}

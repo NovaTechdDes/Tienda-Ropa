@@ -8200,6 +8200,7 @@ export namespace Prisma {
     provedor_id: number | null
     marca_id: number | null
     categoria_id: number | null
+    precio_global: number | null
   }
 
   export type ProductoSumAggregateOutputType = {
@@ -8207,6 +8208,7 @@ export namespace Prisma {
     provedor_id: number | null
     marca_id: number | null
     categoria_id: number | null
+    precio_global: number | null
   }
 
   export type ProductoMinAggregateOutputType = {
@@ -8217,6 +8219,7 @@ export namespace Prisma {
     categoria_id: number | null
     sku: string | null
     img_url: string | null
+    precio_global: number | null
     observacion: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8231,6 +8234,7 @@ export namespace Prisma {
     categoria_id: number | null
     sku: string | null
     img_url: string | null
+    precio_global: number | null
     observacion: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8245,6 +8249,7 @@ export namespace Prisma {
     categoria_id: number
     sku: number
     img_url: number
+    precio_global: number
     observacion: number
     createdAt: number
     updatedAt: number
@@ -8258,6 +8263,7 @@ export namespace Prisma {
     provedor_id?: true
     marca_id?: true
     categoria_id?: true
+    precio_global?: true
   }
 
   export type ProductoSumAggregateInputType = {
@@ -8265,6 +8271,7 @@ export namespace Prisma {
     provedor_id?: true
     marca_id?: true
     categoria_id?: true
+    precio_global?: true
   }
 
   export type ProductoMinAggregateInputType = {
@@ -8275,6 +8282,7 @@ export namespace Prisma {
     categoria_id?: true
     sku?: true
     img_url?: true
+    precio_global?: true
     observacion?: true
     createdAt?: true
     updatedAt?: true
@@ -8289,6 +8297,7 @@ export namespace Prisma {
     categoria_id?: true
     sku?: true
     img_url?: true
+    precio_global?: true
     observacion?: true
     createdAt?: true
     updatedAt?: true
@@ -8303,6 +8312,7 @@ export namespace Prisma {
     categoria_id?: true
     sku?: true
     img_url?: true
+    precio_global?: true
     observacion?: true
     createdAt?: true
     updatedAt?: true
@@ -8404,6 +8414,7 @@ export namespace Prisma {
     categoria_id: number | null
     sku: string | null
     img_url: string | null
+    precio_global: number | null
     observacion: string | null
     createdAt: Date
     updatedAt: Date
@@ -8437,6 +8448,7 @@ export namespace Prisma {
     categoria_id?: boolean
     sku?: boolean
     img_url?: boolean
+    precio_global?: boolean
     observacion?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8453,6 +8465,7 @@ export namespace Prisma {
     categoria_id?: boolean
     sku?: boolean
     img_url?: boolean
+    precio_global?: boolean
     observacion?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8467,6 +8480,7 @@ export namespace Prisma {
     categoria_id?: boolean
     sku?: boolean
     img_url?: boolean
+    precio_global?: boolean
     observacion?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8481,13 +8495,14 @@ export namespace Prisma {
     categoria_id?: boolean
     sku?: boolean
     img_url?: boolean
+    precio_global?: boolean
     observacion?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     activo?: boolean
   }
 
-  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descripcion" | "provedor_id" | "marca_id" | "categoria_id" | "sku" | "img_url" | "observacion" | "createdAt" | "updatedAt" | "activo", ExtArgs["result"]["producto"]>
+  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descripcion" | "provedor_id" | "marca_id" | "categoria_id" | "sku" | "img_url" | "precio_global" | "observacion" | "createdAt" | "updatedAt" | "activo", ExtArgs["result"]["producto"]>
   export type ProductoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     variantes?: boolean | Producto$variantesArgs<ExtArgs>
     _count?: boolean | ProductoCountOutputTypeDefaultArgs<ExtArgs>
@@ -8508,6 +8523,7 @@ export namespace Prisma {
       categoria_id: number | null
       sku: string | null
       img_url: string | null
+      precio_global: number | null
       observacion: string | null
       createdAt: Date
       updatedAt: Date
@@ -8943,6 +8959,7 @@ export namespace Prisma {
     readonly categoria_id: FieldRef<"Producto", 'Int'>
     readonly sku: FieldRef<"Producto", 'String'>
     readonly img_url: FieldRef<"Producto", 'String'>
+    readonly precio_global: FieldRef<"Producto", 'Float'>
     readonly observacion: FieldRef<"Producto", 'String'>
     readonly createdAt: FieldRef<"Producto", 'DateTime'>
     readonly updatedAt: FieldRef<"Producto", 'DateTime'>
@@ -9602,7 +9619,7 @@ export namespace Prisma {
     producto_id: number
     talle_id: number
     color_id: number
-    precio: number
+    precio: number | null
     stock: number
     sku: string | null
     activo: boolean
@@ -9719,7 +9736,7 @@ export namespace Prisma {
       producto_id: number
       talle_id: number
       color_id: number
-      precio: number
+      precio: number | null
       stock: number
       sku: string | null
       activo: boolean
@@ -15033,6 +15050,7 @@ export namespace Prisma {
     categoria_id: 'categoria_id',
     sku: 'sku',
     img_url: 'img_url',
+    precio_global: 'precio_global',
     observacion: 'observacion',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -15503,6 +15521,7 @@ export namespace Prisma {
     categoria_id?: IntNullableFilter<"Producto"> | number | null
     sku?: StringNullableFilter<"Producto"> | string | null
     img_url?: StringNullableFilter<"Producto"> | string | null
+    precio_global?: FloatNullableFilter<"Producto"> | number | null
     observacion?: StringNullableFilter<"Producto"> | string | null
     createdAt?: DateTimeFilter<"Producto"> | Date | string
     updatedAt?: DateTimeFilter<"Producto"> | Date | string
@@ -15518,6 +15537,7 @@ export namespace Prisma {
     categoria_id?: SortOrderInput | SortOrder
     sku?: SortOrderInput | SortOrder
     img_url?: SortOrderInput | SortOrder
+    precio_global?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15536,6 +15556,7 @@ export namespace Prisma {
     categoria_id?: IntNullableFilter<"Producto"> | number | null
     sku?: StringNullableFilter<"Producto"> | string | null
     img_url?: StringNullableFilter<"Producto"> | string | null
+    precio_global?: FloatNullableFilter<"Producto"> | number | null
     observacion?: StringNullableFilter<"Producto"> | string | null
     createdAt?: DateTimeFilter<"Producto"> | Date | string
     updatedAt?: DateTimeFilter<"Producto"> | Date | string
@@ -15551,6 +15572,7 @@ export namespace Prisma {
     categoria_id?: SortOrderInput | SortOrder
     sku?: SortOrderInput | SortOrder
     img_url?: SortOrderInput | SortOrder
+    precio_global?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15573,6 +15595,7 @@ export namespace Prisma {
     categoria_id?: IntNullableWithAggregatesFilter<"Producto"> | number | null
     sku?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     img_url?: StringNullableWithAggregatesFilter<"Producto"> | string | null
+    precio_global?: FloatNullableWithAggregatesFilter<"Producto"> | number | null
     observacion?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Producto"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Producto"> | Date | string
@@ -15587,7 +15610,7 @@ export namespace Prisma {
     producto_id?: IntFilter<"variante_producto"> | number
     talle_id?: IntFilter<"variante_producto"> | number
     color_id?: IntFilter<"variante_producto"> | number
-    precio?: FloatFilter<"variante_producto"> | number
+    precio?: FloatNullableFilter<"variante_producto"> | number | null
     stock?: IntFilter<"variante_producto"> | number
     sku?: StringNullableFilter<"variante_producto"> | string | null
     activo?: BoolFilter<"variante_producto"> | boolean
@@ -15603,7 +15626,7 @@ export namespace Prisma {
     producto_id?: SortOrder
     talle_id?: SortOrder
     color_id?: SortOrder
-    precio?: SortOrder
+    precio?: SortOrderInput | SortOrder
     stock?: SortOrder
     sku?: SortOrderInput | SortOrder
     activo?: SortOrder
@@ -15622,7 +15645,7 @@ export namespace Prisma {
     producto_id?: IntFilter<"variante_producto"> | number
     talle_id?: IntFilter<"variante_producto"> | number
     color_id?: IntFilter<"variante_producto"> | number
-    precio?: FloatFilter<"variante_producto"> | number
+    precio?: FloatNullableFilter<"variante_producto"> | number | null
     stock?: IntFilter<"variante_producto"> | number
     sku?: StringNullableFilter<"variante_producto"> | string | null
     activo?: BoolFilter<"variante_producto"> | boolean
@@ -15638,7 +15661,7 @@ export namespace Prisma {
     producto_id?: SortOrder
     talle_id?: SortOrder
     color_id?: SortOrder
-    precio?: SortOrder
+    precio?: SortOrderInput | SortOrder
     stock?: SortOrder
     sku?: SortOrderInput | SortOrder
     activo?: SortOrder
@@ -15659,7 +15682,7 @@ export namespace Prisma {
     producto_id?: IntWithAggregatesFilter<"variante_producto"> | number
     talle_id?: IntWithAggregatesFilter<"variante_producto"> | number
     color_id?: IntWithAggregatesFilter<"variante_producto"> | number
-    precio?: FloatWithAggregatesFilter<"variante_producto"> | number
+    precio?: FloatNullableWithAggregatesFilter<"variante_producto"> | number | null
     stock?: IntWithAggregatesFilter<"variante_producto"> | number
     sku?: StringNullableWithAggregatesFilter<"variante_producto"> | string | null
     activo?: BoolWithAggregatesFilter<"variante_producto"> | boolean
@@ -16222,6 +16245,7 @@ export namespace Prisma {
     categoria_id?: number | null
     sku?: string | null
     img_url?: string | null
+    precio_global?: number | null
     observacion?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16237,6 +16261,7 @@ export namespace Prisma {
     categoria_id?: number | null
     sku?: string | null
     img_url?: string | null
+    precio_global?: number | null
     observacion?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16251,6 +16276,7 @@ export namespace Prisma {
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
+    precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16266,6 +16292,7 @@ export namespace Prisma {
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
+    precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16281,6 +16308,7 @@ export namespace Prisma {
     categoria_id?: number | null
     sku?: string | null
     img_url?: string | null
+    precio_global?: number | null
     observacion?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16294,6 +16322,7 @@ export namespace Prisma {
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
+    precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16308,6 +16337,7 @@ export namespace Prisma {
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
+    precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16315,7 +16345,7 @@ export namespace Prisma {
   }
 
   export type variante_productoCreateInput = {
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -16331,7 +16361,7 @@ export namespace Prisma {
     producto_id: number
     talle_id: number
     color_id: number
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -16340,7 +16370,7 @@ export namespace Prisma {
   }
 
   export type variante_productoUpdateInput = {
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -16356,7 +16386,7 @@ export namespace Prisma {
     producto_id?: IntFieldUpdateOperationsInput | number
     talle_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -16369,7 +16399,7 @@ export namespace Prisma {
     producto_id: number
     talle_id: number
     color_id: number
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -16378,7 +16408,7 @@ export namespace Prisma {
   }
 
   export type variante_productoUpdateManyMutationInput = {
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -16391,7 +16421,7 @@ export namespace Prisma {
     producto_id?: IntFieldUpdateOperationsInput | number
     talle_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -17035,6 +17065,17 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type ProductoCountOrderByAggregateInput = {
     id?: SortOrder
     descripcion?: SortOrder
@@ -17043,6 +17084,7 @@ export namespace Prisma {
     categoria_id?: SortOrder
     sku?: SortOrder
     img_url?: SortOrder
+    precio_global?: SortOrder
     observacion?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17054,6 +17096,7 @@ export namespace Prisma {
     provedor_id?: SortOrder
     marca_id?: SortOrder
     categoria_id?: SortOrder
+    precio_global?: SortOrder
   }
 
   export type ProductoMaxOrderByAggregateInput = {
@@ -17064,6 +17107,7 @@ export namespace Prisma {
     categoria_id?: SortOrder
     sku?: SortOrder
     img_url?: SortOrder
+    precio_global?: SortOrder
     observacion?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17078,6 +17122,7 @@ export namespace Prisma {
     categoria_id?: SortOrder
     sku?: SortOrder
     img_url?: SortOrder
+    precio_global?: SortOrder
     observacion?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17089,6 +17134,7 @@ export namespace Prisma {
     provedor_id?: SortOrder
     marca_id?: SortOrder
     categoria_id?: SortOrder
+    precio_global?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -17107,15 +17153,20 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type ProductoScalarRelationFilter = {
@@ -17190,22 +17241,6 @@ export namespace Prisma {
     stock?: SortOrder
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
   export type NumeroCountOrderByAggregateInput = {
     id?: SortOrder
     tipo?: SortOrder
@@ -17240,15 +17275,15 @@ export namespace Prisma {
     numero?: SortOrder
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -17337,20 +17372,20 @@ export namespace Prisma {
     subtotal?: SortOrder
   }
 
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -17588,6 +17623,14 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type variante_productoUpdateManyWithoutProductoNestedInput = {
     create?: XOR<variante_productoCreateWithoutProductoInput, variante_productoUncheckedCreateWithoutProductoInput> | variante_productoCreateWithoutProductoInput[] | variante_productoUncheckedCreateWithoutProductoInput[]
     connectOrCreate?: variante_productoCreateOrConnectWithoutProductoInput | variante_productoCreateOrConnectWithoutProductoInput[]
@@ -17634,14 +17677,6 @@ export namespace Prisma {
     connect?: ColorWhereUniqueInput
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type ProductoUpdateOneRequiredWithoutVariantesNestedInput = {
     create?: XOR<ProductoCreateWithoutVariantesInput, ProductoUncheckedCreateWithoutVariantesInput>
     connectOrCreate?: ProductoCreateOrConnectWithoutVariantesInput
@@ -17666,8 +17701,8 @@ export namespace Prisma {
     update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutVariantesInput, ColorUpdateWithoutVariantesInput>, ColorUncheckedUpdateWithoutVariantesInput>
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
     increment?: number
     decrement?: number
     multiply?: number
@@ -17827,6 +17862,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -17841,44 +17887,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -17897,6 +17905,33 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -17912,7 +17947,7 @@ export namespace Prisma {
   }
 
   export type variante_productoCreateWithoutTalleInput = {
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -17926,7 +17961,7 @@ export namespace Prisma {
     id?: number
     producto_id: number
     color_id: number
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -17968,7 +18003,7 @@ export namespace Prisma {
     producto_id?: IntFilter<"variante_producto"> | number
     talle_id?: IntFilter<"variante_producto"> | number
     color_id?: IntFilter<"variante_producto"> | number
-    precio?: FloatFilter<"variante_producto"> | number
+    precio?: FloatNullableFilter<"variante_producto"> | number | null
     stock?: IntFilter<"variante_producto"> | number
     sku?: StringNullableFilter<"variante_producto"> | string | null
     activo?: BoolFilter<"variante_producto"> | boolean
@@ -17977,7 +18012,7 @@ export namespace Prisma {
   }
 
   export type variante_productoCreateWithoutColorInput = {
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -17991,7 +18026,7 @@ export namespace Prisma {
     id?: number
     producto_id: number
     talle_id: number
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -18026,7 +18061,7 @@ export namespace Prisma {
   }
 
   export type variante_productoCreateWithoutProductoInput = {
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -18040,7 +18075,7 @@ export namespace Prisma {
     id?: number
     talle_id: number
     color_id: number
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -18081,6 +18116,7 @@ export namespace Prisma {
     categoria_id?: number | null
     sku?: string | null
     img_url?: string | null
+    precio_global?: number | null
     observacion?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18095,6 +18131,7 @@ export namespace Prisma {
     categoria_id?: number | null
     sku?: string | null
     img_url?: string | null
+    precio_global?: number | null
     observacion?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18152,6 +18189,7 @@ export namespace Prisma {
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
+    precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18166,6 +18204,7 @@ export namespace Prisma {
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
+    precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18216,7 +18255,7 @@ export namespace Prisma {
     id?: number
     producto_id: number
     color_id: number
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -18225,7 +18264,7 @@ export namespace Prisma {
   }
 
   export type variante_productoUpdateWithoutTalleInput = {
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -18239,7 +18278,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     producto_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -18251,7 +18290,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     producto_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -18263,7 +18302,7 @@ export namespace Prisma {
     id?: number
     producto_id: number
     talle_id: number
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -18272,7 +18311,7 @@ export namespace Prisma {
   }
 
   export type variante_productoUpdateWithoutColorInput = {
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -18286,7 +18325,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     producto_id?: IntFieldUpdateOperationsInput | number
     talle_id?: IntFieldUpdateOperationsInput | number
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -18298,7 +18337,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     producto_id?: IntFieldUpdateOperationsInput | number
     talle_id?: IntFieldUpdateOperationsInput | number
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -18310,7 +18349,7 @@ export namespace Prisma {
     id?: number
     talle_id: number
     color_id: number
-    precio: number
+    precio?: number | null
     stock: number
     sku?: string | null
     activo?: boolean
@@ -18319,7 +18358,7 @@ export namespace Prisma {
   }
 
   export type variante_productoUpdateWithoutProductoInput = {
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -18333,7 +18372,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     talle_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean
@@ -18345,7 +18384,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     talle_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
-    precio?: FloatFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
     stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     activo?: BoolFieldUpdateOperationsInput | boolean

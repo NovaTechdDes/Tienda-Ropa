@@ -1,9 +1,16 @@
 import { prisma } from "../db";
 
 export const productoService = {
-  getAll: () => {
+  getAll: (buscador: string) => {
     return prisma.producto.findMany({
-      where: { activo: true },
+      where: {
+        activo: true,
+        OR: [
+          { descripcion: { contains: buscador, mode: "insensitive" } },
+          { sku: { contains: buscador, mode: "insensitive" } },
+        ],
+      },
+      orderBy: { descripcion: "asc" },
       include: {
         variantes: {
           include: {
@@ -28,7 +35,6 @@ export const productoService = {
     });
   },
   create: (data: any) => {
-    console.log(data);
     return prisma.producto.create({
       data,
     });

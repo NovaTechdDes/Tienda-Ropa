@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { Producto } from "../interface/Producto";
+import { create } from 'zustand';
+import { Producto } from '../interface/Producto';
 
 interface ProductoStore {
   modal: boolean;
@@ -8,6 +8,9 @@ interface ProductoStore {
 
   productoSeleccionado: Producto | null;
   setProductoSeleccionado: (producto: Producto) => void;
+
+  buscador: string;
+  setBuscador: (buscador: string) => void;
 }
 
 export const useProductoStore = create<ProductoStore>((set) => ({
@@ -16,6 +19,8 @@ export const useProductoStore = create<ProductoStore>((set) => ({
   closeModal: () => set({ modal: false, productoSeleccionado: null }),
 
   productoSeleccionado: null,
-  setProductoSeleccionado: (producto: Producto) =>
-    set({ productoSeleccionado: producto }),
+  setProductoSeleccionado: (producto: Producto) => set({ productoSeleccionado: producto }),
+
+  buscador: '',
+  setBuscador: (buscador: string) => set({ buscador }),
 }));

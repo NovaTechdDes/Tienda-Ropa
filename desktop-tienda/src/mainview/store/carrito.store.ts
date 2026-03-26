@@ -17,7 +17,7 @@ interface CarritoStore {
   clearProductoSeleccionado: () => void;
 
   variantesCarrito: VarianteCarrito[];
-  addItemCarrito: (id_variante: string, cantidad: number) => void;
+  addItemCarrito: (id_variante: string, cantidad: number, precio: number) => void;
   setVariantesCarrito: (variantesCarrito: VarianteCarrito[]) => void;
   clearCarrito: () => void;
   eliminarVarianteCarrito: (id_variante: string) => void;
@@ -47,7 +47,7 @@ export const useCarritoStore = create<CarritoStore>((set) => ({
   clearProductoSeleccionado: () => set({ productoSeleccionado: null }),
 
   variantesCarrito: [],
-  addItemCarrito: (id_variante: string, cantidad: number) =>
+  addItemCarrito: (id_variante: string, cantidad: number, precioAux: number) =>
     set((state) => {
       const { variantesCarrito, productoSeleccionado, total } = state;
 
@@ -56,7 +56,7 @@ export const useCarritoStore = create<CarritoStore>((set) => ({
 
       if (!varianteProducto) return state;
 
-      const precio = varianteProducto.precio;
+      const precio = varianteProducto.precio && varianteProducto.precio !== 0 ? varianteProducto.precio : precioAux;
       const nombreProducto = productoSeleccionado?.descripcion || 'Sin nombre';
       const nombreVariante = `${varianteProducto.talle?.nombre || '-'}/${varianteProducto.color?.nombre || '-'}`;
 
