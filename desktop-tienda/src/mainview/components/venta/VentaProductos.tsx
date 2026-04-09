@@ -1,9 +1,12 @@
 import { Loader2 } from 'lucide-react';
 import { useProductos } from '../../hooks';
 import { ProductItemVenta } from './ProductItemVenta';
+import { useProductoStore } from '../../store';
 
 export const VentaProductos = () => {
-  const { data: productos, isLoading } = useProductos();
+  const { buscador } = useProductoStore();
+  const { data: productos, isLoading } = useProductos(buscador);
+  console.log(productos);
 
   if (isLoading) {
     return (
