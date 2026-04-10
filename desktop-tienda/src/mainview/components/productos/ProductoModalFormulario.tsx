@@ -14,7 +14,6 @@ const initialState: Producto = {
   id: '',
   img_url: '',
   observacion: '',
-  sku: '',
   variantes: [],
   precio_global: 0,
 };
@@ -30,10 +29,11 @@ export const ProductoModalFormulario = () => {
   const [talle, setTalle] = useState<number>();
   const [stock, setStock] = useState('');
   const [precio, setPrecio] = useState('');
+  const [sku, setSku] = useState('');
 
   const [variantes, setVariantes] = useState<any[]>(productoSeleccionado?.variantes ?? []);
 
-  const { formState, onInputChange, onResetForm, descripcion, observacion, sku, precio_global } = useForm(productoSeleccionado ?? initialState);
+  const { formState, onInputChange, onResetForm, descripcion, observacion, precio_global } = useForm(productoSeleccionado ?? initialState);
 
   const addVariante = () => {
     if (!color || !talle || !stock) return;
@@ -45,6 +45,7 @@ export const ProductoModalFormulario = () => {
         talle_id: talle,
         precio: Number(precio),
         stock: Number(stock),
+        sku: sku,
       },
     ]);
 
@@ -53,6 +54,7 @@ export const ProductoModalFormulario = () => {
     setTalle(0);
     setStock('');
     setPrecio('');
+    setSku('');
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -61,7 +63,6 @@ export const ProductoModalFormulario = () => {
     const formData = new FormData();
     formData.append('descripcion', descripcion);
     formData.append('observacion', observacion ? observacion : '');
-    formData.append('sku', sku ? sku : '');
     formData.append('precio_global', String(precio_global ?? 0));
     formData.append('img_url', productoSeleccionado?.img_url ? productoSeleccionado.img_url : '');
     formData.append('imagen', imagen ? imagen : '');
@@ -211,22 +212,7 @@ export const ProductoModalFormulario = () => {
               </div>
             </div>
 
-            {/* SKU */}
-            <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-widest text-[#bababb] font-bold ml-1">Codigo de Barra / SKU</label>
-              <div className="relative group">
-                <Barcode className="absolute left-4 top-1/2 -translate-y-1/2 text-[#bababb] group-focus-within:text-[#d4af37] transition-colors" size={16} />
-                <input
-                  type="text"
-                  placeholder="7798512574"
-                  className="w-full bg-[#0a0a0b] border placeholder:text-gray-500 border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all"
-                  defaultValue={productoSeleccionado?.sku}
-                  onChange={onInputChange}
-                  name="sku"
-                  value={sku}
-                />
-              </div>
-            </div>
+            
           </div>
 
           {/* Gestión de Variantes */}
@@ -236,7 +222,7 @@ export const ProductoModalFormulario = () => {
             </div>
 
             {/* Agregar Una Variante */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 p-3 bg-[#0a0a0b]/50 border border-[rgba(255,255,255,0.04)] rounded-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-3 p-3 bg-[#0a0a0b]/50 border border-[rgba(255,255,255,0.04)] rounded-2xl">
               <select
                 value={talle}
                 name="talle_id"
@@ -277,6 +263,7 @@ export const ProductoModalFormulario = () => {
                 placeholder="Precio"
                 className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
               />
+              <input type="text" value={sku} onChange={(e) => setSku(e.target.value)} placeholder="SKU" className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30" />
               <button type="button" onClick={addVariante} className="bg-[#d4af37] hover:bg-[#e5c158] text-[#0a0a0b] rounded-lg flex items-center justify-center transition-all h-full min-h-[36px]">
                 <Plus size={18} />
               </button>

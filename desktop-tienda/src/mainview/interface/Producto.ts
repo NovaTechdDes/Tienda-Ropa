@@ -9,7 +9,6 @@ export interface Producto {
   categoria_id?: number;
   img_url?: string;
   observacion?: string;
-  sku?: string;
 
   variantes?: Variante_Producto[];
 }

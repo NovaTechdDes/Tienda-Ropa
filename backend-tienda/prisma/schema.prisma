@@ -60,7 +60,6 @@ model Producto {
   provedor_id   Int?
   marca_id      Int?
   categoria_id  Int?
-  sku           String?
   img_url       String?
   precio_global Float?
   observacion   String?
@@ -77,8 +76,8 @@ model variante_producto {
   talle_id    Int
   color_id    Int
   precio      Float?
-  stock       Int
   sku         String?
+  stock       Int
   activo      Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
