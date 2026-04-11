@@ -8217,7 +8217,6 @@ export namespace Prisma {
     provedor_id: number | null
     marca_id: number | null
     categoria_id: number | null
-    sku: string | null
     img_url: string | null
     precio_global: number | null
     observacion: string | null
@@ -8232,7 +8231,6 @@ export namespace Prisma {
     provedor_id: number | null
     marca_id: number | null
     categoria_id: number | null
-    sku: string | null
     img_url: string | null
     precio_global: number | null
     observacion: string | null
@@ -8247,7 +8245,6 @@ export namespace Prisma {
     provedor_id: number
     marca_id: number
     categoria_id: number
-    sku: number
     img_url: number
     precio_global: number
     observacion: number
@@ -8280,7 +8277,6 @@ export namespace Prisma {
     provedor_id?: true
     marca_id?: true
     categoria_id?: true
-    sku?: true
     img_url?: true
     precio_global?: true
     observacion?: true
@@ -8295,7 +8291,6 @@ export namespace Prisma {
     provedor_id?: true
     marca_id?: true
     categoria_id?: true
-    sku?: true
     img_url?: true
     precio_global?: true
     observacion?: true
@@ -8310,7 +8305,6 @@ export namespace Prisma {
     provedor_id?: true
     marca_id?: true
     categoria_id?: true
-    sku?: true
     img_url?: true
     precio_global?: true
     observacion?: true
@@ -8412,7 +8406,6 @@ export namespace Prisma {
     provedor_id: number | null
     marca_id: number | null
     categoria_id: number | null
-    sku: string | null
     img_url: string | null
     precio_global: number | null
     observacion: string | null
@@ -8446,7 +8439,6 @@ export namespace Prisma {
     provedor_id?: boolean
     marca_id?: boolean
     categoria_id?: boolean
-    sku?: boolean
     img_url?: boolean
     precio_global?: boolean
     observacion?: boolean
@@ -8463,7 +8455,6 @@ export namespace Prisma {
     provedor_id?: boolean
     marca_id?: boolean
     categoria_id?: boolean
-    sku?: boolean
     img_url?: boolean
     precio_global?: boolean
     observacion?: boolean
@@ -8478,7 +8469,6 @@ export namespace Prisma {
     provedor_id?: boolean
     marca_id?: boolean
     categoria_id?: boolean
-    sku?: boolean
     img_url?: boolean
     precio_global?: boolean
     observacion?: boolean
@@ -8493,7 +8483,6 @@ export namespace Prisma {
     provedor_id?: boolean
     marca_id?: boolean
     categoria_id?: boolean
-    sku?: boolean
     img_url?: boolean
     precio_global?: boolean
     observacion?: boolean
@@ -8502,7 +8491,7 @@ export namespace Prisma {
     activo?: boolean
   }
 
-  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descripcion" | "provedor_id" | "marca_id" | "categoria_id" | "sku" | "img_url" | "precio_global" | "observacion" | "createdAt" | "updatedAt" | "activo", ExtArgs["result"]["producto"]>
+  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descripcion" | "provedor_id" | "marca_id" | "categoria_id" | "img_url" | "precio_global" | "observacion" | "createdAt" | "updatedAt" | "activo", ExtArgs["result"]["producto"]>
   export type ProductoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     variantes?: boolean | Producto$variantesArgs<ExtArgs>
     _count?: boolean | ProductoCountOutputTypeDefaultArgs<ExtArgs>
@@ -8521,7 +8510,6 @@ export namespace Prisma {
       provedor_id: number | null
       marca_id: number | null
       categoria_id: number | null
-      sku: string | null
       img_url: string | null
       precio_global: number | null
       observacion: string | null
@@ -8957,7 +8945,6 @@ export namespace Prisma {
     readonly provedor_id: FieldRef<"Producto", 'Int'>
     readonly marca_id: FieldRef<"Producto", 'Int'>
     readonly categoria_id: FieldRef<"Producto", 'Int'>
-    readonly sku: FieldRef<"Producto", 'String'>
     readonly img_url: FieldRef<"Producto", 'String'>
     readonly precio_global: FieldRef<"Producto", 'Float'>
     readonly observacion: FieldRef<"Producto", 'String'>
@@ -9435,8 +9422,8 @@ export namespace Prisma {
     talle_id: number | null
     color_id: number | null
     precio: number | null
-    stock: number | null
     sku: string | null
+    stock: number | null
     activo: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -9448,8 +9435,8 @@ export namespace Prisma {
     talle_id: number | null
     color_id: number | null
     precio: number | null
-    stock: number | null
     sku: string | null
+    stock: number | null
     activo: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -9461,8 +9448,8 @@ export namespace Prisma {
     talle_id: number
     color_id: number
     precio: number
-    stock: number
     sku: number
+    stock: number
     activo: number
     createdAt: number
     updatedAt: number
@@ -9494,8 +9481,8 @@ export namespace Prisma {
     talle_id?: true
     color_id?: true
     precio?: true
-    stock?: true
     sku?: true
+    stock?: true
     activo?: true
     createdAt?: true
     updatedAt?: true
@@ -9507,8 +9494,8 @@ export namespace Prisma {
     talle_id?: true
     color_id?: true
     precio?: true
-    stock?: true
     sku?: true
+    stock?: true
     activo?: true
     createdAt?: true
     updatedAt?: true
@@ -9520,8 +9507,8 @@ export namespace Prisma {
     talle_id?: true
     color_id?: true
     precio?: true
-    stock?: true
     sku?: true
+    stock?: true
     activo?: true
     createdAt?: true
     updatedAt?: true
@@ -9620,8 +9607,8 @@ export namespace Prisma {
     talle_id: number
     color_id: number
     precio: number | null
-    stock: number
     sku: string | null
+    stock: number
     activo: boolean
     createdAt: Date
     updatedAt: Date
@@ -9652,8 +9639,8 @@ export namespace Prisma {
     talle_id?: boolean
     color_id?: boolean
     precio?: boolean
-    stock?: boolean
     sku?: boolean
+    stock?: boolean
     activo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -9668,8 +9655,8 @@ export namespace Prisma {
     talle_id?: boolean
     color_id?: boolean
     precio?: boolean
-    stock?: boolean
     sku?: boolean
+    stock?: boolean
     activo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -9684,8 +9671,8 @@ export namespace Prisma {
     talle_id?: boolean
     color_id?: boolean
     precio?: boolean
-    stock?: boolean
     sku?: boolean
+    stock?: boolean
     activo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -9700,14 +9687,14 @@ export namespace Prisma {
     talle_id?: boolean
     color_id?: boolean
     precio?: boolean
-    stock?: boolean
     sku?: boolean
+    stock?: boolean
     activo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type variante_productoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "producto_id" | "talle_id" | "color_id" | "precio" | "stock" | "sku" | "activo" | "createdAt" | "updatedAt", ExtArgs["result"]["variante_producto"]>
+  export type variante_productoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "producto_id" | "talle_id" | "color_id" | "precio" | "sku" | "stock" | "activo" | "createdAt" | "updatedAt", ExtArgs["result"]["variante_producto"]>
   export type variante_productoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     producto?: boolean | ProductoDefaultArgs<ExtArgs>
     talle?: boolean | TalleDefaultArgs<ExtArgs>
@@ -9737,8 +9724,8 @@ export namespace Prisma {
       talle_id: number
       color_id: number
       precio: number | null
-      stock: number
       sku: string | null
+      stock: number
       activo: boolean
       createdAt: Date
       updatedAt: Date
@@ -10173,8 +10160,8 @@ export namespace Prisma {
     readonly talle_id: FieldRef<"variante_producto", 'Int'>
     readonly color_id: FieldRef<"variante_producto", 'Int'>
     readonly precio: FieldRef<"variante_producto", 'Float'>
-    readonly stock: FieldRef<"variante_producto", 'Int'>
     readonly sku: FieldRef<"variante_producto", 'String'>
+    readonly stock: FieldRef<"variante_producto", 'Int'>
     readonly activo: FieldRef<"variante_producto", 'Boolean'>
     readonly createdAt: FieldRef<"variante_producto", 'DateTime'>
     readonly updatedAt: FieldRef<"variante_producto", 'DateTime'>
@@ -15048,7 +15035,6 @@ export namespace Prisma {
     provedor_id: 'provedor_id',
     marca_id: 'marca_id',
     categoria_id: 'categoria_id',
-    sku: 'sku',
     img_url: 'img_url',
     precio_global: 'precio_global',
     observacion: 'observacion',
@@ -15066,8 +15052,8 @@ export namespace Prisma {
     talle_id: 'talle_id',
     color_id: 'color_id',
     precio: 'precio',
-    stock: 'stock',
     sku: 'sku',
+    stock: 'stock',
     activo: 'activo',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -15519,7 +15505,6 @@ export namespace Prisma {
     provedor_id?: IntNullableFilter<"Producto"> | number | null
     marca_id?: IntNullableFilter<"Producto"> | number | null
     categoria_id?: IntNullableFilter<"Producto"> | number | null
-    sku?: StringNullableFilter<"Producto"> | string | null
     img_url?: StringNullableFilter<"Producto"> | string | null
     precio_global?: FloatNullableFilter<"Producto"> | number | null
     observacion?: StringNullableFilter<"Producto"> | string | null
@@ -15535,7 +15520,6 @@ export namespace Prisma {
     provedor_id?: SortOrderInput | SortOrder
     marca_id?: SortOrderInput | SortOrder
     categoria_id?: SortOrderInput | SortOrder
-    sku?: SortOrderInput | SortOrder
     img_url?: SortOrderInput | SortOrder
     precio_global?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
@@ -15554,7 +15538,6 @@ export namespace Prisma {
     provedor_id?: IntNullableFilter<"Producto"> | number | null
     marca_id?: IntNullableFilter<"Producto"> | number | null
     categoria_id?: IntNullableFilter<"Producto"> | number | null
-    sku?: StringNullableFilter<"Producto"> | string | null
     img_url?: StringNullableFilter<"Producto"> | string | null
     precio_global?: FloatNullableFilter<"Producto"> | number | null
     observacion?: StringNullableFilter<"Producto"> | string | null
@@ -15570,7 +15553,6 @@ export namespace Prisma {
     provedor_id?: SortOrderInput | SortOrder
     marca_id?: SortOrderInput | SortOrder
     categoria_id?: SortOrderInput | SortOrder
-    sku?: SortOrderInput | SortOrder
     img_url?: SortOrderInput | SortOrder
     precio_global?: SortOrderInput | SortOrder
     observacion?: SortOrderInput | SortOrder
@@ -15593,7 +15575,6 @@ export namespace Prisma {
     provedor_id?: IntNullableWithAggregatesFilter<"Producto"> | number | null
     marca_id?: IntNullableWithAggregatesFilter<"Producto"> | number | null
     categoria_id?: IntNullableWithAggregatesFilter<"Producto"> | number | null
-    sku?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     img_url?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     precio_global?: FloatNullableWithAggregatesFilter<"Producto"> | number | null
     observacion?: StringNullableWithAggregatesFilter<"Producto"> | string | null
@@ -15611,8 +15592,8 @@ export namespace Prisma {
     talle_id?: IntFilter<"variante_producto"> | number
     color_id?: IntFilter<"variante_producto"> | number
     precio?: FloatNullableFilter<"variante_producto"> | number | null
-    stock?: IntFilter<"variante_producto"> | number
     sku?: StringNullableFilter<"variante_producto"> | string | null
+    stock?: IntFilter<"variante_producto"> | number
     activo?: BoolFilter<"variante_producto"> | boolean
     createdAt?: DateTimeFilter<"variante_producto"> | Date | string
     updatedAt?: DateTimeFilter<"variante_producto"> | Date | string
@@ -15627,8 +15608,8 @@ export namespace Prisma {
     talle_id?: SortOrder
     color_id?: SortOrder
     precio?: SortOrderInput | SortOrder
-    stock?: SortOrder
     sku?: SortOrderInput | SortOrder
+    stock?: SortOrder
     activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15646,8 +15627,8 @@ export namespace Prisma {
     talle_id?: IntFilter<"variante_producto"> | number
     color_id?: IntFilter<"variante_producto"> | number
     precio?: FloatNullableFilter<"variante_producto"> | number | null
-    stock?: IntFilter<"variante_producto"> | number
     sku?: StringNullableFilter<"variante_producto"> | string | null
+    stock?: IntFilter<"variante_producto"> | number
     activo?: BoolFilter<"variante_producto"> | boolean
     createdAt?: DateTimeFilter<"variante_producto"> | Date | string
     updatedAt?: DateTimeFilter<"variante_producto"> | Date | string
@@ -15662,8 +15643,8 @@ export namespace Prisma {
     talle_id?: SortOrder
     color_id?: SortOrder
     precio?: SortOrderInput | SortOrder
-    stock?: SortOrder
     sku?: SortOrderInput | SortOrder
+    stock?: SortOrder
     activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15683,8 +15664,8 @@ export namespace Prisma {
     talle_id?: IntWithAggregatesFilter<"variante_producto"> | number
     color_id?: IntWithAggregatesFilter<"variante_producto"> | number
     precio?: FloatNullableWithAggregatesFilter<"variante_producto"> | number | null
-    stock?: IntWithAggregatesFilter<"variante_producto"> | number
     sku?: StringNullableWithAggregatesFilter<"variante_producto"> | string | null
+    stock?: IntWithAggregatesFilter<"variante_producto"> | number
     activo?: BoolWithAggregatesFilter<"variante_producto"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"variante_producto"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"variante_producto"> | Date | string
@@ -16243,7 +16224,6 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
-    sku?: string | null
     img_url?: string | null
     precio_global?: number | null
     observacion?: string | null
@@ -16259,7 +16239,6 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
-    sku?: string | null
     img_url?: string | null
     precio_global?: number | null
     observacion?: string | null
@@ -16274,7 +16253,6 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
-    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16290,7 +16268,6 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
-    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16306,7 +16283,6 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
-    sku?: string | null
     img_url?: string | null
     precio_global?: number | null
     observacion?: string | null
@@ -16320,7 +16296,6 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
-    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16335,7 +16310,6 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
-    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16346,8 +16320,8 @@ export namespace Prisma {
 
   export type variante_productoCreateInput = {
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16362,8 +16336,8 @@ export namespace Prisma {
     talle_id: number
     color_id: number
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16371,8 +16345,8 @@ export namespace Prisma {
 
   export type variante_productoUpdateInput = {
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16387,8 +16361,8 @@ export namespace Prisma {
     talle_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16400,8 +16374,8 @@ export namespace Prisma {
     talle_id: number
     color_id: number
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16409,8 +16383,8 @@ export namespace Prisma {
 
   export type variante_productoUpdateManyMutationInput = {
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16422,8 +16396,8 @@ export namespace Prisma {
     talle_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17082,7 +17056,6 @@ export namespace Prisma {
     provedor_id?: SortOrder
     marca_id?: SortOrder
     categoria_id?: SortOrder
-    sku?: SortOrder
     img_url?: SortOrder
     precio_global?: SortOrder
     observacion?: SortOrder
@@ -17105,7 +17078,6 @@ export namespace Prisma {
     provedor_id?: SortOrder
     marca_id?: SortOrder
     categoria_id?: SortOrder
-    sku?: SortOrder
     img_url?: SortOrder
     precio_global?: SortOrder
     observacion?: SortOrder
@@ -17120,7 +17092,6 @@ export namespace Prisma {
     provedor_id?: SortOrder
     marca_id?: SortOrder
     categoria_id?: SortOrder
-    sku?: SortOrder
     img_url?: SortOrder
     precio_global?: SortOrder
     observacion?: SortOrder
@@ -17190,8 +17161,8 @@ export namespace Prisma {
     talle_id?: SortOrder
     color_id?: SortOrder
     precio?: SortOrder
-    stock?: SortOrder
     sku?: SortOrder
+    stock?: SortOrder
     activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17212,8 +17183,8 @@ export namespace Prisma {
     talle_id?: SortOrder
     color_id?: SortOrder
     precio?: SortOrder
-    stock?: SortOrder
     sku?: SortOrder
+    stock?: SortOrder
     activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17225,8 +17196,8 @@ export namespace Prisma {
     talle_id?: SortOrder
     color_id?: SortOrder
     precio?: SortOrder
-    stock?: SortOrder
     sku?: SortOrder
+    stock?: SortOrder
     activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17948,8 +17919,8 @@ export namespace Prisma {
 
   export type variante_productoCreateWithoutTalleInput = {
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17962,8 +17933,8 @@ export namespace Prisma {
     producto_id: number
     color_id: number
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18004,8 +17975,8 @@ export namespace Prisma {
     talle_id?: IntFilter<"variante_producto"> | number
     color_id?: IntFilter<"variante_producto"> | number
     precio?: FloatNullableFilter<"variante_producto"> | number | null
-    stock?: IntFilter<"variante_producto"> | number
     sku?: StringNullableFilter<"variante_producto"> | string | null
+    stock?: IntFilter<"variante_producto"> | number
     activo?: BoolFilter<"variante_producto"> | boolean
     createdAt?: DateTimeFilter<"variante_producto"> | Date | string
     updatedAt?: DateTimeFilter<"variante_producto"> | Date | string
@@ -18013,8 +17984,8 @@ export namespace Prisma {
 
   export type variante_productoCreateWithoutColorInput = {
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18027,8 +17998,8 @@ export namespace Prisma {
     producto_id: number
     talle_id: number
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18062,8 +18033,8 @@ export namespace Prisma {
 
   export type variante_productoCreateWithoutProductoInput = {
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18076,8 +18047,8 @@ export namespace Prisma {
     talle_id: number
     color_id: number
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18114,7 +18085,6 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
-    sku?: string | null
     img_url?: string | null
     precio_global?: number | null
     observacion?: string | null
@@ -18129,7 +18099,6 @@ export namespace Prisma {
     provedor_id?: number | null
     marca_id?: number | null
     categoria_id?: number | null
-    sku?: string | null
     img_url?: string | null
     precio_global?: number | null
     observacion?: string | null
@@ -18187,7 +18156,6 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
-    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18202,7 +18170,6 @@ export namespace Prisma {
     provedor_id?: NullableIntFieldUpdateOperationsInput | number | null
     marca_id?: NullableIntFieldUpdateOperationsInput | number | null
     categoria_id?: NullableIntFieldUpdateOperationsInput | number | null
-    sku?: NullableStringFieldUpdateOperationsInput | string | null
     img_url?: NullableStringFieldUpdateOperationsInput | string | null
     precio_global?: NullableFloatFieldUpdateOperationsInput | number | null
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18256,8 +18223,8 @@ export namespace Prisma {
     producto_id: number
     color_id: number
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18265,8 +18232,8 @@ export namespace Prisma {
 
   export type variante_productoUpdateWithoutTalleInput = {
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18279,8 +18246,8 @@ export namespace Prisma {
     producto_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18291,8 +18258,8 @@ export namespace Prisma {
     producto_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18303,8 +18270,8 @@ export namespace Prisma {
     producto_id: number
     talle_id: number
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18312,8 +18279,8 @@ export namespace Prisma {
 
   export type variante_productoUpdateWithoutColorInput = {
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18326,8 +18293,8 @@ export namespace Prisma {
     producto_id?: IntFieldUpdateOperationsInput | number
     talle_id?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18338,8 +18305,8 @@ export namespace Prisma {
     producto_id?: IntFieldUpdateOperationsInput | number
     talle_id?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18350,8 +18317,8 @@ export namespace Prisma {
     talle_id: number
     color_id: number
     precio?: number | null
-    stock: number
     sku?: string | null
+    stock: number
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18359,8 +18326,8 @@ export namespace Prisma {
 
   export type variante_productoUpdateWithoutProductoInput = {
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18373,8 +18340,8 @@ export namespace Prisma {
     talle_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18385,8 +18352,8 @@ export namespace Prisma {
     talle_id?: IntFieldUpdateOperationsInput | number
     color_id?: IntFieldUpdateOperationsInput | number
     precio?: NullableFloatFieldUpdateOperationsInput | number | null
-    stock?: IntFieldUpdateOperationsInput | number
     sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

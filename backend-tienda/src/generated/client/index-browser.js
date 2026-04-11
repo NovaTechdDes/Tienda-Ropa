@@ -164,7 +164,6 @@ exports.Prisma.ProductoScalarFieldEnum = {
   provedor_id: 'provedor_id',
   marca_id: 'marca_id',
   categoria_id: 'categoria_id',
-  sku: 'sku',
   img_url: 'img_url',
   precio_global: 'precio_global',
   observacion: 'observacion',
@@ -179,8 +178,8 @@ exports.Prisma.Variante_productoScalarFieldEnum = {
   talle_id: 'talle_id',
   color_id: 'color_id',
   precio: 'precio',
-  stock: 'stock',
   sku: 'sku',
+  stock: 'stock',
   activo: 'activo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

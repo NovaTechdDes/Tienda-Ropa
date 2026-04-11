@@ -7,4 +7,6 @@ export interface Cliente {
   localidad: string;
   observacion: string;
   activo: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }

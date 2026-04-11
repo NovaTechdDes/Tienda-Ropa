@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Cliente {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  telefono    String?
+  dni         String?
+  direccion   String?
+  localidad   String?
+  observacion String?  @default("-")
+  activo      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Marca {
+  id     Int    @id @default(autoincrement())
+  nombre String @unique
+}
+
+model Provedor {
+  id     Int    @id @default(autoincrement())
+  nombre String @unique
+}
+
+model Talle {
+  id     Int    @id @default(autoincrement())
+  nombre String @unique
+
+  variantes variante_producto[]
+}
+
+model Categoria {
+  id     Int    @id @default(autoincrement())
+  nombre String @unique
+}
+
+model Color {
+  id     Int    @id @default(autoincrement())
+  nombre String @unique
+
+  variantes variante_producto[]
+}
+
+model Producto {
+  id            Int      @id @default(autoincrement())
+  descripcion   String
+  provedor_id   Int?
+  marca_id      Int?
+  categoria_id  Int?
+  img_url       String?
+  precio_global Float?
+  observacion   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now())
+  activo        Boolean  @default(true)
+
+  variantes variante_producto[]
+}
+
+model variante_producto {
+  id          Int      @id @default(autoincrement())
+  producto_id Int
+  talle_id    Int
+  color_id    Int
+  precio      Float?
+  sku         String?
+  stock       Int
+  activo      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+
+  producto Producto @relation(fields: [producto_id], references: [id])
+  talle    Talle    @relation(fields: [talle_id], references: [id])
+  color    Color    @relation(fields: [color_id], references: [id])
+}
+
+model Numero {
+  id        Int      @id @default(autoincrement())
+  tipo      String   @unique
+  numero    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Venta {
+  id                Int       @id @default(autoincrement())
+  cliente_id        Int
+  fecha             DateTime  @default(now())
+  nombre_cliente    String?
+  telefono_cliente  String?
+  direccion_cliente String?
+  dni_cliente       String?
+  total             Float
+  descuento         Float?
+  subtotal          Float?
+  observacion       String?
+  numero_venta      String
+  tipo_venta        String
+  metodo_pago       String
+  updatedAt         DateTime? @updatedAt
+
+  @@unique([tipo_venta, numero_venta])
+}
+
+model detalle_venta {
+  id          Int      @id @default(autoincrement())
+  venta_id    Int
+  variante_id Int
+  cantidad    Int
+  precio      Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model stock_movimiento {
+  id          Int      @id @default(autoincrement())
+  variante_id Int
+  tipo        String
+  cantidad    Int
+  referencia  String?
+  fecha       DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

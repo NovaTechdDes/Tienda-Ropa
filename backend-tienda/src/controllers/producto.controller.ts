@@ -6,17 +6,20 @@ export const productoController = {
     try {
       const { buscador } = req.query;
       const productos = await productoService.getAll(buscador as string);
+
       res.status(200).json({
         ok: true,
         productos,
       });
     } catch (error) {
+      console.error(error);
       res.status(500).json({
         ok: false,
         message: "Error al obtener los productos",
       });
     }
   },
+
   getById: async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
@@ -96,6 +99,7 @@ export const productoController = {
       });
     }
   },
+
   delete: async (req: Request, res: Response) => {
     const { id } = req.params;
     try {

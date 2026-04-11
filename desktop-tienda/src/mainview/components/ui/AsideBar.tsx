@@ -5,6 +5,7 @@ import {
   Settings,
   ChevronRight,
   Sparkles,
+  User,
 } from "lucide-react";
 
 export const AsideBar = () => {
@@ -13,6 +14,7 @@ export const AsideBar = () => {
   const navLinks = [
     { name: "Ventas", path: "/ventas", icon: <ReceiptText size={18} /> },
     { name: "Productos", path: "/productos", icon: <Package size={18} /> },
+    { name: "Clientes", path: "/clientes", icon: <User size={18} /> },
   ];
 
   return (

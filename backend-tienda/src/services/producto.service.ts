@@ -7,7 +7,13 @@ export const productoService = {
         activo: true,
         OR: [
           { descripcion: { contains: buscador, mode: "insensitive" } },
-          { sku: { contains: buscador, mode: "insensitive" } },
+          {
+            variantes: {
+              some: {
+                sku: { contains: buscador, mode: "insensitive" },
+              },
+            },
+          },
         ],
       },
       orderBy: { descripcion: "asc" },
