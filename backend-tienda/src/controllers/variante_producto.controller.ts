@@ -11,10 +11,6 @@ export const variante_productoController = {
     const variante = await variante_productoService.getById(Number(id));
     res.status(200).json(variante);
   },
-  create: async (req: Request, res: Response) => {
-    const variante = await variante_productoService.create(req.body);
-    res.status(201).json(variante);
-  },
   update: async (req: Request, res: Response) => {
     const { id } = req.params;
     const variante = await variante_productoService.update(

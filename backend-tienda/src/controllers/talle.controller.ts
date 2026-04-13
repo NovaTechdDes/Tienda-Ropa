@@ -9,6 +9,7 @@ export const talleController = {
       talles,
     });
   },
+
   getById: async (req: Request, res: Response) => {
     const { id } = req.params;
     const talle = await talleService.getById(Number(id));
@@ -17,6 +18,7 @@ export const talleController = {
       talle,
     });
   },
+
   create: async (req: Request, res: Response) => {
     try {
       await talleService.create(req.body);
@@ -31,6 +33,7 @@ export const talleController = {
       });
     }
   },
+
   update: async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
@@ -46,6 +49,7 @@ export const talleController = {
       });
     }
   },
+
   delete: async (req: Request, res: Response) => {
     const { id } = req.params;
     try {

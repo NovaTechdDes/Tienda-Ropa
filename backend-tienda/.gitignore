@@ -5,3 +5,10 @@ uploads
 .env
 
 /generated/prisma
+
+
+output
+nssm.exe
+node-v24.14.1-x64.msi
+backend
+dist

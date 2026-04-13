@@ -4,18 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "npx prisma generate && tsc && pnpm run copy",
+    "copy": "xcopy src\\generated dist\\generated /E /I /Y && xcopy dist distribucion\\backend\\dist /E /I /Y && xcopy package.json distribucion\\backend\\package.json /Y && xcopy .env distribucion\\backend\\.env /Y",
+    "start": "node dist/index.js",
+    "prisma:generate": "npx prisma generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.28.2",
+  "pnpm": {
+    "overrides": {
+      "@types/pg": "8.18.0"
+    }
+  },
   "dependencies": {
     "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "mssql": "^12.2.1",
     "multer": "^2.1.1",
     "pg": "^8.20.0"
   },
