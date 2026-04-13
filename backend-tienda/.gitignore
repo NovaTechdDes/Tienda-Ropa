@@ -9,6 +9,6 @@ uploads
 
 output
 nssm.exe
-node-v24.14.1-x64.msi
+instaladores
 backend
 dist
