@@ -69,7 +69,8 @@ export const productoController = {
   update: async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
-      const { variantes, imagen, precio_global, ...rest } = req.body;
+      const { variantes, imagen, precio_global, categoria_id, ...rest } =
+        req.body;
 
       //Imagen
       const img_url = req.file
@@ -81,6 +82,7 @@ export const productoController = {
       await productoService.update(Number(id), {
         ...rest,
         img_url,
+        categoria_id: Number(categoria_id),
         precio_global: Number(precio_global),
         id: Number(id),
       });

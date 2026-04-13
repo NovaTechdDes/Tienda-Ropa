@@ -1,4 +1,4 @@
-import { X, Plus, Tag, Layers, ChevronDown, Barcode, Image, DollarSign } from 'lucide-react';
+import { X, Plus, Tag, Layers, ChevronDown, Image, DollarSign } from 'lucide-react';
 import { useProductoStore } from '../../store';
 import { useForm } from '../../hooks/useForm';
 import { Producto } from '../../interface/Producto';
@@ -33,7 +33,7 @@ export const ProductoModalFormulario = () => {
 
   const [variantes, setVariantes] = useState<any[]>(productoSeleccionado?.variantes ?? []);
 
-  const { formState, onInputChange, onResetForm, descripcion, observacion, precio_global } = useForm(productoSeleccionado ?? initialState);
+  const { formState, onInputChange, onResetForm, descripcion, observacion, precio_global, categoria_id } = useForm(productoSeleccionado ?? initialState);
 
   const addVariante = () => {
     if (!color || !talle || !stock) return;
@@ -62,6 +62,7 @@ export const ProductoModalFormulario = () => {
 
     const formData = new FormData();
     formData.append('descripcion', descripcion);
+    formData.append('categoria_id', categoria_id?.toString() ?? '0');
     formData.append('observacion', observacion ? observacion : '');
     formData.append('precio_global', String(precio_global ?? 0));
     formData.append('img_url', productoSeleccionado?.img_url ? productoSeleccionado.img_url : '');
@@ -111,7 +112,7 @@ export const ProductoModalFormulario = () => {
       <div className="absolute inset-0 bg-[#0a0a0b]/80 backdrop-blur-md transition-opacity" onClick={handleCloseModal} />
 
       {/* Modal Surface */}
-      <div className="relative w-full max-w-2xl bg-[#141416] border border-[rgba(255,255,255,0.08)] rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="relative w-full max-w-4xl bg-[#141416] border border-[rgba(255,255,255,0.08)] rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
         <div className="px-8 py-6 border-b border-[rgba(255,255,255,0.04)] flex justify-between items-center bg-[#1c1c1e]/50">
           <div>
@@ -211,8 +212,6 @@ export const ProductoModalFormulario = () => {
                 />
               </div>
             </div>
-
-            
           </div>
 
           {/* Gestión de Variantes */}
@@ -263,7 +262,13 @@ export const ProductoModalFormulario = () => {
                 placeholder="Precio"
                 className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
               />
-              <input type="text" value={sku} onChange={(e) => setSku(e.target.value)} placeholder="SKU" className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30" />
+              <input
+                type="text"
+                value={sku}
+                onChange={(e) => setSku(e.target.value)}
+                placeholder="SKU"
+                className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
+              />
               <button type="button" onClick={addVariante} className="bg-[#d4af37] hover:bg-[#e5c158] text-[#0a0a0b] rounded-lg flex items-center justify-center transition-all h-full min-h-[36px]">
                 <Plus size={18} />
               </button>
@@ -278,6 +283,7 @@ export const ProductoModalFormulario = () => {
                     <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)]">Color</th>
                     <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)]">Stock</th>
                     <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)]">Precio</th>
+                    <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)]">SKU</th>
                     <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)] text-right"></th>
                   </tr>
                 </thead>

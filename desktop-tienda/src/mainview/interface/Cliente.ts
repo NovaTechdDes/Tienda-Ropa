@@ -1,5 +1,5 @@
 export interface Cliente {
-  id: number;
+  id?: number;
   nombre: string;
   telefono: string;
   dni: string;
@@ -7,6 +7,6 @@ export interface Cliente {
   localidad: string;
   observacion: string;
   activo: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

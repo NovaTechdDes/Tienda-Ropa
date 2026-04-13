@@ -1,10 +1,9 @@
-import { data } from "react-router-dom";
-import { Cliente } from "../interface/Cliente";
-import { db } from "../utils/db";
+import { Cliente } from '../interface/Cliente';
+import { db } from '../utils/db';
 
 export const startPostCliente = async (cliente: Cliente) => {
   try {
-    const { data } = await db().post("/clientes", cliente);
+    const { data } = await db().post('/clientes', cliente);
     if (data.ok) {
       return true;
     }
@@ -17,7 +16,7 @@ export const startPostCliente = async (cliente: Cliente) => {
 
 export const startGetClientes = async (): Promise<Cliente[]> => {
   try {
-    const { data } = await db().get("/clientes");
+    const { data } = await db().get('/clientes');
     if (data.ok) {
       return data.clientes;
     }
@@ -28,7 +27,7 @@ export const startGetClientes = async (): Promise<Cliente[]> => {
   }
 };
 
-export const startPutCliente = async (id: number, cliente: Cliente) => {
+export const startPutCliente = async (id: number, cliente: Partial<Cliente>) => {
   try {
     const { data } = await db().put(`/clientes/${id}`, cliente);
     if (data.ok) {

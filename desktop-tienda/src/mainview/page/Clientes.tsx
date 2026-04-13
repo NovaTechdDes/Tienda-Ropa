@@ -2,10 +2,10 @@ import { Search } from 'lucide-react';
 import { Header } from '../components';
 import { useClientestore } from '../store';
 import { ClientesList } from '../components/clientes/ClientesList';
+import { ClienteModalFormulario } from '../components/clientes/ClienteModalFormulario';
 
 export const Clientes = () => {
-
-  const { modal, openModal, closeModale, buscador, setBuscador } = useClientestore();
+  const { modal, openModal, buscador, setBuscador } = useClientestore();
 
   return (
     <div className="min-h-screen w-full bg-[#0a0a0b] p-6 md:p-10 text-[#f5f5f0]">
@@ -32,6 +32,8 @@ export const Clientes = () => {
           <ClientesList />
         </div>
       </div>
+
+      {modal && <ClienteModalFormulario />}
     </div>
   );
 };
