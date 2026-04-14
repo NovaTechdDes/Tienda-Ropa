@@ -4,7 +4,27 @@
 
 @layer base {
   :root {
-    /* The Atelier Palette */
+    /* --- Light Mode (Default) --- */
+    --atelier-ink: #ffffff;
+    --atelier-surface-1: #f8fafc;
+    --atelier-surface-2: #f1f5f9;
+    
+    --atelier-parchment: #0f172a;
+    --atelier-parchment-muted: #64748b;
+    --atelier-parchment-low: #94a3b8;
+    
+    --atelier-gold: #d4af37;
+    --atelier-gold-bright: #b8860b;
+    
+    --atelier-border: rgba(0, 0, 0, 0.05);
+    --atelier-border-soft: rgba(0, 0, 0, 0.02);
+    
+    --atelier-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --atelier-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark {
+    /* --- Dark Mode (The Atelier Palette) --- */
     --atelier-ink: #0a0a0b;
     --atelier-surface-1: #141416;
     --atelier-surface-2: #1c1c1e;
@@ -29,6 +49,7 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     letter-spacing: -0.01em;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 

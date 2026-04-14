@@ -7,6 +7,7 @@ import {
   Sparkles,
   User,
 } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export const AsideBar = () => {
   const location = useLocation();
@@ -18,17 +19,17 @@ export const AsideBar = () => {
   ];
 
   return (
-    <aside className="w-64 h-full border-r border-[rgba(255,255,255,0.06)] bg-[#0a0a0b] flex flex-col z-20 shadow-2xl">
+    <aside className="w-64 h-full border-r border-[var(--atelier-border)] bg-[var(--atelier-ink)] flex flex-col z-20 shadow-2xl transition-colors duration-300">
       {/* Brand Header */}
       <div className="p-8 flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-[#d4af37] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)]">
-          <Sparkles className="text-[#0a0a0b]" size={18} />
+          <Sparkles className="text-white dark:text-[#0a0a0b]" size={18} />
         </div>
         <div>
-          <h1 className="text-sm font-bold tracking-widest uppercase text-[#f5f5f0]">
+          <h1 className="text-sm font-bold tracking-widest uppercase text-[var(--atelier-parchment)]">
             Pink Chajari
           </h1>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-[#a1a1aa] font-medium leading-none mt-1">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--atelier-parchment-muted)] font-medium leading-none mt-1">
             Gestion
           </p>
         </div>
@@ -47,8 +48,8 @@ export const AsideBar = () => {
                   group relative flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300
                   ${
                     isActive
-                      ? "bg-[rgba(255,255,255,0.03)] text-[#f5f5f0]"
-                      : "text-[#a1a1aa] hover:text-[#f5f5f0] hover:bg-[rgba(255,255,255,0.01)]"
+                      ? "bg-[var(--atelier-border-soft)] text-[var(--atelier-parchment)] shadow-sm"
+                      : "text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]"
                   }
                 `}
               >
@@ -81,16 +82,20 @@ export const AsideBar = () => {
         </div>
       </nav>
 
-      {/* Configuracion */}
-      <div className="p-4 mt-auto">
+      {/* Configuracion & Theme Toggle */}
+      <div className="p-4 mt-auto border-t border-[var(--atelier-border)] space-y-4">
+        <div className="flex justify-center">
+            <ThemeToggle />
+        </div>
+        
         <Link
           to="/configuracion"
           className={`
             group flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300
             ${
               location.pathname === "/configuracion"
-                ? "bg-[rgba(255,255,255,0.03)] text-[#f5f5f0]"
-                : "text-[#a1a1aa] hover:text-[#f5f5f0] hover:bg-[rgba(255,255,255,0.01)]"
+                ? "bg-[var(--atelier-border-soft)] text-[var(--atelier-parchment)] shadow-sm"
+                : "text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]"
             }
           `}
         >
