@@ -8,7 +8,7 @@ import { VentaTotal } from '../components/venta/VentaTotal';
 
 const Venta = () => {
   return (
-    <div className="min-h-screen w-full bg-[#0a0a0b] p-6 md:p-10 text-[#f5f5f0]">
+    <div className="min-h-screen w-full bg-[var(--atelier-ink)] p-6 md:p-10 text-[var(--atelier-parchment)]">
       <div className="max-w-[1600px] mx-auto">
         {/* Header */}
         <Header titulo="Ventas" descripcion="Generación de pedidos y gestión de facturación" textoBoton="Nueva Venta" />
