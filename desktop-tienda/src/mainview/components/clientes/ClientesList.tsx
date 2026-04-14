@@ -23,7 +23,7 @@ export const ClientesList = () => {
     <div className="w-full overflow-x-auto mt-4 pb-10">
       <table className="w-full border-separate border-spacing-y-3">
         <thead>
-          <tr className="text-[#3f3f46]">
+          <tr className="text-[var(--atelier-parchment-low)]">
             <th className="px-6 py-4 text-left text-[10px] uppercase tracking-[0.2em] font-bold">Cliente</th>
             <th className="px-6 py-4 text-left text-[10px] uppercase tracking-[0.2em] font-bold">Contacto</th>
             <th className="px-6 py-4 text-left text-[10px] uppercase tracking-[0.2em] font-bold text-center">Resumen</th>
@@ -36,7 +36,7 @@ export const ClientesList = () => {
           ))}
           {clientesFiltrados?.length === 0 && (
             <tr>
-              <td colSpan={4} className="py-20 text-center text-[#3f3f46] text-sm italic">
+              <td colSpan={4} className="py-20 text-center text-[var(--atelier-parchment-low)] text-sm italic">
                 No se encontraron clientes que coincidan con la búsqueda
               </td>
             </tr>

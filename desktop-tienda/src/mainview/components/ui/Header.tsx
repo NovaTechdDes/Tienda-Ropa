@@ -11,8 +11,8 @@ export const Header = ({ titulo, descripcion, accion, textoBoton }: Props) => {
   return (
     <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
       <div>
-        <h1 className="text-3xl font-extrabold tracking-tight text-[#f5f5f0] mb-1">{titulo}</h1>
-        <p className="text-[#a1a1aa] text-sm font-medium">{descripcion}</p>
+        <h1 className="text-3xl font-extrabold tracking-tight text-[var(--atelier-parchment)] mb-1">{titulo}</h1>
+        <p className="text-[var(--atelier-parchment-low)] text-sm font-medium">{descripcion}</p>
       </div>
 
       {accion && (
