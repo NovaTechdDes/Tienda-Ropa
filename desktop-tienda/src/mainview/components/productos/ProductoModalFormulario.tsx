@@ -109,18 +109,18 @@ export const ProductoModalFormulario = () => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-[#0a0a0b]/80 backdrop-blur-md transition-opacity" onClick={handleCloseModal} />
+      <div className="absolute inset-0 bg-[var(--atelier-ink)]/80 backdrop-blur-md transition-opacity" onClick={handleCloseModal} />
 
       {/* Modal Surface */}
-      <div className="relative w-full max-w-4xl bg-[#141416] border border-[rgba(255,255,255,0.08)] rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="relative w-full max-w-4xl bg-[var(--atelier-surface-1)] border border-[var(--atelier-border)] rounded-[2rem] shadow-[var(--atelier-shadow-md)] overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="px-8 py-6 border-b border-[rgba(255,255,255,0.04)] flex justify-between items-center bg-[#1c1c1e]/50">
+        <div className="px-8 py-6 border-b border-[var(--atelier-border-soft)] flex justify-between items-center bg-[var(--atelier-surface-2)]/50">
           <div>
-            <h2 className="text-xl font-bold tracking-tight text-[#f5f5f0]">{productoSeleccionado ? 'Editar Producto' : 'Nuevo Producto'}</h2>
+            <h2 className="text-xl font-bold tracking-tight text-[var(--atelier-parchment)]">{productoSeleccionado ? 'Editar Producto' : 'Nuevo Producto'}</h2>
           </div>
           <button
             onClick={closeModal}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.03)] hover:bg-[rgba(255,255,255,0.06)] transition-all text-[#bababb] hover:text-[#f5f5f0]"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--atelier-parchment)]/3 hover:bg-[var(--atelier-parchment)]/6 transition-all text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)]"
           >
             <X size={20} />
           </button>
@@ -131,13 +131,13 @@ export const ProductoModalFormulario = () => {
           {/* Basic Info Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-widest text-[#bababb] font-bold ml-1">Nombre del Producto</label>
+              <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Nombre del Producto</label>
               <div className="relative group">
-                <Tag className="absolute left-4 top-1/2 -translate-y-1/2 text-[#bababb] group-focus-within:text-[#d4af37] transition-colors" size={16} />
+                <Tag className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
                 <input
                   type="text"
                   placeholder="Ej: Bikini Clásico Negro"
-                  className="w-full placeholder:text-gray-500 bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all"
+                  className="w-full placeholder:text-[var(--atelier-parchment-low)] bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all"
                   defaultValue={productoSeleccionado?.descripcion}
                   onChange={onInputChange}
                   name="descripcion"
@@ -147,14 +147,14 @@ export const ProductoModalFormulario = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-widest text-[#bababb] font-bold ml-1">Categoría</label>
+              <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Categoría</label>
               <div className="relative group">
-                <Layers className="absolute left-4 top-1/2 -translate-y-1/2 text-[#bababb] group-focus-within:text-[#d4af37] transition-colors" size={16} />
+                <Layers className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
                 <select
                   onChange={onInputChange}
                   name="categoria_id"
                   value={formState.categoria_id}
-                  className="w-full bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all appearance-none cursor-pointer"
+                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all appearance-none cursor-pointer"
                 >
                   <option value="0">Seleccione una categoría</option>
                   {configuracion?.categorias?.map((categoria: Categoria) => (
@@ -163,33 +163,33 @@ export const ProductoModalFormulario = () => {
                     </option>
                   ))}
                 </select>
-                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-[#bababb]" size={16} />
+                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)]" size={16} />
               </div>
             </div>
           </div>
 
           {/* Description */}
           <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-[#bababb] font-bold ml-1">Descripción / Observaciones</label>
+            <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Descripción / Observaciones</label>
             <textarea
               rows={3}
               onChange={onInputChange}
               name="observacion"
               value={observacion}
               placeholder="Detalles sobre el material, calce o cuidados..."
-              className="w-full placeholder:text-gray-500 bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl p-4 text-sm text-[#f5f5f0] outline-none transition-all resize-none"
+              className="w-full placeholder:text-[var(--atelier-parchment-low)] bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl p-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all resize-none"
               defaultValue={productoSeleccionado?.observacion}
             />
           </div>
 
           {/* Image URL */}
           <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-[#bababb] font-bold ml-1">Imagen</label>
+            <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Imagen</label>
             <div className="relative group">
-              <Image className="absolute left-4 top-1/2 -translate-y-1/2 text-[#bababb] group-focus-within:text-[#d4af37] transition-colors" size={16} />
+              <Image className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
               <input
                 type="file"
-                className="w-full placeholder:text-gray-500 bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all"
+                className="w-full placeholder:text-[var(--atelier-parchment-low)] bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all"
                 onChange={(e) => setImagen(e.target.files![0])}
                 name="imagen"
               />
@@ -199,13 +199,13 @@ export const ProductoModalFormulario = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Precio */}
             <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-widest text-[#bababb] font-bold ml-1">Precio General</label>
+              <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Precio General</label>
               <div className="relative group">
-                <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 text-[#bababb] group-focus-within:text-[#d4af37] transition-colors" size={16} />
+                <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
                 <input
                   type="number"
                   placeholder="25000"
-                  className="w-full bg-[#0a0a0b] border placeholder:text-gray-500 border-[rgba(255,255,255,0.04)] focus:border-[#d4af37]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[#f5f5f0] outline-none transition-all"
+                  className="w-full bg-[var(--atelier-ink)] border placeholder:text-[var(--atelier-parchment-low)] border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all"
                   onChange={onInputChange}
                   name="precio_global"
                   value={precio_global ?? 0}
@@ -217,16 +217,16 @@ export const ProductoModalFormulario = () => {
           {/* Gestión de Variantes */}
           <div className="space-y-4 pt-4">
             <div className="flex justify-between items-end">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-[#f5f5f0]">Gestión de Variantes</h3>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--atelier-parchment)]">Gestión de Variantes</h3>
             </div>
 
             {/* Agregar Una Variante */}
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-3 p-3 bg-[#0a0a0b]/50 border border-[rgba(255,255,255,0.04)] rounded-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-3 p-3 bg-[var(--atelier-ink)]/50 border border-[var(--atelier-border-soft)] rounded-2xl">
               <select
                 value={talle}
                 name="talle_id"
                 onChange={(e) => setTalle(Number(e.target.value))}
-                className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
+                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               >
                 <option value="">Talle</option>
                 {configuracion?.talles.map((talle: Talle) => (
@@ -239,7 +239,7 @@ export const ProductoModalFormulario = () => {
                 value={color}
                 name="color_id"
                 onChange={(e) => setColor(Number(e.target.value))}
-                className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
+                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               >
                 <option value="">Color</option>
                 {configuracion?.colores.map((color: Color) => (
@@ -253,41 +253,41 @@ export const ProductoModalFormulario = () => {
                 value={stock}
                 onChange={(e) => setStock(e.target.value)}
                 placeholder="Stock"
-                className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
+                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               />
               <input
                 type="number"
                 value={precio}
                 onChange={(e) => setPrecio(e.target.value)}
                 placeholder="Precio"
-                className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
+                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               />
               <input
                 type="text"
                 value={sku}
                 onChange={(e) => setSku(e.target.value)}
                 placeholder="SKU"
-                className="bg-[#0a0a0b] border border-[rgba(255,255,255,0.04)] rounded-lg px-3 py-2 text-xs text-[#f5f5f0] outline-none focus:border-[#d4af37]/30"
+                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               />
-              <button type="button" onClick={addVariante} className="bg-[#d4af37] hover:bg-[#e5c158] text-[#0a0a0b] rounded-lg flex items-center justify-center transition-all h-full min-h-[36px]">
+              <button type="button" onClick={addVariante} className="bg-[var(--atelier-gold)] hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] rounded-lg flex items-center justify-center transition-all h-full min-h-[36px]">
                 <Plus size={18} />
               </button>
             </div>
 
             {/* Lista de Variantes */}
-            <div className="border border-[rgba(255,255,255,0.04)] rounded-2xl overflow-hidden">
+            <div className="border border-[var(--atelier-border-soft)] rounded-2xl overflow-hidden">
               <table className="w-full text-left border-collapse">
-                <thead className="bg-[#1c1c1e] text-[9px] uppercase tracking-widest text-[#bababb] font-bold">
+                <thead className="bg-[var(--atelier-surface-2)] text-[9px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold">
                   <tr>
-                    <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)]">Talle</th>
-                    <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)]">Color</th>
-                    <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)]">Stock</th>
-                    <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)]">Precio</th>
-                    <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)]">SKU</th>
-                    <th className="px-5 py-3 border-b border-[rgba(255,255,255,0.04)] text-right"></th>
+                    <th className="px-5 py-3 border-b border-[var(--atelier-border-soft)]">Talle</th>
+                    <th className="px-5 py-3 border-b border-[var(--atelier-border-soft)]">Color</th>
+                    <th className="px-5 py-3 border-b border-[var(--atelier-border-soft)]">Stock</th>
+                    <th className="px-5 py-3 border-b border-[var(--atelier-border-soft)]">Precio</th>
+                    <th className="px-5 py-3 border-b border-[var(--atelier-border-soft)]">SKU</th>
+                    <th className="px-5 py-3 border-b border-[var(--atelier-border-soft)] text-right"></th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[rgba(255,255,255,0.02)]">
+                <tbody className="divide-y divide-[var(--atelier-border-soft)]/50">
                   {variantes?.map((elem, index) => (
                     <VarianteItemFormulario key={index} elem={elem} index={index} talles={configuracion?.talles || []} colores={configuracion?.colores || []} onDelete={() => deleteVariante(index)} />
                   ))}
@@ -296,17 +296,17 @@ export const ProductoModalFormulario = () => {
             </div>
           </div>
           {/* Botones  */}
-          <div className="px-8 py-6 bg-[#1c1c1e]/50 border-t border-[rgba(255,255,255,0.04)] flex justify-end gap-3">
+          <div className="px-8 py-6 bg-[var(--atelier-surface-2)]/50 border-t border-[var(--atelier-border-soft)] flex justify-end gap-3">
             <button
               type="button"
               onClick={handleCloseModal}
-              className="px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest text-[#a1a1aa] hover:text-[#f5f5f0] hover:bg-[rgba(255,255,255,0.03)] transition-all"
+              className="px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-parchment)]/3 transition-all"
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="px-8 py-2.5 bg-[#d4af37] hover:bg-[#e5c158] text-[#0a0a0b] rounded-xl text-xs font-bold uppercase tracking-widest shadow-[0_8px_20px_-4px_rgba(212,175,55,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              className="px-8 py-2.5 bg-[var(--atelier-gold)] hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] rounded-xl text-xs font-bold uppercase tracking-widest shadow-[var(--atelier-shadow-md)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
             >
               {productoSeleccionado ? 'Actualizar Producto' : 'Guardar Producto'}
             </button>
