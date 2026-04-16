@@ -23,10 +23,10 @@ export const Configuracion = () => {
   //const [marca, setMarca] = useState('');
   //const [provedor, setProvedor] = useState('');
 
-  if (isLoading) return <div className="p-10 text-[#d4af37] font-bold">Cargando configuración...</div>;
+  if (isLoading) return <div className="p-10 text-[var(--atelier-gold)] font-bold">Cargando configuración...</div>;
 
   return (
-    <div className="min-h-screen w-full bg-[#0a0a0b] p-6 md:p-10 text-[#f5f5f0]">
+    <div className="min-h-screen w-full bg-[var(--atelier-ink)] p-6 md:p-10 text-[var(--atelier-parchment)]">
       <div className="max-w-[1600px] mx-auto">
         <Header titulo="Configuración" descripcion="Administración de parámetros del sistema (Talles, Colores, Marcas, etc.)" textoBoton="" />
 

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { MainLayout } from "../layout/MainLayout";
 import Venta from "../page/Venta";
 import { Productos } from "../page/Productos";
@@ -10,6 +10,10 @@ export const router = createBrowserRouter([
     path: "/",
     element: <MainLayout />,
     children: [
+      {
+        index: true,
+        element: <Navigate to="ventas" replace/>
+      },
       {
         path: "ventas",
         element: <Venta />,

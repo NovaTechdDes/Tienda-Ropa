@@ -27,29 +27,29 @@ export const ListConfiguracion = ({
   };
 
   return (
-    <div className="bg-[#141416] border border-white/5 rounded-3xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.4)] space-y-4">
+    <div className="bg-[var(--atelier-surface-1)] border border-[var(--atelier-border)] rounded-3xl p-4 shadow-[var(--atelier-shadow-md)] space-y-4">
       {/* Header Section */}
-      <div className="flex items-center gap-3 border-b border-white/5 pb-4">
-        <div className="p-1.5 bg-[#d4af37]/10 rounded-lg border border-[#d4af37]/20">
-          <LayoutGrid className="w-4 h-4 text-[#d4af37]" />
+      <div className="flex items-center gap-3 border-b border-[var(--atelier-border)] pb-4">
+        <div className="p-1.5 bg-[var(--atelier-gold)]/10 rounded-lg border border-[var(--atelier-gold)]/20">
+          <LayoutGrid className="w-4 h-4 text-[var(--atelier-gold)]" />
         </div>
         <div>
-          <h3 className="text-sm font-bold text-[#f5f5f0] tracking-widest uppercase">
+          <h3 className="text-sm font-bold text-[var(--atelier-parchment)] tracking-widest uppercase">
             Gestión de {type}
           </h3>
-          <p className="text-[#a1a1aa] text-[9px] font-medium uppercase tracking-tighter">
+          <p className="text-[var(--atelier-parchment-muted)] text-[9px] font-medium uppercase tracking-tighter">
             Administrar {type} disponibles
           </p>
         </div>
       </div>
 
       {/* Form Section */}
-      <div className="bg-[#0a0a0b]/50 border border-white/5 rounded-2xl p-4">
+      <div className="bg-[var(--atelier-ink)]/50 border border-[var(--atelier-border)] rounded-2xl p-4">
         <div className="flex flex-col sm:flex-row items-end gap-3">
           <div className="flex-1 w-full space-y-1.5">
             <label
               htmlFor={`nombre-${type}`}
-              className="text-[9px] font-bold text-[#3f3f46] px-1 uppercase tracking-widest"
+              className="text-[9px] font-bold text-[var(--atelier-parchment-low)] px-1 uppercase tracking-widest"
             >
               Nuevo {type}
             </label>
@@ -60,12 +60,12 @@ export const ListConfiguracion = ({
               id={`nombre-${type}`}
               value={valor}
               onChange={(e) => setValor(e.target.value)}
-              className="w-full bg-[#0a0a0b] text-[#f5f5f0] border border-white/5 rounded-xl p-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#d4af37]/50 transition-all placeholder:text-[#3f3f46]"
+              className="w-full bg-[var(--atelier-ink)] text-[var(--atelier-parchment)] border border-[var(--atelier-border)] rounded-xl p-2 text-xs focus:outline-none focus:ring-1 focus:ring-[var(--atelier-gold)]/50 transition-all placeholder:text-[var(--atelier-parchment-low)]"
             />
           </div>
           <button
             onClick={handleSubmit}
-            className="h-[36px] px-4 bg-[#d4af37] hover:bg-[#b89630] text-[#0a0a0b] font-bold text-[10px] uppercase tracking-widest rounded-lg flex items-center gap-2 transition-all active:scale-95 shadow-[0_4px_15px_rgba(212,175,55,0.1)]"
+            className="h-[36px] px-4 bg-[var(--atelier-gold)] hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] font-bold text-[10px] uppercase tracking-widest rounded-lg flex items-center gap-2 transition-all active:scale-95 shadow-[0_4px_15px_rgba(212,175,55,0.1)]"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Agregar</span>
@@ -76,9 +76,9 @@ export const ListConfiguracion = ({
       {/* List Section */}
       <div className="space-y-4">
         <div className="flex items-center justify-between px-1">
-          <h2 className="text-[10px] font-bold text-[#3f3f46] uppercase tracking-[0.2em] flex items-center gap-2">
+          <h2 className="text-[10px] font-bold text-[var(--atelier-parchment-low)] uppercase tracking-[0.2em] flex items-center gap-2">
             {type} Existentes
-            <span className="bg-[#d4af37]/10 text-[#d4af37] text-[9px] py-0.5 px-2 rounded-full border border-[#d4af37]/20">
+            <span className="bg-[var(--atelier-gold)]/10 text-[var(--atelier-gold)] text-[9px] py-0.5 px-2 rounded-full border border-[var(--atelier-gold)]/20">
               {data?.length || 0}
             </span>
           </h2>

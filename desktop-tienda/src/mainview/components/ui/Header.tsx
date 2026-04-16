@@ -18,7 +18,7 @@ export const Header = ({ titulo, descripcion, accion, textoBoton }: Props) => {
       {accion && (
         <button
           onClick={accion}
-          className="group relative px-6 py-3 bg-[#d4af37] hover:bg-[#e5c158] text-[#0a0a0b] font-bold text-sm uppercase tracking-widest rounded-xl transition-all duration-300 shadow-[0_8px_20px_-4px_rgba(212,175,55,0.3)] hover:shadow-[0_12px_24px_-4px_rgba(212,175,55,0.4)] transform hover:-translate-y-1 active:translate-y-0 flex items-center gap-2"
+          className="group relative px-6 py-3 bg-[var(--atelier-gold)] hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] font-bold text-sm uppercase tracking-widest rounded-xl transition-all duration-300 shadow-[0_8px_20px_-4px_rgba(212,175,55,0.3)] hover:shadow-[0_12px_24px_-4px_rgba(212,175,55,0.4)] transform hover:-translate-y-1 active:translate-y-0 flex items-center gap-2"
         >
           <Plus size={18} className="transition-transform group-hover:rotate-90" />
           {textoBoton}

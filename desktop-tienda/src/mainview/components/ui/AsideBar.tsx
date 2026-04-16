@@ -22,8 +22,8 @@ export const AsideBar = () => {
     <aside className="w-64 h-full border-r border-[var(--atelier-border)] bg-[var(--atelier-ink)] flex flex-col z-20 shadow-2xl transition-colors duration-300">
       {/* Brand Header */}
       <div className="p-8 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-[#d4af37] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)]">
-          <Sparkles className="text-white dark:text-[#0a0a0b]" size={18} />
+        <div className="w-8 h-8 rounded-lg bg-[var(--atelier-gold)] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+          <Sparkles className="text-white dark:text-[var(--atelier-ink)]" size={18} />
         </div>
         <div>
           <h1 className="text-sm font-bold tracking-widest uppercase text-[var(--atelier-parchment)]">
@@ -55,7 +55,7 @@ export const AsideBar = () => {
               >
                 <div className="flex items-center gap-3 z-10">
                   <span
-                    className={`transition-transform duration-300 ${isActive ? "scale-110 text-[#d4af37]" : "group-hover:scale-110"}`}
+                    className={`transition-transform duration-300 ${isActive ? "scale-110 text-[var(--atelier-gold)]" : "group-hover:scale-110"}`}
                   >
                     {link.icon}
                   </span>
@@ -67,8 +67,8 @@ export const AsideBar = () => {
                 {/* Signature Indicator (Active State) */}
                 {isActive && (
                   <>
-                    <div className="absolute left-0 top-1/4 bottom-1/4 w-[2px] bg-[#d4af37] rounded-full shadow-[0_0_8px_rgba(212,175,55,0.5)]" />
-                    <ChevronRight size={14} className="text-[#3f3f46]" />
+                    <div className="absolute left-0 top-1/4 bottom-1/4 w-[2px] bg-[var(--atelier-gold)] rounded-full shadow-[0_0_8px_rgba(212,175,55,0.5)]" />
+                    <ChevronRight size={14} className="text-[var(--atelier-parchment-low)]" />
                   </>
                 )}
 

@@ -5,9 +5,9 @@
 @layer base {
   :root {
     /* --- Light Mode (Default) --- */
-    --atelier-ink: #ffffff;
-    --atelier-surface-1: #f8fafc;
-    --atelier-surface-2: #f1f5f9;
+    --atelier-ink: #e9e9e5;
+    --atelier-surface-1: #f3f3f1;
+    --atelier-surface-2: #eeeeec;
     
     --atelier-parchment: #0f172a;
     --atelier-parchment-muted: #64748b;

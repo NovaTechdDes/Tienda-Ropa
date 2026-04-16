@@ -21,7 +21,7 @@ export const ThemeToggle = () => {
             className={`
               relative flex items-center justify-center w-9 h-9 rounded-full transition-all duration-500
               ${isActive 
-                ? 'bg-[#d4af37] text-white shadow-[0_0_12px_rgba(212,175,55,0.4)] scale-105 z-10' 
+                ? 'bg-[var(--atelier-gold)] text-white dark:text-[var(--atelier-ink)] shadow-[0_0_12px_rgba(212,175,55,0.4)] scale-105 z-10' 
                 : 'text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]'
               }
             `}
@@ -29,7 +29,7 @@ export const ThemeToggle = () => {
           >
             {option.icon}
             {isActive && (
-              <span className="absolute -bottom-6 text-[8px] font-bold uppercase tracking-widest text-[#d4af37] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <span className="absolute -bottom-6 text-[8px] font-bold uppercase tracking-widest text-[var(--atelier-gold)] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 {option.label}
               </span>
             )}

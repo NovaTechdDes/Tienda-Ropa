@@ -59,7 +59,7 @@ export const ProductItem = ({ producto }: Props) => {
           <h3 className="text-sm font-bold tracking-tight text-[var(--atelier-parchment)] uppercase truncate">{producto.descripcion}</h3>
         </div>
 
-        <p className="text-xs text-[var(--atelier-parchment-muted)] font-medium leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">{producto.observacion || 'Sin descripción adicional'}</p>
+        <p className="text-xs text-[var(--atelier-parchment-muted)] font-medium leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4 capitalize">{producto.observacion || 'Sin descripción adicional'}</p>
 
         {/* Metadata Grid */}
         <div className="grid grid-cols-2 gap-3 mb-6">
