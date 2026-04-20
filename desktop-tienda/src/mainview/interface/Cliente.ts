@@ -9,4 +9,6 @@ export interface Cliente {
   activo: boolean;
   createdAt?: Date;
   updatedAt?: Date;
+  compras?: number;
+  gastado?: number;
 }

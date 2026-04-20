@@ -1863,6 +1863,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ClienteCountOutputType
+   */
+
+  export type ClienteCountOutputType = {
+    ventas: number
+  }
+
+  export type ClienteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ventas?: boolean | ClienteCountOutputTypeCountVentasArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ClienteCountOutputType without action
+   */
+  export type ClienteCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClienteCountOutputType
+     */
+    select?: ClienteCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ClienteCountOutputType without action
+   */
+  export type ClienteCountOutputTypeCountVentasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VentaWhereInput
+  }
+
+
+  /**
    * Count Type TalleCountOutputType
    */
 
@@ -2197,6 +2228,8 @@ export namespace Prisma {
     activo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    ventas?: boolean | Cliente$ventasArgs<ExtArgs>
+    _count?: boolean | ClienteCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cliente"]>
 
   export type ClienteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2239,10 +2272,18 @@ export namespace Prisma {
   }
 
   export type ClienteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "telefono" | "dni" | "direccion" | "localidad" | "observacion" | "activo" | "createdAt" | "updatedAt", ExtArgs["result"]["cliente"]>
+  export type ClienteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ventas?: boolean | Cliente$ventasArgs<ExtArgs>
+    _count?: boolean | ClienteCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ClienteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ClienteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $ClientePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Cliente"
-    objects: {}
+    objects: {
+      ventas: Prisma.$VentaPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       nombre: string
@@ -2648,6 +2689,7 @@ export namespace Prisma {
    */
   export interface Prisma__ClienteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    ventas<T extends Cliente$ventasArgs<ExtArgs> = {}>(args?: Subset<T, Cliente$ventasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VentaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2704,6 +2746,10 @@ export namespace Prisma {
      */
     omit?: ClienteOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
      * Filter, which Cliente to fetch.
      */
     where: ClienteWhereUniqueInput
@@ -2722,6 +2768,10 @@ export namespace Prisma {
      */
     omit?: ClienteOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
      * Filter, which Cliente to fetch.
      */
     where: ClienteWhereUniqueInput
@@ -2739,6 +2789,10 @@ export namespace Prisma {
      * Omit specific fields from the Cliente
      */
     omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
     /**
      * Filter, which Cliente to fetch.
      */
@@ -2788,6 +2842,10 @@ export namespace Prisma {
      */
     omit?: ClienteOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
      * Filter, which Cliente to fetch.
      */
     where?: ClienteWhereInput
@@ -2835,6 +2893,10 @@ export namespace Prisma {
      * Omit specific fields from the Cliente
      */
     omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
     /**
      * Filter, which Clientes to fetch.
      */
@@ -2884,6 +2946,10 @@ export namespace Prisma {
      */
     omit?: ClienteOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
      * The data needed to create a Cliente.
      */
     data: XOR<ClienteCreateInput, ClienteUncheckedCreateInput>
@@ -2931,6 +2997,10 @@ export namespace Prisma {
      * Omit specific fields from the Cliente
      */
     omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
     /**
      * The data needed to update a Cliente.
      */
@@ -2998,6 +3068,10 @@ export namespace Prisma {
      */
     omit?: ClienteOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
      * The filter to search for the Cliente to update in case it exists.
      */
     where: ClienteWhereUniqueInput
@@ -3024,6 +3098,10 @@ export namespace Prisma {
      */
     omit?: ClienteOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
+    /**
      * Filter which Cliente to delete.
      */
     where: ClienteWhereUniqueInput
@@ -3044,6 +3122,30 @@ export namespace Prisma {
   }
 
   /**
+   * Cliente.ventas
+   */
+  export type Cliente$ventasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Venta
+     */
+    select?: VentaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Venta
+     */
+    omit?: VentaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
+    where?: VentaWhereInput
+    orderBy?: VentaOrderByWithRelationInput | VentaOrderByWithRelationInput[]
+    cursor?: VentaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VentaScalarFieldEnum | VentaScalarFieldEnum[]
+  }
+
+  /**
    * Cliente without action
    */
   export type ClienteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3055,6 +3157,10 @@ export namespace Prisma {
      * Omit specific fields from the Cliente
      */
     omit?: ClienteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClienteInclude<ExtArgs> | null
   }
 
 
@@ -11916,6 +12022,7 @@ export namespace Prisma {
     tipo_venta?: boolean
     metodo_pago?: boolean
     updatedAt?: boolean
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["venta"]>
 
   export type VentaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11934,6 +12041,7 @@ export namespace Prisma {
     tipo_venta?: boolean
     metodo_pago?: boolean
     updatedAt?: boolean
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["venta"]>
 
   export type VentaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11952,6 +12060,7 @@ export namespace Prisma {
     tipo_venta?: boolean
     metodo_pago?: boolean
     updatedAt?: boolean
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["venta"]>
 
   export type VentaSelectScalar = {
@@ -11973,10 +12082,21 @@ export namespace Prisma {
   }
 
   export type VentaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cliente_id" | "fecha" | "nombre_cliente" | "telefono_cliente" | "direccion_cliente" | "dni_cliente" | "total" | "descuento" | "subtotal" | "observacion" | "numero_venta" | "tipo_venta" | "metodo_pago" | "updatedAt", ExtArgs["result"]["venta"]>
+  export type VentaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+  }
+  export type VentaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+  }
+  export type VentaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+  }
 
   export type $VentaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Venta"
-    objects: {}
+    objects: {
+      cliente: Prisma.$ClientePayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       cliente_id: number
@@ -12387,6 +12507,7 @@ export namespace Prisma {
    */
   export interface Prisma__VentaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    cliente<T extends ClienteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClienteDefaultArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12448,6 +12569,10 @@ export namespace Prisma {
      */
     omit?: VentaOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
+    /**
      * Filter, which Venta to fetch.
      */
     where: VentaWhereUniqueInput
@@ -12466,6 +12591,10 @@ export namespace Prisma {
      */
     omit?: VentaOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
+    /**
      * Filter, which Venta to fetch.
      */
     where: VentaWhereUniqueInput
@@ -12483,6 +12612,10 @@ export namespace Prisma {
      * Omit specific fields from the Venta
      */
     omit?: VentaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
     /**
      * Filter, which Venta to fetch.
      */
@@ -12532,6 +12665,10 @@ export namespace Prisma {
      */
     omit?: VentaOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
+    /**
      * Filter, which Venta to fetch.
      */
     where?: VentaWhereInput
@@ -12579,6 +12716,10 @@ export namespace Prisma {
      * Omit specific fields from the Venta
      */
     omit?: VentaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
     /**
      * Filter, which Ventas to fetch.
      */
@@ -12628,6 +12769,10 @@ export namespace Prisma {
      */
     omit?: VentaOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
+    /**
      * The data needed to create a Venta.
      */
     data: XOR<VentaCreateInput, VentaUncheckedCreateInput>
@@ -12661,6 +12806,10 @@ export namespace Prisma {
      */
     data: VentaCreateManyInput | VentaCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -12675,6 +12824,10 @@ export namespace Prisma {
      * Omit specific fields from the Venta
      */
     omit?: VentaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
     /**
      * The data needed to update a Venta.
      */
@@ -12727,6 +12880,10 @@ export namespace Prisma {
      * Limit how many Ventas to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -12741,6 +12898,10 @@ export namespace Prisma {
      * Omit specific fields from the Venta
      */
     omit?: VentaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
     /**
      * The filter to search for the Venta to update in case it exists.
      */
@@ -12767,6 +12928,10 @@ export namespace Prisma {
      * Omit specific fields from the Venta
      */
     omit?: VentaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
     /**
      * Filter which Venta to delete.
      */
@@ -12799,6 +12964,10 @@ export namespace Prisma {
      * Omit specific fields from the Venta
      */
     omit?: VentaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VentaInclude<ExtArgs> | null
   }
 
 
@@ -15230,6 +15399,7 @@ export namespace Prisma {
     activo?: BoolFilter<"Cliente"> | boolean
     createdAt?: DateTimeFilter<"Cliente"> | Date | string
     updatedAt?: DateTimeFilter<"Cliente"> | Date | string
+    ventas?: VentaListRelationFilter
   }
 
   export type ClienteOrderByWithRelationInput = {
@@ -15243,6 +15413,7 @@ export namespace Prisma {
     activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    ventas?: VentaOrderByRelationAggregateInput
   }
 
   export type ClienteWhereUniqueInput = Prisma.AtLeast<{
@@ -15259,6 +15430,7 @@ export namespace Prisma {
     activo?: BoolFilter<"Cliente"> | boolean
     createdAt?: DateTimeFilter<"Cliente"> | Date | string
     updatedAt?: DateTimeFilter<"Cliente"> | Date | string
+    ventas?: VentaListRelationFilter
   }, "id">
 
   export type ClienteOrderByWithAggregationInput = {
@@ -15744,6 +15916,7 @@ export namespace Prisma {
     tipo_venta?: StringFilter<"Venta"> | string
     metodo_pago?: StringFilter<"Venta"> | string
     updatedAt?: DateTimeNullableFilter<"Venta"> | Date | string | null
+    cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
   }
 
   export type VentaOrderByWithRelationInput = {
@@ -15762,6 +15935,7 @@ export namespace Prisma {
     tipo_venta?: SortOrder
     metodo_pago?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    cliente?: ClienteOrderByWithRelationInput
   }
 
   export type VentaWhereUniqueInput = Prisma.AtLeast<{
@@ -15784,6 +15958,7 @@ export namespace Prisma {
     tipo_venta?: StringFilter<"Venta"> | string
     metodo_pago?: StringFilter<"Venta"> | string
     updatedAt?: DateTimeNullableFilter<"Venta"> | Date | string | null
+    cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
   }, "id" | "tipo_venta_numero_venta">
 
   export type VentaOrderByWithAggregationInput = {
@@ -15973,6 +16148,7 @@ export namespace Prisma {
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    ventas?: VentaCreateNestedManyWithoutClienteInput
   }
 
   export type ClienteUncheckedCreateInput = {
@@ -15986,6 +16162,7 @@ export namespace Prisma {
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    ventas?: VentaUncheckedCreateNestedManyWithoutClienteInput
   }
 
   export type ClienteUpdateInput = {
@@ -15998,6 +16175,7 @@ export namespace Prisma {
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ventas?: VentaUpdateManyWithoutClienteNestedInput
   }
 
   export type ClienteUncheckedUpdateInput = {
@@ -16011,6 +16189,7 @@ export namespace Prisma {
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ventas?: VentaUncheckedUpdateManyWithoutClienteNestedInput
   }
 
   export type ClienteCreateManyInput = {
@@ -16457,7 +16636,6 @@ export namespace Prisma {
   }
 
   export type VentaCreateInput = {
-    cliente_id: number
     fecha?: Date | string
     nombre_cliente?: string | null
     telefono_cliente?: string | null
@@ -16471,6 +16649,7 @@ export namespace Prisma {
     tipo_venta: string
     metodo_pago: string
     updatedAt?: Date | string | null
+    cliente: ClienteCreateNestedOneWithoutVentasInput
   }
 
   export type VentaUncheckedCreateInput = {
@@ -16492,7 +16671,6 @@ export namespace Prisma {
   }
 
   export type VentaUpdateInput = {
-    cliente_id?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
     telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16506,6 +16684,7 @@ export namespace Prisma {
     tipo_venta?: StringFieldUpdateOperationsInput | string
     metodo_pago?: StringFieldUpdateOperationsInput | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cliente?: ClienteUpdateOneRequiredWithoutVentasNestedInput
   }
 
   export type VentaUncheckedUpdateInput = {
@@ -16545,7 +16724,6 @@ export namespace Prisma {
   }
 
   export type VentaUpdateManyMutationInput = {
-    cliente_id?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
     telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16777,9 +16955,19 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type VentaListRelationFilter = {
+    every?: VentaWhereInput
+    some?: VentaWhereInput
+    none?: VentaWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type VentaOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ClienteCountOrderByAggregateInput = {
@@ -17268,6 +17456,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type ClienteScalarRelationFilter = {
+    is?: ClienteWhereInput
+    isNot?: ClienteWhereInput
+  }
+
   export type VentaTipo_ventaNumero_ventaCompoundUniqueInput = {
     tipo_venta: string
     numero_venta: string
@@ -17464,6 +17657,20 @@ export namespace Prisma {
     cantidad?: SortOrder
   }
 
+  export type VentaCreateNestedManyWithoutClienteInput = {
+    create?: XOR<VentaCreateWithoutClienteInput, VentaUncheckedCreateWithoutClienteInput> | VentaCreateWithoutClienteInput[] | VentaUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: VentaCreateOrConnectWithoutClienteInput | VentaCreateOrConnectWithoutClienteInput[]
+    createMany?: VentaCreateManyClienteInputEnvelope
+    connect?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+  }
+
+  export type VentaUncheckedCreateNestedManyWithoutClienteInput = {
+    create?: XOR<VentaCreateWithoutClienteInput, VentaUncheckedCreateWithoutClienteInput> | VentaCreateWithoutClienteInput[] | VentaUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: VentaCreateOrConnectWithoutClienteInput | VentaCreateOrConnectWithoutClienteInput[]
+    createMany?: VentaCreateManyClienteInputEnvelope
+    connect?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -17480,12 +17687,40 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type VentaUpdateManyWithoutClienteNestedInput = {
+    create?: XOR<VentaCreateWithoutClienteInput, VentaUncheckedCreateWithoutClienteInput> | VentaCreateWithoutClienteInput[] | VentaUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: VentaCreateOrConnectWithoutClienteInput | VentaCreateOrConnectWithoutClienteInput[]
+    upsert?: VentaUpsertWithWhereUniqueWithoutClienteInput | VentaUpsertWithWhereUniqueWithoutClienteInput[]
+    createMany?: VentaCreateManyClienteInputEnvelope
+    set?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+    disconnect?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+    delete?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+    connect?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+    update?: VentaUpdateWithWhereUniqueWithoutClienteInput | VentaUpdateWithWhereUniqueWithoutClienteInput[]
+    updateMany?: VentaUpdateManyWithWhereWithoutClienteInput | VentaUpdateManyWithWhereWithoutClienteInput[]
+    deleteMany?: VentaScalarWhereInput | VentaScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type VentaUncheckedUpdateManyWithoutClienteNestedInput = {
+    create?: XOR<VentaCreateWithoutClienteInput, VentaUncheckedCreateWithoutClienteInput> | VentaCreateWithoutClienteInput[] | VentaUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: VentaCreateOrConnectWithoutClienteInput | VentaCreateOrConnectWithoutClienteInput[]
+    upsert?: VentaUpsertWithWhereUniqueWithoutClienteInput | VentaUpsertWithWhereUniqueWithoutClienteInput[]
+    createMany?: VentaCreateManyClienteInputEnvelope
+    set?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+    disconnect?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+    delete?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+    connect?: VentaWhereUniqueInput | VentaWhereUniqueInput[]
+    update?: VentaUpdateWithWhereUniqueWithoutClienteInput | VentaUpdateWithWhereUniqueWithoutClienteInput[]
+    updateMany?: VentaUpdateManyWithWhereWithoutClienteInput | VentaUpdateManyWithWhereWithoutClienteInput[]
+    deleteMany?: VentaScalarWhereInput | VentaScalarWhereInput[]
   }
 
   export type variante_productoCreateNestedManyWithoutTalleInput = {
@@ -17672,6 +17907,12 @@ export namespace Prisma {
     update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutVariantesInput, ColorUpdateWithoutVariantesInput>, ColorUncheckedUpdateWithoutVariantesInput>
   }
 
+  export type ClienteCreateNestedOneWithoutVentasInput = {
+    create?: XOR<ClienteCreateWithoutVentasInput, ClienteUncheckedCreateWithoutVentasInput>
+    connectOrCreate?: ClienteCreateOrConnectWithoutVentasInput
+    connect?: ClienteWhereUniqueInput
+  }
+
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -17682,6 +17923,14 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type ClienteUpdateOneRequiredWithoutVentasNestedInput = {
+    create?: XOR<ClienteCreateWithoutVentasInput, ClienteUncheckedCreateWithoutVentasInput>
+    connectOrCreate?: ClienteCreateOrConnectWithoutVentasInput
+    upsert?: ClienteUpsertWithoutVentasInput
+    connect?: ClienteWhereUniqueInput
+    update?: XOR<XOR<ClienteUpdateToOneWithWhereWithoutVentasInput, ClienteUpdateWithoutVentasInput>, ClienteUncheckedUpdateWithoutVentasInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -17915,6 +18164,86 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type VentaCreateWithoutClienteInput = {
+    fecha?: Date | string
+    nombre_cliente?: string | null
+    telefono_cliente?: string | null
+    direccion_cliente?: string | null
+    dni_cliente?: string | null
+    total: number
+    descuento?: number | null
+    subtotal?: number | null
+    observacion?: string | null
+    numero_venta: string
+    tipo_venta: string
+    metodo_pago: string
+    updatedAt?: Date | string | null
+  }
+
+  export type VentaUncheckedCreateWithoutClienteInput = {
+    id?: number
+    fecha?: Date | string
+    nombre_cliente?: string | null
+    telefono_cliente?: string | null
+    direccion_cliente?: string | null
+    dni_cliente?: string | null
+    total: number
+    descuento?: number | null
+    subtotal?: number | null
+    observacion?: string | null
+    numero_venta: string
+    tipo_venta: string
+    metodo_pago: string
+    updatedAt?: Date | string | null
+  }
+
+  export type VentaCreateOrConnectWithoutClienteInput = {
+    where: VentaWhereUniqueInput
+    create: XOR<VentaCreateWithoutClienteInput, VentaUncheckedCreateWithoutClienteInput>
+  }
+
+  export type VentaCreateManyClienteInputEnvelope = {
+    data: VentaCreateManyClienteInput | VentaCreateManyClienteInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VentaUpsertWithWhereUniqueWithoutClienteInput = {
+    where: VentaWhereUniqueInput
+    update: XOR<VentaUpdateWithoutClienteInput, VentaUncheckedUpdateWithoutClienteInput>
+    create: XOR<VentaCreateWithoutClienteInput, VentaUncheckedCreateWithoutClienteInput>
+  }
+
+  export type VentaUpdateWithWhereUniqueWithoutClienteInput = {
+    where: VentaWhereUniqueInput
+    data: XOR<VentaUpdateWithoutClienteInput, VentaUncheckedUpdateWithoutClienteInput>
+  }
+
+  export type VentaUpdateManyWithWhereWithoutClienteInput = {
+    where: VentaScalarWhereInput
+    data: XOR<VentaUpdateManyMutationInput, VentaUncheckedUpdateManyWithoutClienteInput>
+  }
+
+  export type VentaScalarWhereInput = {
+    AND?: VentaScalarWhereInput | VentaScalarWhereInput[]
+    OR?: VentaScalarWhereInput[]
+    NOT?: VentaScalarWhereInput | VentaScalarWhereInput[]
+    id?: IntFilter<"Venta"> | number
+    cliente_id?: IntFilter<"Venta"> | number
+    fecha?: DateTimeFilter<"Venta"> | Date | string
+    nombre_cliente?: StringNullableFilter<"Venta"> | string | null
+    telefono_cliente?: StringNullableFilter<"Venta"> | string | null
+    direccion_cliente?: StringNullableFilter<"Venta"> | string | null
+    dni_cliente?: StringNullableFilter<"Venta"> | string | null
+    total?: FloatFilter<"Venta"> | number
+    descuento?: FloatNullableFilter<"Venta"> | number | null
+    subtotal?: FloatNullableFilter<"Venta"> | number | null
+    observacion?: StringNullableFilter<"Venta"> | string | null
+    numero_venta?: StringFilter<"Venta"> | string
+    tipo_venta?: StringFilter<"Venta"> | string
+    metodo_pago?: StringFilter<"Venta"> | string
+    updatedAt?: DateTimeNullableFilter<"Venta"> | Date | string | null
   }
 
   export type variante_productoCreateWithoutTalleInput = {
@@ -18216,6 +18545,139 @@ export namespace Prisma {
   export type ColorUncheckedUpdateWithoutVariantesInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ClienteCreateWithoutVentasInput = {
+    nombre: string
+    telefono?: string | null
+    dni?: string | null
+    direccion?: string | null
+    localidad?: string | null
+    observacion?: string | null
+    activo?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ClienteUncheckedCreateWithoutVentasInput = {
+    id?: number
+    nombre: string
+    telefono?: string | null
+    dni?: string | null
+    direccion?: string | null
+    localidad?: string | null
+    observacion?: string | null
+    activo?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ClienteCreateOrConnectWithoutVentasInput = {
+    where: ClienteWhereUniqueInput
+    create: XOR<ClienteCreateWithoutVentasInput, ClienteUncheckedCreateWithoutVentasInput>
+  }
+
+  export type ClienteUpsertWithoutVentasInput = {
+    update: XOR<ClienteUpdateWithoutVentasInput, ClienteUncheckedUpdateWithoutVentasInput>
+    create: XOR<ClienteCreateWithoutVentasInput, ClienteUncheckedCreateWithoutVentasInput>
+    where?: ClienteWhereInput
+  }
+
+  export type ClienteUpdateToOneWithWhereWithoutVentasInput = {
+    where?: ClienteWhereInput
+    data: XOR<ClienteUpdateWithoutVentasInput, ClienteUncheckedUpdateWithoutVentasInput>
+  }
+
+  export type ClienteUpdateWithoutVentasInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion?: NullableStringFieldUpdateOperationsInput | string | null
+    localidad?: NullableStringFieldUpdateOperationsInput | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClienteUncheckedUpdateWithoutVentasInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    dni?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion?: NullableStringFieldUpdateOperationsInput | string | null
+    localidad?: NullableStringFieldUpdateOperationsInput | string | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VentaCreateManyClienteInput = {
+    id?: number
+    fecha?: Date | string
+    nombre_cliente?: string | null
+    telefono_cliente?: string | null
+    direccion_cliente?: string | null
+    dni_cliente?: string | null
+    total: number
+    descuento?: number | null
+    subtotal?: number | null
+    observacion?: string | null
+    numero_venta: string
+    tipo_venta: string
+    metodo_pago: string
+    updatedAt?: Date | string | null
+  }
+
+  export type VentaUpdateWithoutClienteInput = {
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: FloatFieldUpdateOperationsInput | number
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+    subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    numero_venta?: StringFieldUpdateOperationsInput | string
+    tipo_venta?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type VentaUncheckedUpdateWithoutClienteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: FloatFieldUpdateOperationsInput | number
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+    subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    numero_venta?: StringFieldUpdateOperationsInput | string
+    tipo_venta?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type VentaUncheckedUpdateManyWithoutClienteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: FloatFieldUpdateOperationsInput | number
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+    subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    numero_venta?: StringFieldUpdateOperationsInput | string
+    tipo_venta?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type variante_productoCreateManyTalleInput = {

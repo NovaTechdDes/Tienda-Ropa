@@ -1,4 +1,5 @@
 import { Cliente } from '../interface/Cliente';
+import { ClienteBackend, clienteMapper } from '../mappers/cliente.mappres';
 import { db } from '../utils/db';
 
 export const startPostCliente = async (cliente: Cliente) => {
@@ -18,7 +19,9 @@ export const startGetClientes = async (): Promise<Cliente[]> => {
   try {
     const { data } = await db().get('/clientes');
     if (data.ok) {
-      return data.clientes;
+      const clientesMappeados = data.clientes.map((cliente: ClienteBackend) => clienteMapper(cliente));
+
+      return clientesMappeados;
     }
     return [];
   } catch (error) {

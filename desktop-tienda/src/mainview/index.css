@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* --- Light Mode (Default) --- */
-    --atelier-ink: #e9e9e5;
+    --atelier-ink: #d3d3d1;
     --atelier-surface-1: #f3f3f1;
     --atelier-surface-2: #eeeeec;
     
@@ -13,7 +13,7 @@
     --atelier-parchment-muted: #64748b;
     --atelier-parchment-low: #94a3b8;
     
-    --atelier-gold: #d4af37;
+    --atelier-gold: #917724;
     --atelier-gold-bright: #b8860b;
     
     --atelier-border: rgba(0, 0, 0, 0.05);

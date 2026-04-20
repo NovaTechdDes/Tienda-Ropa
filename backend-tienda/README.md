@@ -2,8 +2,8 @@
 
 ## Instalacion y actualizacion de prisma
 
-1. npx prisma migrate dev --name init
-2. npx prisma generate
+1. npx prisma generate
+2. npx prisma migrate dev --name init
 3. npx prisma db push
 
 ## Empaquetacion del dispositivo

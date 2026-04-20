@@ -1,21 +1,15 @@
-import { Link, useLocation } from "react-router";
-import {
-  ReceiptText,
-  Package,
-  Settings,
-  ChevronRight,
-  Sparkles,
-  User,
-} from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
+import { Link, useLocation } from 'react-router';
+import { ReceiptText, Package, Settings, ChevronRight, Sparkles, User } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
+import logo from '../../assets/Logo.jpeg';
 
 export const AsideBar = () => {
   const location = useLocation();
 
   const navLinks = [
-    { name: "Ventas", path: "/ventas", icon: <ReceiptText size={18} /> },
-    { name: "Productos", path: "/productos", icon: <Package size={18} /> },
-    { name: "Clientes", path: "/clientes", icon: <User size={18} /> },
+    { name: 'Ventas', path: '/ventas', icon: <ReceiptText size={18} /> },
+    { name: 'Productos', path: '/productos', icon: <Package size={18} /> },
+    { name: 'Clientes', path: '/clientes', icon: <User size={18} /> },
   ];
 
   return (
@@ -23,15 +17,11 @@ export const AsideBar = () => {
       {/* Brand Header */}
       <div className="p-8 flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-[var(--atelier-gold)] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)]">
-          <Sparkles className="text-white dark:text-[var(--atelier-ink)]" size={18} />
+          <img src={logo} alt="Logo" className="w-10 h-10 rounded-lg object-contain" />
         </div>
         <div>
-          <h1 className="text-sm font-bold tracking-widest uppercase text-[var(--atelier-parchment)]">
-            Pink Chajari
-          </h1>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--atelier-parchment-muted)] font-medium leading-none mt-1">
-            Gestion
-          </p>
+          <h1 className="text-sm font-bold tracking-widest uppercase text-[var(--atelier-parchment)]">Pink Chajari</h1>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--atelier-parchment-muted)] font-medium leading-none mt-1">Gestion</p>
         </div>
       </div>
 
@@ -48,20 +38,14 @@ export const AsideBar = () => {
                   group relative flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300
                   ${
                     isActive
-                      ? "bg-[var(--atelier-border-soft)] text-[var(--atelier-parchment)] shadow-sm"
-                      : "text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]"
+                      ? 'bg-[var(--atelier-border-soft)] text-[var(--atelier-parchment)] shadow-sm'
+                      : 'text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]'
                   }
                 `}
               >
                 <div className="flex items-center gap-3 z-10">
-                  <span
-                    className={`transition-transform duration-300 ${isActive ? "scale-110 text-[var(--atelier-gold)]" : "group-hover:scale-110"}`}
-                  >
-                    {link.icon}
-                  </span>
-                  <span className="text-sm font-medium tracking-wide">
-                    {link.name}
-                  </span>
+                  <span className={`transition-transform duration-300 ${isActive ? 'scale-110 text-[var(--atelier-gold)]' : 'group-hover:scale-110'}`}>{link.icon}</span>
+                  <span className="text-sm font-medium tracking-wide">{link.name}</span>
                 </div>
 
                 {/* Signature Indicator (Active State) */}
@@ -73,9 +57,7 @@ export const AsideBar = () => {
                 )}
 
                 {/* Subtle hover effect background */}
-                {!isActive && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-[rgba(212,175,55,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-                )}
+                {!isActive && <div className="absolute inset-0 bg-gradient-to-r from-[rgba(212,175,55,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />}
               </Link>
             );
           })}
@@ -85,24 +67,21 @@ export const AsideBar = () => {
       {/* Configuracion & Theme Toggle */}
       <div className="p-4 mt-auto border-t border-[var(--atelier-border)] space-y-4">
         <div className="flex justify-center">
-            <ThemeToggle />
+          <ThemeToggle />
         </div>
-        
+
         <Link
           to="/configuracion"
           className={`
             group flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300
             ${
-              location.pathname === "/configuracion"
-                ? "bg-[var(--atelier-border-soft)] text-[var(--atelier-parchment)] shadow-sm"
-                : "text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]"
+              location.pathname === '/configuracion'
+                ? 'bg-[var(--atelier-border-soft)] text-[var(--atelier-parchment)] shadow-sm'
+                : 'text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]'
             }
           `}
         >
-          <Settings
-            size={18}
-            className="group-hover:rotate-45 transition-transform duration-500"
-          />
+          <Settings size={18} className="group-hover:rotate-45 transition-transform duration-500" />
           <span className="text-sm font-medium">Configuración</span>
         </Link>
       </div>

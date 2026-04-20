@@ -23,6 +23,7 @@ model Cliente {
   activo      Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  ventas      Venta[]
 }
 
 model Marca {
@@ -111,6 +112,8 @@ model Venta {
   tipo_venta        String
   metodo_pago       String
   updatedAt         DateTime? @updatedAt
+
+  cliente Cliente @relation(fields: [cliente_id], references: [id])
 
   @@unique([tipo_venta, numero_venta])
 }

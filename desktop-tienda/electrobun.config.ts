@@ -22,6 +22,7 @@ export default {
 		},
 		win: {
 			bundleCEF: false,
+			icon: "src/mainview/assets/Logo.jpeg", // Note: Windows usually requires .ico for the taskbar icon
 		},
 	},
 } satisfies ElectrobunConfig;

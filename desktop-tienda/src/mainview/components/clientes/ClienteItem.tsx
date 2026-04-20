@@ -88,13 +88,13 @@ export const ClienteItem = ({ cliente }: Props) => {
           <div className="flex flex-col items-center">
             <span className="text-[9px] uppercase tracking-[0.2em] text-[var(--atelier-parchment-low)] font-bold mb-1.5">Compras</span>
             <div className="px-2.5 py-1 rounded-lg bg-[var(--atelier-ink)] border border-[var(--atelier-border)] text-center min-w-[32px]">
-              <span className="text-xs text-[var(--atelier-parchment)] font-bold tabular-nums">0</span>
+              <span className="text-xs text-[var(--atelier-parchment)] font-bold tabular-nums">{cliente.compras?.toFixed(2)}</span>
             </div>
           </div>
           <div className="flex flex-col items-center">
             <span className="text-[9px] uppercase tracking-[0.2em] text-[var(--atelier-parchment-low)] font-bold mb-1.5">Gastado</span>
             <div className="px-2.5 py-1 rounded-lg bg-[var(--atelier-gold)]/5 border border-[var(--atelier-gold)]/10 text-center min-w-[64px]">
-              <span className="text-xs text-[var(--atelier-gold)] font-bold tabular-nums">$ 0.00</span>
+              <span className="text-xs text-[var(--atelier-gold)] font-bold tabular-nums">$ {cliente.gastado?.toFixed(2)}</span>
             </div>
           </div>
         </div>
