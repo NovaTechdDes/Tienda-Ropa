@@ -36,6 +36,12 @@ Name: "{app}\logs"
 Filename: "msiexec.exe"; Parameters: "/i ""{tmp}\instaladores\node.msi"" /qn"; StatusMsg: "Instalando Node.js..."; Flags: waituntilterminated
 Filename: "cmd.exe"; Parameters: "/C ""{pf}\nodejs\npm.cmd"" install --omit=dev"; WorkingDir: "{app}"; StatusMsg: "Instalando dependencias..."; Flags: waituntilterminated
 
+Filename: "cmd.exe"; \
+Parameters: "/C npx prisma generate"; \
+WorkingDir: "{app}"; \
+StatusMsg: "Generando cliente de base de datos..."; \
+Flags: waituntilterminated
+
 ; Instalar PostgreSQL silencioso
 Filename: "{tmp}\instaladores\postgresSQL.exe"; \
 Parameters: "--mode unattended --unattendedmodeui none --superpassword 123456 --servicename postgresql-x64-15 --servicepassword 123456 --serverport 5432"; \

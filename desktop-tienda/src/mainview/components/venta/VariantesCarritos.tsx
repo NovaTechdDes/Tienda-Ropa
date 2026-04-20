@@ -6,30 +6,30 @@ export const VariantesCarritos = () => {
   const { variantesCarrito } = useCarritoStore();
 
   return (
-    <div className="bg-[var(--atelier-surface-1)] border border-[var(--atelier-border)] rounded-2xl overflow-hidden">
-      <div className="p-3 border-b border-[var(--atelier-border)] flex items-center justify-between">
-        <h3 className="flex items-center gap-2 text-sm font-bold text-[var(--atelier-parchment)]">
-          <div className="p-1.5 bg-[var(--atelier-gold)]/10 rounded-lg">
-            <ShoppingBag className="text-[var(--atelier-gold)]" size={16} />
+    <div className="bg-[var(--atelier-surface-1)] border border-black/60 rounded-2xl overflow-hidden shadow-2xl">
+      <div className="p-4 border-b border-black/10 flex items-center justify-between bg-black/5">
+        <h3 className="flex items-center gap-2 text-sm font-bold text-[var(--atelier-parchment)] uppercase tracking-wider">
+          <div className="p-2 bg-[var(--primary-soft)] rounded-xl">
+            <ShoppingBag className="text-[var(--primary)]" size={18} />
           </div>
-          Carrito de Ventas
+          Carrito de Venta
         </h3>
-        <div className="flex items-center gap-2 px-3 py-1 bg-[var(--atelier-ink)] border border-[var(--atelier-border)] rounded-full">
-          <span className="text-xs font-medium text-[var(--atelier-parchment-low)] uppercase tracking-wider">Items</span>
-          <span className="text-sm font-bold text-[var(--atelier-gold)]">{variantesCarrito.length}</span>
+        <div className="flex items-center gap-3 px-4 py-1.5 bg-[var(--atelier-ink)] border border-black/20 rounded-full shadow-inner">
+          <span className="text-[10px] font-bold text-[var(--secondary)] uppercase tracking-[0.2em]">Items</span>
+          <span className="text-sm font-black text-[var(--primary)]">{variantesCarrito.length}</span>
         </div>
       </div>
 
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
-            <tr className="bg-[var(--atelier-ink)]/50">
-              <th className="px-4 py-2 text-left text-[10px] font-semibold text-[var(--atelier-parchment-low)] uppercase tracking-widest">Producto</th>
-              <th className="px-4 py-2 text-center text-[10px] font-semibold text-[var(--atelier-parchment-low)] uppercase tracking-widest">Variante</th>
-              <th className="px-4 py-2 text-center text-[10px] font-semibold text-[var(--atelier-parchment-low)] uppercase tracking-widest">Cant.</th>
-              <th className="px-4 py-2 text-right text-[10px] font-semibold text-[var(--atelier-parchment-low)] uppercase tracking-widest">Precio</th>
-              <th className="px-4 py-2 text-right text-[10px] font-semibold text-[var(--atelier-parchment-low)] uppercase tracking-widest">Subtotal</th>
-              <th className="px-4 py-2 text-center text-[10px] font-semibold text-[var(--atelier-parchment-low)] uppercase tracking-widest w-16">Acciones</th>
+            <tr className="bg-black/10">
+              <th className="px-5 py-3 text-left text-[9px] font-bold text-[var(--secondary)] uppercase tracking-[0.2em]">Producto</th>
+              <th className="px-5 py-3 text-center text-[9px] font-bold text-[var(--secondary)] uppercase tracking-[0.2em]">Variante</th>
+              <th className="px-5 py-3 text-center text-[9px] font-bold text-[var(--secondary)] uppercase tracking-[0.2em]">Cant.</th>
+              <th className="px-5 py-3 text-right text-[9px] font-bold text-[var(--secondary)] uppercase tracking-[0.2em]">Precio</th>
+              <th className="px-5 py-3 text-right text-[9px] font-bold text-[var(--secondary)] uppercase tracking-[0.2em]">Subtotal</th>
+              <th className="px-5 py-3 text-center text-[9px] font-bold text-[var(--secondary)] uppercase tracking-[0.2em] w-20">Acciones</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[var(--atelier-border-soft)]">

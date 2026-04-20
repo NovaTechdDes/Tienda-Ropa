@@ -14,26 +14,25 @@ export const ProductItemVenta = ({ producto }: Props) => {
     <div
       key={producto.id}
       onClick={() => setProductoSeleccionado(producto)}
-      className={`group h-56 relative bg-[var(--atelier-surface-1)] border border-[var(--atelier-border)] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[var(--atelier-gold)]/30 hover:shadow-[var(--atelier-shadow-md)] ${producto.id === productoSeleccionado?.id ? 'border-[var(--atelier-gold)] border-3' : ''}`}
+      className={`group h-56 relative bg-[var(--atelier-surface-1)] border border-black/60 rounded-2xl overflow-hidden transition-all duration-500 hover:border-[var(--primary)]/50 hover:shadow-2xl ${producto.id === productoSeleccionado?.id ? 'border-[var(--primary)] border-2 ring-2 ring-[var(--primary)]/20' : ''}`}
     >
-      <p className="absolute top-2 right-2 bg-white text-[#D4af37] p-1 rounded-lg z-10 text-xs font-bold leading-relaxed shadow-lg">$ {producto.precio_global?.toFixed(2) ?? '0.00'}</p>
+      <div className="absolute top-2 right-2 bg-[var(--tertiary)] text-[var(--neutral)] px-2 py-1 rounded-lg z-10 text-[10px] font-black leading-relaxed shadow-lg uppercase tracking-tighter">
+        $ {producto.precio_global?.toFixed(2) ?? '0.00'}
+      </div>
       {/* Image Container */}
-      <div className="relative h-56 w-full overflow-hidden bg-[var(--atelier-ink)]">
+      <div className="relative h-40 w-full overflow-hidden bg-[var(--atelier-ink)]">
         <img
           src={`${imgURL}${producto.img_url}`}
           alt={producto.descripcion}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--atelier-surface-1)] via-transparent to-transparent opacity-60" />
       </div>
 
       {/* Contenido Principal */}
-      <div className="p-5 flex flex-col items-start">
-        <div className="flex justify-between items-start gap-2 mb-1">
-          <h3 className="text-sm font-bold tracking-tight text-[var(--atelier-parchment)] uppercase truncate">{producto.descripcion}</h3>
-        </div>
-
-        <p className="text-xs text-[var(--atelier-parchment-muted)] font-medium leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">{producto.observacion || 'Sin descripción adicional'}</p>
+      <div className="p-3 flex flex-col items-start bg-[var(--atelier-surface-1)]">
+        <h3 className="text-[11px] font-bold tracking-tight text-[var(--atelier-parchment)] uppercase truncate w-full group-hover:text-[var(--primary)] transition-colors">{producto.descripcion}</h3>
+        <p className="text-[9px] text-[var(--atelier-parchment-muted)] font-medium leading-relaxed line-clamp-1 opacity-60 mt-0.5">{producto.observacion || 'Sin descripción adicional'}</p>
       </div>
     </div>
   );

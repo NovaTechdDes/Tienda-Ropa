@@ -19,14 +19,14 @@ export const ProductoSeleccionado = () => {
   if (!productoSeleccionado) return null;
 
   return (
-    <div className="bg-[var(--atelier-surface-1)] border border-[var(--atelier-border)] rounded-2xl p-3">
-      <div className="mb-2">
-        <h3 className="text-sm font-bold text-[var(--atelier-parchment)]">{productoSeleccionado?.descripcion}</h3>
+    <div className="bg-[var(--atelier-surface-1)] border border-black/60 rounded-2xl p-4 shadow-xl">
+      <div className="mb-4 border-b border-black/10 pb-2">
+        <h3 className="text-xs font-bold text-[var(--primary)] uppercase tracking-wider">{productoSeleccionado?.descripcion}</h3>
       </div>
-
-      <div className="flex justify-between gap-4">
-        <div className="flex flex-col">
-          <label htmlFor="" className="text-[10px] uppercase font-bold text-[var(--atelier-parchment-low)] tracking-widest ml-1">
+ 
+      <div className="flex flex-wrap items-end gap-4">
+        <div className="flex flex-col flex-1 min-w-[150px]">
+          <label htmlFor="variante" className="text-[9px] uppercase font-bold text-[var(--secondary)] tracking-widest ml-1 mb-1.5">
             Variante
           </label>
           <select
@@ -34,28 +34,28 @@ export const ProductoSeleccionado = () => {
             id="variante"
             value={varianteSeleccionado}
             onChange={(e) => setVarianteSeleccionado(e.target.value)}
-            className="bg-[var(--atelier-ink)] border border-[var(--atelier-border)] rounded-2xl p-2 mt-2"
+            className="bg-[var(--atelier-ink)] border border-black/20 focus:border-[var(--primary)]/30 rounded-xl p-2.5 text-xs text-[var(--atelier-parchment)] outline-none transition-all appearance-none cursor-pointer shadow-inner"
           >
-            <option value="">Seleccione una variante</option>
+            <option value="">Seleccione variante</option>
             {productoSeleccionado?.variantes?.map((variante) => (
               <option className="uppercase" key={variante.id} value={variante.id}>
-                {variante.talle?.nombre}/{variante.color?.nombre}
+                {variante.talle?.nombre} / {variante.color?.nombre}
               </option>
             ))}
           </select>
         </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="stock" className="text-[10px] uppercase font-bold text-[var(--atelier-parchment-low)] tracking-widest ml-1">
+ 
+        <div className="flex flex-col w-20">
+          <label htmlFor="stock" className="text-[9px] uppercase font-bold text-[var(--secondary)] tracking-widest ml-1 mb-1.5">
             Stock
           </label>
-          <p id="stock" className="bg-[var(--atelier-ink)] border mt-2 border-[var(--atelier-border)] rounded-2xl p-2">
+          <div id="stock" className="bg-[var(--atelier-ink)] border border-black/20 rounded-xl p-2.5 text-xs text-center font-mono opacity-60">
             {productoSeleccionado?.variantes?.find((v) => v.id == varianteSeleccionado)?.stock.toFixed(2) ?? '0.00'}
-          </p>
+          </div>
         </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="cantidad" className="text-[10px] uppercase font-bold text-[var(--atelier-parchment-low)] tracking-widest ml-1">
+ 
+        <div className="flex flex-col w-24">
+          <label htmlFor="cantidad" className="text-[9px] uppercase font-bold text-[var(--secondary)] tracking-widest ml-1 mb-1.5">
             Cantidad
           </label>
           <input
@@ -65,11 +65,15 @@ export const ProductoSeleccionado = () => {
             name="cantidad"
             id="cantidad"
             min={1}
-            className="bg-[var(--atelier-ink)] mt-2 w-28 border border-[var(--atelier-border)] rounded-2xl p-2"
+            className="bg-[var(--atelier-ink)] w-full border border-black/20 focus:border-[var(--primary)]/30 rounded-xl p-2.5 text-xs text-center text-[var(--atelier-parchment)] outline-none transition-all shadow-inner"
           />
         </div>
-        <button onClick={handleAddVariantes} className="bg-[var(--atelier-gold)] flex items-center gap-2 mt-auto hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] rounded-xl p-2 font-bold uppercase text-[10px] tracking-widest transition-all">
-          <Plus size={14} />
+
+        <button 
+          onClick={handleAddVariantes} 
+          className="flex-1 min-w-[120px] bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-[var(--neutral)] flex items-center justify-center gap-2 rounded-xl py-3 px-4 font-black uppercase text-[10px] tracking-[0.1em] transition-all transform active:scale-95 shadow-lg shadow-[var(--primary)]/20"
+        >
+          <Plus size={16} />
           Agregar
         </button>
       </div>

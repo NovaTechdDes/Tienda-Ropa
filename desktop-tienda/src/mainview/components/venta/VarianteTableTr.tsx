@@ -11,33 +11,33 @@ export const VarianteTableTr = ({ item }: Props) => {
   const subtotal = item.precio * item.cantidad;
 
   return (
-    <tr className="group hover:bg-[var(--atelier-surface-2)]/50 transition-colors">
-      <td className="px-4 py-2">
+    <tr className="group hover:bg-[var(--primary-soft)] transition-colors border-b border-black/5 last:border-0">
+      <td className="px-5 py-3">
         <div className="flex flex-col">
-          <span className="text-xs font-medium text-[var(--atelier-parchment)] uppercase">{item?.producto}</span>
+          <span className="text-[11px] font-bold text-[var(--atelier-parchment)] uppercase tracking-tight group-hover:text-[var(--primary)] transition-colors">{item?.producto}</span>
         </div>
       </td>
-      <td className="px-4 py-2 text-center">
-        <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-medium bg-[var(--atelier-ink)] text-[var(--atelier-parchment-low)] uppercase border border-[var(--atelier-border)]">
+      <td className="px-5 py-3 text-center">
+        <span className="inline-flex items-center px-2 py-0.5 rounded-lg text-[9px] font-black bg-[var(--atelier-ink)] text-[var(--secondary)] uppercase border border-black/10 shadow-sm">
           {item?.variante}
         </span>
       </td>
-      <td className="px-4 py-2 text-center">
-        <span className="text-xs font-medium text-[var(--atelier-parchment-muted)] tabular-nums">{item.cantidad}</span>
+      <td className="px-5 py-3 text-center">
+        <span className="text-xs font-bold text-[var(--atelier-parchment-muted)] tabular-nums">{item.cantidad}</span>
       </td>
-      <td className="px-4 py-2 text-right">
-        <span className="text-xs font-semibold text-[var(--atelier-parchment)] tabular-nums">
+      <td className="px-5 py-3 text-right">
+        <span className="text-[11px] font-medium text-[var(--atelier-parchment)] tabular-nums">
           ${item.precio.toLocaleString('es-AR', { minimumFractionDigits: 2 })}
         </span>
       </td>
-      <td className="px-4 py-2 text-right">
-        <span className="text-xs font-bold text-[var(--atelier-gold)] tabular-nums">
+      <td className="px-5 py-3 text-right">
+        <span className="text-xs font-black text-[var(--tertiary)] tabular-nums">
           ${subtotal.toLocaleString('es-AR', { minimumFractionDigits: 2 })}
         </span>
       </td>
-      <td className="px-4 py-2 text-center">
+      <td className="px-5 py-3 text-center">
         <button
-          className="p-1 text-[var(--atelier-parchment-low)] hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-all border border-transparent hover:border-red-500/20 active:scale-95"
+          className="p-2 text-[var(--atelier-parchment-low)] hover:text-red-500 hover:bg-red-500/10 rounded-xl transition-all border border-transparent hover:border-red-500/20 active:scale-95 shadow-sm hover:shadow-md"
           onClick={() => eliminarVarianteCarrito(item.id_variante)}
           title="Eliminar del carrito"
         >

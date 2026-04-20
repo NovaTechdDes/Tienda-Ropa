@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "npx prisma generate && tsc && pnpm run copy",
-    "copy": "xcopy src\\generated dist\\generated /E /I /Y && xcopy dist distribucion\\backend\\dist /E /I /Y && xcopy package.json distribucion\\backend\\package.json /Y && xcopy .env distribucion\\backend\\.env /Y",
+    "copy": "xcopy src\\generated dist\\generated /E /I /Y && xcopy prisma distribucion\\backend\\prisma /E /I /Y && xcopy dist distribucion\\backend\\dist /E /I /Y && xcopy package.json distribucion\\backend\\package.json /Y && xcopy .env distribucion\\backend\\.env /Y",
     "start": "node dist/index.js",
     "prisma:generate": "npx prisma generate"
   },
@@ -27,6 +27,7 @@
     "express": "^5.2.1",
     "mssql": "^12.2.1",
     "multer": "^2.1.1",
+    "prisma": "^7.5.0",
     "pg": "^8.20.0"
   },
   "devDependencies": {
@@ -36,7 +37,7 @@
     "@types/node": "^25.5.0",
     "@types/pg": "^8.18.0",
     "nodemon": "^3.1.14",
-    "prisma": "^7.5.0",
+    
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
   }

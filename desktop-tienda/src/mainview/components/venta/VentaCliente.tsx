@@ -31,42 +31,41 @@ export const VentaCliente = () => {
   useEffect(() => {
     setClienteAux(cliente ?? null);
   }, [cliente]);
-
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center p-12 bg-[var(--atelier-surface-1)] rounded-3xl border border-[var(--atelier-border)]">
-        <Loader2 className="animate-spin text-[var(--atelier-gold)]" />
+      <div className="flex items-center justify-center p-12 bg-[var(--atelier-surface-1)] rounded-3xl border border-black/60">
+        <Loader2 className="animate-spin text-[var(--primary)]" />
       </div>
     );
   }
 
   return (
-    <div className="bg-[var(--atelier-surface-1)] border border-[var(--atelier-border)] rounded-3xl p-4 shadow-[var(--atelier-shadow-md)]">
-      <div className="flex items-center justify-between gap-3 mb-4">
+    <div className="bg-[var(--atelier-surface-1)] border border-black/60 rounded-3xl p-5 shadow-2xl">
+      <div className="flex items-center justify-between gap-3 mb-5 pb-2 border-b border-black/5">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-[var(--atelier-gold)]/10 flex items-center justify-center">
-            <User className="text-[var(--atelier-gold)]" size={16} />
+          <div className="w-9 h-9 rounded-xl bg-[var(--primary-soft)] flex items-center justify-center">
+            <User className="text-[var(--primary)]" size={18} />
           </div>
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--atelier-parchment)]">Cliente</h3>
-            <p className="text-[9px] text-[var(--atelier-parchment-muted)] font-medium uppercase tracking-tighter">Selección y Datos</p>
+            <h3 className="text-xs font-black uppercase tracking-[0.1em] text-[var(--atelier-parchment)]">Cliente</h3>
+            <p className="text-[9px] text-[var(--secondary)] font-bold uppercase tracking-widest">Información de Venta</p>
           </div>
         </div>
-        <div className="cursor-pointer" onClick={() => setMostrarDatos(!mostrarDatos)}>
-          {mostrarDatos ? <ArrowBigUp className="text-[var(--atelier-gold)]" size={20} /> : <ArrowBigDown className="text-[var(--atelier-gold)]" size={20} />}
+        <div className="cursor-pointer p-1.5 hover:bg-black/10 rounded-lg transition-colors" onClick={() => setMostrarDatos(!mostrarDatos)}>
+          {mostrarDatos ? <ArrowBigUp className="text-[var(--primary)]" size={20} /> : <ArrowBigDown className="text-[var(--primary)]" size={20} />}
         </div>
       </div>
-
+ 
       <div className="space-y-6">
         {/* Selector de Cliente */}
         <div className="space-y-2">
-          <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Buscar Cliente</label>
-          <div className="relative">
+          <label className="text-[9px] uppercase tracking-[0.2em] text-[var(--secondary)] font-black ml-1">Buscar Cliente</label>
+          <div className="relative group">
             <select
               name="cliente"
               id="cliente"
               value={cliente?.id || ''}
-              className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 px-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all appearance-none cursor-pointer"
+              className="w-full bg-[var(--atelier-ink)] border border-black/20 focus:border-[var(--primary)]/30 rounded-xl py-3.5 px-4 text-xs text-[var(--atelier-parchment)] outline-none transition-all appearance-none cursor-pointer shadow-inner"
               onChange={handleClienteChange}
             >
               <option value="">Seleccionar cliente</option>
@@ -76,57 +75,57 @@ export const VentaCliente = () => {
                 </option>
               ))}
             </select>
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--atelier-parchment-low)]">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--primary)]/50 group-hover:text-[var(--primary)] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </div>
           </div>
         </div>
-
+ 
         {/* Detalle del Cliente */}
         {mostrarDatos && (
-          <div className="grid grid-cols-1 gap-4 pt-4 border-t border-[var(--atelier-border)]">
-            <div className="space-y-1">
-              <label className="text-[9px] uppercase tracking-widest text-[var(--atelier-parchment-low)] font-bold ml-1">Nombre</label>
+          <div className="grid grid-cols-1 gap-4 pt-4 border-t border-black/10 animate-in fade-in slide-in-from-top-4 duration-300">
+            <div className="space-y-1.5">
+              <label className="text-[9px] uppercase tracking-[0.2em] text-[var(--secondary)] font-bold ml-1">Nombre</label>
               <input
                 type="text"
-                className="w-full bg-[var(--atelier-ink)]/50 border border-[var(--atelier-border)] rounded-xl py-2 px-3 text-xs text-[var(--atelier-parchment-muted)] outline-none"
+                className="w-full bg-[var(--atelier-ink)] border border-black/10 rounded-xl py-2.5 px-4 text-xs text-[var(--atelier-parchment-muted)] outline-none focus:border-[var(--primary)]/20 transition-all opacity-80"
                 value={clienteAux?.nombre || ''}
-                onChange={(e) => setClienteAux({ ...clienteAux, nombre: e.target.value || '' })}
+                readOnly
                 placeholder="N/A"
               />
             </div>
-
-            <div className="space-y-1">
-              <label className="text-[9px] uppercase tracking-widest text-[var(--atelier-parchment-low)] font-bold ml-1">Teléfono</label>
+ 
+            <div className="space-y-1.5">
+              <label className="text-[9px] uppercase tracking-[0.2em] text-[var(--secondary)] font-bold ml-1">Teléfono</label>
               <input
                 type="text"
-                className="w-full bg-[var(--atelier-ink)]/50 border border-[var(--atelier-border)] rounded-xl py-2 px-3 text-xs text-[var(--atelier-parchment-muted)] outline-none"
+                className="w-full bg-[var(--atelier-ink)] border border-black/10 rounded-xl py-2.5 px-4 text-xs text-[var(--atelier-parchment-muted)] outline-none focus:border-[var(--primary)]/20 transition-all opacity-80"
                 value={clienteAux?.telefono || ''}
-                onChange={(e) => setClienteAux({ ...clienteAux, telefono: e.target.value || '' })}
+                readOnly
                 placeholder="N/A"
               />
             </div>
-
-            <div className="space-y-1">
-              <label className="text-[9px] uppercase tracking-widest text-[var(--atelier-parchment-low)] font-bold ml-1">Dirección</label>
+ 
+            <div className="space-y-1.5">
+              <label className="text-[9px] uppercase tracking-[0.2em] text-[var(--secondary)] font-bold ml-1">Dirección</label>
               <input
                 type="text"
-                className="w-full bg-[var(--atelier-ink)]/50 border border-[var(--atelier-border)] rounded-xl py-2 px-3 text-xs text-[var(--atelier-parchment-muted)] outline-none"
+                className="w-full bg-[var(--atelier-ink)] border border-black/10 rounded-xl py-2.5 px-4 text-xs text-[var(--atelier-parchment-muted)] outline-none focus:border-[var(--primary)]/20 transition-all opacity-80"
                 value={clienteAux?.direccion || ''}
-                onChange={(e) => setClienteAux({ ...clienteAux, direccion: e.target.value || '' })}
+                readOnly
                 placeholder="N/A"
               />
             </div>
-
-            <div className="space-y-1">
-              <label className="text-[9px] uppercase tracking-widest text-[var(--atelier-parchment-low)] font-bold ml-1">DNI / CUIT</label>
+ 
+            <div className="space-y-1.5">
+              <label className="text-[9px] uppercase tracking-[0.2em] text-[var(--secondary)] font-bold ml-1">DNI / CUIT</label>
               <input
                 type="text"
-                className="w-full bg-[var(--atelier-ink)]/50 border border-[var(--atelier-border)] rounded-xl py-2 px-3 text-xs text-[var(--atelier-parchment-muted)] outline-none"
+                className="w-full bg-[var(--atelier-ink)] border border-black/10 rounded-xl py-2.5 px-4 text-xs text-[var(--atelier-parchment-muted)] outline-none focus:border-[var(--primary)]/20 transition-all opacity-80"
                 value={clienteAux?.dni || ''}
-                onChange={(e) => setClienteAux({ ...clienteAux, dni: e.target.value || '' })}
+                readOnly
                 placeholder="N/A"
               />
             </div>
