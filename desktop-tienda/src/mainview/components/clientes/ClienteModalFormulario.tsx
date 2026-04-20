@@ -82,14 +82,14 @@ export const ClienteModalFormulario = () => {
             <div className="space-y-2">
               <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Nombre Completo</label>
               <div className="relative group">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={16} />
                 <input
                   type="text"
                   name="nombre"
                   value={nombre}
                   onChange={onInputChange}
                   placeholder="Juan Pérez"
-                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
                 />
               </div>
             </div>
@@ -98,14 +98,14 @@ export const ClienteModalFormulario = () => {
             <div className="space-y-2">
               <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">DNI / CUIL</label>
               <div className="relative group">
-                <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
+                <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={16} />
                 <input
                   type="text"
                   name="dni"
                   value={dni}
                   onChange={onInputChange}
                   placeholder="20-XXXXXXXX-X"
-                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
                 />
               </div>
             </div>
@@ -114,14 +114,14 @@ export const ClienteModalFormulario = () => {
             <div className="space-y-2">
               <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Teléfono</label>
               <div className="relative group">
-                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={16} />
                 <input
                   type="text"
                   name="telefono"
                   value={telefono}
                   onChange={onInputChange}
                   placeholder="+54 9 XXX XXX-XXXX"
-                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
                 />
               </div>
             </div>
@@ -130,14 +130,14 @@ export const ClienteModalFormulario = () => {
             <div className="space-y-2">
               <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Localidad</label>
               <div className="relative group">
-                <Map className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
+                <Map className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={16} />
                 <input
                   type="text"
                   name="localidad"
                   value={localidad}
                   onChange={onInputChange}
                   placeholder="Ciudad / Provincia"
-                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
                 />
               </div>
             </div>
@@ -147,14 +147,14 @@ export const ClienteModalFormulario = () => {
           <div className="space-y-2">
             <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Dirección Exacta</label>
             <div className="relative group">
-              <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
+              <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={16} />
               <input
                 type="text"
                 name="direccion"
                 value={direccion}
                 onChange={onInputChange}
                 placeholder="Calle, Número, Piso/Depto"
-                className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
               />
             </div>
           </div>
@@ -163,14 +163,14 @@ export const ClienteModalFormulario = () => {
           <div className="space-y-2">
             <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Notas / Observaciones</label>
             <div className="relative group">
-              <FileText className="absolute left-4 top-4 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
+              <FileText className="absolute left-4 top-4 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={16} />
               <textarea
                 name="observacion"
                 value={observacion}
                 onChange={onInputChange}
                 rows={3}
                 placeholder="Información adicional relevante del cliente..."
-                className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)] resize-none"
+                className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)] resize-none"
               />
             </div>
           </div>
@@ -180,8 +180,8 @@ export const ClienteModalFormulario = () => {
             <label className="flex items-center gap-3 cursor-pointer group w-fit">
               <div className="relative flex items-center justify-center">
                 <input type="checkbox" name="activo" checked={activo} onChange={onInputChange} className="peer sr-only" />
-                <div className="w-6 h-6 rounded-lg border-2 border-[var(--atelier-border)] peer-checked:border-[var(--atelier-gold)] peer-checked:bg-[var(--atelier-gold)]/10 transition-all duration-300" />
-                <CheckCircle2 className="absolute opacity-0 peer-checked:opacity-100 text-[var(--atelier-gold)] transition-all duration-300 transform scale-75 peer-checked:scale-100" size={16} />
+                <div className="w-6 h-6 rounded-lg border-2 border-[var(--atelier-border)] peer-checked:border-[var(--tertiary)] peer-checked:bg-[var(--tertiary-soft)] transition-all duration-300" />
+                <CheckCircle2 className="absolute opacity-0 peer-checked:opacity-100 text-[var(--tertiary)] transition-all duration-300 transform scale-75 peer-checked:scale-100" size={16} />
               </div>
               <span className="text-sm font-medium text-[var(--atelier-parchment-muted)] group-hover:text-[var(--atelier-parchment)] transition-colors">Cliente Activo</span>
             </label>
@@ -200,7 +200,7 @@ export const ClienteModalFormulario = () => {
               <button
                 type="submit"
                 disabled={postCliente.isPending}
-                className="px-8 py-2.5 bg-[var(--atelier-gold)] hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] rounded-xl text-xs font-bold uppercase tracking-widest shadow-[var(--atelier-shadow-md)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                className="px-8 py-2.5 bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-[var(--neutral)] rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-[var(--primary)]/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 {postCliente.isPending ? 'Actualizando...' : 'Actualizar Cliente'}
               </button>
@@ -208,7 +208,7 @@ export const ClienteModalFormulario = () => {
               <button
                 type="submit"
                 disabled={postCliente.isPending}
-                className="px-8 py-2.5 bg-[var(--atelier-gold)] hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] rounded-xl text-xs font-bold uppercase tracking-widest shadow-[var(--atelier-shadow-md)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                className="px-8 py-2.5 bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-[var(--neutral)] rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-[var(--primary)]/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 {postCliente.isPending ? 'Guardando...' : 'Guardar Cliente'}
               </button>

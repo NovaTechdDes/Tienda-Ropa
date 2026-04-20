@@ -5,7 +5,13 @@
 @layer base {
   :root {
     /* --- Light Mode (Default) --- */
-    --atelier-ink: #d3d3d1;
+    --primary: #FF7EB9;
+    --primary-soft: rgba(255, 126, 185, 0.1);
+    --secondary: #9F667D;
+    --secondary-soft: rgba(159, 102, 125, 0.1);
+    --tertiary: #6ABC53;
+    --tertiary-soft: rgba(106, 188, 83, 0.1);
+    --neutral: #1A1A1A;
     --atelier-surface-1: #f3f3f1;
     --atelier-surface-2: #eeeeec;
     
@@ -36,7 +42,7 @@
     --atelier-gold: #d4af37;
     --atelier-gold-bright: #e5c158;
     
-    --atelier-border: rgba(255, 255, 255, 0.08);
+    --atelier-border: rgba(255, 255, 255, 1);
     --atelier-border-soft: rgba(255, 255, 255, 0.04);
     
     --atelier-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);

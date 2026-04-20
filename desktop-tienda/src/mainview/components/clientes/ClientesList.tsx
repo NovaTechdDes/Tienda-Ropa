@@ -23,11 +23,11 @@ export const ClientesList = () => {
     <div className="w-full overflow-x-auto mt-4 pb-10">
       <table className="w-full border-separate border-spacing-y-3">
         <thead>
-          <tr className="text-[var(--atelier-parchment-low)]">
-            <th className="px-6 py-4 text-left text-[10px] uppercase tracking-[0.2em] font-bold">Cliente</th>
-            <th className="px-6 py-4 text-left text-[10px] uppercase tracking-[0.2em] font-bold">Contacto</th>
-            <th className="px-6 py-4 text-left text-[10px] uppercase tracking-[0.2em] font-bold text-center">Resumen</th>
-            <th className="px-6 py-4 text-right text-[10px] uppercase tracking-[0.2em] font-bold">Acciones</th>
+          <tr className="text-[var(--secondary)]">
+            <th className="px-6 py-4 text-left text-[10px] uppercase tracking-[0.25em] font-bold opacity-80">Cliente</th>
+            <th className="px-6 py-4 text-left text-[10px] uppercase tracking-[0.25em] font-bold opacity-80">Contacto</th>
+            <th className="px-6 py-4 text-left text-[10px] uppercase tracking-[0.25em] font-bold text-center opacity-80">Resumen</th>
+            <th className="px-6 py-4 text-right text-[10px] uppercase tracking-[0.25em] font-bold opacity-80">Acciones</th>
           </tr>
         </thead>
         <tbody>

@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router';
-import { ReceiptText, Package, Settings, ChevronRight, Sparkles, User } from 'lucide-react';
+import { ReceiptText, Package, Settings, ChevronRight, User } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
-import logo from '../../assets/Logo.jpeg';
 
 export const AsideBar = () => {
   const location = useLocation();
@@ -16,8 +15,8 @@ export const AsideBar = () => {
     <aside className="w-64 h-full border-r border-[var(--atelier-border)] bg-[var(--atelier-ink)] flex flex-col z-20 shadow-2xl transition-colors duration-300">
       {/* Brand Header */}
       <div className="p-8 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-[var(--atelier-gold)] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)]">
-          <img src={logo} alt="Logo" className="w-10 h-10 rounded-lg object-contain" />
+        <div className="w-8 h-8 rounded-lg bg-[var(--neutral)] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+          <p className="text-2xl text-[var(--primary)] font-bold">P</p>
         </div>
         <div>
           <h1 className="text-sm font-bold tracking-widest uppercase text-[var(--atelier-parchment)]">Pink Chajari</h1>
@@ -44,15 +43,15 @@ export const AsideBar = () => {
                 `}
               >
                 <div className="flex items-center gap-3 z-10">
-                  <span className={`transition-transform duration-300 ${isActive ? 'scale-110 text-[var(--atelier-gold)]' : 'group-hover:scale-110'}`}>{link.icon}</span>
+                  <span className={`transition-transform duration-300 ${isActive ? 'scale-110 text-[var(--secondary)]' : 'group-hover:scale-110'}`}>{link.icon}</span>
                   <span className="text-sm font-medium tracking-wide">{link.name}</span>
                 </div>
 
                 {/* Signature Indicator (Active State) */}
                 {isActive && (
                   <>
-                    <div className="absolute left-0 top-1/4 bottom-1/4 w-[2px] bg-[var(--atelier-gold)] rounded-full shadow-[0_0_8px_rgba(212,175,55,0.5)]" />
-                    <ChevronRight size={14} className="text-[var(--atelier-parchment-low)]" />
+                    <div className="absolute left-0 top-1/4 bottom-1/4 w-[2px] bg-[var(--primary)] rounded-full shadow-[0_0_8px_rgba(212,175,55,0.5)]" />
+                    <ChevronRight size={14} className="text-[var(--primary)]" />
                   </>
                 )}
 
