@@ -37,26 +37,25 @@ Filename: "msiexec.exe"; Parameters: "/i ""{tmp}\instaladores\node.msi"" /qn"; S
 Filename: "cmd.exe"; Parameters: "/C ""{pf}\nodejs\npm.cmd"" install --omit=dev"; WorkingDir: "{app}"; StatusMsg: "Instalando dependencias..."; Flags: waituntilterminated
 
 Filename: "cmd.exe"; \
-Parameters: "/C npx prisma generate"; \
+Parameters: "/C (set DATABASE_URL=postgresql://{code:GetDBUser}:{code:GetDBPass}@{code:GetDBHost}:5432/{code:GetDBName} && npx prisma generate) > ""{app}\logs\prisma_generate.log"" 2>&1"; \
 WorkingDir: "{app}"; \
 StatusMsg: "Generando cliente de base de datos..."; \
 Flags: waituntilterminated
 
-; Instalar PostgreSQL silencioso
 Filename: "{tmp}\instaladores\postgresSQL.exe"; \
-Parameters: "--mode unattended --unattendedmodeui none --superpassword 123456 --servicename postgresql-x64-15 --servicepassword 123456 --serverport 5432"; \
+Parameters: "--mode unattended --unattendedmodeui none --superpassword {code:GetDBPass} --servicename postgresql-x64-15 --servicepassword {code:GetDBPass} --serverport 5432"; \
 StatusMsg: "Instalando PostgreSQL..."; \
 Flags: waituntilterminated; \
 Check: PostgreSQLNoInstalado
 
 ; Creando base de datos
 Filename: "cmd.exe"; \
-Parameters: "/C set PGPASSWORD=123456 && ""C:\Program Files\PostgreSQL\18\bin\createdb.exe"" -U postgres -h localhost -p 5432 tienda_ropa"; \
+Parameters: "/C set ""PGPASSWORD={code:GetDBPass}"" && ""C:\Program Files\PostgreSQL\18\bin\createdb.exe"" -U {code:GetDBUser} -h {code:GetDBHost} -p 5432 {code:GetDBName} > ""{app}\logs\db_creation.log"" 2>&1"; \
 StatusMsg: "Creando base de datos..."; \
 Flags: runhidden waituntilterminated
 
 Filename: "cmd.exe"; \
-Parameters: "/C npx prisma migrate deploy"; \
+Parameters: "/C (set DATABASE_URL=postgresql://{code:GetDBUser}:{code:GetDBPass}@{code:GetDBHost}:5432/{code:GetDBName} && npx prisma migrate deploy) > ""{app}\logs\prisma_migrate.log"" 2>&1"; \
 WorkingDir: "{app}"; \
 StatusMsg: "Configurando base de datos..."; \
 Flags: waituntilterminated
@@ -118,6 +117,25 @@ begin
   SaveStringToFile(EnvFile, EnvContent, False);
 end;
 
+function GetDBUser(Param: String): String;
+begin
+  Result := ConfigPage.Values[0];
+end;
+
+function GetDBPass(Param: String): String;
+begin
+  Result := ConfigPage.Values[1];
+end;
+
+function GetDBHost(Param: String): String;
+begin
+  Result := ConfigPage.Values[2];
+end;
+
+function GetDBName(Param: String): String;
+begin
+  Result := DBPage.Values[0];
+end;
 
 function PostgreSQLNoInstalado: Boolean;
 var
