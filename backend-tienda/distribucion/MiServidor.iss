@@ -22,6 +22,7 @@ Source: "instaladores\node.msi"; DestDir: "{tmp}\instaladores"
 Source: "instaladores\postgresSQL.exe"; DestDir: "{tmp}\instaladores"
 Source: "backend\package.json"; DestDir: "{app}"
 Source: "backend\*"; DestDir: "{app}"; Flags: recursesubdirs; AfterInstall: CrearEnv
+Source: "backend\prisma.config.ts"; DestDir: "{app}"; Flags: ignoreversion
 
 ; ==============================
 ; DIRECTORIOS
@@ -36,11 +37,7 @@ Name: "{app}\logs"
 Filename: "msiexec.exe"; Parameters: "/i ""{tmp}\instaladores\node.msi"" /qn"; StatusMsg: "Instalando Node.js..."; Flags: waituntilterminated
 Filename: "cmd.exe"; Parameters: "/C ""{pf}\nodejs\npm.cmd"" install --omit=dev"; WorkingDir: "{app}"; StatusMsg: "Instalando dependencias..."; Flags: waituntilterminated
 
-Filename: "cmd.exe"; \
-Parameters: "/C (set DATABASE_URL=postgresql://{code:GetDBUser}:{code:GetDBPass}@{code:GetDBHost}:5432/{code:GetDBName} && npx prisma generate) > ""{app}\logs\prisma_generate.log"" 2>&1"; \
-WorkingDir: "{app}"; \
-StatusMsg: "Generando cliente de base de datos..."; \
-Flags: waituntilterminated
+
 
 Filename: "{tmp}\instaladores\postgresSQL.exe"; \
 Parameters: "--mode unattended --unattendedmodeui none --superpassword {code:GetDBPass} --servicename postgresql-x64-15 --servicepassword {code:GetDBPass} --serverport 5432"; \
@@ -48,17 +45,21 @@ StatusMsg: "Instalando PostgreSQL..."; \
 Flags: waituntilterminated; \
 Check: PostgreSQLNoInstalado
 
-; Creando base de datos
+;4. Creando base de datos
 Filename: "cmd.exe"; \
 Parameters: "/C set ""PGPASSWORD={code:GetDBPass}"" && ""C:\Program Files\PostgreSQL\18\bin\createdb.exe"" -U {code:GetDBUser} -h {code:GetDBHost} -p 5432 {code:GetDBName} > ""{app}\logs\db_creation.log"" 2>&1"; \
 StatusMsg: "Creando base de datos..."; \
 Flags: runhidden waituntilterminated
 
-Filename: "cmd.exe"; \
-Parameters: "/C (set DATABASE_URL=postgresql://{code:GetDBUser}:{code:GetDBPass}@{code:GetDBHost}:5432/{code:GetDBName} && npx prisma migrate deploy) > ""{app}\logs\prisma_migrate.log"" 2>&1"; \
-WorkingDir: "{app}"; \
-StatusMsg: "Configurando base de datos..."; \
-Flags: waituntilterminated
+Filename: "cmd.exe"; Parameters: "/C echo ok"; \
+  StatusMsg: "Configurando base de datos..."; \
+  AfterInstall: PrismaGenerate; \
+  Flags: runhidden waituntilterminated
+
+Filename: "cmd.exe"; Parameters: "/C echo ok"; \
+  StatusMsg: "Aplicando migraciones..."; \
+  AfterInstall: PrismaMigrate; \
+  Flags: runhidden waituntilterminated
 
 ; Instalar servicio con NSSM
 Filename: "{app}\nssm.exe"; Parameters: "install MiServidorBackup ""C:\Program Files\nodejs\node.exe"" ""{app}\dist\index.js"""; Flags: runhidden waituntilterminated
@@ -150,4 +151,43 @@ begin
     Log('PostgreSQL no encontrado, procediendo con la instalación.');
 
   Result := not Instalado;
+end;
+
+function EjecutarComando(Comando: String; Parametros: String; DirTrabajo: String): Boolean;
+var
+  ResultCode: Integer;
+begin
+  Result := Exec(Comando, Parametros, DirTrabajo, SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  if not Result or (ResultCode <> 0) then
+    Log('Error ejecutando: ' + Comando + ' Codigo: ' + IntToStr(ResultCode));
+end;
+
+procedure PrismaGenerate;
+var
+  AppDir: String;
+  DatabaseURL: String;
+  Parametros: String;
+begin
+  AppDir := ExpandConstant('{app}');
+  DatabaseURL := 'postgresql://' + ConfigPage.Values[0] + ':' + ConfigPage.Values[1] + '@' + ConfigPage.Values[2] + ':5432/' + DBPage.Values[0];
+
+  Parametros := '/C set "DATABASE_URL=' + DatabaseURL + '" && npx prisma generate >> "' + AppDir + '\logs\prisma_generate.log" 2>&1';
+
+  if not EjecutarComando('cmd.exe', Parametros, AppDir) then
+    MsgBox('Error al ejecutar prisma generate. Revise el log en: ' + AppDir + '\logs\prisma_generate.log', mbError, MB_OK);
+end;
+
+procedure PrismaMigrate;
+var
+  AppDir: String;
+  DatabaseURL: String;
+  Parametros: String;
+begin
+  AppDir := ExpandConstant('{app}');
+  DatabaseURL := 'postgresql://' + ConfigPage.Values[0] + ':' + ConfigPage.Values[1] + '@' + ConfigPage.Values[2] + ':5432/' + DBPage.Values[0];
+
+  Parametros := '/C set "DATABASE_URL=' + DatabaseURL + '" && npx prisma migrate deploy >> "' + AppDir + '\logs\prisma_migrate.log" 2>&1';
+
+  if not EjecutarComando('cmd.exe', Parametros, AppDir) then
+    MsgBox('Error al ejecutar prisma migrate. Revise el log en: ' + AppDir + '\logs\prisma_migrate.log', mbError, MB_OK);
 end;

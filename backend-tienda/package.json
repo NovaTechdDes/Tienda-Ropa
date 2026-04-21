@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "npx prisma generate && tsc && pnpm run copy",
-    "copy": "xcopy src\\generated dist\\generated /E /I /Y && xcopy prisma distribucion\\backend\\prisma /E /I /Y && xcopy dist distribucion\\backend\\dist /E /I /Y && xcopy package.json distribucion\\backend\\package.json /Y && xcopy .env distribucion\\backend\\.env /Y",
+    "copy": "xcopy src\\generated dist\\generated /E /I /Y && xcopy prisma distribucion\\backend\\prisma /E /I /Y && xcopy dist distribucion\\backend\\dist /E /I /Y && xcopy package.json distribucion\\backend\\package.json /Y && xcopy  prisma.config.ts distribucion\\backend\\prisma.config.ts /Y && xcopy .env distribucion\\backend\\.env /Y",
     "start": "node dist/index.js",
     "prisma:generate": "npx prisma generate"
   },
