@@ -19,6 +19,7 @@ const initialState: Producto = {
 };
 
 export const ProductoModalFormulario = () => {
+  const [error, setError] = useState(false);
   const { closeModal, productoSeleccionado } = useProductoStore();
   const { data: configuracion } = useConfiguracion();
   const { crearProducto, modificarProducto } = useMutateProducto();
@@ -59,6 +60,12 @@ export const ProductoModalFormulario = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!descripcion || !precio_global || variantes.length === 0) {
+      mensaje('Faltan campos obligatorios', 'warning');
+      setError(true);
+      return;
+    }
 
     const formData = new FormData();
     formData.append('descripcion', descripcion);
@@ -143,6 +150,7 @@ export const ProductoModalFormulario = () => {
                   name="descripcion"
                   value={descripcion}
                 />
+                {error && descripcion === '' && <span className="text-red-500 text-sm">El nombre es requerido</span>}
               </div>
             </div>
 
@@ -211,6 +219,7 @@ export const ProductoModalFormulario = () => {
                   value={precio_global ?? 0}
                 />
               </div>
+              {error && precio_global === 0 && <span className="text-red-500 text-sm">El precio es requerido</span>}
             </div>
           </div>
 
@@ -277,6 +286,7 @@ export const ProductoModalFormulario = () => {
                 <Plus size={18} />
               </button>
             </div>
+            {error && variantes.length === 0 && <span className="text-red-500 text-sm">Las variantes son requeridas</span>}
 
             {/* Lista de Variantes */}
             <div className="border border-[var(--atelier-border-soft)] rounded-2xl overflow-hidden">

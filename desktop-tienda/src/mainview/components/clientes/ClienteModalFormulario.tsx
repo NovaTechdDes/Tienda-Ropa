@@ -4,6 +4,7 @@ import { Cliente } from '../../interface/Cliente';
 import { useClientestore } from '../../store';
 import { useMutateCliente } from '../../hooks/clientes/useMutateCliente';
 import { mensaje } from '../../utils/mensaje';
+import { useState } from 'react';
 
 const initialState: Cliente = {
   nombre: '',
@@ -16,6 +17,7 @@ const initialState: Cliente = {
 };
 
 export const ClienteModalFormulario = () => {
+  const [error, setError] = useState(false);
   const { closeModale, clienteSeleccionado } = useClientestore();
   const { postCliente, updateCliente } = useMutateCliente();
   const { onInputChange, onResetForm, nombre, dni, telefono, direccion, localidad, observacion, activo, formState } = useForm(clienteSeleccionado ?? initialState);
@@ -27,6 +29,12 @@ export const ClienteModalFormulario = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!nombre) {
+      mensaje('Faltan campos obligatorios', 'warning');
+      setError(true);
+      return;
+    }
 
     if (clienteSeleccionado) {
       const res = await updateCliente.mutateAsync(formState);
@@ -92,6 +100,7 @@ export const ClienteModalFormulario = () => {
                   className="w-full border border-black/50 rounded-lg bg-[var(--atelier-ink)] focus:border-[var(--primary)]/30 py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
                 />
               </div>
+              {error && nombre === '' && <span className="text-red-500 text-sm">El nombre es requerido</span>}
             </div>
 
             {/* DNI */}
