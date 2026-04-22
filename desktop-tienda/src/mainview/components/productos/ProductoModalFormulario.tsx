@@ -109,12 +109,12 @@ export const ProductoModalFormulario = () => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-[var(--atelier-ink)]/80 backdrop-blur-md transition-opacity" onClick={handleCloseModal} />
+      <div className="absolute inset-0 bg-black/80 dark:bg-gray-600/80 backdrop-blur-md transition-opacity" onClick={handleCloseModal} />
 
       {/* Modal Surface */}
-      <div className="relative w-full max-w-4xl bg-[var(--atelier-surface-1)] border border-[var(--atelier-border)] rounded-[2rem] shadow-[var(--atelier-shadow-md)] overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="relative w-full max-w-4xl bg-white dark:bg-[var(--neutral)] border border-black/50 rounded-[2rem] shadow-[var(--atelier-shadow-md)] overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="px-8 py-6 border-b border-[var(--atelier-border-soft)] flex justify-between items-center bg-[var(--atelier-surface-2)]/50">
+        <div className="px-8 py-6 border-b border-[var(--atelier-border-soft)] flex justify-between items-center bg-[var(--atelier-surface-2)]">
           <div>
             <h2 className="text-xl font-bold tracking-tight text-[var(--atelier-parchment)]">{productoSeleccionado ? 'Editar Producto' : 'Nuevo Producto'}</h2>
           </div>
@@ -137,7 +137,7 @@ export const ProductoModalFormulario = () => {
                 <input
                   type="text"
                   placeholder="Ej: Bikini Clásico Negro"
-                  className="w-full placeholder:text-[var(--atelier-parchment-low)] bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all"
+                  className="w-full placeholder:text-[var(--atelier-parchment-low)] bg-[var(--atelier-ink)] border border-black/50 focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all"
                   defaultValue={productoSeleccionado?.descripcion}
                   onChange={onInputChange}
                   name="descripcion"
@@ -154,7 +154,7 @@ export const ProductoModalFormulario = () => {
                   onChange={onInputChange}
                   name="categoria_id"
                   value={formState.categoria_id}
-                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all appearance-none cursor-pointer"
+                  className="w-full border border-black/50 rounded-lg bg-[var(--atelier-ink)] focus:border-[var(--atelier-gold)]/30 py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all appearance-none cursor-pointer"
                 >
                   <option value="0">Seleccione una categoría</option>
                   {configuracion?.categorias?.map((categoria: Categoria) => (
@@ -177,7 +177,7 @@ export const ProductoModalFormulario = () => {
               name="observacion"
               value={observacion}
               placeholder="Detalles sobre el material, calce o cuidados..."
-              className="w-full placeholder:text-[var(--atelier-parchment-low)] bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl p-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all resize-none"
+              className="w-full border border-black/50 rounded-lg placeholder:text-[var(--atelier-parchment-low)] bg-[var(--atelier-ink)] focus:border-[var(--atelier-gold)]/30 p-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all resize-none"
               defaultValue={productoSeleccionado?.observacion}
             />
           </div>
@@ -189,7 +189,7 @@ export const ProductoModalFormulario = () => {
               <Image className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--atelier-gold)] transition-colors" size={16} />
               <input
                 type="file"
-                className="w-full placeholder:text-[var(--atelier-parchment-low)] bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all"
+                className="w-full border border-black/50 rounded-lg placeholder:text-[var(--atelier-parchment-low)] bg-[var(--atelier-ink)] focus:border-[var(--atelier-gold)]/30 py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all"
                 onChange={(e) => setImagen(e.target.files![0])}
                 name="imagen"
               />
@@ -205,7 +205,7 @@ export const ProductoModalFormulario = () => {
                 <input
                   type="number"
                   placeholder="25000"
-                  className="w-full bg-[var(--atelier-ink)] border placeholder:text-[var(--atelier-parchment-low)] border-[var(--atelier-border-soft)] focus:border-[var(--atelier-gold)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all"
+                  className="w-full border border-black/50 rounded-lg bg-[var(--atelier-ink)] placeholder:text-[var(--atelier-parchment-low)] focus:border-[var(--atelier-gold)]/30 py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all"
                   onChange={onInputChange}
                   name="precio_global"
                   value={precio_global ?? 0}
@@ -226,7 +226,7 @@ export const ProductoModalFormulario = () => {
                 value={talle}
                 name="talle_id"
                 onChange={(e) => setTalle(Number(e.target.value))}
-                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
+                className="bg-[var(--atelier-ink)] border border-black/50 rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               >
                 <option value="">Talle</option>
                 {configuracion?.talles.map((talle: Talle) => (
@@ -239,7 +239,7 @@ export const ProductoModalFormulario = () => {
                 value={color}
                 name="color_id"
                 onChange={(e) => setColor(Number(e.target.value))}
-                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
+                className="bg-[var(--atelier-ink)] border border-black/50 rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               >
                 <option value="">Color</option>
                 {configuracion?.colores.map((color: Color) => (
@@ -253,23 +253,27 @@ export const ProductoModalFormulario = () => {
                 value={stock}
                 onChange={(e) => setStock(e.target.value)}
                 placeholder="Stock"
-                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
+                className="bg-[var(--atelier-ink)] border border-black/50 rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               />
               <input
                 type="number"
                 value={precio}
                 onChange={(e) => setPrecio(e.target.value)}
                 placeholder="Precio"
-                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
+                className="bg-[var(--atelier-ink)] border border-black/50 rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               />
               <input
                 type="text"
                 value={sku}
                 onChange={(e) => setSku(e.target.value)}
                 placeholder="SKU"
-                className="bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
+                className="bg-[var(--atelier-ink)] border border-black/50 rounded-lg px-3 py-2 text-xs text-[var(--atelier-parchment)] outline-none focus:border-[var(--atelier-gold)]/30"
               />
-              <button type="button" onClick={addVariante} className="bg-[var(--atelier-gold)] hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] rounded-lg flex items-center justify-center transition-all h-full min-h-[36px]">
+              <button
+                type="button"
+                onClick={addVariante}
+                className="bg-[var(--primary)] hover:bg-[var(--secondary)] text-[var(--atelier-ink)] rounded-lg flex items-center justify-center transition-all h-full min-h-[36px]"
+              >
                 <Plus size={18} />
               </button>
             </div>
@@ -296,7 +300,7 @@ export const ProductoModalFormulario = () => {
             </div>
           </div>
           {/* Botones  */}
-          <div className="px-8 py-6 bg-[var(--atelier-surface-2)]/50 border-t border-[var(--atelier-border-soft)] flex justify-end gap-3">
+          <div className="px-8 py-6 bg-[var(--atelier-surface-2)] border-t border-[var(--atelier-border-soft)] flex justify-end gap-3">
             <button
               type="button"
               onClick={handleCloseModal}
@@ -306,7 +310,7 @@ export const ProductoModalFormulario = () => {
             </button>
             <button
               type="submit"
-              className="px-8 py-2.5 bg-[var(--atelier-gold)] hover:bg-[var(--atelier-gold-bright)] text-[var(--atelier-ink)] rounded-xl text-xs font-bold uppercase tracking-widest shadow-[var(--atelier-shadow-md)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              className="px-8 py-2.5 bg-[var(--primary)] hover:bg-[var(--secondary)] text-[var(--atelier-ink)] rounded-xl text-xs font-bold uppercase tracking-widest shadow-[var(--atelier-shadow-md)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
             >
               {productoSeleccionado ? 'Actualizar Producto' : 'Guardar Producto'}
             </button>

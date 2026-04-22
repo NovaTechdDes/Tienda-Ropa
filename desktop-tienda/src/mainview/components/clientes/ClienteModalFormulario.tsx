@@ -89,7 +89,7 @@ export const ClienteModalFormulario = () => {
                   value={nombre}
                   onChange={onInputChange}
                   placeholder="Juan Pérez"
-                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                  className="w-full border border-black/50 rounded-lg bg-[var(--atelier-ink)] focus:border-[var(--primary)]/30 py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
                 />
               </div>
             </div>
@@ -105,7 +105,7 @@ export const ClienteModalFormulario = () => {
                   value={dni}
                   onChange={onInputChange}
                   placeholder="20-XXXXXXXX-X"
-                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                  className="w-full border border-black/50 rounded-lg bg-[var(--atelier-ink)] focus:border-[var(--primary)]/30 py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
                 />
               </div>
             </div>
@@ -121,7 +121,7 @@ export const ClienteModalFormulario = () => {
                   value={telefono}
                   onChange={onInputChange}
                   placeholder="+54 9 XXX XXX-XXXX"
-                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                  className="w-full border border-black/50 rounded-lg  bg-[var(--atelier-ink)]  focus:border-[var(--primary)]/30  py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
                 />
               </div>
             </div>
@@ -137,7 +137,7 @@ export const ClienteModalFormulario = () => {
                   value={localidad}
                   onChange={onInputChange}
                   placeholder="Ciudad / Provincia"
-                  className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                  className="w-full border border-black/50 rounded-lg  bg-[var(--atelier-ink)] focus:border-[var(--primary)]/30 py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
                 />
               </div>
             </div>
@@ -145,7 +145,7 @@ export const ClienteModalFormulario = () => {
 
           {/* Dirección (Full Width) */}
           <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Dirección Exacta</label>
+            <label className="text-[10px] uppercase tracking-widest text-[var(--atelier-parchment-muted)] font-bold ml-1">Dirección</label>
             <div className="relative group">
               <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={16} />
               <input
@@ -154,7 +154,7 @@ export const ClienteModalFormulario = () => {
                 value={direccion}
                 onChange={onInputChange}
                 placeholder="Calle, Número, Piso/Depto"
-                className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
+                className="w-full bg-[var(--atelier-ink)] border border-black/50 rounded-lg focus:border-[var(--primary)]/30 py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)]"
               />
             </div>
           </div>
@@ -170,7 +170,7 @@ export const ClienteModalFormulario = () => {
                 onChange={onInputChange}
                 rows={3}
                 placeholder="Información adicional relevante del cliente..."
-                className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border-soft)] focus:border-[var(--primary)]/30 rounded-xl py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)] resize-none"
+                className="w-full bg-[var(--atelier-ink)] border border-black/50 rounded-lg focus:border-[var(--primary)]/30  py-3 pl-12 pr-4 text-sm text-[var(--atelier-parchment)] outline-none transition-all placeholder:text-[var(--atelier-parchment-low)] resize-none"
               />
             </div>
           </div>

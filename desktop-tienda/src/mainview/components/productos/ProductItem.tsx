@@ -86,7 +86,7 @@ export const ProductItem = ({ producto }: Props) => {
         <div className="flex gap-2">
           <button
             onClick={handleUpdate}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-[var(--atelier-parchment)]/3 hover:bg-[var(--atelier-parchment)]/6 text-[var(--atelier-parchment)] rounded-xl transition-all duration-300 border border-[var(--atelier-border-soft)] hover:border-[var(--atelier-border)] group/btn"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-[var(--primary)] hover:bg-[var(--secondary)] text-[var(--atelier-parchment)] rounded-xl transition-all duration-300 border border-[var(--atelier-border-soft)] hover:border-[var(--atelier-border)] group/btn"
           >
             <Pencil size={14} className="transition-transform group-hover/btn:-translate-y-0.5" />
             <span className="text-[11px] font-bold uppercase tracking-widest">Editar</span>

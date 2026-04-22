@@ -41,6 +41,7 @@ export const productoService = {
     });
   },
   create: (data: any) => {
+    console.log(typeof data.categoria_id);
     return prisma.producto.create({
       data,
     });

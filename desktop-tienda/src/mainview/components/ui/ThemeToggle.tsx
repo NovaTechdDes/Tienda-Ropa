@@ -20,9 +20,10 @@ export const ThemeToggle = () => {
             onClick={() => setTheme(option.value)}
             className={`
               relative flex items-center justify-center w-9 h-9 rounded-full transition-all duration-500
-              ${isActive 
-                ? 'bg-[var(--atelier-gold)] text-white dark:text-[var(--atelier-ink)] shadow-[0_0_12px_rgba(212,175,55,0.4)] scale-105 z-10' 
-                : 'text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]'
+              ${
+                isActive
+                  ? 'bg-[var(--primary)] text-white dark:text-[var(--atelier-ink)] shadow-[0_0_12px_rgba(212,175,55,0.4)] scale-105 z-10'
+                  : 'text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]'
               }
             `}
             title={option.label}

@@ -38,7 +38,8 @@ export const productoController = {
 
   create: async (req: Request, res: Response) => {
     try {
-      const { variantes, imagen, precio_global, ...rest } = req.body;
+      const { variantes, imagen, precio_global, categoria_id, ...rest } =
+        req.body;
 
       //Imagen
       const img_url = req.file
@@ -48,6 +49,7 @@ export const productoController = {
       const data = await productoService.create({
         ...rest,
         img_url,
+        categoria_id: Number(categoria_id),
         precio_global: Number(precio_global),
       });
 
