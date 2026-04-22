@@ -1,4 +1,4 @@
-import { BrowserWindow, Updater } from 'electrobun/bun';
+import { BrowserWindow, Updater } from 'electrobun';
 
 const DEV_SERVER_PORT = 5173;
 const DEV_SERVER_URL = `http://localhost:${DEV_SERVER_PORT}`;
@@ -24,7 +24,6 @@ const url = await getMainViewUrl();
 const mainWindow = new BrowserWindow({
   title: 'Pink Chajari',
   url,
-
   frame: {
     width: 1600,
     height: 900,

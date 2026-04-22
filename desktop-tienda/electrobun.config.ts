@@ -1,28 +1,26 @@
-import type { ElectrobunConfig } from "electrobun";
+import type { ElectrobunConfig } from 'electrobun';
 
 export default {
-	app: {
-		name: "react-tailwind-vite",
-		identifier: "reacttailwindvite.electrobun.dev",
-		version: "0.0.1",
-	},
-	build: {
-		// Vite builds to dist/, we copy from there
-		copy: {
-			"dist/index.html": "views/mainview/index.html",
-			"dist/assets": "views/mainview/assets",
-		},
-		// Ignore Vite output in watch mode — HMR handles view rebuilds separately
-		watchIgnore: ["dist/**"],
-		mac: {
-			bundleCEF: false,
-		},
-		linux: {
-			bundleCEF: false,
-		},
-		win: {
-			bundleCEF: false,
-			icon: "src/mainview/assets/Logo.jpeg", // Note: Windows usually requires .ico for the taskbar icon
-		},
-	},
+  app: {
+    name: 'Desktop Tienda',
+    identifier: 'desktop-tienda.electrobun.dev',
+    version: '0.0.1',
+  },
+  build: {
+    copy: {
+      'dist/index.html': 'views/mainview/index.html',
+      'dist/assets': 'views/mainview/assets',
+    },
+    watchIgnore: ['dist/**'],
+    mac: {
+      bundleCEF: false,
+    },
+    linux: {
+      bundleCEF: false,
+    },
+    win: {
+      bundleCEF: false,
+      icon: 'src/mainview/assets/Logo.ico', // Note: Windows usually requires .ico for the taskbar icon
+    },
+  },
 } satisfies ElectrobunConfig;
