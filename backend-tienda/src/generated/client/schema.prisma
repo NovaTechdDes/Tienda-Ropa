@@ -83,9 +83,10 @@ model variante_producto {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
 
-  producto Producto @relation(fields: [producto_id], references: [id])
-  talle    Talle    @relation(fields: [talle_id], references: [id])
-  color    Color    @relation(fields: [color_id], references: [id])
+  producto      Producto        @relation(fields: [producto_id], references: [id])
+  talle         Talle           @relation(fields: [talle_id], references: [id])
+  color         Color           @relation(fields: [color_id], references: [id])
+  detalleVentas detalle_venta[]
 }
 
 model Numero {
@@ -113,7 +114,8 @@ model Venta {
   metodo_pago       String
   updatedAt         DateTime? @updatedAt
 
-  cliente Cliente @relation(fields: [cliente_id], references: [id])
+  cliente  Cliente         @relation(fields: [cliente_id], references: [id])
+  detalles detalle_venta[]
 
   @@unique([tipo_venta, numero_venta])
 }
@@ -126,6 +128,9 @@ model detalle_venta {
   precio      Float
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  venta    Venta             @relation(fields: [venta_id], references: [id])
+  variante variante_producto @relation(fields: [variante_id], references: [id])
 }
 
 model stock_movimiento {

@@ -10,6 +10,7 @@ export const ventaController = {
       tipo as string,
       buscador as string,
     );
+
     res.status(200).json({ ok: true, ventas });
   },
   getById: async (req: Request, res: Response) => {

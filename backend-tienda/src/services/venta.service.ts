@@ -27,10 +27,32 @@ export const ventaService = {
       ];
     }
 
-    console.log(where);
-
     return prisma.venta.findMany({
       where,
+      include: {
+        detalles: {
+          select: {
+            id: true,
+            cantidad: true,
+            variante_id: true,
+            precio: true,
+            variante: {
+              select: {
+                id: true,
+                producto: {
+                  select: {
+                    descripcion: true,
+                    img_url: true,
+                  },
+                },
+                talle: true,
+                color: true,
+                sku: true,
+              },
+            },
+          },
+        },
+      },
       orderBy: { fecha: "desc" },
     });
   },

@@ -1987,6 +1987,68 @@ export namespace Prisma {
 
 
   /**
+   * Count Type Variante_productoCountOutputType
+   */
+
+  export type Variante_productoCountOutputType = {
+    detalleVentas: number
+  }
+
+  export type Variante_productoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    detalleVentas?: boolean | Variante_productoCountOutputTypeCountDetalleVentasArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Variante_productoCountOutputType without action
+   */
+  export type Variante_productoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Variante_productoCountOutputType
+     */
+    select?: Variante_productoCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Variante_productoCountOutputType without action
+   */
+  export type Variante_productoCountOutputTypeCountDetalleVentasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: detalle_ventaWhereInput
+  }
+
+
+  /**
+   * Count Type VentaCountOutputType
+   */
+
+  export type VentaCountOutputType = {
+    detalles: number
+  }
+
+  export type VentaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    detalles?: boolean | VentaCountOutputTypeCountDetallesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * VentaCountOutputType without action
+   */
+  export type VentaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VentaCountOutputType
+     */
+    select?: VentaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * VentaCountOutputType without action
+   */
+  export type VentaCountOutputTypeCountDetallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: detalle_ventaWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -9753,6 +9815,8 @@ export namespace Prisma {
     producto?: boolean | ProductoDefaultArgs<ExtArgs>
     talle?: boolean | TalleDefaultArgs<ExtArgs>
     color?: boolean | ColorDefaultArgs<ExtArgs>
+    detalleVentas?: boolean | variante_producto$detalleVentasArgs<ExtArgs>
+    _count?: boolean | Variante_productoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["variante_producto"]>
 
   export type variante_productoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9805,6 +9869,8 @@ export namespace Prisma {
     producto?: boolean | ProductoDefaultArgs<ExtArgs>
     talle?: boolean | TalleDefaultArgs<ExtArgs>
     color?: boolean | ColorDefaultArgs<ExtArgs>
+    detalleVentas?: boolean | variante_producto$detalleVentasArgs<ExtArgs>
+    _count?: boolean | Variante_productoCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type variante_productoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     producto?: boolean | ProductoDefaultArgs<ExtArgs>
@@ -9823,6 +9889,7 @@ export namespace Prisma {
       producto: Prisma.$ProductoPayload<ExtArgs>
       talle: Prisma.$TallePayload<ExtArgs>
       color: Prisma.$ColorPayload<ExtArgs>
+      detalleVentas: Prisma.$detalle_ventaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -10232,6 +10299,7 @@ export namespace Prisma {
     producto<T extends ProductoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductoDefaultArgs<ExtArgs>>): Prisma__ProductoClient<$Result.GetResult<Prisma.$ProductoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     talle<T extends TalleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TalleDefaultArgs<ExtArgs>>): Prisma__TalleClient<$Result.GetResult<Prisma.$TallePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     color<T extends ColorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ColorDefaultArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    detalleVentas<T extends variante_producto$detalleVentasArgs<ExtArgs> = {}>(args?: Subset<T, variante_producto$detalleVentasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$detalle_ventaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10669,6 +10737,30 @@ export namespace Prisma {
      * Limit how many variante_productos to delete.
      */
     limit?: number
+  }
+
+  /**
+   * variante_producto.detalleVentas
+   */
+  export type variante_producto$detalleVentasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the detalle_venta
+     */
+    select?: detalle_ventaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the detalle_venta
+     */
+    omit?: detalle_ventaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
+    where?: detalle_ventaWhereInput
+    orderBy?: detalle_ventaOrderByWithRelationInput | detalle_ventaOrderByWithRelationInput[]
+    cursor?: detalle_ventaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Detalle_ventaScalarFieldEnum | Detalle_ventaScalarFieldEnum[]
   }
 
   /**
@@ -12023,6 +12115,8 @@ export namespace Prisma {
     metodo_pago?: boolean
     updatedAt?: boolean
     cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    detalles?: boolean | Venta$detallesArgs<ExtArgs>
+    _count?: boolean | VentaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["venta"]>
 
   export type VentaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -12084,6 +12178,8 @@ export namespace Prisma {
   export type VentaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cliente_id" | "fecha" | "nombre_cliente" | "telefono_cliente" | "direccion_cliente" | "dni_cliente" | "total" | "descuento" | "subtotal" | "observacion" | "numero_venta" | "tipo_venta" | "metodo_pago" | "updatedAt", ExtArgs["result"]["venta"]>
   export type VentaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    detalles?: boolean | Venta$detallesArgs<ExtArgs>
+    _count?: boolean | VentaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type VentaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cliente?: boolean | ClienteDefaultArgs<ExtArgs>
@@ -12096,6 +12192,7 @@ export namespace Prisma {
     name: "Venta"
     objects: {
       cliente: Prisma.$ClientePayload<ExtArgs>
+      detalles: Prisma.$detalle_ventaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -12508,6 +12605,7 @@ export namespace Prisma {
   export interface Prisma__VentaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     cliente<T extends ClienteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClienteDefaultArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    detalles<T extends Venta$detallesArgs<ExtArgs> = {}>(args?: Subset<T, Venta$detallesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$detalle_ventaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12953,6 +13051,30 @@ export namespace Prisma {
   }
 
   /**
+   * Venta.detalles
+   */
+  export type Venta$detallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the detalle_venta
+     */
+    select?: detalle_ventaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the detalle_venta
+     */
+    omit?: detalle_ventaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
+    where?: detalle_ventaWhereInput
+    orderBy?: detalle_ventaOrderByWithRelationInput | detalle_ventaOrderByWithRelationInput[]
+    cursor?: detalle_ventaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Detalle_ventaScalarFieldEnum | Detalle_ventaScalarFieldEnum[]
+  }
+
+  /**
    * Venta without action
    */
   export type VentaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13201,6 +13323,8 @@ export namespace Prisma {
     precio?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    venta?: boolean | VentaDefaultArgs<ExtArgs>
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["detalle_venta"]>
 
   export type detalle_ventaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13211,6 +13335,8 @@ export namespace Prisma {
     precio?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    venta?: boolean | VentaDefaultArgs<ExtArgs>
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["detalle_venta"]>
 
   export type detalle_ventaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13221,6 +13347,8 @@ export namespace Prisma {
     precio?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    venta?: boolean | VentaDefaultArgs<ExtArgs>
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["detalle_venta"]>
 
   export type detalle_ventaSelectScalar = {
@@ -13234,10 +13362,25 @@ export namespace Prisma {
   }
 
   export type detalle_ventaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "venta_id" | "variante_id" | "cantidad" | "precio" | "createdAt" | "updatedAt", ExtArgs["result"]["detalle_venta"]>
+  export type detalle_ventaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    venta?: boolean | VentaDefaultArgs<ExtArgs>
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
+  }
+  export type detalle_ventaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    venta?: boolean | VentaDefaultArgs<ExtArgs>
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
+  }
+  export type detalle_ventaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    venta?: boolean | VentaDefaultArgs<ExtArgs>
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
+  }
 
   export type $detalle_ventaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "detalle_venta"
-    objects: {}
+    objects: {
+      venta: Prisma.$VentaPayload<ExtArgs>
+      variante: Prisma.$variante_productoPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       venta_id: number
@@ -13640,6 +13783,8 @@ export namespace Prisma {
    */
   export interface Prisma__detalle_ventaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    venta<T extends VentaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VentaDefaultArgs<ExtArgs>>): Prisma__VentaClient<$Result.GetResult<Prisma.$VentaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    variante<T extends variante_productoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, variante_productoDefaultArgs<ExtArgs>>): Prisma__variante_productoClient<$Result.GetResult<Prisma.$variante_productoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13693,6 +13838,10 @@ export namespace Prisma {
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
+    /**
      * Filter, which detalle_venta to fetch.
      */
     where: detalle_ventaWhereUniqueInput
@@ -13711,6 +13860,10 @@ export namespace Prisma {
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
+    /**
      * Filter, which detalle_venta to fetch.
      */
     where: detalle_ventaWhereUniqueInput
@@ -13728,6 +13881,10 @@ export namespace Prisma {
      * Omit specific fields from the detalle_venta
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
     /**
      * Filter, which detalle_venta to fetch.
      */
@@ -13777,6 +13934,10 @@ export namespace Prisma {
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
+    /**
      * Filter, which detalle_venta to fetch.
      */
     where?: detalle_ventaWhereInput
@@ -13824,6 +13985,10 @@ export namespace Prisma {
      * Omit specific fields from the detalle_venta
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
     /**
      * Filter, which detalle_ventas to fetch.
      */
@@ -13873,6 +14038,10 @@ export namespace Prisma {
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
+    /**
      * The data needed to create a detalle_venta.
      */
     data: XOR<detalle_ventaCreateInput, detalle_ventaUncheckedCreateInput>
@@ -13906,6 +14075,10 @@ export namespace Prisma {
      */
     data: detalle_ventaCreateManyInput | detalle_ventaCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -13920,6 +14093,10 @@ export namespace Prisma {
      * Omit specific fields from the detalle_venta
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
     /**
      * The data needed to update a detalle_venta.
      */
@@ -13972,6 +14149,10 @@ export namespace Prisma {
      * Limit how many detalle_ventas to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -13986,6 +14167,10 @@ export namespace Prisma {
      * Omit specific fields from the detalle_venta
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
     /**
      * The filter to search for the detalle_venta to update in case it exists.
      */
@@ -14012,6 +14197,10 @@ export namespace Prisma {
      * Omit specific fields from the detalle_venta
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
     /**
      * Filter which detalle_venta to delete.
      */
@@ -14044,6 +14233,10 @@ export namespace Prisma {
      * Omit specific fields from the detalle_venta
      */
     omit?: detalle_ventaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: detalle_ventaInclude<ExtArgs> | null
   }
 
 
@@ -15772,6 +15965,7 @@ export namespace Prisma {
     producto?: XOR<ProductoScalarRelationFilter, ProductoWhereInput>
     talle?: XOR<TalleScalarRelationFilter, TalleWhereInput>
     color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
+    detalleVentas?: Detalle_ventaListRelationFilter
   }
 
   export type variante_productoOrderByWithRelationInput = {
@@ -15788,6 +15982,7 @@ export namespace Prisma {
     producto?: ProductoOrderByWithRelationInput
     talle?: TalleOrderByWithRelationInput
     color?: ColorOrderByWithRelationInput
+    detalleVentas?: detalle_ventaOrderByRelationAggregateInput
   }
 
   export type variante_productoWhereUniqueInput = Prisma.AtLeast<{
@@ -15807,6 +16002,7 @@ export namespace Prisma {
     producto?: XOR<ProductoScalarRelationFilter, ProductoWhereInput>
     talle?: XOR<TalleScalarRelationFilter, TalleWhereInput>
     color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
+    detalleVentas?: Detalle_ventaListRelationFilter
   }, "id">
 
   export type variante_productoOrderByWithAggregationInput = {
@@ -15917,6 +16113,7 @@ export namespace Prisma {
     metodo_pago?: StringFilter<"Venta"> | string
     updatedAt?: DateTimeNullableFilter<"Venta"> | Date | string | null
     cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
+    detalles?: Detalle_ventaListRelationFilter
   }
 
   export type VentaOrderByWithRelationInput = {
@@ -15936,6 +16133,7 @@ export namespace Prisma {
     metodo_pago?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     cliente?: ClienteOrderByWithRelationInput
+    detalles?: detalle_ventaOrderByRelationAggregateInput
   }
 
   export type VentaWhereUniqueInput = Prisma.AtLeast<{
@@ -15959,6 +16157,7 @@ export namespace Prisma {
     metodo_pago?: StringFilter<"Venta"> | string
     updatedAt?: DateTimeNullableFilter<"Venta"> | Date | string | null
     cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
+    detalles?: Detalle_ventaListRelationFilter
   }, "id" | "tipo_venta_numero_venta">
 
   export type VentaOrderByWithAggregationInput = {
@@ -16016,6 +16215,8 @@ export namespace Prisma {
     precio?: FloatFilter<"detalle_venta"> | number
     createdAt?: DateTimeFilter<"detalle_venta"> | Date | string
     updatedAt?: DateTimeFilter<"detalle_venta"> | Date | string
+    venta?: XOR<VentaScalarRelationFilter, VentaWhereInput>
+    variante?: XOR<Variante_productoScalarRelationFilter, variante_productoWhereInput>
   }
 
   export type detalle_ventaOrderByWithRelationInput = {
@@ -16026,6 +16227,8 @@ export namespace Prisma {
     precio?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    venta?: VentaOrderByWithRelationInput
+    variante?: variante_productoOrderByWithRelationInput
   }
 
   export type detalle_ventaWhereUniqueInput = Prisma.AtLeast<{
@@ -16039,6 +16242,8 @@ export namespace Prisma {
     precio?: FloatFilter<"detalle_venta"> | number
     createdAt?: DateTimeFilter<"detalle_venta"> | Date | string
     updatedAt?: DateTimeFilter<"detalle_venta"> | Date | string
+    venta?: XOR<VentaScalarRelationFilter, VentaWhereInput>
+    variante?: XOR<Variante_productoScalarRelationFilter, variante_productoWhereInput>
   }, "id">
 
   export type detalle_ventaOrderByWithAggregationInput = {
@@ -16507,6 +16712,7 @@ export namespace Prisma {
     producto: ProductoCreateNestedOneWithoutVariantesInput
     talle: TalleCreateNestedOneWithoutVariantesInput
     color: ColorCreateNestedOneWithoutVariantesInput
+    detalleVentas?: detalle_ventaCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUncheckedCreateInput = {
@@ -16520,6 +16726,7 @@ export namespace Prisma {
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    detalleVentas?: detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUpdateInput = {
@@ -16532,6 +16739,7 @@ export namespace Prisma {
     producto?: ProductoUpdateOneRequiredWithoutVariantesNestedInput
     talle?: TalleUpdateOneRequiredWithoutVariantesNestedInput
     color?: ColorUpdateOneRequiredWithoutVariantesNestedInput
+    detalleVentas?: detalle_ventaUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateInput = {
@@ -16545,6 +16753,7 @@ export namespace Prisma {
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    detalleVentas?: detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoCreateManyInput = {
@@ -16650,6 +16859,7 @@ export namespace Prisma {
     metodo_pago: string
     updatedAt?: Date | string | null
     cliente: ClienteCreateNestedOneWithoutVentasInput
+    detalles?: detalle_ventaCreateNestedManyWithoutVentaInput
   }
 
   export type VentaUncheckedCreateInput = {
@@ -16668,6 +16878,7 @@ export namespace Prisma {
     tipo_venta: string
     metodo_pago: string
     updatedAt?: Date | string | null
+    detalles?: detalle_ventaUncheckedCreateNestedManyWithoutVentaInput
   }
 
   export type VentaUpdateInput = {
@@ -16685,6 +16896,7 @@ export namespace Prisma {
     metodo_pago?: StringFieldUpdateOperationsInput | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cliente?: ClienteUpdateOneRequiredWithoutVentasNestedInput
+    detalles?: detalle_ventaUpdateManyWithoutVentaNestedInput
   }
 
   export type VentaUncheckedUpdateInput = {
@@ -16703,6 +16915,7 @@ export namespace Prisma {
     tipo_venta?: StringFieldUpdateOperationsInput | string
     metodo_pago?: StringFieldUpdateOperationsInput | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detalles?: detalle_ventaUncheckedUpdateManyWithoutVentaNestedInput
   }
 
   export type VentaCreateManyInput = {
@@ -16758,12 +16971,12 @@ export namespace Prisma {
   }
 
   export type detalle_ventaCreateInput = {
-    venta_id: number
-    variante_id: number
     cantidad: number
     precio: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    venta: VentaCreateNestedOneWithoutDetallesInput
+    variante: variante_productoCreateNestedOneWithoutDetalleVentasInput
   }
 
   export type detalle_ventaUncheckedCreateInput = {
@@ -16777,12 +16990,12 @@ export namespace Prisma {
   }
 
   export type detalle_ventaUpdateInput = {
-    venta_id?: IntFieldUpdateOperationsInput | number
-    variante_id?: IntFieldUpdateOperationsInput | number
     cantidad?: IntFieldUpdateOperationsInput | number
     precio?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venta?: VentaUpdateOneRequiredWithoutDetallesNestedInput
+    variante?: variante_productoUpdateOneRequiredWithoutDetalleVentasNestedInput
   }
 
   export type detalle_ventaUncheckedUpdateInput = {
@@ -16806,8 +17019,6 @@ export namespace Prisma {
   }
 
   export type detalle_ventaUpdateManyMutationInput = {
-    venta_id?: IntFieldUpdateOperationsInput | number
-    variante_id?: IntFieldUpdateOperationsInput | number
     cantidad?: IntFieldUpdateOperationsInput | number
     precio?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17343,6 +17554,16 @@ export namespace Prisma {
     isNot?: ColorWhereInput
   }
 
+  export type Detalle_ventaListRelationFilter = {
+    every?: detalle_ventaWhereInput
+    some?: detalle_ventaWhereInput
+    none?: detalle_ventaWhereInput
+  }
+
+  export type detalle_ventaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type variante_productoCountOrderByAggregateInput = {
     id?: SortOrder
     producto_id?: SortOrder
@@ -17564,6 +17785,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type VentaScalarRelationFilter = {
+    is?: VentaWhereInput
+    isNot?: VentaWhereInput
+  }
+
+  export type Variante_productoScalarRelationFilter = {
+    is?: variante_productoWhereInput
+    isNot?: variante_productoWhereInput
   }
 
   export type detalle_ventaCountOrderByAggregateInput = {
@@ -17883,6 +18114,20 @@ export namespace Prisma {
     connect?: ColorWhereUniqueInput
   }
 
+  export type detalle_ventaCreateNestedManyWithoutVarianteInput = {
+    create?: XOR<detalle_ventaCreateWithoutVarianteInput, detalle_ventaUncheckedCreateWithoutVarianteInput> | detalle_ventaCreateWithoutVarianteInput[] | detalle_ventaUncheckedCreateWithoutVarianteInput[]
+    connectOrCreate?: detalle_ventaCreateOrConnectWithoutVarianteInput | detalle_ventaCreateOrConnectWithoutVarianteInput[]
+    createMany?: detalle_ventaCreateManyVarianteInputEnvelope
+    connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+  }
+
+  export type detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput = {
+    create?: XOR<detalle_ventaCreateWithoutVarianteInput, detalle_ventaUncheckedCreateWithoutVarianteInput> | detalle_ventaCreateWithoutVarianteInput[] | detalle_ventaUncheckedCreateWithoutVarianteInput[]
+    connectOrCreate?: detalle_ventaCreateOrConnectWithoutVarianteInput | detalle_ventaCreateOrConnectWithoutVarianteInput[]
+    createMany?: detalle_ventaCreateManyVarianteInputEnvelope
+    connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+  }
+
   export type ProductoUpdateOneRequiredWithoutVariantesNestedInput = {
     create?: XOR<ProductoCreateWithoutVariantesInput, ProductoUncheckedCreateWithoutVariantesInput>
     connectOrCreate?: ProductoCreateOrConnectWithoutVariantesInput
@@ -17907,10 +18152,52 @@ export namespace Prisma {
     update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutVariantesInput, ColorUpdateWithoutVariantesInput>, ColorUncheckedUpdateWithoutVariantesInput>
   }
 
+  export type detalle_ventaUpdateManyWithoutVarianteNestedInput = {
+    create?: XOR<detalle_ventaCreateWithoutVarianteInput, detalle_ventaUncheckedCreateWithoutVarianteInput> | detalle_ventaCreateWithoutVarianteInput[] | detalle_ventaUncheckedCreateWithoutVarianteInput[]
+    connectOrCreate?: detalle_ventaCreateOrConnectWithoutVarianteInput | detalle_ventaCreateOrConnectWithoutVarianteInput[]
+    upsert?: detalle_ventaUpsertWithWhereUniqueWithoutVarianteInput | detalle_ventaUpsertWithWhereUniqueWithoutVarianteInput[]
+    createMany?: detalle_ventaCreateManyVarianteInputEnvelope
+    set?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    disconnect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    delete?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    update?: detalle_ventaUpdateWithWhereUniqueWithoutVarianteInput | detalle_ventaUpdateWithWhereUniqueWithoutVarianteInput[]
+    updateMany?: detalle_ventaUpdateManyWithWhereWithoutVarianteInput | detalle_ventaUpdateManyWithWhereWithoutVarianteInput[]
+    deleteMany?: detalle_ventaScalarWhereInput | detalle_ventaScalarWhereInput[]
+  }
+
+  export type detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput = {
+    create?: XOR<detalle_ventaCreateWithoutVarianteInput, detalle_ventaUncheckedCreateWithoutVarianteInput> | detalle_ventaCreateWithoutVarianteInput[] | detalle_ventaUncheckedCreateWithoutVarianteInput[]
+    connectOrCreate?: detalle_ventaCreateOrConnectWithoutVarianteInput | detalle_ventaCreateOrConnectWithoutVarianteInput[]
+    upsert?: detalle_ventaUpsertWithWhereUniqueWithoutVarianteInput | detalle_ventaUpsertWithWhereUniqueWithoutVarianteInput[]
+    createMany?: detalle_ventaCreateManyVarianteInputEnvelope
+    set?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    disconnect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    delete?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    update?: detalle_ventaUpdateWithWhereUniqueWithoutVarianteInput | detalle_ventaUpdateWithWhereUniqueWithoutVarianteInput[]
+    updateMany?: detalle_ventaUpdateManyWithWhereWithoutVarianteInput | detalle_ventaUpdateManyWithWhereWithoutVarianteInput[]
+    deleteMany?: detalle_ventaScalarWhereInput | detalle_ventaScalarWhereInput[]
+  }
+
   export type ClienteCreateNestedOneWithoutVentasInput = {
     create?: XOR<ClienteCreateWithoutVentasInput, ClienteUncheckedCreateWithoutVentasInput>
     connectOrCreate?: ClienteCreateOrConnectWithoutVentasInput
     connect?: ClienteWhereUniqueInput
+  }
+
+  export type detalle_ventaCreateNestedManyWithoutVentaInput = {
+    create?: XOR<detalle_ventaCreateWithoutVentaInput, detalle_ventaUncheckedCreateWithoutVentaInput> | detalle_ventaCreateWithoutVentaInput[] | detalle_ventaUncheckedCreateWithoutVentaInput[]
+    connectOrCreate?: detalle_ventaCreateOrConnectWithoutVentaInput | detalle_ventaCreateOrConnectWithoutVentaInput[]
+    createMany?: detalle_ventaCreateManyVentaInputEnvelope
+    connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+  }
+
+  export type detalle_ventaUncheckedCreateNestedManyWithoutVentaInput = {
+    create?: XOR<detalle_ventaCreateWithoutVentaInput, detalle_ventaUncheckedCreateWithoutVentaInput> | detalle_ventaCreateWithoutVentaInput[] | detalle_ventaUncheckedCreateWithoutVentaInput[]
+    connectOrCreate?: detalle_ventaCreateOrConnectWithoutVentaInput | detalle_ventaCreateOrConnectWithoutVentaInput[]
+    createMany?: detalle_ventaCreateManyVentaInputEnvelope
+    connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -17931,6 +18218,62 @@ export namespace Prisma {
     upsert?: ClienteUpsertWithoutVentasInput
     connect?: ClienteWhereUniqueInput
     update?: XOR<XOR<ClienteUpdateToOneWithWhereWithoutVentasInput, ClienteUpdateWithoutVentasInput>, ClienteUncheckedUpdateWithoutVentasInput>
+  }
+
+  export type detalle_ventaUpdateManyWithoutVentaNestedInput = {
+    create?: XOR<detalle_ventaCreateWithoutVentaInput, detalle_ventaUncheckedCreateWithoutVentaInput> | detalle_ventaCreateWithoutVentaInput[] | detalle_ventaUncheckedCreateWithoutVentaInput[]
+    connectOrCreate?: detalle_ventaCreateOrConnectWithoutVentaInput | detalle_ventaCreateOrConnectWithoutVentaInput[]
+    upsert?: detalle_ventaUpsertWithWhereUniqueWithoutVentaInput | detalle_ventaUpsertWithWhereUniqueWithoutVentaInput[]
+    createMany?: detalle_ventaCreateManyVentaInputEnvelope
+    set?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    disconnect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    delete?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    update?: detalle_ventaUpdateWithWhereUniqueWithoutVentaInput | detalle_ventaUpdateWithWhereUniqueWithoutVentaInput[]
+    updateMany?: detalle_ventaUpdateManyWithWhereWithoutVentaInput | detalle_ventaUpdateManyWithWhereWithoutVentaInput[]
+    deleteMany?: detalle_ventaScalarWhereInput | detalle_ventaScalarWhereInput[]
+  }
+
+  export type detalle_ventaUncheckedUpdateManyWithoutVentaNestedInput = {
+    create?: XOR<detalle_ventaCreateWithoutVentaInput, detalle_ventaUncheckedCreateWithoutVentaInput> | detalle_ventaCreateWithoutVentaInput[] | detalle_ventaUncheckedCreateWithoutVentaInput[]
+    connectOrCreate?: detalle_ventaCreateOrConnectWithoutVentaInput | detalle_ventaCreateOrConnectWithoutVentaInput[]
+    upsert?: detalle_ventaUpsertWithWhereUniqueWithoutVentaInput | detalle_ventaUpsertWithWhereUniqueWithoutVentaInput[]
+    createMany?: detalle_ventaCreateManyVentaInputEnvelope
+    set?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    disconnect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    delete?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+    update?: detalle_ventaUpdateWithWhereUniqueWithoutVentaInput | detalle_ventaUpdateWithWhereUniqueWithoutVentaInput[]
+    updateMany?: detalle_ventaUpdateManyWithWhereWithoutVentaInput | detalle_ventaUpdateManyWithWhereWithoutVentaInput[]
+    deleteMany?: detalle_ventaScalarWhereInput | detalle_ventaScalarWhereInput[]
+  }
+
+  export type VentaCreateNestedOneWithoutDetallesInput = {
+    create?: XOR<VentaCreateWithoutDetallesInput, VentaUncheckedCreateWithoutDetallesInput>
+    connectOrCreate?: VentaCreateOrConnectWithoutDetallesInput
+    connect?: VentaWhereUniqueInput
+  }
+
+  export type variante_productoCreateNestedOneWithoutDetalleVentasInput = {
+    create?: XOR<variante_productoCreateWithoutDetalleVentasInput, variante_productoUncheckedCreateWithoutDetalleVentasInput>
+    connectOrCreate?: variante_productoCreateOrConnectWithoutDetalleVentasInput
+    connect?: variante_productoWhereUniqueInput
+  }
+
+  export type VentaUpdateOneRequiredWithoutDetallesNestedInput = {
+    create?: XOR<VentaCreateWithoutDetallesInput, VentaUncheckedCreateWithoutDetallesInput>
+    connectOrCreate?: VentaCreateOrConnectWithoutDetallesInput
+    upsert?: VentaUpsertWithoutDetallesInput
+    connect?: VentaWhereUniqueInput
+    update?: XOR<XOR<VentaUpdateToOneWithWhereWithoutDetallesInput, VentaUpdateWithoutDetallesInput>, VentaUncheckedUpdateWithoutDetallesInput>
+  }
+
+  export type variante_productoUpdateOneRequiredWithoutDetalleVentasNestedInput = {
+    create?: XOR<variante_productoCreateWithoutDetalleVentasInput, variante_productoUncheckedCreateWithoutDetalleVentasInput>
+    connectOrCreate?: variante_productoCreateOrConnectWithoutDetalleVentasInput
+    upsert?: variante_productoUpsertWithoutDetalleVentasInput
+    connect?: variante_productoWhereUniqueInput
+    update?: XOR<XOR<variante_productoUpdateToOneWithWhereWithoutDetalleVentasInput, variante_productoUpdateWithoutDetalleVentasInput>, variante_productoUncheckedUpdateWithoutDetalleVentasInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -18180,6 +18523,7 @@ export namespace Prisma {
     tipo_venta: string
     metodo_pago: string
     updatedAt?: Date | string | null
+    detalles?: detalle_ventaCreateNestedManyWithoutVentaInput
   }
 
   export type VentaUncheckedCreateWithoutClienteInput = {
@@ -18197,6 +18541,7 @@ export namespace Prisma {
     tipo_venta: string
     metodo_pago: string
     updatedAt?: Date | string | null
+    detalles?: detalle_ventaUncheckedCreateNestedManyWithoutVentaInput
   }
 
   export type VentaCreateOrConnectWithoutClienteInput = {
@@ -18255,6 +18600,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     producto: ProductoCreateNestedOneWithoutVariantesInput
     color: ColorCreateNestedOneWithoutVariantesInput
+    detalleVentas?: detalle_ventaCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUncheckedCreateWithoutTalleInput = {
@@ -18267,6 +18613,7 @@ export namespace Prisma {
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    detalleVentas?: detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoCreateOrConnectWithoutTalleInput = {
@@ -18320,6 +18667,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     producto: ProductoCreateNestedOneWithoutVariantesInput
     talle: TalleCreateNestedOneWithoutVariantesInput
+    detalleVentas?: detalle_ventaCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUncheckedCreateWithoutColorInput = {
@@ -18332,6 +18680,7 @@ export namespace Prisma {
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    detalleVentas?: detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoCreateOrConnectWithoutColorInput = {
@@ -18369,6 +18718,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     talle: TalleCreateNestedOneWithoutVariantesInput
     color: ColorCreateNestedOneWithoutVariantesInput
+    detalleVentas?: detalle_ventaCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUncheckedCreateWithoutProductoInput = {
@@ -18381,6 +18731,7 @@ export namespace Prisma {
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    detalleVentas?: detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoCreateOrConnectWithoutProductoInput = {
@@ -18469,6 +18820,33 @@ export namespace Prisma {
     create: XOR<ColorCreateWithoutVariantesInput, ColorUncheckedCreateWithoutVariantesInput>
   }
 
+  export type detalle_ventaCreateWithoutVarianteInput = {
+    cantidad: number
+    precio: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    venta: VentaCreateNestedOneWithoutDetallesInput
+  }
+
+  export type detalle_ventaUncheckedCreateWithoutVarianteInput = {
+    id?: number
+    venta_id: number
+    cantidad: number
+    precio: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type detalle_ventaCreateOrConnectWithoutVarianteInput = {
+    where: detalle_ventaWhereUniqueInput
+    create: XOR<detalle_ventaCreateWithoutVarianteInput, detalle_ventaUncheckedCreateWithoutVarianteInput>
+  }
+
+  export type detalle_ventaCreateManyVarianteInputEnvelope = {
+    data: detalle_ventaCreateManyVarianteInput | detalle_ventaCreateManyVarianteInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProductoUpsertWithoutVariantesInput = {
     update: XOR<ProductoUpdateWithoutVariantesInput, ProductoUncheckedUpdateWithoutVariantesInput>
     create: XOR<ProductoCreateWithoutVariantesInput, ProductoUncheckedCreateWithoutVariantesInput>
@@ -18547,6 +18925,35 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
   }
 
+  export type detalle_ventaUpsertWithWhereUniqueWithoutVarianteInput = {
+    where: detalle_ventaWhereUniqueInput
+    update: XOR<detalle_ventaUpdateWithoutVarianteInput, detalle_ventaUncheckedUpdateWithoutVarianteInput>
+    create: XOR<detalle_ventaCreateWithoutVarianteInput, detalle_ventaUncheckedCreateWithoutVarianteInput>
+  }
+
+  export type detalle_ventaUpdateWithWhereUniqueWithoutVarianteInput = {
+    where: detalle_ventaWhereUniqueInput
+    data: XOR<detalle_ventaUpdateWithoutVarianteInput, detalle_ventaUncheckedUpdateWithoutVarianteInput>
+  }
+
+  export type detalle_ventaUpdateManyWithWhereWithoutVarianteInput = {
+    where: detalle_ventaScalarWhereInput
+    data: XOR<detalle_ventaUpdateManyMutationInput, detalle_ventaUncheckedUpdateManyWithoutVarianteInput>
+  }
+
+  export type detalle_ventaScalarWhereInput = {
+    AND?: detalle_ventaScalarWhereInput | detalle_ventaScalarWhereInput[]
+    OR?: detalle_ventaScalarWhereInput[]
+    NOT?: detalle_ventaScalarWhereInput | detalle_ventaScalarWhereInput[]
+    id?: IntFilter<"detalle_venta"> | number
+    venta_id?: IntFilter<"detalle_venta"> | number
+    variante_id?: IntFilter<"detalle_venta"> | number
+    cantidad?: IntFilter<"detalle_venta"> | number
+    precio?: FloatFilter<"detalle_venta"> | number
+    createdAt?: DateTimeFilter<"detalle_venta"> | Date | string
+    updatedAt?: DateTimeFilter<"detalle_venta"> | Date | string
+  }
+
   export type ClienteCreateWithoutVentasInput = {
     nombre: string
     telefono?: string | null
@@ -18575,6 +18982,33 @@ export namespace Prisma {
   export type ClienteCreateOrConnectWithoutVentasInput = {
     where: ClienteWhereUniqueInput
     create: XOR<ClienteCreateWithoutVentasInput, ClienteUncheckedCreateWithoutVentasInput>
+  }
+
+  export type detalle_ventaCreateWithoutVentaInput = {
+    cantidad: number
+    precio: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    variante: variante_productoCreateNestedOneWithoutDetalleVentasInput
+  }
+
+  export type detalle_ventaUncheckedCreateWithoutVentaInput = {
+    id?: number
+    variante_id: number
+    cantidad: number
+    precio: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type detalle_ventaCreateOrConnectWithoutVentaInput = {
+    where: detalle_ventaWhereUniqueInput
+    create: XOR<detalle_ventaCreateWithoutVentaInput, detalle_ventaUncheckedCreateWithoutVentaInput>
+  }
+
+  export type detalle_ventaCreateManyVentaInputEnvelope = {
+    data: detalle_ventaCreateManyVentaInput | detalle_ventaCreateManyVentaInput[]
+    skipDuplicates?: boolean
   }
 
   export type ClienteUpsertWithoutVentasInput = {
@@ -18613,6 +19047,174 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type detalle_ventaUpsertWithWhereUniqueWithoutVentaInput = {
+    where: detalle_ventaWhereUniqueInput
+    update: XOR<detalle_ventaUpdateWithoutVentaInput, detalle_ventaUncheckedUpdateWithoutVentaInput>
+    create: XOR<detalle_ventaCreateWithoutVentaInput, detalle_ventaUncheckedCreateWithoutVentaInput>
+  }
+
+  export type detalle_ventaUpdateWithWhereUniqueWithoutVentaInput = {
+    where: detalle_ventaWhereUniqueInput
+    data: XOR<detalle_ventaUpdateWithoutVentaInput, detalle_ventaUncheckedUpdateWithoutVentaInput>
+  }
+
+  export type detalle_ventaUpdateManyWithWhereWithoutVentaInput = {
+    where: detalle_ventaScalarWhereInput
+    data: XOR<detalle_ventaUpdateManyMutationInput, detalle_ventaUncheckedUpdateManyWithoutVentaInput>
+  }
+
+  export type VentaCreateWithoutDetallesInput = {
+    fecha?: Date | string
+    nombre_cliente?: string | null
+    telefono_cliente?: string | null
+    direccion_cliente?: string | null
+    dni_cliente?: string | null
+    total: number
+    descuento?: number | null
+    subtotal?: number | null
+    observacion?: string | null
+    numero_venta: string
+    tipo_venta: string
+    metodo_pago: string
+    updatedAt?: Date | string | null
+    cliente: ClienteCreateNestedOneWithoutVentasInput
+  }
+
+  export type VentaUncheckedCreateWithoutDetallesInput = {
+    id?: number
+    cliente_id: number
+    fecha?: Date | string
+    nombre_cliente?: string | null
+    telefono_cliente?: string | null
+    direccion_cliente?: string | null
+    dni_cliente?: string | null
+    total: number
+    descuento?: number | null
+    subtotal?: number | null
+    observacion?: string | null
+    numero_venta: string
+    tipo_venta: string
+    metodo_pago: string
+    updatedAt?: Date | string | null
+  }
+
+  export type VentaCreateOrConnectWithoutDetallesInput = {
+    where: VentaWhereUniqueInput
+    create: XOR<VentaCreateWithoutDetallesInput, VentaUncheckedCreateWithoutDetallesInput>
+  }
+
+  export type variante_productoCreateWithoutDetalleVentasInput = {
+    precio?: number | null
+    sku?: string | null
+    stock: number
+    activo?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    producto: ProductoCreateNestedOneWithoutVariantesInput
+    talle: TalleCreateNestedOneWithoutVariantesInput
+    color: ColorCreateNestedOneWithoutVariantesInput
+  }
+
+  export type variante_productoUncheckedCreateWithoutDetalleVentasInput = {
+    id?: number
+    producto_id: number
+    talle_id: number
+    color_id: number
+    precio?: number | null
+    sku?: string | null
+    stock: number
+    activo?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type variante_productoCreateOrConnectWithoutDetalleVentasInput = {
+    where: variante_productoWhereUniqueInput
+    create: XOR<variante_productoCreateWithoutDetalleVentasInput, variante_productoUncheckedCreateWithoutDetalleVentasInput>
+  }
+
+  export type VentaUpsertWithoutDetallesInput = {
+    update: XOR<VentaUpdateWithoutDetallesInput, VentaUncheckedUpdateWithoutDetallesInput>
+    create: XOR<VentaCreateWithoutDetallesInput, VentaUncheckedCreateWithoutDetallesInput>
+    where?: VentaWhereInput
+  }
+
+  export type VentaUpdateToOneWithWhereWithoutDetallesInput = {
+    where?: VentaWhereInput
+    data: XOR<VentaUpdateWithoutDetallesInput, VentaUncheckedUpdateWithoutDetallesInput>
+  }
+
+  export type VentaUpdateWithoutDetallesInput = {
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: FloatFieldUpdateOperationsInput | number
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+    subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    numero_venta?: StringFieldUpdateOperationsInput | string
+    tipo_venta?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cliente?: ClienteUpdateOneRequiredWithoutVentasNestedInput
+  }
+
+  export type VentaUncheckedUpdateWithoutDetallesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    cliente_id?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    nombre_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    direccion_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    dni_cliente?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: FloatFieldUpdateOperationsInput | number
+    descuento?: NullableFloatFieldUpdateOperationsInput | number | null
+    subtotal?: NullableFloatFieldUpdateOperationsInput | number | null
+    observacion?: NullableStringFieldUpdateOperationsInput | string | null
+    numero_venta?: StringFieldUpdateOperationsInput | string
+    tipo_venta?: StringFieldUpdateOperationsInput | string
+    metodo_pago?: StringFieldUpdateOperationsInput | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type variante_productoUpsertWithoutDetalleVentasInput = {
+    update: XOR<variante_productoUpdateWithoutDetalleVentasInput, variante_productoUncheckedUpdateWithoutDetalleVentasInput>
+    create: XOR<variante_productoCreateWithoutDetalleVentasInput, variante_productoUncheckedCreateWithoutDetalleVentasInput>
+    where?: variante_productoWhereInput
+  }
+
+  export type variante_productoUpdateToOneWithWhereWithoutDetalleVentasInput = {
+    where?: variante_productoWhereInput
+    data: XOR<variante_productoUpdateWithoutDetalleVentasInput, variante_productoUncheckedUpdateWithoutDetalleVentasInput>
+  }
+
+  export type variante_productoUpdateWithoutDetalleVentasInput = {
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    producto?: ProductoUpdateOneRequiredWithoutVariantesNestedInput
+    talle?: TalleUpdateOneRequiredWithoutVariantesNestedInput
+    color?: ColorUpdateOneRequiredWithoutVariantesNestedInput
+  }
+
+  export type variante_productoUncheckedUpdateWithoutDetalleVentasInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    producto_id?: IntFieldUpdateOperationsInput | number
+    talle_id?: IntFieldUpdateOperationsInput | number
+    color_id?: IntFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type VentaCreateManyClienteInput = {
     id?: number
     fecha?: Date | string
@@ -18644,6 +19246,7 @@ export namespace Prisma {
     tipo_venta?: StringFieldUpdateOperationsInput | string
     metodo_pago?: StringFieldUpdateOperationsInput | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detalles?: detalle_ventaUpdateManyWithoutVentaNestedInput
   }
 
   export type VentaUncheckedUpdateWithoutClienteInput = {
@@ -18661,6 +19264,7 @@ export namespace Prisma {
     tipo_venta?: StringFieldUpdateOperationsInput | string
     metodo_pago?: StringFieldUpdateOperationsInput | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detalles?: detalle_ventaUncheckedUpdateManyWithoutVentaNestedInput
   }
 
   export type VentaUncheckedUpdateManyWithoutClienteInput = {
@@ -18701,6 +19305,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     producto?: ProductoUpdateOneRequiredWithoutVariantesNestedInput
     color?: ColorUpdateOneRequiredWithoutVariantesNestedInput
+    detalleVentas?: detalle_ventaUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateWithoutTalleInput = {
@@ -18713,6 +19318,7 @@ export namespace Prisma {
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    detalleVentas?: detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateManyWithoutTalleInput = {
@@ -18748,6 +19354,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     producto?: ProductoUpdateOneRequiredWithoutVariantesNestedInput
     talle?: TalleUpdateOneRequiredWithoutVariantesNestedInput
+    detalleVentas?: detalle_ventaUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateWithoutColorInput = {
@@ -18760,6 +19367,7 @@ export namespace Prisma {
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    detalleVentas?: detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateManyWithoutColorInput = {
@@ -18795,6 +19403,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     talle?: TalleUpdateOneRequiredWithoutVariantesNestedInput
     color?: ColorUpdateOneRequiredWithoutVariantesNestedInput
+    detalleVentas?: detalle_ventaUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateWithoutProductoInput = {
@@ -18807,6 +19416,7 @@ export namespace Prisma {
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    detalleVentas?: detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateManyWithoutProductoInput = {
@@ -18817,6 +19427,76 @@ export namespace Prisma {
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: IntFieldUpdateOperationsInput | number
     activo?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type detalle_ventaCreateManyVarianteInput = {
+    id?: number
+    venta_id: number
+    cantidad: number
+    precio: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type detalle_ventaUpdateWithoutVarianteInput = {
+    cantidad?: IntFieldUpdateOperationsInput | number
+    precio?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venta?: VentaUpdateOneRequiredWithoutDetallesNestedInput
+  }
+
+  export type detalle_ventaUncheckedUpdateWithoutVarianteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    venta_id?: IntFieldUpdateOperationsInput | number
+    cantidad?: IntFieldUpdateOperationsInput | number
+    precio?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type detalle_ventaUncheckedUpdateManyWithoutVarianteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    venta_id?: IntFieldUpdateOperationsInput | number
+    cantidad?: IntFieldUpdateOperationsInput | number
+    precio?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type detalle_ventaCreateManyVentaInput = {
+    id?: number
+    variante_id: number
+    cantidad: number
+    precio: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type detalle_ventaUpdateWithoutVentaInput = {
+    cantidad?: IntFieldUpdateOperationsInput | number
+    precio?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    variante?: variante_productoUpdateOneRequiredWithoutDetalleVentasNestedInput
+  }
+
+  export type detalle_ventaUncheckedUpdateWithoutVentaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    variante_id?: IntFieldUpdateOperationsInput | number
+    cantidad?: IntFieldUpdateOperationsInput | number
+    precio?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type detalle_ventaUncheckedUpdateManyWithoutVentaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    variante_id?: IntFieldUpdateOperationsInput | number
+    cantidad?: IntFieldUpdateOperationsInput | number
+    precio?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
