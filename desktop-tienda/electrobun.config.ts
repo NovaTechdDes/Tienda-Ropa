@@ -4,7 +4,7 @@ export default {
   app: {
     name: 'Desktop Tienda',
     identifier: 'desktop-tienda.electrobun.dev',
-    version: '0.0.1',
+    version: '2.0.0',
   },
   build: {
     copy: {
