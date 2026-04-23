@@ -9,10 +9,11 @@ export const AsideBar = () => {
     { name: 'Ventas', path: '/ventas', icon: <ReceiptText size={18} /> },
     { name: 'Productos', path: '/productos', icon: <Package size={18} /> },
     { name: 'Clientes', path: '/clientes', icon: <User size={18} /> },
+    { name: 'Historial Ventas', path: '/historialVentas', icon: <ReceiptText size={18} /> },
   ];
 
   return (
-    <aside className="w-64 h-full border-r border-[var(--atelier-border)] bg-[var(--atelier-ink)] flex flex-col z-20 shadow-2xl transition-colors duration-300">
+    <aside className="w-64 h-full border-r border-[var(--atelier-border)] bg-[var(--atelier-ink)] flex flex-col z-10 shadow-2xl transition-colors duration-300">
       {/* Brand Header */}
       <div className="p-8 flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-[var(--neutral)] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)]">

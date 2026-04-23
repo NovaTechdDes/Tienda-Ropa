@@ -15,9 +15,17 @@ export const startPostVenta = async (venta: Venta): Promise<boolean> => {
   }
 };
 
-export const startGetVentas = async (): Promise<Venta[]> => {
+export const startGetVentas = async (desde: string, hasta: string, tipo: string, buscador: string): Promise<Venta[]> => {
   try {
-    const { data } = await db().get('/ventas');
+    const { data } = await db().get('/ventas', {
+      params: {
+        desde,
+        hasta,
+        tipo,
+        buscador,
+      },
+    });
+
     if (data.ok) {
       return data.ventas;
     }

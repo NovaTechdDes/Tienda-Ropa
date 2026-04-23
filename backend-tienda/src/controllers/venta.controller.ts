@@ -4,12 +4,12 @@ import { ventaService } from "../services";
 export const ventaController = {
   getAll: async (_req: Request, res: Response) => {
     const ventas = await ventaService.getAll();
-    res.status(200).json(ventas);
+    res.status(200).json({ ok: true, ventas });
   },
   getById: async (req: Request, res: Response) => {
     const { id } = req.params;
     const venta = await ventaService.getById(Number(id));
-    res.status(200).json(venta);
+    res.status(200).json({ ok: true, venta });
   },
   create: async (req: Request, res: Response) => {
     await ventaService.create(req.body);
