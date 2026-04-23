@@ -3,7 +3,7 @@
 ; ==============================
 [Setup]
 AppName=ServidorTiendaRopa
-AppVersion=3.0.3
+AppVersion=1.1.0
 DefaultDirName={commonappdata}\ServidorTiendaRopa
 DefaultGroupName=ServidorTiendaRopa
 OutputDir=output
