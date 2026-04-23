@@ -17,6 +17,7 @@ export const startPostVenta = async (venta: Venta): Promise<boolean> => {
 
 export const startGetVentas = async (desde: string, hasta: string, tipo: string, buscador: string): Promise<Venta[]> => {
   try {
+    console.log(desde, hasta, tipo, buscador);
     const { data } = await db().get('/ventas', {
       params: {
         desde,

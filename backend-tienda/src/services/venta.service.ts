@@ -1,8 +1,38 @@
 import { prisma } from "../db";
 
 export const ventaService = {
-  getAll: () => {
-    return prisma.venta.findMany({});
+  getAll: (
+    desde?: string,
+    hasta?: string,
+    tipo?: string,
+    buscador?: string,
+  ) => {
+    const where: any = {};
+
+    if (desde && hasta) {
+      where.fecha = {
+        gte: new Date(`${desde}T00:00:00`),
+        lte: new Date(`${hasta}T23:59:59.999`),
+      };
+    }
+
+    if (tipo && tipo !== "TODOS") {
+      where.tipo_venta = tipo;
+    }
+
+    if (buscador) {
+      where.OR = [
+        { numero_venta: { contains: buscador, mode: "insensitive" } },
+        { nombre_cliente: { contains: buscador, mode: "insensitive" } },
+      ];
+    }
+
+    console.log(where);
+
+    return prisma.venta.findMany({
+      where,
+      orderBy: { fecha: "desc" },
+    });
   },
   getById: (id: number) => {
     return prisma.venta.findUnique({

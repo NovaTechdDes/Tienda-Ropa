@@ -1,18 +1,29 @@
 import { Search, Calendar, Receipt } from 'lucide-react';
 import { useVentaStore } from '../../store/venta.store';
+import { useVentas } from '../../hooks/ventas/useVentas';
 
 export const HistorialHeader = () => {
   const { desde, hasta, ventaBuscador, setDesde, setHasta, setVentaBuscador } = useVentaStore();
+  const { data: ventas } = useVentas(desde, hasta, 'CONTADO', ventaBuscador);
 
   return (
     <header className="flex flex-col space-y-6 mb-8">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-[var(--primary)] mb-1 flex items-center gap-3">
-            <Receipt size={32} className="text-[var(--atelier-gold)]" />
-            Historial de Ventas
-          </h1>
-          <p className="text-[var(--atelier-parchment-muted)] text-sm font-medium">Consulta y filtra el registro histórico de todas las ventas realizadas.</p>
+      <div className="flex justify-between">
+        {/* Titulo */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-[var(--primary)] mb-1 flex items-center gap-3">
+              <Receipt size={32} className="text-[var(--atelier-gold)]" />
+              Historial de Ventas
+            </h1>
+            <p className="text-[var(--atelier-parchment-muted)] text-sm font-medium">Consulta y filtra el registro histórico de todas las ventas realizadas.</p>
+          </div>
+        </div>
+
+        {/* Total de ventas */}
+        <div className="h-full flex flex-col justify-end">
+          <h3 className="text-xl font-bold tracking-tight text-[var(--primary)] mb-1 text-right">Total de ventas:</h3>
+          <p className="font-medium text-right text-3xl text-[var(--atelier-gold)]">${ventas?.reduce((acc, venta) => acc + venta.total, 0).toFixed(2)}</p>
         </div>
       </div>
 
