@@ -25,8 +25,8 @@ const mainWindow = new BrowserWindow({
   title: 'Pink Chajari',
   url,
   frame: {
-    width: 1600,
-    height: 900,
+    width: 1366,
+    height: 768,
     x: 0,
     y: 0,
   },
