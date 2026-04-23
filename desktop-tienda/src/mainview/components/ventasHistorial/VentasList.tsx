@@ -15,8 +15,8 @@ export const VentasList = () => {
   }
 
   return (
-    <div className="w-full bg-[var(--atelier-surface-1)] border border-black/50 rounded-3xl overflow-hidden shadow-[var(--atelier-shadow-md)]">
-      <div className="overflow-x-auto">
+    <div className="w-full h-[60vh] bg-[var(--atelier-surface-1)] border border-black/50 rounded-3xl overflow-hidden shadow-[var(--atelier-shadow-md)]">
+      <div className="overflow-x-auto overflow-y-auto h-full">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-[var(--atelier-surface-2)] text-[10px] uppercase tracking-[0.2em] text-[var(--atelier-parchment-muted)] font-bold">

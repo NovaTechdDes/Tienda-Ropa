@@ -22,7 +22,6 @@ export const VentaCliente = () => {
 
   useEffect(() => {
     const cliente = clientes?.find((cliente: Cliente) => cliente.id === 1);
-    console.log(cliente);
     if (cliente) {
       setCliente(cliente);
     }
@@ -55,7 +54,7 @@ export const VentaCliente = () => {
           {mostrarDatos ? <ArrowBigUp className="text-[var(--primary)]" size={20} /> : <ArrowBigDown className="text-[var(--primary)]" size={20} />}
         </div>
       </div>
- 
+
       <div className="space-y-6">
         {/* Selector de Cliente */}
         <div className="space-y-2">
@@ -82,7 +81,7 @@ export const VentaCliente = () => {
             </div>
           </div>
         </div>
- 
+
         {/* Detalle del Cliente */}
         {mostrarDatos && (
           <div className="grid grid-cols-1 gap-4 pt-4 border-t border-black/10 animate-in fade-in slide-in-from-top-4 duration-300">
@@ -96,7 +95,7 @@ export const VentaCliente = () => {
                 placeholder="N/A"
               />
             </div>
- 
+
             <div className="space-y-1.5">
               <label className="text-[9px] uppercase tracking-[0.2em] text-[var(--secondary)] font-bold ml-1">Teléfono</label>
               <input
@@ -107,7 +106,7 @@ export const VentaCliente = () => {
                 placeholder="N/A"
               />
             </div>
- 
+
             <div className="space-y-1.5">
               <label className="text-[9px] uppercase tracking-[0.2em] text-[var(--secondary)] font-bold ml-1">Dirección</label>
               <input
@@ -118,7 +117,7 @@ export const VentaCliente = () => {
                 placeholder="N/A"
               />
             </div>
- 
+
             <div className="space-y-1.5">
               <label className="text-[9px] uppercase tracking-[0.2em] text-[var(--secondary)] font-bold ml-1">DNI / CUIT</label>
               <input

@@ -10,8 +10,6 @@ interface Props {
 
 const imgURL = import.meta.env.VITE_URL || 'http://localhost:3000';
 
-console.log(import.meta.env);
-
 export const ProductItem = ({ producto }: Props) => {
   const { setProductoSeleccionado, openModal } = useProductoStore();
   const { eliminarProducto } = useMutateProducto();

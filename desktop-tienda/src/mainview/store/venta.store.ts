@@ -13,6 +13,12 @@ interface VentaState {
   setVentaBuscador: (ventaBuscador: string) => void;
 
   ventas: Venta[];
+  selectedVenta: Venta | null;
+  isModalOpen: boolean;
+
+  setSelectedVenta: (venta: Venta | null) => void;
+  setIsModalOpen: (isOpen: boolean) => void;
+  setVentas: (ventas: Venta[]) => void;
 }
 
 export const useVentaStore = create<VentaState>()((set) => ({
@@ -32,7 +38,10 @@ export const useVentaStore = create<VentaState>()((set) => ({
       total: 50000,
       tipo_venta: 'Minorista',
       metodo_pago: 'Efectivo',
-      detalles: []
+      detalles: [
+        { variante_id: 101, cantidad: 2, precio: 15000 },
+        { variante_id: 105, cantidad: 1, precio: 25000 }
+      ]
     },
     {
       fecha: new Date(Date.now() - 86400000),
@@ -44,7 +53,9 @@ export const useVentaStore = create<VentaState>()((set) => ({
       total: 100000,
       tipo_venta: 'Mayorista',
       metodo_pago: 'Transferencia',
-      detalles: []
+      detalles: [
+        { variante_id: 202, cantidad: 10, precio: 12000 }
+      ]
     },
     {
       fecha: new Date(Date.now() - 172800000),
@@ -55,12 +66,19 @@ export const useVentaStore = create<VentaState>()((set) => ({
       total: 35000,
       tipo_venta: 'Minorista',
       metodo_pago: 'Tarjeta',
-      detalles: []
+      detalles: [
+        { variante_id: 303, cantidad: 1, precio: 35000 }
+      ]
     }
   ],
+
+  selectedVenta: null,
+  isModalOpen: false,
 
   setDesde: (desde: string) => set({ desde }),
   setHasta: (hasta: string) => set({ hasta }),
   setVentaBuscador: (ventaBuscador: string) => set({ ventaBuscador }),
   setVentas: (ventas: Venta[]) => set({ ventas }),
+  setSelectedVenta: (selectedVenta: Venta | null) => set({ selectedVenta }),
+  setIsModalOpen: (isModalOpen: boolean) => set({ isModalOpen }),
 }));

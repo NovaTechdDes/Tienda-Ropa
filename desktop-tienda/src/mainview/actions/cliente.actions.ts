@@ -10,7 +10,7 @@ export const startPostCliente = async (cliente: Cliente) => {
     }
     return false;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };
@@ -25,7 +25,7 @@ export const startGetClientes = async (): Promise<Cliente[]> => {
     }
     return [];
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return [];
   }
 };
@@ -38,7 +38,7 @@ export const startPutCliente = async (id: number, cliente: Partial<Cliente>) => 
     }
     return false;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };
@@ -51,7 +51,7 @@ export const startDeleteCliente = async (id: number) => {
     }
     return false;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };

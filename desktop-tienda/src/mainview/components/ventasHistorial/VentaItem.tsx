@@ -1,11 +1,20 @@
 import { Venta } from '../../interface/Venta';
 import { CreditCard, Banknote, ArrowRightLeft, User, Users, Eye, Printer, MoreHorizontal } from 'lucide-react';
 
+import { useVentaStore } from '../../store/venta.store';
+
 interface Props {
   venta: Venta;
 }
 
 export const VentaItem = ({ venta }: Props) => {
+  const { setSelectedVenta, setIsModalOpen } = useVentaStore();
+
+  const handleVerDetalle = () => {
+    setSelectedVenta(venta);
+    setIsModalOpen(true);
+  };
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('es-AR', {
       style: 'currency',
@@ -89,6 +98,7 @@ export const VentaItem = ({ venta }: Props) => {
       <td className="px-6 py-4">
         <div className="flex items-center justify-center gap-2">
           <button
+            onClick={handleVerDetalle}
             className="p-2 rounded-lg bg-[var(--atelier-surface-2)] text-[var(--atelier-parchment-muted)] hover:text-[var(--primary)] hover:bg-[var(--primary-soft)] transition-all"
             title="Ver Detalle"
           >

@@ -1,31 +1,26 @@
-import { Categoria } from "../interface";
-import { db } from "../utils/db";
+import { Categoria } from '../interface';
+import { db } from '../utils/db';
 
-export const startPostCategoria = async (
-  categoria: Categoria,
-): Promise<boolean> => {
+export const startPostCategoria = async (categoria: Categoria): Promise<boolean> => {
   try {
-    const { data } = await db().post("/categorias", categoria);
+    const { data } = await db().post('/categorias', categoria);
     if (data.ok) {
       return true;
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
   return false;
 };
 
-export const startPutCategoria = async (
-  id: string,
-  categoria: Categoria,
-): Promise<boolean> => {
+export const startPutCategoria = async (id: string, categoria: Categoria): Promise<boolean> => {
   try {
     const { data } = await db().put(`/categorias/${id}`, categoria);
     if (data.ok) {
       return true;
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
   return false;
 };
@@ -37,7 +32,7 @@ export const startDeleteCategoria = async (id: string): Promise<boolean> => {
       return true;
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
   return false;
 };

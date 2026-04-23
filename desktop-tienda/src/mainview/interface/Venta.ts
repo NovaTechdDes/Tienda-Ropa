@@ -1,5 +1,6 @@
 export interface Venta {
   fecha?: Date;
+  id: number;
 
   cliente_id: number;
   nombre_cliente?: string;
@@ -14,9 +15,11 @@ export interface Venta {
   tipo_venta: string;
   metodo_pago: string;
 
-  detalles: {
-    variante_id: number;
-    cantidad: number;
-    precio: number;
-  }[];
+  detalles: Detalle[];
+}
+
+export interface Detalle {
+  variante_id: number;
+  cantidad: number;
+  precio: number;
 }

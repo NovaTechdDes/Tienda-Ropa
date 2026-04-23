@@ -1,23 +1,20 @@
-import { db } from "../utils/db";
+import { db } from '../utils/db';
 
 export const startPostProvedor = async (nombre: string): Promise<boolean> => {
   try {
-    const { data } = await db().post("/provedor", { nombre });
+    const { data } = await db().post('/provedor', { nombre });
     if (data.ok) {
       return true;
     }
 
     return false;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };
 
-export const startPutProvedor = async (
-  id: string,
-  nombre: string,
-): Promise<boolean> => {
+export const startPutProvedor = async (id: string, nombre: string): Promise<boolean> => {
   try {
     const { data } = await db().put(`/provedor/${id}`, { nombre });
     if (data.ok) {
@@ -26,7 +23,7 @@ export const startPutProvedor = async (
 
     return false;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };
@@ -40,7 +37,7 @@ export const startDeleteProvedor = async (id: string): Promise<boolean> => {
 
     return false;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };
