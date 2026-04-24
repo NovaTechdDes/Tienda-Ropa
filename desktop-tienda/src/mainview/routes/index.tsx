@@ -5,6 +5,7 @@ import { Productos } from '../page/Productos';
 import { Configuracion } from '../page/Configuracion';
 import { Clientes } from '../page/Clientes';
 import { HistorialVentas } from '../components/ventasHistorial/HistorialVentas';
+import { MovimientoVariante } from '../page/MovimientoVariante';
 
 export const router = createHashRouter([
   {
@@ -22,6 +23,10 @@ export const router = createHashRouter([
       {
         path: 'productos',
         element: <Productos />,
+      },
+      {
+        path: 'movimientoVariante',
+        element: <MovimientoVariante />,
       },
       {
         path: 'clientes',

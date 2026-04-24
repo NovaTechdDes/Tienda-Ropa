@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router';
-import { ReceiptText, Package, Settings, ChevronRight, User } from 'lucide-react';
+import { ReceiptText, Package, Settings, ChevronRight, User, ArrowRightLeft } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 export const AsideBar = () => {
@@ -29,36 +29,63 @@ export const AsideBar = () => {
       <nav className="flex-1 px-4 mt-4">
         <div className="space-y-2">
           {navLinks.map((link) => {
-            const isActive = location.pathname === link.path;
+            const isProducts = link.path === '/productos';
+            const isMovimientoPath = location.pathname === '/movimientoVariante';
+            const isActive = location.pathname === link.path || (isProducts && isMovimientoPath);
+
             return (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`
-                  group relative flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300
-                  ${
-                    isActive
-                      ? 'bg-[var(--atelier-border-soft)] text-[var(--atelier-parchment)] shadow-sm'
-                      : 'text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]'
-                  }
-                `}
-              >
-                <div className="flex items-center gap-3 z-10">
-                  <span className={`transition-transform duration-300 ${isActive ? 'scale-110 text-[var(--secondary)]' : 'group-hover:scale-110'}`}>{link.icon}</span>
-                  <span className="text-sm font-medium tracking-wide">{link.name}</span>
-                </div>
+              <div key={link.path} className="flex flex-col">
+                <Link
+                  to={link.path}
+                  className={`
+                    group relative flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300
+                    ${
+                      isActive
+                        ? 'bg-[var(--atelier-border-soft)] text-[var(--atelier-parchment)] shadow-sm'
+                        : 'text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]'
+                    }
+                  `}
+                >
+                  <div className="flex items-center gap-3 z-10">
+                    <span className={`transition-transform duration-300 ${isActive ? 'scale-110 text-[var(--secondary)]' : 'group-hover:scale-110'}`}>{link.icon}</span>
+                    <span className="text-sm font-medium tracking-wide">{link.name}</span>
+                  </div>
 
-                {/* Signature Indicator (Active State) */}
-                {isActive && (
-                  <>
-                    <div className="absolute left-0 top-1/4 bottom-1/4 w-[2px] bg-[var(--primary)] rounded-full shadow-[0_0_8px_rgba(212,175,55,0.5)]" />
-                    <ChevronRight size={14} className="text-[var(--primary)]" />
-                  </>
+                  {/* Signature Indicator (Active State) */}
+                  {isActive && (
+                    <>
+                      <div className="absolute left-0 top-1/4 bottom-1/4 w-[2px] bg-[var(--primary)] rounded-full shadow-[0_0_8px_rgba(212,175,55,0.5)]" />
+                      <ChevronRight size={14} className="text-[var(--primary)]" />
+                    </>
+                  )}
+
+                  {/* Subtle hover effect background */}
+                  {!isActive && <div className="absolute inset-0 bg-gradient-to-r from-[rgba(212,175,55,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />}
+                </Link>
+
+                {/* Sub-menu for Productos */}
+                {isProducts && isActive && (
+                  <Link
+                    to="/movimientoVariante"
+                    className={`
+                      ml-6 mt-1 group relative flex items-center justify-between px-4 py-2.5 rounded-xl transition-all duration-300 animate-slide-down
+                      ${
+                        isMovimientoPath
+                          ? 'bg-[var(--atelier-border-soft)]/50 text-[var(--atelier-parchment)]'
+                          : 'text-[var(--atelier-parchment-muted)] hover:text-[var(--atelier-parchment)] hover:bg-[var(--atelier-border-soft)]/30'
+                      }
+                    `}
+                  >
+                    <div className="flex items-center gap-3 z-10">
+                      <span className={`transition-transform duration-300 ${isMovimientoPath ? 'scale-110 text-[var(--secondary)]' : 'group-hover:scale-110'}`}>
+                        <ArrowRightLeft size={14} />
+                      </span>
+                      <span className="text-[13px] font-medium tracking-wide">Movimiento Variantes</span>
+                    </div>
+                    {isMovimientoPath && <ChevronRight size={12} className="text-[var(--primary)]" />}
+                  </Link>
                 )}
-
-                {/* Subtle hover effect background */}
-                {!isActive && <div className="absolute inset-0 bg-gradient-to-r from-[rgba(212,175,55,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />}
-              </Link>
+              </div>
             );
           })}
         </div>

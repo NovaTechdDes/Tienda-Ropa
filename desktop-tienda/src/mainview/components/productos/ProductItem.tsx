@@ -49,7 +49,7 @@ export const ProductItem = ({ producto }: Props) => {
           alt={producto.descripcion}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--atelier-surface-1)] via-transparent to-transparent opacity-60" />
+        <div className="absolute inset-0 from-[var(--atelier-surface-1)] via-transparent to-transparent opacity-60" />
         <p className="absolute top-2 right-2 bg-white text-[var(--atelier-gold)] p-1.5 rounded-lg z-10 text-xs font-bold leading-relaxed shadow-lg">$ {producto.precio_global?.toFixed(2) ?? '0.00'}</p>
       </div>
 

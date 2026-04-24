@@ -15,6 +15,26 @@ export const getProductos = async (buscador: string): Promise<Producto[]> => {
   return [];
 };
 
+export const getVariantes = async (buscador: string): Promise<Producto[]> => {
+  try {
+    const { data } = await db().get(`/productos/variantes`, {
+      params: {
+        buscador,
+      },
+    });
+
+    console.log(data);
+
+    if (data.ok) {
+      return data.productos;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+
+  return [];
+};
+
 export const deleteProducto = async (id: string): Promise<Boolean> => {
   try {
     const { data } = await db().delete(`/productos/${id}`);
