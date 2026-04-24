@@ -12,8 +12,26 @@ export const mov_productoController = {
     res.status(200).json(movimiento);
   },
   create: async (req: Request, res: Response) => {
-    const movimiento = await mov_productoService.create(req.body);
-    res.status(201).json(movimiento);
+    try {
+      const movimiento = await mov_productoService.create(req.body);
+      if (movimiento) {
+        return res.status(201).json({
+          ok: true,
+          message: "Movimiento creado correctamente",
+          movimiento,
+        });
+      }
+
+      return res.status(400).json({
+        ok: false,
+        message: "No se pudo crear el movimiento",
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ ok: false, message: "Error al crear el movimiento" });
+    }
   },
   update: async (req: Request, res: Response) => {
     const { id } = req.params;

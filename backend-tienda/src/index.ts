@@ -40,7 +40,7 @@ app.use("/marcas", marcaRoutes);
 app.use("/provedores", provedorRoutes);
 app.use("/productos", productoRoutes);
 app.use("/variantes_producto", variante_productoRoutes);
-app.use("/mov_producto", mov_productoRoutes);
+app.use("/movimientos-variantes", mov_productoRoutes);
 app.use("/ventas", ventaRoutes);
 app.use("/talles", talleRoutes);
 

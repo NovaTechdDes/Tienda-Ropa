@@ -36,6 +36,27 @@ export const productoController = {
     }
   },
 
+  getVariantes: async (req: Request, res: Response) => {
+    try {
+      const { buscador } = req.query;
+
+      const productos = await productoService.getWithVariantes(
+        buscador as string,
+      );
+
+      res.status(200).json({
+        ok: true,
+        productos,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        ok: false,
+        message: "Error al obtener las variantes",
+      });
+    }
+  },
+
   create: async (req: Request, res: Response) => {
     try {
       const { variantes, imagen, precio_global, categoria_id, ...rest } =

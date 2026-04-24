@@ -1,25 +1,40 @@
 import { ArrowRightLeft } from 'lucide-react';
 import { useMovimientoStore } from '../../store';
 import { PlusCircle, MinusCircle, FileText, Calendar, CheckCircle2, ChevronRight, Plus, Minus } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MovimientoVariante } from '../../interface/MovimientoVariante';
 import { useMutateMovimientoVariante } from '../../hooks/variantes/useMutateMovimiento';
 import { mensaje } from '../../utils/mensaje';
 
+interface Variante extends MovimientoVariante {
+  id_producto: string;
+  precio_global: number;
+  precio?: number;
+}
+
 export const FormularioMovimientoVariante = () => {
-  const { varianteSeleccionado, productoSeleccionado, setVarianteSeleccionado } = useMovimientoStore();
+  const { varianteSeleccionado, productoSeleccionado, setVarianteSeleccionado, setProductoSeleccionado } = useMovimientoStore();
   const { addMovimiento } = useMutateMovimientoVariante();
+
   const [movementType, setMovementType] = useState<'ingreso' | 'egreso'>('ingreso');
+  const [cantidad, setCantidad] = useState<number | ''>('');
+  const [referencia, setReferencia] = useState<string>('');
+  const [fecha, setFecha] = useState<Date>(new Date());
+  const [precio, setPrecio] = useState<number | ''>(varianteSeleccionado?.precio || '');
+  const [precio_global, setPrecioGlobal] = useState<number | ''>(productoSeleccionado?.precio_global || '');
 
   const handleAddMovimiento = async () => {
-    if (!varianteSeleccionado?.id) return;
+    if (!varianteSeleccionado?.id || !productoSeleccionado?.id) return;
 
-    const movimiento: MovimientoVariante = {
+    const movimiento: Variante = {
       variante_id: varianteSeleccionado?.id,
       tipo: movementType,
-      cantidad: 1,
-      referencia: '',
-      fecha: new Date(),
+      cantidad: Number(cantidad) || 0,
+      precio: Number(precio) || 0,
+      id_producto: productoSeleccionado?.id,
+      precio_global: Number(precio_global) || 0,
+      referencia: referencia || '',
+      fecha,
     };
 
     const res = await addMovimiento.mutateAsync(movimiento);
@@ -27,10 +42,25 @@ export const FormularioMovimientoVariante = () => {
     if (res) {
       mensaje('Movimiento registrado correctamente', 'success');
       setVarianteSeleccionado(null);
+      setProductoSeleccionado(null);
+      setCantidad('');
+      setPrecio('');
+      setPrecioGlobal('');
+      setReferencia('');
+      setFecha(new Date());
+      setMovementType('ingreso');
     } else {
       mensaje('Error al registrar el movimiento', 'error');
     }
   };
+
+  useEffect(() => {
+    setPrecio(varianteSeleccionado?.precio || '');
+  }, [varianteSeleccionado]);
+
+  useEffect(() => {
+    setPrecioGlobal(productoSeleccionado?.precio_global || '');
+  }, [productoSeleccionado]);
 
   return (
     <div className="lg:col-span-7 flex flex-col gap-6">
@@ -105,6 +135,8 @@ export const FormularioMovimientoVariante = () => {
                 <input
                   type="number"
                   placeholder="0"
+                  value={cantidad}
+                  onChange={(e) => setCantidad(e.target.value === '' ? '' : Number(e.target.value))}
                   className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border)] focus:border-[var(--primary)]/40 rounded-2xl py-3.5 pl-10 pr-4 text-lg font-bold outline-none transition-all shadow-inner"
                 />
               </div>
@@ -121,7 +153,8 @@ export const FormularioMovimientoVariante = () => {
                   type="number"
                   name="precio_global"
                   id="precio_global"
-                  value={productoSeleccionado?.precio_global?.toFixed(2)}
+                  value={precio_global}
+                  onChange={(e) => setPrecioGlobal(e.target.value === '' ? '' : Number(e.target.value))}
                 />
               </div>
             </div>
@@ -134,9 +167,10 @@ export const FormularioMovimientoVariante = () => {
               <input
                 className="w-full bg-[var(--atelier-ink)] border text-right border-[var(--atelier-border)] focus:border-[var(--primary)]/40 rounded-2xl py-3.5 pl-4 pr-4 text-lg font-bold outline-none transition-all shadow-inner"
                 type="number"
-                name="precio_venta"
-                id="precio_venta"
-                value={varianteSeleccionado?.precio?.toFixed(2)}
+                name="precio"
+                id="precio"
+                value={precio}
+                onChange={(e) => setPrecio(e.target.value === '' ? '' : Number(e.target.value))}
               />
             </div>
 
@@ -148,6 +182,8 @@ export const FormularioMovimientoVariante = () => {
                 <textarea
                   placeholder="Ej: Reposición de stock, Devolución, Ajuste manual..."
                   rows={2}
+                  value={referencia}
+                  onChange={(e) => setReferencia(e.target.value)}
                   className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border)] focus:border-[var(--primary)]/40 rounded-2xl py-3.5 pl-12 pr-4 text-sm outline-none transition-all shadow-inner resize-none"
                 />
               </div>
@@ -160,7 +196,8 @@ export const FormularioMovimientoVariante = () => {
                 <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--atelier-parchment-low)]" size={18} />
                 <input
                   type="date"
-                  defaultValue={new Date().toISOString().split('T')[0]}
+                  value={fecha.toISOString().split('T')[0]}
+                  onChange={(e) => setFecha(new Date(e.target.value))}
                   className="w-full bg-[var(--atelier-ink)] border border-[var(--atelier-border)] focus:border-[var(--primary)]/40 rounded-2xl py-3.5 pl-12 pr-4 text-sm outline-none transition-all shadow-inner"
                 />
               </div>

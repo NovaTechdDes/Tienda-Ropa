@@ -83,10 +83,11 @@ model variante_producto {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
 
-  producto      Producto        @relation(fields: [producto_id], references: [id])
-  talle         Talle           @relation(fields: [talle_id], references: [id])
-  color         Color           @relation(fields: [color_id], references: [id])
-  detalleVentas detalle_venta[]
+  producto         Producto           @relation(fields: [producto_id], references: [id])
+  talle            Talle              @relation(fields: [talle_id], references: [id])
+  color            Color              @relation(fields: [color_id], references: [id])
+  detalleVentas    detalle_venta[]
+  stockMovimientos stock_movimiento[]
 }
 
 model Numero {
@@ -133,13 +134,20 @@ model detalle_venta {
   variante variante_producto @relation(fields: [variante_id], references: [id])
 }
 
+enum TipoMovimiento {
+  ingreso
+  egreso
+}
+
 model stock_movimiento {
-  id          Int      @id @default(autoincrement())
+  id          Int            @id @default(autoincrement())
   variante_id Int
-  tipo        String
+  tipo        TipoMovimiento
   cantidad    Int
   referencia  String?
-  fecha       DateTime @default(now())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  fecha       DateTime       @default(now())
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  variante variante_producto @relation(fields: [variante_id], references: [id])
 }

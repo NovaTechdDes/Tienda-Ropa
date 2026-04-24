@@ -40,8 +40,34 @@ export const productoService = {
       },
     });
   },
+  getWithVariantes: (buscador: string) => {
+    return prisma.producto.findMany({
+      where: {
+        activo: true,
+        OR: [
+          { descripcion: { contains: buscador, mode: "insensitive" } },
+          {
+            variantes: {
+              some: {
+                sku: { contains: buscador, mode: "insensitive" },
+              },
+            },
+          },
+        ],
+      },
+      take: 50,
+      orderBy: { descripcion: "asc" },
+      include: {
+        variantes: {
+          include: {
+            talle: true,
+            color: true,
+          },
+        },
+      },
+    });
+  },
   create: (data: any) => {
-    console.log(typeof data.categoria_id);
     return prisma.producto.create({
       data,
     });

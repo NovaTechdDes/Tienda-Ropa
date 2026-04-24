@@ -23,8 +23,6 @@ export const getVariantes = async (buscador: string): Promise<Producto[]> => {
       },
     });
 
-    console.log(data);
-
     if (data.ok) {
       return data.productos;
     }

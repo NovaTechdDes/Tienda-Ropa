@@ -6,6 +6,8 @@ const router = Router();
 
 router.get("/", productoController.getAll);
 
+router.get("/variantes", productoController.getVariantes);
+
 router.get("/:id", productoController.getById);
 
 router.post("/", upload.single("imagen"), productoController.create);
