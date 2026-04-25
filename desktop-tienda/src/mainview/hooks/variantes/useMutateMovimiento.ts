@@ -13,6 +13,9 @@ export const useMutateMovimientoVariante = () => {
       queryClient.invalidateQueries({
         queryKey: ['variantes'],
       });
+      queryClient.invalidateQueries({
+        queryKey: ['productos'],
+      });
     },
   });
 

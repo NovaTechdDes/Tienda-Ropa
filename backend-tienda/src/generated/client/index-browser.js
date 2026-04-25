@@ -246,7 +246,10 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.TipoMovimiento = exports.$Enums.TipoMovimiento = {
+  ingreso: 'ingreso',
+  egreso: 'egreso'
+};
 
 exports.Prisma.ModelName = {
   Cliente: 'Cliente',

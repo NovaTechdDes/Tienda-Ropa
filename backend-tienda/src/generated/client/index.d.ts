@@ -75,6 +75,23 @@ export type detalle_venta = $Result.DefaultSelection<Prisma.$detalle_ventaPayloa
 export type stock_movimiento = $Result.DefaultSelection<Prisma.$stock_movimientoPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const TipoMovimiento: {
+  ingreso: 'ingreso',
+  egreso: 'egreso'
+};
+
+export type TipoMovimiento = (typeof TipoMovimiento)[keyof typeof TipoMovimiento]
+
+}
+
+export type TipoMovimiento = $Enums.TipoMovimiento
+
+export const TipoMovimiento: typeof $Enums.TipoMovimiento
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -1992,10 +2009,12 @@ export namespace Prisma {
 
   export type Variante_productoCountOutputType = {
     detalleVentas: number
+    stockMovimientos: number
   }
 
   export type Variante_productoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     detalleVentas?: boolean | Variante_productoCountOutputTypeCountDetalleVentasArgs
+    stockMovimientos?: boolean | Variante_productoCountOutputTypeCountStockMovimientosArgs
   }
 
   // Custom InputTypes
@@ -2014,6 +2033,13 @@ export namespace Prisma {
    */
   export type Variante_productoCountOutputTypeCountDetalleVentasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: detalle_ventaWhereInput
+  }
+
+  /**
+   * Variante_productoCountOutputType without action
+   */
+  export type Variante_productoCountOutputTypeCountStockMovimientosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: stock_movimientoWhereInput
   }
 
 
@@ -9816,6 +9842,7 @@ export namespace Prisma {
     talle?: boolean | TalleDefaultArgs<ExtArgs>
     color?: boolean | ColorDefaultArgs<ExtArgs>
     detalleVentas?: boolean | variante_producto$detalleVentasArgs<ExtArgs>
+    stockMovimientos?: boolean | variante_producto$stockMovimientosArgs<ExtArgs>
     _count?: boolean | Variante_productoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["variante_producto"]>
 
@@ -9870,6 +9897,7 @@ export namespace Prisma {
     talle?: boolean | TalleDefaultArgs<ExtArgs>
     color?: boolean | ColorDefaultArgs<ExtArgs>
     detalleVentas?: boolean | variante_producto$detalleVentasArgs<ExtArgs>
+    stockMovimientos?: boolean | variante_producto$stockMovimientosArgs<ExtArgs>
     _count?: boolean | Variante_productoCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type variante_productoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9890,6 +9918,7 @@ export namespace Prisma {
       talle: Prisma.$TallePayload<ExtArgs>
       color: Prisma.$ColorPayload<ExtArgs>
       detalleVentas: Prisma.$detalle_ventaPayload<ExtArgs>[]
+      stockMovimientos: Prisma.$stock_movimientoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -10300,6 +10329,7 @@ export namespace Prisma {
     talle<T extends TalleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TalleDefaultArgs<ExtArgs>>): Prisma__TalleClient<$Result.GetResult<Prisma.$TallePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     color<T extends ColorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ColorDefaultArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     detalleVentas<T extends variante_producto$detalleVentasArgs<ExtArgs> = {}>(args?: Subset<T, variante_producto$detalleVentasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$detalle_ventaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    stockMovimientos<T extends variante_producto$stockMovimientosArgs<ExtArgs> = {}>(args?: Subset<T, variante_producto$stockMovimientosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$stock_movimientoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10761,6 +10791,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Detalle_ventaScalarFieldEnum | Detalle_ventaScalarFieldEnum[]
+  }
+
+  /**
+   * variante_producto.stockMovimientos
+   */
+  export type variante_producto$stockMovimientosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the stock_movimiento
+     */
+    select?: stock_movimientoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the stock_movimiento
+     */
+    omit?: stock_movimientoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
+    where?: stock_movimientoWhereInput
+    orderBy?: stock_movimientoOrderByWithRelationInput | stock_movimientoOrderByWithRelationInput[]
+    cursor?: stock_movimientoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Stock_movimientoScalarFieldEnum | Stock_movimientoScalarFieldEnum[]
   }
 
   /**
@@ -14267,7 +14321,7 @@ export namespace Prisma {
   export type Stock_movimientoMinAggregateOutputType = {
     id: number | null
     variante_id: number | null
-    tipo: string | null
+    tipo: $Enums.TipoMovimiento | null
     cantidad: number | null
     referencia: string | null
     fecha: Date | null
@@ -14278,7 +14332,7 @@ export namespace Prisma {
   export type Stock_movimientoMaxAggregateOutputType = {
     id: number | null
     variante_id: number | null
-    tipo: string | null
+    tipo: $Enums.TipoMovimiento | null
     cantidad: number | null
     referencia: string | null
     fecha: Date | null
@@ -14434,7 +14488,7 @@ export namespace Prisma {
   export type Stock_movimientoGroupByOutputType = {
     id: number
     variante_id: number
-    tipo: string
+    tipo: $Enums.TipoMovimiento
     cantidad: number
     referencia: string | null
     fecha: Date
@@ -14470,6 +14524,7 @@ export namespace Prisma {
     fecha?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stock_movimiento"]>
 
   export type stock_movimientoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14481,6 +14536,7 @@ export namespace Prisma {
     fecha?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stock_movimiento"]>
 
   export type stock_movimientoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14492,6 +14548,7 @@ export namespace Prisma {
     fecha?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stock_movimiento"]>
 
   export type stock_movimientoSelectScalar = {
@@ -14506,14 +14563,25 @@ export namespace Prisma {
   }
 
   export type stock_movimientoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "variante_id" | "tipo" | "cantidad" | "referencia" | "fecha" | "createdAt" | "updatedAt", ExtArgs["result"]["stock_movimiento"]>
+  export type stock_movimientoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
+  }
+  export type stock_movimientoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
+  }
+  export type stock_movimientoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    variante?: boolean | variante_productoDefaultArgs<ExtArgs>
+  }
 
   export type $stock_movimientoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "stock_movimiento"
-    objects: {}
+    objects: {
+      variante: Prisma.$variante_productoPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       variante_id: number
-      tipo: string
+      tipo: $Enums.TipoMovimiento
       cantidad: number
       referencia: string | null
       fecha: Date
@@ -14913,6 +14981,7 @@ export namespace Prisma {
    */
   export interface Prisma__stock_movimientoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    variante<T extends variante_productoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, variante_productoDefaultArgs<ExtArgs>>): Prisma__variante_productoClient<$Result.GetResult<Prisma.$variante_productoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14944,7 +15013,7 @@ export namespace Prisma {
   interface stock_movimientoFieldRefs {
     readonly id: FieldRef<"stock_movimiento", 'Int'>
     readonly variante_id: FieldRef<"stock_movimiento", 'Int'>
-    readonly tipo: FieldRef<"stock_movimiento", 'String'>
+    readonly tipo: FieldRef<"stock_movimiento", 'TipoMovimiento'>
     readonly cantidad: FieldRef<"stock_movimiento", 'Int'>
     readonly referencia: FieldRef<"stock_movimiento", 'String'>
     readonly fecha: FieldRef<"stock_movimiento", 'DateTime'>
@@ -14967,6 +15036,10 @@ export namespace Prisma {
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
+    /**
      * Filter, which stock_movimiento to fetch.
      */
     where: stock_movimientoWhereUniqueInput
@@ -14985,6 +15058,10 @@ export namespace Prisma {
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
+    /**
      * Filter, which stock_movimiento to fetch.
      */
     where: stock_movimientoWhereUniqueInput
@@ -15002,6 +15079,10 @@ export namespace Prisma {
      * Omit specific fields from the stock_movimiento
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
     /**
      * Filter, which stock_movimiento to fetch.
      */
@@ -15051,6 +15132,10 @@ export namespace Prisma {
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
+    /**
      * Filter, which stock_movimiento to fetch.
      */
     where?: stock_movimientoWhereInput
@@ -15098,6 +15183,10 @@ export namespace Prisma {
      * Omit specific fields from the stock_movimiento
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
     /**
      * Filter, which stock_movimientos to fetch.
      */
@@ -15147,6 +15236,10 @@ export namespace Prisma {
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
+    /**
      * The data needed to create a stock_movimiento.
      */
     data: XOR<stock_movimientoCreateInput, stock_movimientoUncheckedCreateInput>
@@ -15180,6 +15273,10 @@ export namespace Prisma {
      */
     data: stock_movimientoCreateManyInput | stock_movimientoCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -15194,6 +15291,10 @@ export namespace Prisma {
      * Omit specific fields from the stock_movimiento
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
     /**
      * The data needed to update a stock_movimiento.
      */
@@ -15246,6 +15347,10 @@ export namespace Prisma {
      * Limit how many stock_movimientos to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -15260,6 +15365,10 @@ export namespace Prisma {
      * Omit specific fields from the stock_movimiento
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
     /**
      * The filter to search for the stock_movimiento to update in case it exists.
      */
@@ -15286,6 +15395,10 @@ export namespace Prisma {
      * Omit specific fields from the stock_movimiento
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
     /**
      * Filter which stock_movimiento to delete.
      */
@@ -15318,6 +15431,10 @@ export namespace Prisma {
      * Omit specific fields from the stock_movimiento
      */
     omit?: stock_movimientoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: stock_movimientoInclude<ExtArgs> | null
   }
 
 
@@ -15572,6 +15689,20 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TipoMovimiento'
+   */
+  export type EnumTipoMovimientoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoMovimiento'>
+    
+
+
+  /**
+   * Reference to a field of type 'TipoMovimiento[]'
+   */
+  export type ListEnumTipoMovimientoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoMovimiento[]'>
     
   /**
    * Deep Input Types
@@ -15966,6 +16097,7 @@ export namespace Prisma {
     talle?: XOR<TalleScalarRelationFilter, TalleWhereInput>
     color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
     detalleVentas?: Detalle_ventaListRelationFilter
+    stockMovimientos?: Stock_movimientoListRelationFilter
   }
 
   export type variante_productoOrderByWithRelationInput = {
@@ -15983,6 +16115,7 @@ export namespace Prisma {
     talle?: TalleOrderByWithRelationInput
     color?: ColorOrderByWithRelationInput
     detalleVentas?: detalle_ventaOrderByRelationAggregateInput
+    stockMovimientos?: stock_movimientoOrderByRelationAggregateInput
   }
 
   export type variante_productoWhereUniqueInput = Prisma.AtLeast<{
@@ -16003,6 +16136,7 @@ export namespace Prisma {
     talle?: XOR<TalleScalarRelationFilter, TalleWhereInput>
     color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
     detalleVentas?: Detalle_ventaListRelationFilter
+    stockMovimientos?: Stock_movimientoListRelationFilter
   }, "id">
 
   export type variante_productoOrderByWithAggregationInput = {
@@ -16280,12 +16414,13 @@ export namespace Prisma {
     NOT?: stock_movimientoWhereInput | stock_movimientoWhereInput[]
     id?: IntFilter<"stock_movimiento"> | number
     variante_id?: IntFilter<"stock_movimiento"> | number
-    tipo?: StringFilter<"stock_movimiento"> | string
+    tipo?: EnumTipoMovimientoFilter<"stock_movimiento"> | $Enums.TipoMovimiento
     cantidad?: IntFilter<"stock_movimiento"> | number
     referencia?: StringNullableFilter<"stock_movimiento"> | string | null
     fecha?: DateTimeFilter<"stock_movimiento"> | Date | string
     createdAt?: DateTimeFilter<"stock_movimiento"> | Date | string
     updatedAt?: DateTimeFilter<"stock_movimiento"> | Date | string
+    variante?: XOR<Variante_productoScalarRelationFilter, variante_productoWhereInput>
   }
 
   export type stock_movimientoOrderByWithRelationInput = {
@@ -16297,6 +16432,7 @@ export namespace Prisma {
     fecha?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    variante?: variante_productoOrderByWithRelationInput
   }
 
   export type stock_movimientoWhereUniqueInput = Prisma.AtLeast<{
@@ -16305,12 +16441,13 @@ export namespace Prisma {
     OR?: stock_movimientoWhereInput[]
     NOT?: stock_movimientoWhereInput | stock_movimientoWhereInput[]
     variante_id?: IntFilter<"stock_movimiento"> | number
-    tipo?: StringFilter<"stock_movimiento"> | string
+    tipo?: EnumTipoMovimientoFilter<"stock_movimiento"> | $Enums.TipoMovimiento
     cantidad?: IntFilter<"stock_movimiento"> | number
     referencia?: StringNullableFilter<"stock_movimiento"> | string | null
     fecha?: DateTimeFilter<"stock_movimiento"> | Date | string
     createdAt?: DateTimeFilter<"stock_movimiento"> | Date | string
     updatedAt?: DateTimeFilter<"stock_movimiento"> | Date | string
+    variante?: XOR<Variante_productoScalarRelationFilter, variante_productoWhereInput>
   }, "id">
 
   export type stock_movimientoOrderByWithAggregationInput = {
@@ -16335,7 +16472,7 @@ export namespace Prisma {
     NOT?: stock_movimientoScalarWhereWithAggregatesInput | stock_movimientoScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"stock_movimiento"> | number
     variante_id?: IntWithAggregatesFilter<"stock_movimiento"> | number
-    tipo?: StringWithAggregatesFilter<"stock_movimiento"> | string
+    tipo?: EnumTipoMovimientoWithAggregatesFilter<"stock_movimiento"> | $Enums.TipoMovimiento
     cantidad?: IntWithAggregatesFilter<"stock_movimiento"> | number
     referencia?: StringNullableWithAggregatesFilter<"stock_movimiento"> | string | null
     fecha?: DateTimeWithAggregatesFilter<"stock_movimiento"> | Date | string
@@ -16713,6 +16850,7 @@ export namespace Prisma {
     talle: TalleCreateNestedOneWithoutVariantesInput
     color: ColorCreateNestedOneWithoutVariantesInput
     detalleVentas?: detalle_ventaCreateNestedManyWithoutVarianteInput
+    stockMovimientos?: stock_movimientoCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUncheckedCreateInput = {
@@ -16727,6 +16865,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     detalleVentas?: detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput
+    stockMovimientos?: stock_movimientoUncheckedCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUpdateInput = {
@@ -16740,6 +16879,7 @@ export namespace Prisma {
     talle?: TalleUpdateOneRequiredWithoutVariantesNestedInput
     color?: ColorUpdateOneRequiredWithoutVariantesNestedInput
     detalleVentas?: detalle_ventaUpdateManyWithoutVarianteNestedInput
+    stockMovimientos?: stock_movimientoUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateInput = {
@@ -16754,6 +16894,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     detalleVentas?: detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput
+    stockMovimientos?: stock_movimientoUncheckedUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoCreateManyInput = {
@@ -17036,19 +17177,19 @@ export namespace Prisma {
   }
 
   export type stock_movimientoCreateInput = {
-    variante_id: number
-    tipo: string
+    tipo: $Enums.TipoMovimiento
     cantidad: number
     referencia?: string | null
     fecha?: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    variante: variante_productoCreateNestedOneWithoutStockMovimientosInput
   }
 
   export type stock_movimientoUncheckedCreateInput = {
     id?: number
     variante_id: number
-    tipo: string
+    tipo: $Enums.TipoMovimiento
     cantidad: number
     referencia?: string | null
     fecha?: Date | string
@@ -17057,19 +17198,19 @@ export namespace Prisma {
   }
 
   export type stock_movimientoUpdateInput = {
-    variante_id?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
+    tipo?: EnumTipoMovimientoFieldUpdateOperationsInput | $Enums.TipoMovimiento
     cantidad?: IntFieldUpdateOperationsInput | number
     referencia?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    variante?: variante_productoUpdateOneRequiredWithoutStockMovimientosNestedInput
   }
 
   export type stock_movimientoUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     variante_id?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
+    tipo?: EnumTipoMovimientoFieldUpdateOperationsInput | $Enums.TipoMovimiento
     cantidad?: IntFieldUpdateOperationsInput | number
     referencia?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17080,7 +17221,7 @@ export namespace Prisma {
   export type stock_movimientoCreateManyInput = {
     id?: number
     variante_id: number
-    tipo: string
+    tipo: $Enums.TipoMovimiento
     cantidad: number
     referencia?: string | null
     fecha?: Date | string
@@ -17089,8 +17230,7 @@ export namespace Prisma {
   }
 
   export type stock_movimientoUpdateManyMutationInput = {
-    variante_id?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
+    tipo?: EnumTipoMovimientoFieldUpdateOperationsInput | $Enums.TipoMovimiento
     cantidad?: IntFieldUpdateOperationsInput | number
     referencia?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17101,7 +17241,7 @@ export namespace Prisma {
   export type stock_movimientoUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     variante_id?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
+    tipo?: EnumTipoMovimientoFieldUpdateOperationsInput | $Enums.TipoMovimiento
     cantidad?: IntFieldUpdateOperationsInput | number
     referencia?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17560,7 +17700,17 @@ export namespace Prisma {
     none?: detalle_ventaWhereInput
   }
 
+  export type Stock_movimientoListRelationFilter = {
+    every?: stock_movimientoWhereInput
+    some?: stock_movimientoWhereInput
+    none?: stock_movimientoWhereInput
+  }
+
   export type detalle_ventaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type stock_movimientoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17843,6 +17993,13 @@ export namespace Prisma {
     precio?: SortOrder
   }
 
+  export type EnumTipoMovimientoFilter<$PrismaModel = never> = {
+    equals?: $Enums.TipoMovimiento | EnumTipoMovimientoFieldRefInput<$PrismaModel>
+    in?: $Enums.TipoMovimiento[] | ListEnumTipoMovimientoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TipoMovimiento[] | ListEnumTipoMovimientoFieldRefInput<$PrismaModel>
+    not?: NestedEnumTipoMovimientoFilter<$PrismaModel> | $Enums.TipoMovimiento
+  }
+
   export type stock_movimientoCountOrderByAggregateInput = {
     id?: SortOrder
     variante_id?: SortOrder
@@ -17886,6 +18043,16 @@ export namespace Prisma {
     id?: SortOrder
     variante_id?: SortOrder
     cantidad?: SortOrder
+  }
+
+  export type EnumTipoMovimientoWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TipoMovimiento | EnumTipoMovimientoFieldRefInput<$PrismaModel>
+    in?: $Enums.TipoMovimiento[] | ListEnumTipoMovimientoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TipoMovimiento[] | ListEnumTipoMovimientoFieldRefInput<$PrismaModel>
+    not?: NestedEnumTipoMovimientoWithAggregatesFilter<$PrismaModel> | $Enums.TipoMovimiento
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTipoMovimientoFilter<$PrismaModel>
+    _max?: NestedEnumTipoMovimientoFilter<$PrismaModel>
   }
 
   export type VentaCreateNestedManyWithoutClienteInput = {
@@ -18121,11 +18288,25 @@ export namespace Prisma {
     connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
   }
 
+  export type stock_movimientoCreateNestedManyWithoutVarianteInput = {
+    create?: XOR<stock_movimientoCreateWithoutVarianteInput, stock_movimientoUncheckedCreateWithoutVarianteInput> | stock_movimientoCreateWithoutVarianteInput[] | stock_movimientoUncheckedCreateWithoutVarianteInput[]
+    connectOrCreate?: stock_movimientoCreateOrConnectWithoutVarianteInput | stock_movimientoCreateOrConnectWithoutVarianteInput[]
+    createMany?: stock_movimientoCreateManyVarianteInputEnvelope
+    connect?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
+  }
+
   export type detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput = {
     create?: XOR<detalle_ventaCreateWithoutVarianteInput, detalle_ventaUncheckedCreateWithoutVarianteInput> | detalle_ventaCreateWithoutVarianteInput[] | detalle_ventaUncheckedCreateWithoutVarianteInput[]
     connectOrCreate?: detalle_ventaCreateOrConnectWithoutVarianteInput | detalle_ventaCreateOrConnectWithoutVarianteInput[]
     createMany?: detalle_ventaCreateManyVarianteInputEnvelope
     connect?: detalle_ventaWhereUniqueInput | detalle_ventaWhereUniqueInput[]
+  }
+
+  export type stock_movimientoUncheckedCreateNestedManyWithoutVarianteInput = {
+    create?: XOR<stock_movimientoCreateWithoutVarianteInput, stock_movimientoUncheckedCreateWithoutVarianteInput> | stock_movimientoCreateWithoutVarianteInput[] | stock_movimientoUncheckedCreateWithoutVarianteInput[]
+    connectOrCreate?: stock_movimientoCreateOrConnectWithoutVarianteInput | stock_movimientoCreateOrConnectWithoutVarianteInput[]
+    createMany?: stock_movimientoCreateManyVarianteInputEnvelope
+    connect?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
   }
 
   export type ProductoUpdateOneRequiredWithoutVariantesNestedInput = {
@@ -18166,6 +18347,20 @@ export namespace Prisma {
     deleteMany?: detalle_ventaScalarWhereInput | detalle_ventaScalarWhereInput[]
   }
 
+  export type stock_movimientoUpdateManyWithoutVarianteNestedInput = {
+    create?: XOR<stock_movimientoCreateWithoutVarianteInput, stock_movimientoUncheckedCreateWithoutVarianteInput> | stock_movimientoCreateWithoutVarianteInput[] | stock_movimientoUncheckedCreateWithoutVarianteInput[]
+    connectOrCreate?: stock_movimientoCreateOrConnectWithoutVarianteInput | stock_movimientoCreateOrConnectWithoutVarianteInput[]
+    upsert?: stock_movimientoUpsertWithWhereUniqueWithoutVarianteInput | stock_movimientoUpsertWithWhereUniqueWithoutVarianteInput[]
+    createMany?: stock_movimientoCreateManyVarianteInputEnvelope
+    set?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
+    disconnect?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
+    delete?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
+    connect?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
+    update?: stock_movimientoUpdateWithWhereUniqueWithoutVarianteInput | stock_movimientoUpdateWithWhereUniqueWithoutVarianteInput[]
+    updateMany?: stock_movimientoUpdateManyWithWhereWithoutVarianteInput | stock_movimientoUpdateManyWithWhereWithoutVarianteInput[]
+    deleteMany?: stock_movimientoScalarWhereInput | stock_movimientoScalarWhereInput[]
+  }
+
   export type detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput = {
     create?: XOR<detalle_ventaCreateWithoutVarianteInput, detalle_ventaUncheckedCreateWithoutVarianteInput> | detalle_ventaCreateWithoutVarianteInput[] | detalle_ventaUncheckedCreateWithoutVarianteInput[]
     connectOrCreate?: detalle_ventaCreateOrConnectWithoutVarianteInput | detalle_ventaCreateOrConnectWithoutVarianteInput[]
@@ -18178,6 +18373,20 @@ export namespace Prisma {
     update?: detalle_ventaUpdateWithWhereUniqueWithoutVarianteInput | detalle_ventaUpdateWithWhereUniqueWithoutVarianteInput[]
     updateMany?: detalle_ventaUpdateManyWithWhereWithoutVarianteInput | detalle_ventaUpdateManyWithWhereWithoutVarianteInput[]
     deleteMany?: detalle_ventaScalarWhereInput | detalle_ventaScalarWhereInput[]
+  }
+
+  export type stock_movimientoUncheckedUpdateManyWithoutVarianteNestedInput = {
+    create?: XOR<stock_movimientoCreateWithoutVarianteInput, stock_movimientoUncheckedCreateWithoutVarianteInput> | stock_movimientoCreateWithoutVarianteInput[] | stock_movimientoUncheckedCreateWithoutVarianteInput[]
+    connectOrCreate?: stock_movimientoCreateOrConnectWithoutVarianteInput | stock_movimientoCreateOrConnectWithoutVarianteInput[]
+    upsert?: stock_movimientoUpsertWithWhereUniqueWithoutVarianteInput | stock_movimientoUpsertWithWhereUniqueWithoutVarianteInput[]
+    createMany?: stock_movimientoCreateManyVarianteInputEnvelope
+    set?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
+    disconnect?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
+    delete?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
+    connect?: stock_movimientoWhereUniqueInput | stock_movimientoWhereUniqueInput[]
+    update?: stock_movimientoUpdateWithWhereUniqueWithoutVarianteInput | stock_movimientoUpdateWithWhereUniqueWithoutVarianteInput[]
+    updateMany?: stock_movimientoUpdateManyWithWhereWithoutVarianteInput | stock_movimientoUpdateManyWithWhereWithoutVarianteInput[]
+    deleteMany?: stock_movimientoScalarWhereInput | stock_movimientoScalarWhereInput[]
   }
 
   export type ClienteCreateNestedOneWithoutVentasInput = {
@@ -18274,6 +18483,24 @@ export namespace Prisma {
     upsert?: variante_productoUpsertWithoutDetalleVentasInput
     connect?: variante_productoWhereUniqueInput
     update?: XOR<XOR<variante_productoUpdateToOneWithWhereWithoutDetalleVentasInput, variante_productoUpdateWithoutDetalleVentasInput>, variante_productoUncheckedUpdateWithoutDetalleVentasInput>
+  }
+
+  export type variante_productoCreateNestedOneWithoutStockMovimientosInput = {
+    create?: XOR<variante_productoCreateWithoutStockMovimientosInput, variante_productoUncheckedCreateWithoutStockMovimientosInput>
+    connectOrCreate?: variante_productoCreateOrConnectWithoutStockMovimientosInput
+    connect?: variante_productoWhereUniqueInput
+  }
+
+  export type EnumTipoMovimientoFieldUpdateOperationsInput = {
+    set?: $Enums.TipoMovimiento
+  }
+
+  export type variante_productoUpdateOneRequiredWithoutStockMovimientosNestedInput = {
+    create?: XOR<variante_productoCreateWithoutStockMovimientosInput, variante_productoUncheckedCreateWithoutStockMovimientosInput>
+    connectOrCreate?: variante_productoCreateOrConnectWithoutStockMovimientosInput
+    upsert?: variante_productoUpsertWithoutStockMovimientosInput
+    connect?: variante_productoWhereUniqueInput
+    update?: XOR<XOR<variante_productoUpdateToOneWithWhereWithoutStockMovimientosInput, variante_productoUpdateWithoutStockMovimientosInput>, variante_productoUncheckedUpdateWithoutStockMovimientosInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -18509,6 +18736,23 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumTipoMovimientoFilter<$PrismaModel = never> = {
+    equals?: $Enums.TipoMovimiento | EnumTipoMovimientoFieldRefInput<$PrismaModel>
+    in?: $Enums.TipoMovimiento[] | ListEnumTipoMovimientoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TipoMovimiento[] | ListEnumTipoMovimientoFieldRefInput<$PrismaModel>
+    not?: NestedEnumTipoMovimientoFilter<$PrismaModel> | $Enums.TipoMovimiento
+  }
+
+  export type NestedEnumTipoMovimientoWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TipoMovimiento | EnumTipoMovimientoFieldRefInput<$PrismaModel>
+    in?: $Enums.TipoMovimiento[] | ListEnumTipoMovimientoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TipoMovimiento[] | ListEnumTipoMovimientoFieldRefInput<$PrismaModel>
+    not?: NestedEnumTipoMovimientoWithAggregatesFilter<$PrismaModel> | $Enums.TipoMovimiento
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTipoMovimientoFilter<$PrismaModel>
+    _max?: NestedEnumTipoMovimientoFilter<$PrismaModel>
+  }
+
   export type VentaCreateWithoutClienteInput = {
     fecha?: Date | string
     nombre_cliente?: string | null
@@ -18601,6 +18845,7 @@ export namespace Prisma {
     producto: ProductoCreateNestedOneWithoutVariantesInput
     color: ColorCreateNestedOneWithoutVariantesInput
     detalleVentas?: detalle_ventaCreateNestedManyWithoutVarianteInput
+    stockMovimientos?: stock_movimientoCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUncheckedCreateWithoutTalleInput = {
@@ -18614,6 +18859,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     detalleVentas?: detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput
+    stockMovimientos?: stock_movimientoUncheckedCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoCreateOrConnectWithoutTalleInput = {
@@ -18668,6 +18914,7 @@ export namespace Prisma {
     producto: ProductoCreateNestedOneWithoutVariantesInput
     talle: TalleCreateNestedOneWithoutVariantesInput
     detalleVentas?: detalle_ventaCreateNestedManyWithoutVarianteInput
+    stockMovimientos?: stock_movimientoCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUncheckedCreateWithoutColorInput = {
@@ -18681,6 +18928,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     detalleVentas?: detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput
+    stockMovimientos?: stock_movimientoUncheckedCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoCreateOrConnectWithoutColorInput = {
@@ -18719,6 +18967,7 @@ export namespace Prisma {
     talle: TalleCreateNestedOneWithoutVariantesInput
     color: ColorCreateNestedOneWithoutVariantesInput
     detalleVentas?: detalle_ventaCreateNestedManyWithoutVarianteInput
+    stockMovimientos?: stock_movimientoCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUncheckedCreateWithoutProductoInput = {
@@ -18732,6 +18981,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     detalleVentas?: detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput
+    stockMovimientos?: stock_movimientoUncheckedCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoCreateOrConnectWithoutProductoInput = {
@@ -18847,6 +19097,35 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type stock_movimientoCreateWithoutVarianteInput = {
+    tipo: $Enums.TipoMovimiento
+    cantidad: number
+    referencia?: string | null
+    fecha?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type stock_movimientoUncheckedCreateWithoutVarianteInput = {
+    id?: number
+    tipo: $Enums.TipoMovimiento
+    cantidad: number
+    referencia?: string | null
+    fecha?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type stock_movimientoCreateOrConnectWithoutVarianteInput = {
+    where: stock_movimientoWhereUniqueInput
+    create: XOR<stock_movimientoCreateWithoutVarianteInput, stock_movimientoUncheckedCreateWithoutVarianteInput>
+  }
+
+  export type stock_movimientoCreateManyVarianteInputEnvelope = {
+    data: stock_movimientoCreateManyVarianteInput | stock_movimientoCreateManyVarianteInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProductoUpsertWithoutVariantesInput = {
     update: XOR<ProductoUpdateWithoutVariantesInput, ProductoUncheckedUpdateWithoutVariantesInput>
     create: XOR<ProductoCreateWithoutVariantesInput, ProductoUncheckedCreateWithoutVariantesInput>
@@ -18952,6 +19231,36 @@ export namespace Prisma {
     precio?: FloatFilter<"detalle_venta"> | number
     createdAt?: DateTimeFilter<"detalle_venta"> | Date | string
     updatedAt?: DateTimeFilter<"detalle_venta"> | Date | string
+  }
+
+  export type stock_movimientoUpsertWithWhereUniqueWithoutVarianteInput = {
+    where: stock_movimientoWhereUniqueInput
+    update: XOR<stock_movimientoUpdateWithoutVarianteInput, stock_movimientoUncheckedUpdateWithoutVarianteInput>
+    create: XOR<stock_movimientoCreateWithoutVarianteInput, stock_movimientoUncheckedCreateWithoutVarianteInput>
+  }
+
+  export type stock_movimientoUpdateWithWhereUniqueWithoutVarianteInput = {
+    where: stock_movimientoWhereUniqueInput
+    data: XOR<stock_movimientoUpdateWithoutVarianteInput, stock_movimientoUncheckedUpdateWithoutVarianteInput>
+  }
+
+  export type stock_movimientoUpdateManyWithWhereWithoutVarianteInput = {
+    where: stock_movimientoScalarWhereInput
+    data: XOR<stock_movimientoUpdateManyMutationInput, stock_movimientoUncheckedUpdateManyWithoutVarianteInput>
+  }
+
+  export type stock_movimientoScalarWhereInput = {
+    AND?: stock_movimientoScalarWhereInput | stock_movimientoScalarWhereInput[]
+    OR?: stock_movimientoScalarWhereInput[]
+    NOT?: stock_movimientoScalarWhereInput | stock_movimientoScalarWhereInput[]
+    id?: IntFilter<"stock_movimiento"> | number
+    variante_id?: IntFilter<"stock_movimiento"> | number
+    tipo?: EnumTipoMovimientoFilter<"stock_movimiento"> | $Enums.TipoMovimiento
+    cantidad?: IntFilter<"stock_movimiento"> | number
+    referencia?: StringNullableFilter<"stock_movimiento"> | string | null
+    fecha?: DateTimeFilter<"stock_movimiento"> | Date | string
+    createdAt?: DateTimeFilter<"stock_movimiento"> | Date | string
+    updatedAt?: DateTimeFilter<"stock_movimiento"> | Date | string
   }
 
   export type ClienteCreateWithoutVentasInput = {
@@ -19113,6 +19422,7 @@ export namespace Prisma {
     producto: ProductoCreateNestedOneWithoutVariantesInput
     talle: TalleCreateNestedOneWithoutVariantesInput
     color: ColorCreateNestedOneWithoutVariantesInput
+    stockMovimientos?: stock_movimientoCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoUncheckedCreateWithoutDetalleVentasInput = {
@@ -19126,6 +19436,7 @@ export namespace Prisma {
     activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    stockMovimientos?: stock_movimientoUncheckedCreateNestedManyWithoutVarianteInput
   }
 
   export type variante_productoCreateOrConnectWithoutDetalleVentasInput = {
@@ -19200,6 +19511,7 @@ export namespace Prisma {
     producto?: ProductoUpdateOneRequiredWithoutVariantesNestedInput
     talle?: TalleUpdateOneRequiredWithoutVariantesNestedInput
     color?: ColorUpdateOneRequiredWithoutVariantesNestedInput
+    stockMovimientos?: stock_movimientoUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateWithoutDetalleVentasInput = {
@@ -19213,6 +19525,77 @@ export namespace Prisma {
     activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stockMovimientos?: stock_movimientoUncheckedUpdateManyWithoutVarianteNestedInput
+  }
+
+  export type variante_productoCreateWithoutStockMovimientosInput = {
+    precio?: number | null
+    sku?: string | null
+    stock: number
+    activo?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    producto: ProductoCreateNestedOneWithoutVariantesInput
+    talle: TalleCreateNestedOneWithoutVariantesInput
+    color: ColorCreateNestedOneWithoutVariantesInput
+    detalleVentas?: detalle_ventaCreateNestedManyWithoutVarianteInput
+  }
+
+  export type variante_productoUncheckedCreateWithoutStockMovimientosInput = {
+    id?: number
+    producto_id: number
+    talle_id: number
+    color_id: number
+    precio?: number | null
+    sku?: string | null
+    stock: number
+    activo?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    detalleVentas?: detalle_ventaUncheckedCreateNestedManyWithoutVarianteInput
+  }
+
+  export type variante_productoCreateOrConnectWithoutStockMovimientosInput = {
+    where: variante_productoWhereUniqueInput
+    create: XOR<variante_productoCreateWithoutStockMovimientosInput, variante_productoUncheckedCreateWithoutStockMovimientosInput>
+  }
+
+  export type variante_productoUpsertWithoutStockMovimientosInput = {
+    update: XOR<variante_productoUpdateWithoutStockMovimientosInput, variante_productoUncheckedUpdateWithoutStockMovimientosInput>
+    create: XOR<variante_productoCreateWithoutStockMovimientosInput, variante_productoUncheckedCreateWithoutStockMovimientosInput>
+    where?: variante_productoWhereInput
+  }
+
+  export type variante_productoUpdateToOneWithWhereWithoutStockMovimientosInput = {
+    where?: variante_productoWhereInput
+    data: XOR<variante_productoUpdateWithoutStockMovimientosInput, variante_productoUncheckedUpdateWithoutStockMovimientosInput>
+  }
+
+  export type variante_productoUpdateWithoutStockMovimientosInput = {
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    producto?: ProductoUpdateOneRequiredWithoutVariantesNestedInput
+    talle?: TalleUpdateOneRequiredWithoutVariantesNestedInput
+    color?: ColorUpdateOneRequiredWithoutVariantesNestedInput
+    detalleVentas?: detalle_ventaUpdateManyWithoutVarianteNestedInput
+  }
+
+  export type variante_productoUncheckedUpdateWithoutStockMovimientosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    producto_id?: IntFieldUpdateOperationsInput | number
+    talle_id?: IntFieldUpdateOperationsInput | number
+    color_id?: IntFieldUpdateOperationsInput | number
+    precio?: NullableFloatFieldUpdateOperationsInput | number | null
+    sku?: NullableStringFieldUpdateOperationsInput | string | null
+    stock?: IntFieldUpdateOperationsInput | number
+    activo?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    detalleVentas?: detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput
   }
 
   export type VentaCreateManyClienteInput = {
@@ -19306,6 +19689,7 @@ export namespace Prisma {
     producto?: ProductoUpdateOneRequiredWithoutVariantesNestedInput
     color?: ColorUpdateOneRequiredWithoutVariantesNestedInput
     detalleVentas?: detalle_ventaUpdateManyWithoutVarianteNestedInput
+    stockMovimientos?: stock_movimientoUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateWithoutTalleInput = {
@@ -19319,6 +19703,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     detalleVentas?: detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput
+    stockMovimientos?: stock_movimientoUncheckedUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateManyWithoutTalleInput = {
@@ -19355,6 +19740,7 @@ export namespace Prisma {
     producto?: ProductoUpdateOneRequiredWithoutVariantesNestedInput
     talle?: TalleUpdateOneRequiredWithoutVariantesNestedInput
     detalleVentas?: detalle_ventaUpdateManyWithoutVarianteNestedInput
+    stockMovimientos?: stock_movimientoUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateWithoutColorInput = {
@@ -19368,6 +19754,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     detalleVentas?: detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput
+    stockMovimientos?: stock_movimientoUncheckedUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateManyWithoutColorInput = {
@@ -19404,6 +19791,7 @@ export namespace Prisma {
     talle?: TalleUpdateOneRequiredWithoutVariantesNestedInput
     color?: ColorUpdateOneRequiredWithoutVariantesNestedInput
     detalleVentas?: detalle_ventaUpdateManyWithoutVarianteNestedInput
+    stockMovimientos?: stock_movimientoUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateWithoutProductoInput = {
@@ -19417,6 +19805,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     detalleVentas?: detalle_ventaUncheckedUpdateManyWithoutVarianteNestedInput
+    stockMovimientos?: stock_movimientoUncheckedUpdateManyWithoutVarianteNestedInput
   }
 
   export type variante_productoUncheckedUpdateManyWithoutProductoInput = {
@@ -19436,6 +19825,16 @@ export namespace Prisma {
     venta_id: number
     cantidad: number
     precio: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type stock_movimientoCreateManyVarianteInput = {
+    id?: number
+    tipo: $Enums.TipoMovimiento
+    cantidad: number
+    referencia?: string | null
+    fecha?: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19462,6 +19861,35 @@ export namespace Prisma {
     venta_id?: IntFieldUpdateOperationsInput | number
     cantidad?: IntFieldUpdateOperationsInput | number
     precio?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type stock_movimientoUpdateWithoutVarianteInput = {
+    tipo?: EnumTipoMovimientoFieldUpdateOperationsInput | $Enums.TipoMovimiento
+    cantidad?: IntFieldUpdateOperationsInput | number
+    referencia?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type stock_movimientoUncheckedUpdateWithoutVarianteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo?: EnumTipoMovimientoFieldUpdateOperationsInput | $Enums.TipoMovimiento
+    cantidad?: IntFieldUpdateOperationsInput | number
+    referencia?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type stock_movimientoUncheckedUpdateManyWithoutVarianteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tipo?: EnumTipoMovimientoFieldUpdateOperationsInput | $Enums.TipoMovimiento
+    cantidad?: IntFieldUpdateOperationsInput | number
+    referencia?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

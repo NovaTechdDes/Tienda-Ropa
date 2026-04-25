@@ -1,6 +1,6 @@
 {
 	"name": "Desktop-Tienda",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "Aplicacion de escritorio para comercio de ropa",
 	"scripts": {
 		"start": "vite build && electrobun dev",
